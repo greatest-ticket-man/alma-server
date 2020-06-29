@@ -1,4 +1,0 @@
-hoge
-hoge
-hoge
-export PATH=$PATH:/usr/local/voltdb/bin

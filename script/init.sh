@@ -17,6 +17,7 @@ git checkout refs/tags/voltdb-9.3.1
 ant -Djmemcheck=NO_MEMCHECK
 
 cd /tmp
+rm -rf /usr/local/voltdb
 sudo mv ./voltdb /usr/local/
 
 # push path
