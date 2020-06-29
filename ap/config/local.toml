@@ -1,0 +1,5 @@
+# local.toml
+[http_server]
+address = ":3000"
+allow_origin = "*" # 許可するドメイン
+

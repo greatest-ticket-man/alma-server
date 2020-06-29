@@ -1,0 +1,5 @@
+# staging.toml
+[http_server]
+address = "127.0.0.1:3001"
+allow_origin = "*" # 許可するドメイン
+
