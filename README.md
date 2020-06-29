@@ -5,10 +5,14 @@
 Server SideはGolang
 
 # DB
-VoltDBを使うか検討中  
-https://docs.voltdb.com/ReleaseNotes/
+VoltDB
 
-https://github.com/VoltDB/voltdb/wiki/Building-VoltDB
+```
+./script/init.sh
 
-VoltDB client  
-https://github.com/VoltDB/voltdb-client-go  
+# voltDB 
+./script/local-voltdb-init.sh
+
+./script/local-voltdb-start.sh
+```
+
