@@ -8,8 +8,7 @@ xcode-select --install
 ## java install
 brew update
 
-brew tap adoptopenjdk/openjdk/adoptopenjdk8
-brew cask install adoptopenjdk8
+brew cask install adoptopenjdk/openjdk/adoptopenjdk8
 
 ## ccache
 brew install ccache
@@ -22,8 +21,7 @@ brew install cmake
 
 ## pull 
 rm -rf ~/voltdb
-mkdir ~/voltdb
-cd ~/voltdb
+cd ~
 
 git clone https://github.com/VoltDB/voltdb.git
 cd voltdb
