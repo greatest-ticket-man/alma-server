@@ -31,4 +31,5 @@ git checkout refs/tags/voltdb-9.3.1
 ant
 
 # path
-PATH="$PATH:$(pwd)/bin/"
+PWD=$(pwd)
+PATH="$PATH:$PWD/bin/"
