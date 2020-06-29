@@ -29,7 +29,11 @@ cd voltdb
 # 9.3.1
 git checkout refs/tags/voltdb-9.3.1
 ant
+# performance 
+# ant -Djmemcheck=NO_MEMCHECK
 
 # path
 PWD=$(pwd)
+echo "Pathを通してください"
+echo "\$PATH:$PWD/bin/"
 PATH="$PATH:$PWD/bin/"
