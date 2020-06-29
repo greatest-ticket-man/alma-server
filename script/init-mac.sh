@@ -21,9 +21,9 @@ brew install ant
 brew install cmake
 
 ## pull 
-rm -rf /tmp/voltdb_install
-mkdir /tmp/voltdb_install
-cd /tmp/voltdb_install
+rm -rf ~/voltdb
+mkdir ~/voltdb
+cd ~/voltdb
 
 git clone https://github.com/VoltDB/voltdb.git
 cd voltdb
@@ -31,3 +31,6 @@ cd voltdb
 # 9.3.1
 git checkout refs/tags/voltdb-9.3.1
 ant
+
+# path
+PATH="$PATH:$(pwd)/bin/"
