@@ -1,5 +1,37 @@
 # local.toml
-[http_server]
+[httpserver]
 address = ":3000"
 allow_origin = "*" # 許可するドメイン
+
+[[mongodatabases]]
+host = "localhost"
+port = "27017"
+db = "ALMA_USER"
+user = ""
+password = ""
+    [mongodatabases.option]
+    connecttimeoutms = "5000"
+    heartbeatintervalms = "60000" # 60秒
+    maxidletimems = "180000"
+    maxpoolsize = "4000"
+    readpreference = "primary" # Read Preference Mode is [primary, primaryPreferred, secondary, secondaryPreferred, nearest]
+    readconcernlevel = "local" # Primaryのみクエリを投げるので、local指定。readConcern is [local, available, majority, linearizable, snapshot]
+    w = "1" # write connection
+    sockettimeoutms = "10000" # 10秒
+
+[[mongodatabases]]
+host = "localhost"
+port = "27017"
+db = "ALMA_LOG"
+user = ""
+password = ""
+    [mongodatabases.option]
+    connecttimeoutms = "5000"
+    heartbeatintervalms = "60000" # 60秒
+    maxidletimems = "180000"
+    maxpoolsize = "4000"
+    readpreference = "primary" # Read Preference Mode is [primary, primaryPreferred, secondary, secondaryPreferred, nearest]
+    readconcernlevel = "local" # Primaryのみクエリを投げるので、local指定。readConcern is [local, available, majority, linearizable, snapshot]
+    w = "1" # write connection
+    sockettimeoutms = "10000" # 10秒
 

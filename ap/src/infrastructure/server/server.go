@@ -18,11 +18,11 @@ var HTTPAPIServer *http.Server
 var HTTPHTMLServer *http.Server
 
 // Setup ServerSetup
-func Setup(config *config.AlmaConfig) {
+func Setup(config *config.HTTPServer) {
 
 	// http api server
-	HTTPAPIServer = almahttp.Setup(&config.HTTPServer)
-	log.Println("api server : ", config.HTTPServer.Address)
+	HTTPAPIServer = almahttp.Setup(config)
+	log.Println("api server : ", config.Address)
 
 }
 

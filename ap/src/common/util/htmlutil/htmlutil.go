@@ -2,11 +2,11 @@ package htmlutil
 
 import (
 	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/projectpathap"
 	"bytes"
 	"fmt"
 	"html/template"
 	"io"
-	"os"
 )
 
 // Template .
@@ -29,12 +29,7 @@ func CreateTemplateToString(path string, data interface{}) string {
 
 // getTemplateFromPath pathからtemplateを取得する
 func getTemplateFromPath(path string) *template.Template {
-
-	// TODO ここをどうにかする
-	wd, err := os.Getwd()
-	chk.SE(err)
-
-	temp, err := template.ParseFiles(fmt.Sprintf("%s/asset%s", wd, path))
+	temp, err := template.ParseFiles(fmt.Sprintf("%s/asset%s", projectpathap.Root, path))
 	chk.SE(err)
 	return temp
 }
