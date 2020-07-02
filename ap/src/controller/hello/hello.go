@@ -8,7 +8,9 @@ import (
 // HTML .
 func HTML(w http.ResponseWriter, r *http.Request) {
 
-	response.HTML(w, "/template/controller/hello/page.html", "hogge")
+	response.HTML(w, "/template/controller/hello/page.html", map[string]interface{}{
+		"": "hoge",
+	})
 }
 
 // API .
