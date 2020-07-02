@@ -17,7 +17,7 @@ func JSON(w http.ResponseWriter, result interface{}) {
 }
 
 // HTML responseをhtmlで返す
-func HTML(w http.ResponseWriter, path string, data interface{}) {
+func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 	w.WriteHeader(http.StatusOK)
 	htmlutil.Template(w, path, data)
 }

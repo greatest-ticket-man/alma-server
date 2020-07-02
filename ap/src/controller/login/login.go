@@ -10,7 +10,7 @@ import (
 // PageHTML ログイン画面
 func PageHTML(w http.ResponseWriter, r *http.Request) {
 
-	head := htmlutil.CreateTemplateToString("/template/common/head/head.html", "")
+	head := htmlutil.CreateTemplateToString("/template/common/head.html", "")
 
 	response.HTML(
 		w,

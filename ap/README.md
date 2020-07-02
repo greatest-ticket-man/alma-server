@@ -12,3 +12,8 @@ httpとhtmlというものを作りたい
 
 httpではjsonを返すようにする
 htmlではviewも含めて返すようにしてしまう
+
+
+## bootstrap5
+ここのサンプルを見て、構築していく
+https://getbootstrap.com/docs/4.5/examples/

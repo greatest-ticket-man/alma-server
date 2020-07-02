@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/controller/hello"
 	"alma-server/ap/src/controller/login"
+	"alma-server/ap/src/controller/todo"
 	"alma-server/ap/src/infrastructure/http/middleware"
 	"net/http"
 
@@ -51,6 +52,8 @@ func Router() *negroni.Negroni {
 	router.HandleFunc("/hello", hello.HTML).Methods("GET")
 
 	router.HandleFunc("/login", login.PageHTML).Methods("GET")
+
+	router.HandleFunc("/todo", todo.PageHTML).Methods("GET")
 
 	// regist
 	n.UseHandler(router)
