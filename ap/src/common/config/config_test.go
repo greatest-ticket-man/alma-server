@@ -22,7 +22,7 @@ func Test(t *testing.T) {
 			log.Println("hello")
 
 			config := config.Setup("../../../config/local.toml")
-			log.Println("config is ", jsonutil.Unmarshal(config))
+			log.Println("config is ", jsonutil.Marshal(config))
 
 			g.Assert(config.MongoDatabases != nil).IsTrue("mongoの設定がありません")
 			g.Assert(config.HTTPServer != nil).IsTrue("httpserverの設定がありません")
