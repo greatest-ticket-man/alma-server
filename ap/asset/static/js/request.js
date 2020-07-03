@@ -39,5 +39,6 @@ window.Alma = window.Alma || {};
         }
     }
 
-
+    _Alma.req = new Req();
+    
 })(window.Alma);

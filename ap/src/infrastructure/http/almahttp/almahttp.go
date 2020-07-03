@@ -50,6 +50,7 @@ func Router() *negroni.Negroni {
 	router.HandleFunc("/login", login.PageHTML).Methods("GET")
 
 	router.HandleFunc("/todo", todo.PageHTML).Methods("GET")
+	router.HandleFunc("/todo/create", todo.CreateTodo).Methods("POST")
 
 	// static
 	router.PathPrefix("/static").Handler(http.StripPrefix("/static", http.FileServer(http.Dir("asset/static/")))).Methods("GET")
