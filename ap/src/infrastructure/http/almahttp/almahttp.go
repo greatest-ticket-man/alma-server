@@ -6,7 +6,9 @@ import (
 	"alma-server/ap/src/controller/login"
 	"alma-server/ap/src/controller/todo"
 	"alma-server/ap/src/infrastructure/http/middleware"
+	"log"
 	"net/http"
+	"path/filepath"
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -41,12 +43,6 @@ func Router() *negroni.Negroni {
 	// router
 	router := mux.NewRouter()
 
-	// hello
-	// router.HandleFunc("/api/hello", HelloController.Hello).Methods(methodsGet)
-
-	// // html
-	// router.HandleFunc("/hello", HelloController.HelloHTML).Methods(methodsGet)
-
 	router.HandleFunc("/api/hello", hello.API).Methods("GET")
 
 	router.HandleFunc("/hello", hello.HTML).Methods("GET")
@@ -55,8 +51,41 @@ func Router() *negroni.Negroni {
 
 	router.HandleFunc("/todo", todo.PageHTML).Methods("GET")
 
+	// static
+	router.PathPrefix("/static").Handler(http.StripPrefix("/static", http.FileServer(http.Dir("asset/static/")))).Methods("GET")
+
 	// regist
 	n.UseHandler(router)
 
 	return n
+}
+
+// neuteredFileSystem file server
+type neuteredFileSystem struct {
+	fs http.FileSystem
+}
+
+func (nfs neuteredFileSystem) Open(path string) (http.File, error) {
+
+	log.Println("path is ", path)
+
+	f, err := nfs.fs.Open(path)
+	if err != nil {
+		return nil, err
+	}
+
+	s, err := f.Stat()
+	if s.IsDir() {
+		index := filepath.Join(path, "index.html")
+		if _, err := nfs.fs.Open(index); err != nil {
+			closeErr := f.Close()
+			if closeErr != nil {
+				return nil, closeErr
+			}
+
+			return nil, err
+		}
+	}
+
+	return f, nil
 }
