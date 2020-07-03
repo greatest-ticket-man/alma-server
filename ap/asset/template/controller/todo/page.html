@@ -5,25 +5,33 @@
         {{.header}}
     
         <section style="margin: 30px;">
+            <!-- title -->
             <h2 class="h1 font-weight-bold">Todo</h2>
             <h1 class="h6">これからやるべきことをここで管理していきます</h1>
-        
+            <!-- title -->
+        </section>
 
+        <hr class="my-5">
+
+        <section style="margin: 30px;">
             <form>
                 <div class="form-outline">
+                    <label for="todo-title" class="form-label h4">タイトル</label>
                     <input type="text" class="form-control" id="tido-title" aria-describedby="todo-help" />
-                    <label for="todo-title" class="form-label">タイトル</label>
                 </div>
                 <div id="todo-help" class="form-text mb-3">
-                    これからやるべきTODOをここに入力してください
+                    これからやるべきTODOを入力してください
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">詳細</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    <label for="todo-desc" class="form-label h4">詳細</label>
+                    <textarea class="form-control" id="todo-desc" rows="5"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">追加</button>
+                <div class="form-group" style="margin-top: 15px;">
+                    <button type="submit" class="btn btn-primary">追加</button>
+                </div>
             </form>
-        </section>
+
+        </section>        
 
         {{.footer}}
     </body>
