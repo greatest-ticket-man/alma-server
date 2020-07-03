@@ -11,21 +11,17 @@
 
             <form>
                 <div class="form-outline">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="text" class="form-control" id="tido-title" aria-describedby="todo-help" />
+                    <label for="todo-title" class="form-label">タイトル</label>
                 </div>
-                <div id="emailHelp" class="form-text mb-3">
-                    We'll never share your email with anyone else.
+                <div id="todo-help" class="form-text mb-3">
+                    これからやるべきTODOをここに入力してください
                 </div>
-                <div class="form-outline mb-3">
-                    <input type="password" class="form-control" id="exampleInputPassword1" />
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">詳細</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
                 </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">追加</button>
             </form>
         </section>
 
