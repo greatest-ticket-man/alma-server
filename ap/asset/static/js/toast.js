@@ -12,34 +12,47 @@ window.Alma = window.Alma || {};
             document.body.appendChild(div);
         }
 
+        // info 
         info(body) {
+            this.toast('bg-info', 'fa-info-circle', 'info', body, 2000);
+        }
 
+        // warning
+        warning(body) {
+            this.toast('bg-warning', 'fa-exclamation-triangle', 'warning', body, 3000);
+        }
 
+        // success
+        success(body) {
+            this.toast('bg-success', 'fa-check', 'success', body, 2000);
+        }
 
-
+        // error
+        error(body) {
+            this.toast('bg-danger', 'fa-exclamation-circle','error', body, 999999);
         }
 
         // toastを作成する
-        toast(title, desc, body, level) {
+        toast(level, levelIcon, title, body, delay) {
             
             let toastDiv = document.createElement('div');
-            toastDiv.classList.add('toast', 'bg-info', 'text-white');
+            toastDiv.classList.add('toast', level, 'text-white');
             toastDiv.setAttribute('role', 'alert');
             toastDiv.setAttribute('aria-live', 'assertive');
             toastDiv.setAttribute('aria-atomic', 'true');
 
             let toastHeaderDiv = document.createElement('div');
-            toastHeaderDiv.classList.add('toast-header', 'bg-info', 'text-white');
+            toastHeaderDiv.classList.add('toast-header', level, 'text-white');
             
             let toastHeaderIcon = document.createElement('i');
-            toastHeaderIcon.classList.add('fas', 'fa-info-circle', 'fa-lg', 'mr-2');
+            toastHeaderIcon.classList.add('fas', levelIcon, 'fa-lg', 'mr-2');
 
             let toastHeaderTitle = document.createElement('strong');
             toastHeaderTitle.className = 'mr-auto';
-            toastHeaderTitle.innerText = 'Info';
+            toastHeaderTitle.innerText = title;
 
             let toastHeaderDesc = document.createElement('small');
-            toastHeaderDesc.innerText = '何分前';
+            toastHeaderDesc.innerText = '';
 
             let toastButton = document.createElement('button');
             toastButton.classList.add('ml-2', 'my-1', 'close', 'text-white');
@@ -53,7 +66,7 @@ window.Alma = window.Alma || {};
 
             let toastBody = document.createElement('div');
             toastBody.className = 'toast-body';
-            toastBody.innerText = 'あれあれがそれそれ';
+            toastBody.innerText = body;
 
 
             // 要素組み立て
@@ -76,7 +89,7 @@ window.Alma = window.Alma || {};
             let option = {
                 animation: true,
                 autohide: true,
-                delay: 2000,
+                delay: delay,
             };
 
             let toast = new bootstrap.Toast(toastDiv, option);
