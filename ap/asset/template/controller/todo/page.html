@@ -27,7 +27,7 @@
                     <textarea class="form-control" id="todo-desc" rows="5"></textarea>
                 </div>
                 <div class="form-group" style="margin-top: 15px;">
-                    <button type="submit" class="btn btn-primary" onclick="create()">追加</button>
+                    <button type="button" class="btn btn-primary" onclick="create()">追加</button>
                 </div>
             </form>
         </section>
@@ -68,42 +68,14 @@
             </table>
         </section>
         
-        <!-- test  -->
-        <button onclick="popToast()">トースト</button>
-        <!-- test  -->
-
-
         <!-- table  -->
         {{.footer}}
         <script>
 
-            window.onload = function() {
-                let toastElList = [].slice.call(document.querySelectorAll('.toast'));
-
-                console.log("toast el list is ", toastElList);
-
-                let option = {
-                    animation: true,
-                    autohide: true,
-                    delay: 2000,
-                };
-
-
-                let toastList = toastElList.map(function (toastEl) {
-                    // return new bootstrap.Toast(toastEl, option)
-                    return new bootstrap.Toast(toastEl, option);
-                })
-
-                console.log("toast list is ", toastList);
-                for (let i = 0; i < toastList.length; i++) {
-                    let toast = toastList[0];
-                    console.log("toast is ", toast);
-                    toast.show();
-                }
-            }
-
             // create todoを作成する
             async function create() {
+
+                console.log("create");
 
                 const data = {
                     title: document.getElementById('todo-title').value,
@@ -111,16 +83,6 @@
                 };
 
                 window.Alma.req.post('/todo/create', window.Alma.req.createPostData(data));
-            }
-
-            function popToast() {
-
-                console.log("===== popToast");
-
-                window.Alma.toast.info('Infoのポップアップです');
-                window.Alma.toast.warning('Warningのポップアップです');
-                window.Alma.toast.success('Successのポップアップです');
-                window.Alma.toast.error('Errorのポップアップです');
             }
         </script>
     </body>
