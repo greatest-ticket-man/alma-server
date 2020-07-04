@@ -3,13 +3,21 @@ window.Alma = window.Alma || {};
 
     class Toast {
 
+        constructor() {
+            let div = document.createElement('div');
+            div.style = 'position: absolute; top: 5vh; left: 50vw';
+
+            this.div = div;
+            document.body.appendChild(div);
+        }
+
 
         // toastを作成する
-        createToast() {
+        toast() {
             
             // 要素作成
-            let div = document.createElement('div');
-            div.style = 'position: absolute; top: 5vh; right: 50vw;';
+            // let div = document.createElement('div');
+            // div.style = 'position: absolute; top: 5vh; right: 50vw;';
 
             let toastDiv = document.createElement('div');
             toastDiv.classList.add('toast', 'bg-info', 'text-white');
@@ -70,12 +78,8 @@ window.Alma = window.Alma || {};
 
             let toast = new bootstrap.Toast(toastDiv, option);
 
-            // toastDiv
-
-            div.appendChild(toastDiv);
-
-            // add body
-            document.body.appendChild(div);
+            // toast fieldに追加
+            this.div.appendChild(toastDiv);
 
             // show
             toast.show();
