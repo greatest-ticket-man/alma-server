@@ -3,6 +3,7 @@ window.Alma = window.Alma || {};
 
     class Toast {
 
+        // constructor 先にtoastを入れるdivを生成する
         constructor() {
             let div = document.createElement('div');
             div.style = 'position: absolute; top: 5vh; left: 50vw';
@@ -11,14 +12,16 @@ window.Alma = window.Alma || {};
             document.body.appendChild(div);
         }
 
+        info(body) {
+
+
+
+
+        }
 
         // toastを作成する
-        toast() {
+        toast(title, desc, body, level) {
             
-            // 要素作成
-            // let div = document.createElement('div');
-            // div.style = 'position: absolute; top: 5vh; right: 50vw;';
-
             let toastDiv = document.createElement('div');
             toastDiv.classList.add('toast', 'bg-info', 'text-white');
             toastDiv.setAttribute('role', 'alert');
