@@ -2,12 +2,11 @@ package todo
 
 import (
 	"alma-server/ap/src/common/error/chk"
-	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/response"
+	"alma-server/ap/src/domain/CommonHTMLService"
 	"alma-server/ap/src/domain/todo/TodoHTMLService"
 	"alma-server/ap/src/domain/todo/TodoService"
 	"encoding/json"
-	"html/template"
 	"net/http"
 	"time"
 )
@@ -15,20 +14,13 @@ import (
 // PageHTML todoの追加画面
 func PageHTML(w http.ResponseWriter, r *http.Request) {
 
-	head := htmlutil.CreateTemplateToString("/template/common/head.html", "")
-	header := htmlutil.CreateTemplateToString("/template/common/header.html", "")
-	footer := htmlutil.CreateTemplateToString("/template/common/footer.html", "")
-
-	// TODO list
-	// table := htmlutil.CreateTemplateToString("/template/controller/todo/table.html", "")
-
 	response.HTML(
 		w,
 		"/template/controller/todo/page.html",
 		map[string]interface{}{
-			"head":   template.HTML(head),
-			"header": template.HTML(header),
-			"footer": template.HTML(footer),
+			"head":   CommonHTMLService.GetHead(),
+			"header": CommonHTMLService.GetHeader(),
+			"footer": CommonHTMLService.GetFooter(),
 			"table":  TodoHTMLService.GetTodoListTable(r.Context(), "sunjin"),
 		},
 	)
