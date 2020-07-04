@@ -11,10 +11,14 @@ func Get(locale string, msgCode string, params ...interface{}) string {
 const (
 	// HelloLogicError テスト用のError
 	HelloLogicError = "HelloLogicError"
+
+	// TodoDeleteFailed todoの削除に失敗しました
+	TodoDeleteFailed = "TodoDeleteFailed"
 )
 
 var msgMap = map[string]map[string]string{
 	"ja": {
-		HelloLogicError: "テスト用のError",
+		HelloLogicError:  "テスト用のError",
+		TodoDeleteFailed: "todoの削除に失敗しました",
 	},
 }

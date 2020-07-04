@@ -9,6 +9,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"time"
+
+	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 // PageHTML todoの追加画面
@@ -37,6 +39,21 @@ func CreateTodo(w http.ResponseWriter, r *http.Request) {
 
 	// CreateTodo
 	TodoService.CreateTodo(r.Context(), time.Now(), data.Title, data.Desc, "sunjin")
+
+	response.JSON(w, true)
+}
+
+// RemoveTodo todoの削除
+func RemoveTodo(w http.ResponseWriter, r *http.Request) {
+
+	data := &struct {
+		ID *primitive.ObjectID `json:"id"`
+	}{}
+
+	err := json.NewDecoder(r.Body).Decode(data)
+	chk.SE(err)
+
+	TodoService.RemoveTodo(r.Context(), data.ID)
 
 	response.JSON(w, true)
 }

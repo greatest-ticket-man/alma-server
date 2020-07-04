@@ -38,6 +38,11 @@ func Insert(ctx context.Context, userTodo *USER_TODO) bool {
 	return true
 }
 
+// Delete .
+func Delete(ctx context.Context, id *primitive.ObjectID) int32 {
+	return getDb(ctx).DeleteOne(bson.M{"_id": id})
+}
+
 // Find .
 func Find(ctx context.Context, name string) []*USER_TODO {
 	query := bson.M{"name": name}
