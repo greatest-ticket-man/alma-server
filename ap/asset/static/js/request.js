@@ -9,12 +9,15 @@ window.Alma = window.Alma || {};
                 if (response.status == 200) {
                     console.log(`通信に成功しました: ${JSON.stringify(json)}`);
                     if (options.reload === true) {
+                        window.Alma.toast.success('成功しました');
                         setTimeout(() => location.reload(), 2000);
                     }
                 } 
                 if (response.status === 500) {
+                    window.Alma.toast.error('失敗しました...');
                     console.log(json);
                 } else if (response.status !== 200) {
+                    window.Alma.toast.error('失敗しました...');
                     console.log(json);
                 }
             } catch (e) {
