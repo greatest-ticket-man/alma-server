@@ -12,42 +12,45 @@
         <!-- title -->
         <!-- form -->
         <hr class="my-5">
-
-        <section style="margin: 30px;">
-            <form>
-                <div class="form-outline">
-                    <label for="todo-title" class="form-label h4">タイトル</label>
-                    <input type="text" class="form-control" id="todo-title" aria-describedby="todo-help" />
-                </div>
-                <div id="todo-help" class="form-text mb-3">
-                    これからやるべきTODOを入力してください
-                </div>
-                <div class="form-group">
-                    <label for="todo-desc" class="form-label h4">詳細</label>
-                    <textarea class="form-control" id="todo-desc" rows="5"></textarea>
-                </div>
-                <div class="form-group" style="margin-top: 15px;">
-                    <button type="button" class="btn btn-primary" onclick="create()">追加</button>
-                </div>
-            </form>
-        </section>
+        {{.form}}
         <!-- form -->
         <hr class="my-5">
         {{.table}}
 
         {{.footer}}
-        <script>
 
-            // create todoを作成する
-            async function create() {
-
-                const data = {
-                    title: document.getElementById('todo-title').value,
-                    desc: document.getElementById('todo-desc').value,
-                };
-
-                window.Alma.req.post('/todo/create', window.Alma.req.createPostData(data));
-            }
-        </script>
+        <!-- modal -->
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  ...
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        <!-- modal -->
+        <button onclick="showModal()">View Modal</button>
     </body>
+    <script>
+        
+        function showModal() {
+            console.log("show modal");
+
+            var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {});
+
+            myModal.show();
+
+        }
+    </script>
 </html>
