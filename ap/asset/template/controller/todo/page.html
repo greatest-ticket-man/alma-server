@@ -86,15 +86,23 @@
                     あれあれがそれそれしました
                 </div>
             </div>
+            
         </div>
         <!-- toast -->
         
+        <!-- test  -->
+        <button onclick="popToast()">トースト</button>
+        <!-- test  -->
+
+
         <!-- table  -->
         {{.footer}}
         <script>
 
             window.onload = function() {
-                let toastElList = [].slice.call(document.querySelectorAll('.toast'))
+                let toastElList = [].slice.call(document.querySelectorAll('.toast'));
+
+                console.log("toast el list is ", toastElList);
 
                 let option = {
                     animation: true,
@@ -125,6 +133,15 @@
                 };
 
                 window.Alma.req.post('/todo/create', window.Alma.req.createPostData(data));
+            }
+
+            function popToast() {
+
+                console.log("===== popToast");
+
+                window.Alma.toast.createToast();
+
+
             }
         </script>
     </body>
