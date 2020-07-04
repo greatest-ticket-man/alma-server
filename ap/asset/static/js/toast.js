@@ -6,7 +6,7 @@ window.Alma = window.Alma || {};
         // constructor 先にtoastを入れるdivを生成する
         constructor() {
             let div = document.createElement('div');
-            div.style = 'position: absolute; top: 5vh; left: 50vw';
+            div.style = 'position: fixed; top: 5vh; left: 50vw';
 
             this.div = div;
             document.body.appendChild(div);
