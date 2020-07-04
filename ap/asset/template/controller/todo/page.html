@@ -33,49 +33,13 @@
         </section>
         <!-- form -->
         <hr class="my-5">
-        <!-- table  -->
-        <section style="margin: 30px;">
-            <label for="todo-table" class="label h4">Todo 一覧</label>
-            <table class="table" id="todo-table">
-                <thead>
-                    <tr>
-                        <th scope="col">削除</th>
-                        <th scope="col">編集</th>
-                        <th scope="col">#</th>
-                        <th scope="col">Title</th>
-                        <th scope="col">Desc</th>
-                        <th scope="col">担当</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><button type="button" class="btn btn-danger">Delete</button></td>
-                        <td><button type="button" class="btn btn-secondary">Edit</button></td>
-                        <th scope="row">1</th>
-                        <td>クレジットAPIを実装する</td>
-                        <td>クレジットStripeとの組み込みを使って、<br>クレジット決済できるようにする</td>
-                        <td>@sunjin</td>
-                    </tr>
-                    <tr>
-                        <td><button type="button" class="btn btn-danger">Delete</button></td>
-                        <td><button type="button" class="btn btn-secondary">Edit</button></td>
-                        <th scope="row">2</th>
-                        <td>使う側のUIを作成する</td>
-                        <td>できるだけクリーンで使いやすいUIを目指す、<br>意外と大事だと思う</td>
-                        <td>@sunjin</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        
-        <!-- table  -->
+        {{.table}}
+
         {{.footer}}
         <script>
 
             // create todoを作成する
             async function create() {
-
-                console.log("create");
 
                 const data = {
                     title: document.getElementById('todo-title').value,

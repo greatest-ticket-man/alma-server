@@ -20,3 +20,8 @@ func CreateTodo(ctx context.Context, txTime time.Time, title string, desc string
 
 	return UserTodoRepository.Insert(ctx, todo)
 }
+
+// GetTodoList todoのリストを取得する
+func GetTodoList(ctx context.Context, name string) []*UserTodoRepository.USER_TODO {
+	return UserTodoRepository.Find(ctx, name)
+}
