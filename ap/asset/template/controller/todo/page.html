@@ -67,10 +67,55 @@
                 </tbody>
             </table>
         </section>
+
+        <!-- toast -->
+        <div style="position: absolute; top: 5vh; right: 50vw;">
+        
+            <!-- Then put toasts within -->
+            <div class="toast bg-info text-white" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header bg-info text-white">
+                    <!-- <img src="/static/img/ticket-icon.svg" width="15px" height="15px" class="rounded mr-2" alt=""> -->
+                    <i class="fas fa-info-circle fa-lg mr-2"></i>
+                    <strong class="mr-auto">Info</strong>
+                    <small>何分前</small>
+                    <button type="button" class="ml-2 my-1 close text-white" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    あれあれがそれそれしました
+                </div>
+            </div>
+        </div>
+        <!-- toast -->
         
         <!-- table  -->
         {{.footer}}
         <script>
+
+            window.onload = function() {
+                let toastElList = [].slice.call(document.querySelectorAll('.toast'))
+
+                let option = {
+                    animation: true,
+                    autohide: true,
+                    delay: 2000,
+                };
+
+
+                let toastList = toastElList.map(function (toastEl) {
+                    // return new bootstrap.Toast(toastEl, option)
+                    return new bootstrap.Toast(toastEl, option);
+                })
+
+                console.log("toast list is ", toastList);
+                for (let i = 0; i < toastList.length; i++) {
+                    let toast = toastList[0];
+                    console.log("toast is ", toast);
+                    toast.show();
+                }
+            }
+
             // create todoを作成する
             async function create() {
 
