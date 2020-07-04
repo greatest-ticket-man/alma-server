@@ -18,6 +18,8 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 	header := htmlutil.CreateTemplateToString("/template/common/header.html", "")
 	footer := htmlutil.CreateTemplateToString("/template/common/footer.html", "")
 
+	// TODO list
+
 	response.HTML(
 		w,
 		"/template/controller/todo/page.html",
