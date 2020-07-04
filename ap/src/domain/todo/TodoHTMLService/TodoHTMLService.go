@@ -16,3 +16,9 @@ func GetTodoListTable(ctx context.Context, name string) template.HTML {
 		"todoList": todoList,
 	}))
 }
+
+// GetTodoForm todoのformを作成する
+func GetTodoForm(ctx context.Context) template.HTML {
+
+	return template.HTML(htmlutil.CreateTemplateToString("/template/controller/todo/form.html", ""))
+}

@@ -24,6 +24,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"header": CommonHTMLService.GetHeader(),
 			"footer": CommonHTMLService.GetFooter(),
 			"table":  TodoHTMLService.GetTodoListTable(r.Context(), "sunjin"),
+			"form":   TodoHTMLService.GetTodoForm(r.Context()),
 		},
 	)
 }
