@@ -40,6 +40,7 @@ window.Alma = window.Alma || {};
             toastDiv.setAttribute('role', 'alert');
             toastDiv.setAttribute('aria-live', 'assertive');
             toastDiv.setAttribute('aria-atomic', 'true');
+            toastDiv.style = 'width: 80vw; transform: translate(-50%);'; // 中央に表示するためのやつ
 
             let toastHeaderDiv = document.createElement('div');
             toastHeaderDiv.classList.add('toast-header', level, 'text-white');
