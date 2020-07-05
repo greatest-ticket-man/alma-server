@@ -3,8 +3,18 @@ window.Alma = window.Alma || {};
 
     class Modal {
 
+        // confirm(message, func, funcMessage) {
+        //     this.show('確認', message, func);
+        // }
 
-        show() {
+        /**
+         * 
+         * @param {string} title modalのtitle
+         * @param {string} body modalのbody
+         * @param {function} func okボタンを押した時の動作
+         * @param {string} funcMessage okボタンのメッセージ
+         */
+        show(title, body, func, funcMessage) {
 
             let modalDiv = document.createElement('div');
             modalDiv.classList.add('modal', 'fade');
@@ -24,7 +34,7 @@ window.Alma = window.Alma || {};
 
             let modalTitleH5 = document.createElement('div');
             modalTitleH5.className = 'modal-title';
-            modalTitleH5.innerText = "Title";
+            modalTitleH5.innerText = title;
 
             let modalCloseButton = document.createElement('button');
             modalCloseButton.type = 'button';
@@ -38,7 +48,7 @@ window.Alma = window.Alma || {};
 
             let modalBody = document.createElement('div');
             modalBody.className = 'modal-body';
-            modalBody.innerHTML = 'ModalllllBoddyyyyy!!!';
+            modalBody.innerHTML = body;
 
             let modalFooter = document.createElement('div');
             modalFooter.className = 'modal-footer';
@@ -52,7 +62,7 @@ window.Alma = window.Alma || {};
             let modalFooterOkButton = document.createElement('button');
             modalFooterOkButton.type = 'button';
             modalFooterOkButton.classList.add('btn', 'btn-primary');
-            modalFooterOkButton.innerText = 'OK!';
+            modalFooterOkButton.innerText = funcMessage;
 
             // 組み立て
 
@@ -79,6 +89,18 @@ window.Alma = window.Alma || {};
 
             let modal = new bootstrap.Modal(modalDiv, {});
             modal.show();
+
+            // okボタンが押された時の挙動
+            modalFooterOkButton.onclick = function() {
+                // 引数のfunctionを実行
+                func();
+
+                // modalを閉じる
+                modal.hide();
+
+                // modalを破棄
+                modal.dispose();
+            };
         }
     }
 
