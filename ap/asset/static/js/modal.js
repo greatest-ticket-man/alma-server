@@ -97,9 +97,6 @@ window.Alma = window.Alma || {};
 
                 // modalを閉じる
                 modal.hide();
-
-                // modalを破棄
-                modal.dispose();
             };
         }
     }
