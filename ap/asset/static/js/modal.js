@@ -3,9 +3,15 @@ window.Alma = window.Alma || {};
 
     class Modal {
 
-        // confirm(message, func, funcMessage) {
-        //     this.show('確認', message, func);
-        // }
+        /**
+         * 
+         * @param {string} message 
+         * @param {function} func 
+         * @param {string} funcMessage 
+         */
+        confirm(message, func, funcMessage) {
+            this.show('確認', message, func, funcMessage);
+        }
 
         /**
          * 

@@ -39,6 +39,9 @@
             id: id,
         };
 
-        window.Alma.req.post('/todo/remove', window.Alma.req.createPostData(data));
+
+        window.Alma.modal.confirm('削除します、よろしいですか？', function() {
+            window.Alma.req.post('/todo/remove', window.Alma.req.createPostData(data));
+        }, '削除');
     }
 </script>
