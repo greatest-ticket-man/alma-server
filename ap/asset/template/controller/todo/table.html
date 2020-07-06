@@ -5,7 +5,6 @@
         <thead>
             <tr>
                 <th scope="col">削除</th>
-                <th scope="col">編集</th>
                 <th scope="col">Title</th>
                 <th scope="col">Desc</th>
                 <th scope="col">担当</th>
@@ -20,7 +19,6 @@
 
                 <tr>
                     <td><button type="button" class="btn btn-danger" onclick="remove('{{ $todo.ID.Hex }}')">Delete</button></td>
-                    <td><button type="button" class="btn btn-secondary">Edit</button></td>
                     <td>{{ $todo.Title }}</td>
                     <td>{{ $todo.Desc }}</td>
                     <td>{{ $todo.Name }}</td>
@@ -39,9 +37,9 @@
             id: id,
         };
 
-
         window.Alma.modal.confirm('削除します、よろしいですか？', function() {
             window.Alma.req.post('/todo/remove', window.Alma.req.createPostData(data));
         }, '削除');
     }
+
 </script>
