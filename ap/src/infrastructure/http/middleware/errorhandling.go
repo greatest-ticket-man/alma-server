@@ -4,6 +4,8 @@ import (
 	"alma-server/ap/src/common/error/almaerror"
 	"log"
 	"net/http"
+
+	stripego "github.com/stripe/stripe-go/v71"
 )
 
 // errorhandling panicが発生した時にCatchするMiddleware
@@ -34,6 +36,15 @@ func doServerErrorProcess(err interface{}) {
 	case *almaerror.BillingError:
 		// TODO
 		log.Println("Billing errorです", e)
+		if stripeErr, ok := err.(*stripego.Error); ok {
+
+			switch stripeErr.Code {
+			case stripego.ErrorCodeAPIKeyExpired:
+				// たくさん
+			}
+
+		}
+
 	case error:
 		// TODO
 		log.Println("Unknown errorです", e)
