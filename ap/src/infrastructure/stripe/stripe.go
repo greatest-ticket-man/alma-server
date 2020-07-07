@@ -19,7 +19,6 @@ func (c *AlmaStripe) GetAllConsumer() {
 func (c *AlmaStripe) GetAllProductList() []*stripego.Product {
 
 	params := &stripego.ProductListParams{}
-	params.Filters.AddFilter("", "", "")
 
 	var productList []*stripego.Product
 	i := c.client.Products.List(params)
