@@ -17,3 +17,8 @@ func Setup(config *config.Stripe) bool {
 
 	return true
 }
+
+// GetClient clientを取得する
+func GetClient() *stripeclient.API {
+	return client
+}
