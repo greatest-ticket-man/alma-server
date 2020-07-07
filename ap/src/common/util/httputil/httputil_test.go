@@ -1,8 +1,13 @@
 package httputil_test
 
 import (
-	"log"
+	"reflect"
 	"testing"
+
+	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/util/httputil"
+
+	"context"
 
 	"github.com/franela/goblin"
 )
@@ -17,7 +22,12 @@ func Test(t *testing.T) {
 
 		g.It("test", func() {
 
-			log.Println("hoge")
+			rt := reflect.TypeOf("")
+
+			result, err := httputil.GetJSON(context.Background(), "https://example.com/", nil, rt)
+			chk.SE(err)
+
+			g.Assert(result.Result.(string) == "").IsFalse()
 
 		})
 
