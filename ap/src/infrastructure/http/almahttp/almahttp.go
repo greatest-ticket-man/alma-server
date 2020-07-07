@@ -33,8 +33,7 @@ func Router() *negroni.Negroni {
 
 	// middleware
 	n.Use(negroni.HandlerFunc(middleware.CorsMiddleware))
-
-	// TODO error catch wrapper
+	n.Use(negroni.HandlerFunc(middleware.ErrorHandlingMiddleware))
 
 	// log and recovery
 	n.Use(negroni.NewLogger())
