@@ -12,28 +12,28 @@ func (c *AlmaStripe) CreateProduct(productName string) *stripego.Product {
 		Name: stripego.String(productName),
 	}
 	result, err := c.client.Products.New(params)
-	chk.SE(err)
+	chk.BE(err)
 	return result
 }
 
 // UpdateProduct 商品情報を更新する
 func (c *AlmaStripe) UpdateProduct(productID string, params *stripego.ProductParams) *stripego.Product {
 	result, err := c.client.Products.Update(productID, params)
-	chk.SE(err)
+	chk.BE(err)
 	return result
 }
 
 // GetProduct 商品を取得
 func (c *AlmaStripe) GetProduct(productID string) *stripego.Product {
 	result, err := c.client.Products.Get(productID, nil)
-	chk.SE(err)
+	chk.BE(err)
 	return result
 }
 
 // DeleteProduct 商品を削除する
 func (c *AlmaStripe) DeleteProduct(productID string) *stripego.Product {
 	result, err := c.client.Products.Del(productID, nil)
-	chk.SE(err)
+	chk.BE(err)
 	return result
 }
 
