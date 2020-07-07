@@ -16,3 +16,10 @@ func SE(err error, params ...interface{}) {
 func LE(msgCode string, params ...interface{}) {
 	panic(&almaerror.LogicError{StatusCode: http.StatusBadRequest, MessageCode: msgCode, Params: params})
 }
+
+// BE BillingError
+func BE(err error, params ...interface{}) {
+	if err != nil {
+		panic(&almaerror.BillingError{Err: err, Params: params})
+	}
+}

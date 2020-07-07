@@ -24,3 +24,10 @@ type LogicError struct {
 func (le *LogicError) Error() string {
 	return le.MessageCode
 }
+
+// BillingError .
+type BillingError struct {
+	Err         error
+	MessageCode string
+	Params      []interface{}
+}
