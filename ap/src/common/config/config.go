@@ -10,6 +10,7 @@ var ConfigData *AlmaConfig
 // AlmaConfig .
 type AlmaConfig struct {
 	HTTPServer     *HTTPServer `toml:"httpserver"`
+	Stripe         *Stripe     `toml:"stripe"`
 	MongoDatabases []*MongoDB  `toml:"mongodatabases"`
 }
 
@@ -17,6 +18,12 @@ type AlmaConfig struct {
 type HTTPServer struct {
 	Address     string `toml:"address"`
 	AllowOrigin string `toml:"allow_origin"`
+}
+
+// Stripe stripe cledit clientの設定
+type Stripe struct {
+	PublicKey string `toml:"publickey"`
+	SecretKey string `toml:"secretkey"`
 }
 
 // MongoDB MongoDB設定
