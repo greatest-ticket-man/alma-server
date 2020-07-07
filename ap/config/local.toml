@@ -3,6 +3,10 @@
 address = ":3000"
 allow_origin = "*" # 許可するドメイン
 
+[stripe] # test
+publickey = "pk_test_51H0J5vEoHR4iTtOzHNPYilRuLTQnaIQnmj7hZH0nawd5AXJsnSBCBkWZZY5iY8Kmh6y6MYLuYmltXOKw6TMzQ87i00WUAN6ZwB"
+secretkey = "sk_test_51H0J5vEoHR4iTtOzN3Qa86jOrtLcqGyK1fcKAjYVhfB3zNUMQkbHxOxpCHqVKafWY7aqkWt0vp93UJWTIL2nijV0002i4Kyk96"
+
 [[mongodatabases]]
 host = "localhost"
 port = "27017"
