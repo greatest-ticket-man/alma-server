@@ -19,6 +19,8 @@ func Setup(config *config.Stripe) bool {
 }
 
 // GetClient clientを取得する
-func GetClient() *stripeclient.API {
-	return client
+func GetClient() *AlmaStripe {
+	return &AlmaStripe{
+		client: client,
+	}
 }
