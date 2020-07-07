@@ -21,6 +21,24 @@ func Test(t *testing.T) {
 
 		almaStripe := stripe.GetClient()
 
+		var productID string
+		g.It("CreateProduct", func() {
+
+			result := almaStripe.CreateProduct("test商品999")
+			productID = result.ID
+			log.Println("result is ", jsonutil.Marshal(result))
+		})
+
+		g.It("GetProduct", func() {
+			result := almaStripe.GetProduct(productID)
+			log.Println("result is ", jsonutil.Marshal(result))
+		})
+
+		g.It("DeleteProduct", func() {
+			result := almaStripe.DeleteProduct(productID)
+			log.Println("result is ", jsonutil.Marshal(result))
+		})
+
 		g.It("GetAllProduct", func() {
 			result := almaStripe.GetAllProductList()
 			log.Println("result is ", jsonutil.Marshal(result))
