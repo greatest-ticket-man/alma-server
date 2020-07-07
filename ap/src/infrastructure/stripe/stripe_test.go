@@ -1,9 +1,10 @@
 package stripe_test
 
 import (
-	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/test"
+	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/infrastructure/stripe"
+	"log"
 	"testing"
 
 	"github.com/franela/goblin"
@@ -18,10 +19,12 @@ func Test(t *testing.T) {
 
 	g.Describe("stripe:test", func() {
 
-		g.It("setup:test", func() {
+		almaStripe := stripe.GetClient()
 
-			stripe.Setup(config.ConfigData.Stripe)
-
+		g.It("GetAllProduct", func() {
+			result := almaStripe.GetAllProductList()
+			log.Println("result is ", jsonutil.Marshal(result))
+			g.Assert(len(result) == 0).IsFalse("商品が取得できていません")
 		})
 
 	})
