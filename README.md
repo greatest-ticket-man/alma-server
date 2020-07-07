@@ -16,3 +16,9 @@ VoltDB
 ./script/local-voltdb-start.sh
 ```
 
+# Credit 
+## stripe 
+https://dashboard.stripe.com/test/dashboard  
+
+## document
+https://stripe.com/docs/api?lang=go  
