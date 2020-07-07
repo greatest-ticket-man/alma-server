@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/common/projectpathap"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"alma-server/ap/src/infrastructure/server"
+	"alma-server/ap/src/infrastructure/stripe"
 	"fmt"
 )
 
@@ -19,6 +20,9 @@ func Setup() {
 
 	// mongodb
 	mongodb.Setup(config.MongoDatabases)
+
+	// stripe
+	stripe.Setup(config.Stripe)
 
 	// server
 	server.Setup(config.HTTPServer)
