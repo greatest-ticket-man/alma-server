@@ -27,6 +27,8 @@ func Test(t *testing.T) {
 			g.Assert(config.MongoDatabases != nil).IsTrue("mongoの設定がありません")
 			g.Assert(config.HTTPServer != nil).IsTrue("httpserverの設定がありません")
 
+			g.Assert(config.Stripe != nil).IsTrue("stripeの設定がありません")
+
 		})
 
 	})
