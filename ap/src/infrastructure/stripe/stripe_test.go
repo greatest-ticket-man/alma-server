@@ -8,6 +8,8 @@ import (
 	"testing"
 
 	"github.com/franela/goblin"
+
+	stripego "github.com/stripe/stripe-go/v71"
 )
 
 // go test -v -count=1 -timeout 30s alma-server/ap/src/infrastructure/stripe
@@ -17,7 +19,7 @@ func Test(t *testing.T) {
 	g := goblin.Goblin(t)
 	test.Setup()
 
-	g.Describe("stripe:test", func() {
+	g.Describe("stripe:product", func() {
 
 		almaStripe := stripe.GetClient()
 
@@ -43,6 +45,19 @@ func Test(t *testing.T) {
 			result := almaStripe.GetAllProductList()
 			log.Println("result is ", jsonutil.Marshal(result))
 			g.Assert(len(result) == 0).IsFalse("商品が取得できていません")
+		})
+
+	})
+
+	g.Describe("stripe:charge", func() {
+
+		almaStripe := stripe.GetClient()
+
+		g.It("CreateCharge", func() {
+
+			result := almaStripe.CreateCharge(100, stripego.CurrencyJPY, "test", "")
+			log.Println("result is ", jsonutil.Marshal(result))
+
 		})
 
 	})
