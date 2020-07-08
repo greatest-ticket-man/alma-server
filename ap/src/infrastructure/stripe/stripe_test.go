@@ -53,6 +53,19 @@ func Test(t *testing.T) {
 
 		almaStripe := stripe.GetClient()
 
+		g.It("CreateCardToken", func() {
+
+			result := almaStripe.CreateCardToken(
+				"4111111111111111",
+				"12",
+				"2021",
+				"111",
+			)
+
+			log.Println("token is ", jsonutil.Marshal(result))
+
+		})
+
 		g.It("CreateCharge", func() {
 
 			result := almaStripe.CreateCharge(100, stripego.CurrencyJPY, "test", "")
