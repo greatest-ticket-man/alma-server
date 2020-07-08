@@ -22,6 +22,7 @@ https://getbootstrap.com/docs/4.5/examples/
 テストで使えるカード一覧
 https://qiita.com/mimoe/items/8f5d9ce46b72b7fecff5  
 
+```
 クレジットカード番号	カードの種類
 4111111111111111	Visa
 4242424242424242	Visa
@@ -34,3 +35,4 @@ https://qiita.com/mimoe/items/8f5d9ce46b72b7fecff5
 38520000023237	Diner's Club
 3530111333300000	JCB
 3566002020360505	JCB
+```
