@@ -6,7 +6,6 @@ import (
 	"alma-server/ap/src/controller/login"
 	"alma-server/ap/src/controller/todo"
 	"alma-server/ap/src/infrastructure/http/middleware"
-	"log"
 	"net/http"
 	"path/filepath"
 
@@ -67,8 +66,6 @@ type neuteredFileSystem struct {
 }
 
 func (nfs neuteredFileSystem) Open(path string) (http.File, error) {
-
-	log.Println("path is ", path)
 
 	f, err := nfs.fs.Open(path)
 	if err != nil {
