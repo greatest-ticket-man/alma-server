@@ -19,7 +19,7 @@ htmlではviewも含めて返すようにしてしまう
 https://getbootstrap.com/docs/4.5/examples/
 
 # stripe
-テストで使えるカード一覧
+## テストで使えるカード一覧
 https://qiita.com/mimoe/items/8f5d9ce46b72b7fecff5  
 
 ```
@@ -36,6 +36,13 @@ https://qiita.com/mimoe/items/8f5d9ce46b72b7fecff5
 3530111333300000	JCB
 3566002020360505	JCB
 ```
+
+## テストの銀行口座
+https://stripe.com/docs/testing  
+
+
+## stripeで使える、決済状況
+https://stripe.com/jp/payments/payment-methods-guide#availability  
 
 # メール送信
 今後メール送信機能を作成するにあたり、必要になる情報
