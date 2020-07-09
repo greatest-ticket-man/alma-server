@@ -53,6 +53,7 @@ func Test(t *testing.T) {
 
 		almaStripe := stripe.GetClient()
 
+		var token string
 		g.It("CreateCardToken", func() {
 
 			result := almaStripe.CreateCardToken(
@@ -62,13 +63,15 @@ func Test(t *testing.T) {
 				"111",
 			)
 
+			token = result.ID
+
 			log.Println("token is ", jsonutil.Marshal(result))
 
 		})
 
 		g.It("CreateCharge", func() {
 
-			result := almaStripe.CreateCharge(100, stripego.CurrencyJPY, "test", "")
+			result := almaStripe.CreateCharge(100, stripego.CurrencyJPY, "test", token)
 			log.Println("result is ", jsonutil.Marshal(result))
 
 		})
