@@ -50,3 +50,8 @@ https://stripe.com/jp/payments/payment-methods-guide#availability
 ## 迷惑メール対策
 SPFレコード登録をする  
 https://baremail.jp/blog/2019/05/20/115/  
+
+## 画面
+ - チケット作成画面
+ - 売上画面
+ - 
