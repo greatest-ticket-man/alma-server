@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/controller/hello"
 	"alma-server/ap/src/controller/login"
 	"alma-server/ap/src/controller/todo"
+	"alma-server/ap/src/controller/top"
 	"alma-server/ap/src/infrastructure/http/middleware"
 	"net/http"
 	"path/filepath"
@@ -40,6 +41,8 @@ func Router() *negroni.Negroni {
 
 	// router
 	router := mux.NewRouter()
+
+	router.HandleFunc("/", top.PageHTML).Methods("GET")
 
 	router.HandleFunc("/api/hello", hello.API).Methods("GET")
 
