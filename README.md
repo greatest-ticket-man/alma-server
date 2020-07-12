@@ -22,3 +22,6 @@ https://dashboard.stripe.com/test/dashboard
 
 ## document
 https://stripe.com/docs/api?lang=go  
+
+## メールサーバーとWebサーバー
+https://teratail.com/questions/135679
