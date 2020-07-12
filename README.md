@@ -38,3 +38,6 @@ https://www.geekfeed.co.jp/geekblog/centos8_mailserver_1
 
 ## ルーティングについて
 https://teratail.com/questions/135679
+
+## golangから、メールサーバー操作
+https://qiita.com/Neetless/items/6c802dddc52fa09aaede
