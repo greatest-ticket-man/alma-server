@@ -41,3 +41,9 @@ https://teratail.com/questions/135679
 
 ## golangから、メールサーバー操作
 https://qiita.com/Neetless/items/6c802dddc52fa09aaede
+
+
+## 引っかかったこと
+https://qiita.com/pb_tmz08/items/291dca302f0e3523bb0f
+
+https://www.geekfeed.co.jp/geekblog/centos8_mailserver_1
