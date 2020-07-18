@@ -29,7 +29,7 @@ func CreateTemplateToString(path string, data interface{}) string {
 
 // getTemplateFromPath pathからtemplateを取得する
 func getTemplateFromPath(path string) *template.Template {
-	temp, err := template.ParseFiles(fmt.Sprintf("%s/asset%s", projectpathap.Root, path))
+	temp, err := template.ParseFiles(fmt.Sprintf("%s/asset%s", projectpathap.GetRoot(), path))
 	chk.SE(err)
 	return temp
 }

@@ -1,10 +1,10 @@
 # local.toml
 
 # ルートディレクトリ、指定なしだとビルドしたときの標準になる
-rootdirectory = ""
+rootdirectory = "/home/www"
 
 [httpserver]
-address = ":3000"
+address = ":80"
 allow_origin = "*" # 許可するドメイン
 
 [stripe] # test
@@ -12,7 +12,7 @@ publickey = "pk_test_51H0J5vEoHR4iTtOzHNPYilRuLTQnaIQnmj7hZH0nawd5AXJsnSBCBkWZZY
 secretkey = "sk_test_51H0J5vEoHR4iTtOzN3Qa86jOrtLcqGyK1fcKAjYVhfB3zNUMQkbHxOxpCHqVKafWY7aqkWt0vp93UJWTIL2nijV0002i4Kyk96"
 
 [[mongodatabases]]
-host = "localhost"
+host = "192.168.2.200"
 port = "27017"
 db = "ALMA_USER"
 user = ""
@@ -28,7 +28,7 @@ password = ""
     sockettimeoutms = "10000" # 10秒
 
 [[mongodatabases]]
-host = "localhost"
+host = "192.168.2.200"
 port = "27017"
 db = "ALMA_LOG"
 user = ""
