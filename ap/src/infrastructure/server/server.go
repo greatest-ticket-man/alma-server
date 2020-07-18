@@ -27,10 +27,16 @@ func Setup(config *config.HTTPServer) {
 }
 
 // Serve serve
-func Serve() {
+func Serve(config *config.HTTPServer) {
 	log.Println("http api server start !")
 	go func() {
-		err := HTTPAPIServer.ListenAndServe()
+
+		var err error
+		if config.TLS {
+			err = HTTPAPIServer.ListenAndServeTLS(config.CertFile, config.KeyFile)
+		} else {
+			err = HTTPAPIServer.ListenAndServe()
+		}
 		if err != nil {
 			if err != http.ErrServerClosed {
 				panic(err)
@@ -49,10 +55,10 @@ func Shutdown() {
 }
 
 // Run Server Start
-func Run() {
+func Run(config *config.HTTPServer) {
 
 	// serve
-	Serve()
+	Serve(config)
 
 	// kill commandが来たら正常終了する
 	quit := make(chan os.Signal, 1)

@@ -30,5 +30,5 @@ func main() {
 	server.Setup(config.HTTPServer)
 
 	// run
-	server.Run()
+	server.Run(config.HTTPServer)
 }
