@@ -10,6 +10,11 @@ tls = true # https接続
 certfile = "/etc/letsencrypt/live/ticketman.jp/fullchain.pem"
 keyfile = "/etc/letsencrypt/live/ticketman.jp/privkey.pem"
 
+[mail]
+    [mail.gmail]
+    address = "greatestticketman@gmail.com"
+    password = "d31780844d660b7173a1b2d3bc20b688"
+
 [stripe] # test
 publickey = "pk_test_51H0J5vEoHR4iTtOzHNPYilRuLTQnaIQnmj7hZH0nawd5AXJsnSBCBkWZZY5iY8Kmh6y6MYLuYmltXOKw6TMzQ87i00WUAN6ZwB"
 secretkey = "sk_test_51H0J5vEoHR4iTtOzN3Qa86jOrtLcqGyK1fcKAjYVhfB3zNUMQkbHxOxpCHqVKafWY7aqkWt0vp93UJWTIL2nijV0002i4Kyk96"
