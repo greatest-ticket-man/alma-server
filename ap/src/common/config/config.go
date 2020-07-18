@@ -1,6 +1,9 @@
 package config
 
 import (
+	"alma-server/ap/src/common/util/cryptoutil"
+	"strings"
+
 	"github.com/BurntSushi/toml"
 )
 
@@ -11,6 +14,7 @@ var ConfigData *AlmaConfig
 type AlmaConfig struct {
 	RootDirectory  string      `toml:"rootdirectory"`
 	HTTPServer     *HTTPServer `toml:"httpserver"`
+	Mail           *Mail       `toml:"mail"`
 	Stripe         *Stripe     `toml:"stripe"`
 	MongoDatabases []*MongoDB  `toml:"mongodatabases"`
 }
@@ -22,6 +26,17 @@ type HTTPServer struct {
 	TLS         bool   `toml:"tls"`
 	CertFile    string `toml:"certfile"`
 	KeyFile     string `toml:"keyfile"`
+}
+
+// Mail メールの設定
+type Mail struct {
+	Gmail *Gmail `toml:"gmail"`
+}
+
+// Gmail Gmailの設定
+type Gmail struct {
+	Address  string `toml:"address"`
+	Password string `toml:"password"`
 }
 
 // Stripe stripe cledit clientの設定
@@ -59,6 +74,13 @@ func Setup(path string) *AlmaConfig {
 	_, err := toml.DecodeFile(path, config)
 	if err != nil {
 		panic(err)
+	}
+
+	// パスワードの暗号化解除
+	if config.Mail != nil {
+		if config.Mail.Gmail != nil {
+			config.Mail.Gmail.Password = strings.TrimSpace(cryptoutil.DecPassword(config.Mail.Gmail.Password))
+		}
 	}
 
 	// set
