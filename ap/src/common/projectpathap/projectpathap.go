@@ -1,6 +1,7 @@
 package projectpathap
 
 import (
+	"alma-server/ap/src/common/config"
 	"path/filepath"
 	"runtime"
 )
@@ -11,7 +12,16 @@ import (
 
 var (
 	_, b, _, _ = runtime.Caller(0)
-
-	// Root folder of this project
-	Root = filepath.Join(filepath.Dir(b), "../../../")
 )
+
+// GetRoot Rootディレクトリを取得する
+func GetRoot() string {
+
+	rootDirectory := config.ConfigData.RootDirectory
+
+	if rootDirectory == "" {
+		return filepath.Join(filepath.Dir(b), "../../../")
+	}
+
+	return rootDirectory
+}

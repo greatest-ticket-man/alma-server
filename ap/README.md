@@ -13,6 +13,13 @@ httpとhtmlというものを作りたい
 httpではjsonを返すようにする
 htmlではviewも含めて返すようにしてしまう
 
+# Mail
+
+Gmail  
+greatestticketman@gmail.com
+
+PostFixとかで、確認メールを送って、ユーザー登録する流れを作成する。  
+https://www.geekfeed.co.jp/geekblog/centos8_mailserver_1
 
 ## bootstrap5
 ここのサンプルを見て、構築していく

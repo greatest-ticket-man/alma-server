@@ -13,7 +13,7 @@ import (
 func Setup() {
 
 	// localpath
-	path := fmt.Sprintf("%s/config/local.toml", projectpathap.Root)
+	path := fmt.Sprintf("%s/config/local.toml", projectpathap.GetRoot())
 
 	// config
 	config := config.Setup(path)

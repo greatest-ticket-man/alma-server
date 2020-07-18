@@ -9,6 +9,7 @@ var ConfigData *AlmaConfig
 
 // AlmaConfig .
 type AlmaConfig struct {
+	RootDirectory  string      `toml:"rootdirectory"`
 	HTTPServer     *HTTPServer `toml:"httpserver"`
 	Stripe         *Stripe     `toml:"stripe"`
 	MongoDatabases []*MongoDB  `toml:"mongodatabases"`
