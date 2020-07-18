@@ -4,8 +4,11 @@
 rootdirectory = "/home/www"
 
 [httpserver]
-address = ":80"
+address = ":443"
 allow_origin = "*" # 許可するドメイン
+tls = true # https接続
+certfile = "/etc/letsencrypt/live/ticketman.jp/fullchain.pem"
+keyfile = "/etc/letsencrypt/live/ticketman.jp/privkey.pem"
 
 [stripe] # test
 publickey = "pk_test_51H0J5vEoHR4iTtOzHNPYilRuLTQnaIQnmj7hZH0nawd5AXJsnSBCBkWZZY5iY8Kmh6y6MYLuYmltXOKw6TMzQ87i00WUAN6ZwB"

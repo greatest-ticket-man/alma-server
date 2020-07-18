@@ -19,6 +19,9 @@ type AlmaConfig struct {
 type HTTPServer struct {
 	Address     string `toml:"address"`
 	AllowOrigin string `toml:"allow_origin"`
+	TLS         bool   `toml:"tls"`
+	CertFile    string `toml:"certfile"`
+	KeyFile     string `toml:"keyfile"`
 }
 
 // Stripe stripe cledit clientの設定

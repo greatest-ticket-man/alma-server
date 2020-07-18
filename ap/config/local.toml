@@ -6,6 +6,9 @@ rootdirectory = ""
 [httpserver]
 address = ":3000"
 allow_origin = "*" # 許可するドメイン
+tls = false # https接続
+certfile = ""
+keyfile = ""
 
 [stripe] # test
 publickey = "pk_test_51H0J5vEoHR4iTtOzHNPYilRuLTQnaIQnmj7hZH0nawd5AXJsnSBCBkWZZY5iY8Kmh6y6MYLuYmltXOKw6TMzQ87i00WUAN6ZwB"

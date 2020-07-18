@@ -28,6 +28,6 @@ func Setup() {
 	server.Setup(config.HTTPServer)
 
 	// start
-	server.Serve()
+	server.Serve(config.HTTPServer)
 
 }
