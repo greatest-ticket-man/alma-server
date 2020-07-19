@@ -50,3 +50,9 @@ https://www.geekfeed.co.jp/geekblog/centos8_mailserver_1
 
 
 https://access.redhat.com/discussions/2968661
+
+
+## これを使えば、Fromに独自メールアドレスを設定できるかも
+
+https://enet.cc/gmail3.htm
+
