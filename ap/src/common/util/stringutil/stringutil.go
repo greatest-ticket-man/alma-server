@@ -1,5 +1,12 @@
 package stringutil
 
+import "strconv"
+
+// Uint32ToString .
+func Uint32ToString(num uint32) string {
+	return strconv.FormatUint(uint64(num), 10)
+}
+
 // SplitLen 指定文字列で文字列を分割して返す
 func SplitLen(src string, splitLen int32) []string {
 

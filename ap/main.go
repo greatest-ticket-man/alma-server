@@ -2,6 +2,7 @@ package main
 
 import (
 	"alma-server/ap/src/common/config"
+	"alma-server/ap/src/common/jobrunner"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"alma-server/ap/src/infrastructure/mongodb/index"
 	"alma-server/ap/src/infrastructure/server"
@@ -25,6 +26,9 @@ func main() {
 
 	// stripe
 	stripe.Setup(config.Stripe)
+
+	// jobrunner
+	jobrunner.Run()
 
 	// server setup
 	server.Setup(config.HTTPServer)
