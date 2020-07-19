@@ -12,6 +12,7 @@ var ConfigData *AlmaConfig
 
 // AlmaConfig .
 type AlmaConfig struct {
+	Mode           string      `toml:"mode"`
 	RootDirectory  string      `toml:"rootdirectory"`
 	HTTPServer     *HTTPServer `toml:"httpserver"`
 	Mail           *Mail       `toml:"mail"`
