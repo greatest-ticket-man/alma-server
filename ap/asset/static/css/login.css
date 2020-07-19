@@ -205,7 +205,7 @@
         grid-template-columns: 1fr;
     }
 
-    .login f.login-container {
+    .login .login-container {
         justify-content: center;
     }
 }
