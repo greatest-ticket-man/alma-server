@@ -4,41 +4,41 @@
     <link rel="stylesheet" type="text/css" href="/static/css/login.css">
     <body>
       {{.header}}
- 
-      <img class="background" src="/static/img/background.jpg" alt="">
-      <div class="container">
-        <div class="img">
-          <img src="/static/img/img.png" alt="">
+      <div class="login">
+        <img class="background" src="/static/img/background.jpg" alt="">
+        <div class="container">
+          <div class="img">
+            <img src="/static/img/img.png" alt="">
+          </div>
+          <div class="login-container">
+            <form>
+              <img class="avatar" src="/static/img/avatar.png" alt="">
+              <h2>Welcome</h2>
+              <div class="input-div one">
+                <div class="i">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <h5>Username</h5>
+                  <input type="text" class="input">
+                </div>
+              </div>
+              <div class="input-div two">
+                <div class="i">
+                  <i class="fas fa-lock"></i>
+                </div>
+                <div>
+                  <h5>Password</h5>
+                  <input type="password" class="input">
+                </div>
+              </div>
+              <a href="#">Forgot Password?</a>
+              <input type="button" class="btn" value="Login">
+            </form>
+          </div>
         </div>
-        <div class="login-container">
-          <form>
-            <img class="avatar" src="/static/img/avatar.png" alt="">
-            <h2>Welcome</h2>
-            <div class="input-div one">
-              <div class="i">
-                <i class="fas fa-user"></i>
-              </div>
-              <div>
-                <h5>Username</h5>
-                <input type="text" class="input">
-              </div>
-            </div>
-            <div class="input-div two">
-              <div class="i">
-                <i class="fas fa-lock"></i>
-              </div>
-              <div>
-                <h5>Password</h5>
-                <input type="password" class="input">
-              </div>
-            </div>
-            <a href="#">Forgot Password?</a>
-            <input type="button" class="btn" value="Login">
-          </form>
-        </div>
-      </div>
       
-
+      </div>
           {{.footer}}
           <script src="https://kit.fontawesome.com/a81368914c.js"></script>
           <script src="/static/js/login.js"></script>
