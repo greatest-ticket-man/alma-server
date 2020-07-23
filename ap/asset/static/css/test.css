@@ -54,22 +54,22 @@ html, body {
     height: 50px;
     padding: 0 25px;
     border-bottom: 1px solid #ccc;
-
     display: flex; /* 文字の中央揃え */
     align-items: center; /* 文字の中央揃え */
-
     font-size: large;
 }
 
 .content__sidebar {
     width: 250px;
     border-right: 1px solid #ccc;
-    position: relative;
+    /* position: relative; */
+    position: sticky;
     left: 0;
     top: 0;
     height: 100%;
     overflow: hidden; /* はみ出たときは見えないようにする */
     pointer-events: auto;
+    
 }
 
 .content__sidebar__header {
@@ -80,4 +80,14 @@ html, body {
     display: flex; /* 文字の中央揃え */
     align-items: center; /* 文字の中央揃え */
     font-size: large;
+}
+
+.content__sidebar__menu {
+    flex: 1;
+    list-style: none;
+    padding: 0;
+    padding-top: 8px;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
