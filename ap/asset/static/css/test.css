@@ -54,5 +54,19 @@ html, body {
 .content__main {
     flex: 1;
     overflow: auto;
+    background: red;
 }
 
+.content__sidebar {
+    position: relative;
+    left: 0;
+    top: 0;
+    height: 100%;
+    overflow: hidden; /* はみ出たときは見えないようにする */
+    pointer-events: auto;
+}
+
+.content__sidebar__header {
+    height: 50px;
+    background: green;
+}
