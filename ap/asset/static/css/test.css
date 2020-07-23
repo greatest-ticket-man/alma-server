@@ -54,7 +54,16 @@ html, body {
 .content__main {
     flex: 1;
     overflow: auto;
-    background: red;
+    background: burlywood;
+}
+
+.content__main__header {
+    height: 50px;
+    background: blue;
+    padding: 0 25px;
+
+    display: flex; /* 文字の中央揃え */
+    align-items: center; /* 文字の中央揃え */
 }
 
 .content__sidebar {
@@ -69,4 +78,7 @@ html, body {
 .content__sidebar__header {
     height: 50px;
     background: green;
+    padding: 0 15px;
+    display: flex; /* 文字の中央揃え */
+    align-items: center; /* 文字の中央揃え */
 }
