@@ -10,7 +10,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	response.HTML(
 		w,
-		"/template/controller/test.page.html",
+		"/template/controller/test/page.html",
 		map[string]interface{}{},
 	)
 }
