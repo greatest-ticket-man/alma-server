@@ -71,13 +71,11 @@ html, body {
     height: 100%;
     overflow: hidden; /* はみ出たときは見えないようにする */
     pointer-events: auto;
-    
 }
 
 .content__sidebar__header {
     height: 50px;
     border-bottom: 1px solid #ccc;
-    /* background: green; */
     padding: 0 15px;
     display: flex; /* 文字の中央揃え */
     align-items: center; /* 文字の中央揃え */
@@ -91,7 +89,6 @@ html, body {
     padding-top: 8px;
     margin: 0;
     overflow-x: hidden;
-    /* overflow-y: auto; */
-    overflow-y: scroll;
-    height: 300px;
+    overflow-y: auto;
+    height: calc(100vh - 100px); /* いい感じにするやつ */
 }
