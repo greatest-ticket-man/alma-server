@@ -21,6 +21,9 @@ html, body {
     flex-direction: row; /* 並び方の詳細 */
     align-items: center; /* https://developer.mozilla.org/ja/docs/Web/CSS/align-items 要素がいい感じに真ん中に来るように設定 */
     padding: 0 16px;
+
+    position: sticky;
+    top: 0;
 }
 
 .header__menu-toggle {
@@ -62,10 +65,9 @@ html, body {
 .content__sidebar {
     width: 250px;
     border-right: 1px solid #ccc;
-    /* position: relative; */
     position: sticky;
     left: 0;
-    top: 0;
+    top: 50px; /* stickyの設定のためにheader分を開けている */
     height: 100%;
     overflow: hidden; /* はみ出たときは見えないようにする */
     pointer-events: auto;
@@ -89,5 +91,7 @@ html, body {
     padding-top: 8px;
     margin: 0;
     overflow-x: hidden;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    overflow-y: scroll;
+    height: 300px;
 }
