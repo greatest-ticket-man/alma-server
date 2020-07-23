@@ -64,6 +64,8 @@ html, body {
 
     display: flex; /* 文字の中央揃え */
     align-items: center; /* 文字の中央揃え */
+
+    font-size: large;
 }
 
 .content__sidebar {
@@ -81,4 +83,5 @@ html, body {
     padding: 0 15px;
     display: flex; /* 文字の中央揃え */
     align-items: center; /* 文字の中央揃え */
+    font-size: large;
 }
