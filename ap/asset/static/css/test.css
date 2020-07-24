@@ -11,6 +11,7 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Header */
 .header {
     width: 100%;
     height: 50px;
@@ -35,6 +36,8 @@ html, body {
     padding: 0;
     margin: 0;
     color: #fff;
+
+    margin-right: 20px;
 }
 
 .header__menu-toggle:hover {
@@ -44,16 +47,29 @@ html, body {
 .header__icon {
     width: 35px;
     color: #fff;
+    margin-right: 20px;
 }
 
 .header__title {
     font-size: large;
-}
-
-.header__content {
     margin-right: 20px;
 }
 
+.header__event {
+    margin-right: 20px;
+}
+
+.header__account {
+    margin-left: auto;
+    background: none;
+    border: none;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    color: #fff;
+}
+
+/* Content */
 .content {
     display: flex;
 }
@@ -73,7 +89,6 @@ html, body {
     top: 50px;
     background: #fafafa; /* スクロールしたときの、content__main__contentが見えないように、背景と同じ色に塗りつぶす */
 }
-
 
 .content__sidebar {
     width: 250px;
