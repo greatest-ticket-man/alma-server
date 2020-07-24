@@ -41,6 +41,15 @@ html, body {
     background: rgb(85, 85, 85);
 }
 
+.header__icon {
+    width: 35px;
+    color: #fff;
+}
+
+.header__title {
+    font-size: large;
+}
+
 .header__content {
     margin-right: 20px;
 }
