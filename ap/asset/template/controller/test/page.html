@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width,minimun-scale=1">
+        <meta name="viewport" content="width=device-width,minimum-scale=1">
         <title>test</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/test.css">
@@ -11,13 +11,13 @@
     <body>
         <!-- Header -->
         <div class="header">
-            <button class="js-menu-show header__content header__menu-toggle material-icons" aria-label="ナビゲーション メニュー">menu</button>
+            <button class="js-menu-show-hide header__content header__menu-toggle material-icons" aria-label="ナビゲーション メニュー">menu</button>
             <img class="header__content header__icon" src="/static/img/ticket-icon.svg" alt="">
             <div class="header__content header__title">Greatest Ticket Man</div>
         </div>
 
         <!-- SideNav -->
-        <aside class="js-side-nav side-nav side-nav--visible">
+        <aside class="js-side-nav side-nav">
             <nav class="js-side-nav-container side-nav__container">
                 <!-- <button class="js-menu-hide side-nav__hide material-icons">close</button> -->
                 <header class="side-nav__header">
@@ -60,6 +60,10 @@
                 </div>
             </main>
         </div>
+
+        <!-- script -->
+        <script src="/static/js/common/detabinator.js"></script>
+        <script src="/static/js/common/side-nav-v2.js"></script>
 
     </body>
 </html>
