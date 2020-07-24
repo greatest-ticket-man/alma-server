@@ -15,7 +15,7 @@ class SideNav {
         // Containerの子にフォーカスできるかどうかを制御
         // 初期状態が画面外のため、フォーカスを無効にする
         this.detabinator = new Detabinator(this.sideNavContainerEl);
-        this.detabinator.insert = true;
+        this.detabinator.inert = true;
 
         // 関数を登録している
         this.showSideNav = this.showSideNav.bind(this);
@@ -159,7 +159,7 @@ class SideNav {
     showSideNav() {
         this.sideNavEl.classList.add('side-nav--animatable');
         this.sideNavEl.classList.add('side-nav--visible');
-        this.detabinator.insert = false;
+        this.detabinator.inert = false;
 
         this.transitionEndProperty = 'transform';
 
@@ -173,7 +173,7 @@ class SideNav {
     hideSideNav() {
         this.sideNavEl.classList.add('side-nav--animatable');
         this.sideNavEl.classList.remove('side-nav--visible');
-        this.detabinator.insert = true;
+        this.detabinator.inert = true;
 
         this.transitionEndProperty = 'transform';
         this.transitionEndTime = 0.13;

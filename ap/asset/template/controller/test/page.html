@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,minimum-scale=1">
-        <title>test</title>
+        <title>Greatest Ticket Man</title>
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="/static/css/test.css">
         <link rel="icon" href="/static/img/favicon.ico">
@@ -23,9 +23,13 @@
                 <input class="header__search-input" type="text" placeholder="キーワードを入力">
 
             </div>
-            <!-- <button class="header__account material-icons">person</button> -->
             <div class="header__account">
-                <button class="header__account-icon material-icons">person</button>
+                <button class="js-account-menu-show-hide header__account-icon material-icons">person</button>
+                <div class="js-account-menu header__account-menu">
+                    <div class="js-account-menu-container header__account-icon__containser">
+                        アカウントメニュー
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -76,6 +80,7 @@
         <!-- script -->
         <script src="/static/js/common/detabinator.js"></script>
         <script src="/static/js/common/side-nav-v2.js"></script>
+        <script src="/static/js/common/header.js"></script>
 
     </body>
 </html>
