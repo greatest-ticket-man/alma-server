@@ -57,14 +57,50 @@ html, body {
 
 .header__event {
     margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.header__event .header__event-text {
+    margin-right: 5px;
+}
+
+.header__search {
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 500px;
+    height: 40px;
+    background: rgb(122, 122, 122);
+    border-radius: 3px; /*ボックス角の丸み*/
+}
+
+.header__search-icon {
+    margin: 0 10px;
+}
+
+.header__search-input {
+    font-size: 16px;
+    width: 100%;
+    background: rgb(122, 122, 122);
+    border: none;
+    outline: none;
+    color: #fff;
+}
+
+.header__search-input::placeholder {
+    color: #fff;
 }
 
 .header__account {
     margin-left: auto;
     background: none;
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 50px;
+    height: 50px;
     padding: 0;
     color: #fff;
 }
