@@ -108,17 +108,43 @@ html, body {
     color: #fff;
 }
 
+.header__search-input:focus::placeholder {
+    color: #ccc;
+}
+
 .header__account {
     margin-left: auto;
-    background: none;
-    border: none;
     width: 50px;
     height: 50px;
     padding: 0;
-    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.header__account-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    padding: 0;
+}
 
+.header__account-menu {
+    position: absolute;
+    top: 40px;
+    right: 24px;
+    width: 300px;
+    height: 323px;
+    /* background: #fafafa; */
+    opacity: 0;
+    background: #333;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header__account-menu--visible {
+    opacity: 1;
+}
 
 /* Content */
 .content {
@@ -244,7 +270,7 @@ html, body {
 
 .side-nav__header {
     height: 100px;
-    background: #ea2663;
+    background: #4570ff;
     color: #fff;
     display: flex;
     padding: 16px;
