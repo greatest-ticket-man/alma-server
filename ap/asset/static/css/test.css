@@ -330,6 +330,11 @@ html, body {
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
+.event-menu__container__header {
+    height: 50px;
+    background: #333;
+}
+
 .event-menu--visible::before {
     opacity: 1;
 }
