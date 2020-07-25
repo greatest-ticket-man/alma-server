@@ -94,13 +94,13 @@ html, body {
     background: rgb(170, 170, 170);
 }
 
+.header__search-icon {
+    margin: 0 10px;
+}
+
 .header__search:focus-within {
     background: #fff;
     color: #000;
-}
-
-.header__search-icon {
-    margin: 0 10px;
 }
 
 .header__search-input {
@@ -121,7 +121,7 @@ html, body {
 }
 
 .header__search-input:focus::placeholder {
-    color: #ccc;
+    color: #666;
 }
 
 .header__account {
@@ -284,6 +284,27 @@ html, body {
 
 .content__sidebar__menu li:hover {
     background: #ccc;
+}
+
+/* EventMenuModal */
+.event-menu {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.event-menu::before {
+    content: '';
+    display: block;
+}
+
+.event-menu--visible {
+    pointer-events: auto;
+    z-index: 5;
 }
 
 /* Side Nav */

@@ -18,10 +18,10 @@
                 <p class="header__event-text">イベントの選択</p>
                 <span class="header__event-icon material-icons">keyboard_arrow_down</span>
             </button>
-            <button class="header__search">
+            <div class="header__search">
                 <span class="header__search-icon material-icons">search</span>
                 <input class="header__search-input" type="text" placeholder="キーワードを入力">
-            </button>
+            </div>
             <div class="header__account">
                 <button class="js-account-menu-show-hide header__account-icon material-icons">person</button>
             </div>
@@ -44,6 +44,23 @@
                     <div class="account-menu__footer__logout">
                         <button class="account-menu__footer__logout--btn">ログアウト</button>
                     </div>
+                </footer>
+            </div>
+        </div>
+
+        <!-- EventMenuModal -->
+        <div class="js-event-menu event-menu">
+            <div class="js-event-menu-container event-menu__container">
+                <header class="event-menu__container__header">
+                    イベントの選択
+                </header>
+                <div class="event-menu__container__search">
+                    <span class="event-menu__container__search-icon material-icons">search</span>
+                    <input class="event-menu__container__search-input" type="text" placeholder="イベントを検索">
+                </div>
+                <footer>
+                    <button>キャンセル</button>
+                    <button>開く</button>
                 </footer>
             </div>
         </div>
@@ -95,8 +112,8 @@
 
         <!-- script -->
         <script src="/static/js/common/detabinator.js"></script>
-        <script src="/static/js/common/side-nav-v2.js"></script>
-        <script src="/static/js/common/header.js"></script>
+        <script src="/static/js/common/side-nav.js"></script>
+        <script src="/static/js/common/account-menu.js"></script>
 
     </body>
 </html>
