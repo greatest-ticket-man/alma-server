@@ -16,7 +16,6 @@ class Header {
         this.showAccountMenu = this.showAccountMenu.bind(this);
         this.hideAccountMenu = this.hideAccountMenu.bind(this);
         this.showHideAccountMenu = this.showHideAccountMenu.bind(this);
-        this.outSideAccontMenu = this.outSideAccontMenu.bind(this);
 
         // field
         this.supportsPassive = undefined;
@@ -47,7 +46,6 @@ class Header {
 
     // addEventListener 各要素にイベントを追加する
     addEventListener() {
-        document.addEventListener('click', this.outSideAccontMenu);
         this.showHideButtonEl.addEventListener('click', this.showHideAccountMenu);
     }
 
@@ -64,8 +62,6 @@ class Header {
     showAccountMenu() {
         this.accountMenuEl.classList.add('header__account-menu--visible');
         this.detabinator.inert = false;
-
-
     }
 
     // hideAccountMenu アカウントメニューを非表示にする
@@ -74,44 +70,6 @@ class Header {
         this.detabinator.inert = true;
     }
 
-    // outSideAccountMenu AccountMenu以外がクリックされた時は、見えなくする
-    // TODO 多分あってるんだけど、有効になった直後にこれが走って死ぬ
-    outSideAccontMenu(evt) {
-
-        // 表示されていない場合は、何も処理しない
-        if (!this.accountMenuEl.classList.contains('header__account-menu--visible')) {
-            return;
-        }
-
-        // clickした場所を検出
-        let px = evt.pageX;
-        let py = evt.pageY;
-        console.log(`click X:${px}, Y:${py}`);
-
-        // TODO どうにかする
-
-        // AccountMenuのポジションを取得する
-        let menuRect = this.accountMenuEl.getBoundingClientRect();
-        console.log(`menuRect: top:${menuRect.top}, right:${menuRect.right}, left:${menuRect.left}, buttom:${menuRect.bottom}`);
-
-        // AccountMenuを出すボタンも考慮する
-        let buttonRect = this.showHideButtonEl.getBoundingClientRect();
-        // console.log(`butonRect: top:${buttonRect.top}, right:`)
-
-
-        if (!(px > menuRect.right && px < menuRect.left &&
-             py < menuRect.top && py > menuRect.bottom)) {
-
-            if ((px > buttonRect.right && px < buttonRect.left &&
-             py < buttonRect.top && py > buttonRect.bottom)) {
-
-                 this.hideAccountMenu();
-             }
-
-        }
-
-        
-    }
 }
 
 new Header();
