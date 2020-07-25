@@ -51,7 +51,7 @@ class Header {
 
     // showHideAccountMenu .
     showHideAccountMenu() {
-        if (this.accountMenuEl.classList.contains('header__account-menu--visible')) {
+        if (this.accountMenuEl.classList.contains('account-menu--visible')) {
             this.hideAccountMenu();
             return;
         }
@@ -60,13 +60,13 @@ class Header {
 
     // showAccountMenu アカウントメニューを表示する
     showAccountMenu() {
-        this.accountMenuEl.classList.add('header__account-menu--visible');
+        this.accountMenuEl.classList.add('account-menu--visible');
         this.detabinator.inert = false;
     }
 
     // hideAccountMenu アカウントメニューを非表示にする
     hideAccountMenu() {
-        this.accountMenuEl.classList.remove('header__account-menu--visible');
+        this.accountMenuEl.classList.remove('account-menu--visible');
         this.detabinator.inert = true;
     }
 
