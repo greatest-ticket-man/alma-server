@@ -38,10 +38,11 @@ html, body {
     color: #fff;
 
     margin-right: 20px;
+    border-radius: 3px;
 }
 
 .header__menu-toggle:hover {
-    background: rgb(85, 85, 85);
+    background: rgb(170, 170, 170);
 }
 
 .header__icon {
@@ -59,10 +60,17 @@ html, body {
     margin-right: 20px;
     display: flex;
     align-items: center;
+    height: 75%;
+    padding: 8px;
+    border-radius: 3px;
 }
 
 .header__event .header__event-text {
     margin-right: 5px;
+}
+
+.header__event:hover {
+    background: rgb(170, 170, 170);
 }
 
 .header__search {
@@ -127,6 +135,11 @@ html, body {
     border: none;
     color: #fff;
     padding: 0;
+    border-radius: 3px;
+}
+
+.header__account-icon:hover {
+    background: rgb(170, 170, 170);
 }
 
 .account-menu {
