@@ -1,6 +1,6 @@
 'use strict';
 
-class Header {
+class AccountMenu {
     constructor() {
     
         this.showHideButtonEl = document.querySelector('.js-account-menu-show-hide');
@@ -80,4 +80,4 @@ class Header {
 
 }
 
-new Header();
+new AccountMenu();
