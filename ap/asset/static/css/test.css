@@ -322,6 +322,7 @@ html, body {
 .event-menu__container {
     background: #fafafa;
     position: fixed;
+    flex-direction: column;
     width: 80%;
     max-width: 750px;
     height: 100%;
@@ -331,9 +332,66 @@ html, body {
 }
 
 .event-menu__container__header {
-    height: 50px;
-    background: #333;
+    height: 64px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 16px;
 }
+
+.event-menu__container__hader__title {
+    font-size: 20px;
+}
+
+.event-menu__container__header__add-event {
+    background: none;
+    border: none;
+    border-radius: 3px;
+    padding: 8px;
+}
+
+.event-menu__container__header__add-event:hover {
+    background: #ccc;
+}
+
+.event-menu__container__footer {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+    /* footerにこているする対応 */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.event-menu__container__footer__cancel {
+    background: none;
+    border: none;
+    padding: 8px;
+    margin: 0 16px;
+    border-radius: 3px;
+}
+
+.event-menu__container__footer__cancel:hover {
+    background: #ccc;
+}
+
+.event-menu__container__footer__open {
+    background: none;
+    border: none;
+    padding: 8px;
+    margin: 0 16px;
+    border-radius: 3px;
+}
+
+.event-menu__container__footer__open:hover{
+    background: #ccc;
+}
+
+
 
 .event-menu--visible::before {
     opacity: 1;
