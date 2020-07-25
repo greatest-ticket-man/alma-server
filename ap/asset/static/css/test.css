@@ -141,19 +141,6 @@ html, body {
     z-index: 3;
 }
 
-/* .account-menu::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    will-change: opacity;
-} */
-
 .account-menu__container {
     position: absolute;
     top: 40px;
@@ -165,35 +152,8 @@ html, body {
     color: #fff;
 }
 
-/* .account-menu {
-    position: absolute;
-    top: 40px;
-    right: 24px;
-    width: 300px;
-    height: 323px;
-    opacity: 0;
-    background: #333;
-    z-index: 3;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-}
-
-.account-menu::before {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    opacity: 0;
-    will-change: opacity;
-    z-index: 100;
-} */
-
-/* account-menu__container */
-
 .account-menu--visible {
+    pointer-events: auto;
     opacity: 1;
 }
 
