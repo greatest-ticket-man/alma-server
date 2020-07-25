@@ -63,6 +63,10 @@ html, body {
     height: 75%;
     padding: 8px;
     border-radius: 3px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #fff;
 }
 
 .header__event .header__event-text {
