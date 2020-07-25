@@ -47,6 +47,14 @@ class Header {
     // addEventListener 各要素にイベントを追加する
     addEventListener() {
         this.showHideButtonEl.addEventListener('click', this.showHideAccountMenu);
+
+        this.accountMenuEl.addEventListener('click', this.hideAccountMenu);
+        this.accountMenuContainerEl.addEventListener('click', this.blockClicks);
+    }
+
+    // blockClicks クリックイベントを無効にする
+    blockClicks(evt) {
+        evt.stopPropagation();
     }
 
     // showHideAccountMenu .

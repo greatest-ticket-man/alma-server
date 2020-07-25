@@ -127,7 +127,7 @@ class SideNav {
         this.sideNavContainerEl.getElementsByClassName.transform = `translateX(${translateX})`;
     }
 
-    // blkockClicks クリックイベントを無効にする
+    // blockClicks クリックイベントを無効にする
     blockClicks(evt) {
         evt.stopPropagation();
     }
