@@ -410,6 +410,14 @@ html, body {
     border-bottom: 2px solid #4570ff;
 }
 
+.event-menu__container__tables {
+    width: 100%;
+    height: auto;
+    max-height: 360px;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
 .event-menu__container__footer {
     min-height: 64px;
     display: flex;
@@ -420,6 +428,7 @@ html, body {
     position: absolute;
     bottom: 0;
     width: 100%;
+
 }
 
 .event-menu__container__footer__cancel {
