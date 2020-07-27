@@ -361,8 +361,14 @@ html, body {
     margin: 0 24px;
     border-radius: 3px;
     padding: 4px;
-    border: 2px solid #333;
+    border: 1px solid #ccc;
     margin-top: 20px;
+    transition-duration: 0.5s;
+}
+
+.event-menu__container__search:focus-within {
+    border: 2px solid #333;
+    padding: 3px;
 }
 
 .event-menu__container__search-icon {
