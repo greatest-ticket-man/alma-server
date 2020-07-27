@@ -355,6 +355,29 @@ html, body {
     background: #ccc;
 }
 
+.event-menu__container__search {
+    display: flex;
+    align-items: center;
+    margin: 0 24px;
+    border-radius: 3px;
+    padding: 4px;
+    border: 2px solid #333;
+    margin-top: 20px;
+}
+
+.event-menu__container__search-icon {
+    font-size: 24px;
+}
+
+.event-menu__container__search-input {
+    font-size: 14px;
+    width: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    color: 000;
+}
+
 .event-menu__container__footer {
     min-height: 64px;
     display: flex;
