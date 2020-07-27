@@ -298,6 +298,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0;
 }
 
 .event-menu::before {
@@ -317,6 +318,7 @@ html, body {
 .event-menu--visible {
     pointer-events: auto;
     z-index: 5;
+    opacity: 1;
 }
 
 .event-menu__container {
