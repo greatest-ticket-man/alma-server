@@ -456,6 +456,8 @@ html, body {
     bottom: 0;
     width: 100%;
 
+    background: #fafafa;
+
 }
 
 .event-menu__container__footer__cancel {
