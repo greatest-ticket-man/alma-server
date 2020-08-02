@@ -7,3 +7,8 @@ package common;
 message Empty {
     string a = 1;
 }
+
+message Error {
+    int32 ecode = 1;
+    string emsg = 2;
+}
