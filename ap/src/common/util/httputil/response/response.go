@@ -23,11 +23,13 @@ func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 }
 
 // ERROR errorを添えて返す
+// StatusOKで応答しないと、errorを出してしまうためStatusOKで返しています
 func ERROR(w http.ResponseWriter, reason string) {
 	resultMap := map[string]interface{}{
 		"success": false,
 		"reason":  reason,
 	}
-	w.WriteHeader(http.StatusNotFound)
+	// w.WriteHeader(http.StatusBadRequest)
+	w.WriteHeader(http.StatusOK)
 	jsonutil.Write(w, resultMap)
 }

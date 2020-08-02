@@ -36,7 +36,9 @@ class Login {
 
         let response = await window.Alma.req.post('/login', window.Alma.req.createPostData(data), {reload: false});
 
-        if (response.result) {
+
+        console.log("response is ", response);
+        if (response.success) {
 
             // TODO localStorageにTokenを保存する
             console.log("result is ", response.result);

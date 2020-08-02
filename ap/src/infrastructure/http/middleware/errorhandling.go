@@ -32,13 +32,15 @@ func doServerErrorProcess(w http.ResponseWriter, err interface{}) {
 	switch e := err.(type) {
 
 	case *almaerror.SystemError:
-		// TODO
-		log.Println("system errorです", e)
-		reason = "エラーが発生しました"
+		reason = "エラーが発生しました" // System的なErrorなのでViewには見せない
+		log.Printf("[SYSTEM ERROR] statuscode=%d msgcode=%s msg=%s err=%v", e.StatusCode, e.MessageCode,
+			errmsg.Get("ja", e.MessageCode, e.Params...),
+			e.Err,
+		)
 	case *almaerror.LogicError:
 		// TODO req statuscode emsgとかをどうにかする
-		log.Println("Logic errorです", e)
-		reason = errmsg.Get("ja", e.MessageCode)
+		reason = errmsg.Get("ja", e.MessageCode, e.Params...)
+		log.Printf("[LOGIC ERROR] statuscode=%d msgcode=%s msg=%s", e.StatusCode, e.MessageCode, reason)
 	case *almaerror.BillingError:
 		// TODO
 		log.Println("Billing errorです", e)
