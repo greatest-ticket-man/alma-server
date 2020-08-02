@@ -6,16 +6,13 @@ import (
 	"alma-server/ap/src/infrastructure/grpc/proto/login"
 	"alma-server/ap/src/repository/user/UserAccountRepository"
 	"context"
-	"log"
 	"time"
 )
 
 // Login ログイン処理
 func Login(ctx context.Context, txTime time.Time, email string, password string) *login.LoginReply {
 
-	log.Println("email is ", email, "pass is ", password)
-
-	// TODO data取得
+	// TODO 同時にログイン時間を更新したい
 	userAccount := UserAccountRepository.GetFromEmail(ctx, email)
 	if userAccount == nil {
 		chk.LE(errmsg.LoginFailed)
