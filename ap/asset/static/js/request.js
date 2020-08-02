@@ -3,6 +3,7 @@ window.Alma = window.Alma || {};
 
     class Req {
         async post(url, data, options = { reload: true }) {
+
             try {
                 const response = await fetch(url, data);
                 const json = await response.json();
@@ -12,6 +13,7 @@ window.Alma = window.Alma || {};
                         window.Alma.toast.success('成功しました');
                         setTimeout(() => location.reload(), 2000);
                     }
+                    return json;
                 } 
                 if (response.status === 500) {
                     window.Alma.toast.error('失敗しました...');
