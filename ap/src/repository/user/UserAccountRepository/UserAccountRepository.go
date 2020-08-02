@@ -5,6 +5,8 @@ import (
 	"context"
 	"reflect"
 	"time"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 // ユーザーのアカウント情報のリポジトリ
@@ -48,4 +50,17 @@ func Insert(ctx context.Context, txTime time.Time, mid string, email string, pas
 
 	result := getDb(ctx).InsertOne(userAccount)
 	return result.(string)
+}
+
+// GetFromEmail メールアドレスからデータを取得する
+func GetFromEmail(ctx context.Context, email string) *UserAccount {
+
+	query := bson.M{FEmail: email}
+
+	result := getDb(ctx).FindOne(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.(*UserAccount)
 }
