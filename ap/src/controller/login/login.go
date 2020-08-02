@@ -4,9 +4,11 @@ import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/CommonHTMLService"
+	"alma-server/ap/src/domain/login/LoginRpcService"
+	"alma-server/ap/src/infrastructure/grpc/proto/login"
 	"encoding/json"
-	"log"
 	"net/http"
+	"time"
 )
 
 // PageHTML ログイン画面
@@ -25,17 +27,18 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 // Login ログイン処理
 func Login(w http.ResponseWriter, r *http.Request) {
-	data := &struct {
-		Name string `json:"name"`
-		Pass string `json:"pass"`
-	}{}
 
-	err := json.NewDecoder(r.Body).Decode(data)
+	// param
+	req := &login.LoginRequest{}
+	err := json.NewDecoder(r.Body).Decode(req)
 	chk.SE(err)
 
-	// TODO ログイン失敗したときはError
+	// time
+	txTime := time.Now()
 
-	log.Println("name is ", data.Name, "pass is ", data.Pass)
+	// logic
+	result := LoginRpcService.Login(r.Context(), txTime, req.Email, req.Password)
 
-	response.JSON(w, true)
+	// response
+	response.JSON(w, result)
 }

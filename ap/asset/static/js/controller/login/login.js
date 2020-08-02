@@ -23,24 +23,27 @@ class Login {
     // loginする
     async login() {
 
-        let name = this.loginNameInputEl.value;
+        let email = this.loginNameInputEl.value;
         let pass = this.loginPassInputEl.value;
 
         // passwordをmd5ハッシュに変更
         let passMd5 = CybozuLabs.MD5.calc(pass);
 
         const data = {
-            name: name,
-            pass: passMd5,
+            email: email,
+            password: passMd5,
         };
 
         let response = await window.Alma.req.post('/login', window.Alma.req.createPostData(data), {reload: false});
 
         if (response.result) {
 
-            // localStorageにデータを追加する
+            // TODO localStorageにTokenを保存する
+            console.log("result is ", response.result);
+            alert("wait");
 
             // 遷移
+            // TODO tokenを使用して、Centralに遷移する
             window.location.href = '/test';
         }
     }

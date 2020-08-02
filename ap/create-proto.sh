@@ -13,4 +13,4 @@ mkdir -p $DIR/src/infrastructure/grpc/proto
 export PATH="$PATH:$HOME/go/bin"
 
 cd $DIR/proto
-find . name "*.proto" -exec protoc --proto_path . --go_out=plugins=grpc:$OUT_DIR {} \;
+find . -name "*.proto" -type f -exec protoc --proto_path . --go_out=plugins=grpc:$OUT_DIR {} \;
