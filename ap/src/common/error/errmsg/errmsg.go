@@ -14,11 +14,19 @@ const (
 
 	// TodoDeleteFailed todoの削除に失敗しました
 	TodoDeleteFailed = "TodoDeleteFailed"
+
+	// LoginFailed ログインに失敗しました
+	LoginFailed = "LoginFailed"
+
+	// LoginWrongPassword パスワードが違います
+	LoginWrongPassword = "LoginWrongPassword"
 )
 
 var msgMap = map[string]map[string]string{
 	"ja": {
-		HelloLogicError:  "テスト用のError",
-		TodoDeleteFailed: "todoの削除に失敗しました",
+		HelloLogicError:    "テスト用のError",
+		TodoDeleteFailed:   "todoの削除に失敗しました",
+		LoginFailed:        "ログインに失敗しました",
+		LoginWrongPassword: "パスワードが違います",
 	},
 }
