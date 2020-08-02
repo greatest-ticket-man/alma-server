@@ -8,6 +8,8 @@ class AccountMenu {
         this.accountMenuEl = document.querySelector('.js-account-menu');
         this.accountMenuContainerEl = document.querySelector('.js-account-menu-container');
 
+        this.accountLogoutButtonEl = document.querySelector('.js-account-logout');
+
 
         this.detabinator = new Detabinator(this.accountMenuContainerEl);
         this.detabinator.inert = true;
@@ -16,6 +18,7 @@ class AccountMenu {
         this.showAccountMenu = this.showAccountMenu.bind(this);
         this.hideAccountMenu = this.hideAccountMenu.bind(this);
         this.showHideAccountMenu = this.showHideAccountMenu.bind(this);
+        this.logout = this.logout.bind(this);
 
         // field
         this.supportsPassive = undefined;
@@ -50,6 +53,8 @@ class AccountMenu {
 
         this.accountMenuEl.addEventListener('click', this.hideAccountMenu);
         this.accountMenuContainerEl.addEventListener('click', this.blockClicks);
+
+        this.accountLogoutButtonEl.addEventListener('click', this.logout);
     }
 
     // blockClicks クリックイベントを無効にする
@@ -76,6 +81,15 @@ class AccountMenu {
     hideAccountMenu() {
         this.accountMenuEl.classList.remove('account-menu--visible');
         this.detabinator.inert = true;
+    }
+
+    // logout ログアウトする
+    logout() {
+
+        // TODO なんかのログアウト処理
+
+        // ログアウト画面に遷移
+        window.location.href = '/login';
     }
 
 }
