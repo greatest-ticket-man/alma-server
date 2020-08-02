@@ -52,6 +52,7 @@ func Router() *negroni.Negroni {
 	router.HandleFunc("/hello", hello.HTML).Methods("GET")
 
 	router.HandleFunc("/login", login.PageHTML).Methods("GET")
+	router.HandleFunc("/login", login.Login).Methods("POST")
 
 	router.HandleFunc("/todo", todo.PageHTML).Methods("GET")
 	router.HandleFunc("/todo/create", todo.CreateTodo).Methods("POST")
