@@ -59,3 +59,12 @@ https://enet.cc/gmail3.htm
 # SideNav
 https://github.com/GoogleChromeLabs/ui-element-samples/tree/gh-pages/side-nav
 
+
+
+# 施策
+予告みたいに、ちょいみせ機能を実装したい
+予告編見て、見たい芝居を決める、
+どんな団体かわかりやすいから、人も集まりやすいし、
+見たいジャンルがわかりやすい
+
+今までの芝居は正直どんな芝居してるのか全くわかんねえ
