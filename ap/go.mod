@@ -7,6 +7,7 @@ require (
 	github.com/codegangsta/negroni v1.0.0
 	github.com/franela/goblin v0.0.0-20200611003024-99f9a98191cf
 	github.com/golang/protobuf v1.4.2
+	github.com/google/uuid v1.1.1
 	github.com/gorilla/mux v1.7.4
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/rs/xid v1.2.1

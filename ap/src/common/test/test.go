@@ -32,6 +32,7 @@ func Setup() {
 	server.Setup(config.HTTPServer)
 
 	// start
-	server.Serve(config.HTTPServer)
+	// server.Serve(config.HTTPServer)
+	server.TestServe()
 
 }
