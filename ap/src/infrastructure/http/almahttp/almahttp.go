@@ -10,7 +10,6 @@ import (
 	"alma-server/ap/src/controller/top"
 	"alma-server/ap/src/infrastructure/http/middleware"
 	"net/http"
-	"path/filepath"
 
 	"github.com/codegangsta/negroni"
 	"github.com/gorilla/mux"
@@ -68,32 +67,4 @@ func Router() *negroni.Negroni {
 	n.UseHandler(router)
 
 	return n
-}
-
-// neuteredFileSystem file server
-type neuteredFileSystem struct {
-	fs http.FileSystem
-}
-
-func (nfs neuteredFileSystem) Open(path string) (http.File, error) {
-
-	f, err := nfs.fs.Open(path)
-	if err != nil {
-		return nil, err
-	}
-
-	s, err := f.Stat()
-	if s.IsDir() {
-		index := filepath.Join(path, "index.html")
-		if _, err := nfs.fs.Open(index); err != nil {
-			closeErr := f.Close()
-			if closeErr != nil {
-				return nil, closeErr
-			}
-
-			return nil, err
-		}
-	}
-
-	return f, nil
 }
