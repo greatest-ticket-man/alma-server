@@ -16,7 +16,7 @@ import (
 	"github.com/google/uuid"
 )
 
-// HTTPServer api用のServer
+// HTTPServer Server
 var HTTPServer *http.Server
 
 // Setup ServerSetup
