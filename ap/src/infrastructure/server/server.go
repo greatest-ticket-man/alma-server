@@ -2,26 +2,28 @@ package server
 
 import (
 	"alma-server/ap/src/common/config"
+	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/infrastructure/http/almahttp"
 	"context"
+	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
+
+	"github.com/google/uuid"
 )
 
-// HTTPAPIServer api用のServer
-var HTTPAPIServer *http.Server
-
-// HTTPHTMLServer html用のServer
-var HTTPHTMLServer *http.Server
+// HTTPServer api用のServer
+var HTTPServer *http.Server
 
 // Setup ServerSetup
 func Setup(config *config.HTTPServer) {
 
 	// http api server
-	HTTPAPIServer = almahttp.Setup(config)
+	HTTPServer = almahttp.Setup(config)
 	log.Println("api server : ", config.Address)
 
 }
@@ -33,9 +35,9 @@ func Serve(config *config.HTTPServer) {
 
 		var err error
 		if config.TLS {
-			err = HTTPAPIServer.ListenAndServeTLS(config.CertFile, config.KeyFile)
+			err = HTTPServer.ListenAndServeTLS(config.CertFile, config.KeyFile)
 		} else {
-			err = HTTPAPIServer.ListenAndServe()
+			err = HTTPServer.ListenAndServe()
 		}
 		if err != nil {
 			if err != http.ErrServerClosed {
@@ -46,11 +48,31 @@ func Serve(config *config.HTTPServer) {
 
 }
 
+// TestServe テスト時は、ポートがバッティングするため
+// テスト時のみ、Unix Domain Socket で立ち上げる
+func TestServe() {
+
+	// httpUnixDomainSocketPath = "/tmp/alma-ap-test-http-udx-"
+	httpUnixDomainSocketPath := fmt.Sprintf("/tmp/alma-ap-test-http-udx-%s.sock", uuid.New().String())
+
+	log.Println("Http Server Start :", httpUnixDomainSocketPath)
+
+	go func() {
+
+		tcpServer, err := net.Listen("unix", httpUnixDomainSocketPath)
+		chk.SE(err)
+
+		err = HTTPServer.Serve(tcpServer)
+		chk.SE(err)
+	}()
+
+}
+
 // Shutdown .
 func Shutdown() {
 
 	// http api
-	HTTPAPIServer.Shutdown(context.Background())
+	HTTPServer.Shutdown(context.Background())
 
 }
 
