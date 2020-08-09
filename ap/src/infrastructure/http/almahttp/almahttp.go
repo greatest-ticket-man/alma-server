@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/controller/dashboard"
 	"alma-server/ap/src/controller/hello"
 	"alma-server/ap/src/controller/login"
+	"alma-server/ap/src/controller/signup"
 	"alma-server/ap/src/controller/test"
 	"alma-server/ap/src/controller/todo"
 	"alma-server/ap/src/controller/top"
@@ -52,6 +53,8 @@ func Router() *negroni.Negroni {
 
 	router.HandleFunc("/login", login.PageHTML).Methods("GET")
 	router.HandleFunc("/login", login.Login).Methods("POST")
+
+	router.HandleFunc("/signup", signup.PageHTML).Methods("GET")
 
 	router.HandleFunc("/todo", todo.PageHTML).Methods("GET")
 	router.HandleFunc("/todo/create", todo.CreateTodo).Methods("POST")

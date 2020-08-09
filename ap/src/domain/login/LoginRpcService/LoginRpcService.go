@@ -24,7 +24,6 @@ func Login(ctx context.Context, txTime time.Time, email string, password string)
 	}
 
 	// TODO 正しければJWT tokenを生成する
-
 	return &login.LoginReply{
 		Token: "hoge",
 	}
