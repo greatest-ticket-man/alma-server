@@ -34,6 +34,12 @@ class Signup {
         let response = await window.Alma.req.post('/signup', window.Alma.req.createPostData(data), {reload: false});
 
         console.log('response is ', response);
+
+        if (response.success) {
+            alert('サインアップが成功しました、ログインを試してください');
+
+            window.location.href = '/login';
+        }
     }
 
 
