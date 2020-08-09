@@ -6,7 +6,7 @@ class Login {
 
         // getEl
         this.loginButtonEl = document.querySelector('.js-login');
-        this.loginNameInputEl = document.getElementById('js-username');
+        this.loginEmailInputEl = document.getElementById('js-email');
         this.loginPassInputEl = document.getElementById('js-password');
 
         // 関数登録
@@ -23,7 +23,7 @@ class Login {
     // loginする
     async login() {
 
-        let email = this.loginNameInputEl.value;
+        let email = this.loginEmailInputEl.value;
         let pass = this.loginPassInputEl.value;
 
         // passwordをmd5ハッシュに変更

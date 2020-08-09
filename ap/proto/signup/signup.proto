@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/signup";
+
+package signup;
+
+import "common/common.proto";
+
+// RPC
+service Signup {
+    rpc signup(SignupRequest) returns (common.Empty) {}
+}
+
+message SignupRequest {
+    string email = 1;
+    string password = 2;
+}
