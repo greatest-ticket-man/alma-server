@@ -20,13 +20,17 @@ const (
 
 	// LoginWrongPassword パスワードが違います
 	LoginWrongPassword = "LoginWrongPassword"
+
+	// SignupAlreadyUseEmail このメールアドレスはすでに使用されています
+	SignupAlreadyUseEmail = "SignupAlreadyUseEmail"
 )
 
 var msgMap = map[string]map[string]string{
 	"ja": {
-		HelloLogicError:    "テスト用のError",
-		TodoDeleteFailed:   "todoの削除に失敗しました",
-		LoginFailed:        "ログインに失敗しました",
-		LoginWrongPassword: "パスワードが違います",
+		HelloLogicError:       "テスト用のError",
+		TodoDeleteFailed:      "todoの削除に失敗しました",
+		LoginFailed:           "ログインに失敗しました",
+		LoginWrongPassword:    "パスワードが違います",
+		SignupAlreadyUseEmail: "このメールアドレスはすでに使用されています",
 	},
 }
