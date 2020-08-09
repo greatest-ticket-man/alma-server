@@ -11,10 +11,14 @@
             <br>
             Password: <input type="password" id="js-password">
             <br>
-            <button>Sign up</button>
+            <button class="js-signup">Sign up</button>
         </div>
 
         <!-- 流れは、Email, Paswordを入力して仮登録, 設定したメールアドレスにメールを送信、そこにあるURLを叩いて、さっき追加したパスワードを入力してログインすれば本登録完了 -->
         <!-- メールで送るURLのPassは、_idに含まれているものである必要がある -->
+
+        <script src="/static/js/request.js"></script>
+        <script src="/static/js/util/md5/md5.js"></script>
+        <script src="/static/js/controller/signup/signup.js"></script>
     </body>
 </html>
