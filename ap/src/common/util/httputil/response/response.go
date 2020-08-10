@@ -22,6 +22,11 @@ func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 	htmlutil.Template(w, path, data)
 }
 
+// RedirectHTML redirect
+func RedirectHTML(w http.ResponseWriter, r *http.Request, url string) {
+	http.Redirect(w, r, url, http.StatusFound)
+}
+
 // ERROR errorを添えて返す
 // StatusOKで応答しないと、errorを出してしまうためStatusOKで返しています
 func ERROR(w http.ResponseWriter, reason string) {

@@ -28,6 +28,12 @@ func SetCookie(w http.ResponseWriter, txTime time.Time, name string, value strin
 // GetCookie Cookieを取得する
 func GetCookie(r *http.Request, name string) string {
 	cookie, err := r.Cookie(name)
+
+	// cookieがない場合はから文字を送信する
+	if err == http.ErrNoCookie {
+		return ""
+	}
+
 	chk.SE(err)
 
 	return cookie.Value

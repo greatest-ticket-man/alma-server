@@ -57,18 +57,17 @@ func New(txTime time.Time, mid string, email string) string {
 	return tokenString
 }
 
+// Parse JWT token認証
+// err時のhandlingをここで処理しない
+func Parse(tokenStr string) (*jwt.Token, error) {
+	token, err := jwt.Parse(tokenStr, keyFunc)
+	return token, err
+}
+
 // Auth JWT token認証
 func Auth(r *http.Request) *jwt.Token {
 
-	token, err := request.ParseFromRequest(r, request.AuthorizationHeaderExtractor, func(token *jwt.Token) (interface{}, error) {
-
-		_, ok := token.Method.(*jwt.SigningMethodRSA)
-		if !ok {
-			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
-		}
-		return verifyKey, nil
-
-	})
+	token, err := request.ParseFromRequest(r, request.AuthorizationHeaderExtractor, keyFunc)
 
 	chk.SE(err)
 
@@ -77,4 +76,14 @@ func Auth(r *http.Request) *jwt.Token {
 	}
 
 	return token
+}
+
+func keyFunc(token *jwt.Token) (interface{}, error) {
+
+	_, ok := token.Method.(*jwt.SigningMethodRSA)
+	if !ok {
+		return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+	}
+	return verifyKey, nil
+
 }
