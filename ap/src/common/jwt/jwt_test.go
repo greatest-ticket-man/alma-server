@@ -1,9 +1,12 @@
 package jwt_test
 
 import (
+	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/jwt"
 	"alma-server/ap/src/common/test"
+	"fmt"
 	"log"
+	"net/http"
 	"testing"
 	"time"
 
@@ -25,6 +28,22 @@ func Test(t *testing.T) {
 
 			tokenStr := jwt.New(time.Now(), "test@test.com", "test")
 			log.Println("tokenStr is ", tokenStr)
+
+			g.Assert(tokenStr == "").IsFalse()
+		})
+
+		g.It("認証", func() {
+
+			tokenStr := jwt.New(time.Now(), "test@test.com", "test")
+
+			req, err := http.NewRequest("GET", "/hoge", nil)
+			chk.SE(err)
+
+			// header
+			req.Header.Set("Authorization", fmt.Sprintf("BEARER %s", tokenStr))
+
+			jwt.Auth(req)
+
 		})
 
 	})
