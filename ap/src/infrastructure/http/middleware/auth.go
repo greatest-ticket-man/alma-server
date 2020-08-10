@@ -5,8 +5,10 @@ import (
 	"alma-server/ap/src/common/util/cookieutil"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/common/util/jsonutil"
+	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 )
 
 // AuthMiddleware 認証
@@ -19,7 +21,7 @@ func AuthMiddleware(w http.ResponseWriter, r *http.Request, next http.HandlerFun
 	token, err := jwt.Parse(tokenStr)
 	if err != nil || !token.Valid {
 		// redirect
-		response.RedirectHTML(w, r, "/login")
+		response.RedirectHTML(w, r, fmt.Sprintf("/login?fallback=%s", url.QueryEscape(r.RequestURI)))
 		return
 	}
 
