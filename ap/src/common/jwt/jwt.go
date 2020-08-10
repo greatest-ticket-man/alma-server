@@ -15,7 +15,7 @@ import (
 )
 
 // New JWT tokenの発行
-func New(txTime time.Time, email string, pass string) string {
+func New(txTime time.Time, mid string, email string) string {
 
 	signBytes, err := ioutil.ReadFile(projectpathap.GetRoot() + "/config/jwt.rsa")
 
@@ -30,6 +30,7 @@ func New(txTime time.Time, email string, pass string) string {
 	// set claims
 	claims := token.Claims.(jwt.MapClaims)
 	claims["name"] = email
+	claims["mid"] = mid
 	claims["exp"] = txTime.Add(10 * time.Hour).Unix()
 
 	tokenString, err := token.SignedString(signKey)

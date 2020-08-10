@@ -27,7 +27,7 @@ func Test(t *testing.T) {
 		g.It("New", func() {
 			log.Println("Jwt Test")
 
-			tokenStr := jwt.New(time.Now(), "test@test.com", "test")
+			tokenStr := jwt.New(time.Now(), "mid", "test@test.com")
 			log.Println("tokenStr is ", tokenStr)
 
 			g.Assert(tokenStr == "").IsFalse()
@@ -35,7 +35,7 @@ func Test(t *testing.T) {
 
 		g.It("認証", func() {
 
-			tokenStr := jwt.New(time.Now(), "test@test.com", "test")
+			tokenStr := jwt.New(time.Now(), "mid", "test@test.com")
 
 			req, err := http.NewRequest("GET", "/hoge", nil)
 			chk.SE(err)
@@ -71,7 +71,7 @@ func Test(t *testing.T) {
 
 			txTime := time.Now().Add(-24 * time.Hour)
 
-			tokenStr := jwt.New(txTime, "sunjin@sunjin.com", "sunjin")
+			tokenStr := jwt.New(txTime, "sunjin", "sunjin@sunjin.com")
 
 			req, err := http.NewRequest("GET", "/aaa", nil)
 			chk.SE(err)
