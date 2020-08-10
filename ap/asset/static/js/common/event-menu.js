@@ -2,8 +2,7 @@
 
 class EventMenu {
     constructor() {
-
-        this.showButtonEl = document.querySelector('.js-event-menu-show');
+        this.showButtonElList = document.querySelectorAll('.js-event-menu-show');
 
         this.eventMenuEl = document.querySelector('.js-event-menu');
 
@@ -22,7 +21,10 @@ class EventMenu {
     // addEventListener 各要素にイベントを追加する
     addEventListener() {
 
-        this.showButtonEl.addEventListener('click', this.showEventMenu);
+        const showEventMenuFunc = this.showEventMenu;
+        this.showButtonElList.forEach(function(elem) {
+            elem.addEventListener('click', showEventMenuFunc);
+        })
 
         this.eventMenuEl.addEventListener('click', this.hideEventMenu);
         this.eventMenuContainerEl.addEventListener('click', this.blockClicks);
