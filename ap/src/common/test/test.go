@@ -3,6 +3,7 @@ package test
 import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/jobrunner"
+	"alma-server/ap/src/common/jwt"
 	"alma-server/ap/src/common/projectpathap"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"alma-server/ap/src/infrastructure/server"
@@ -18,6 +19,9 @@ func Setup() {
 
 	// config
 	config := config.Setup(path)
+
+	// jwt
+	jwt.Setup()
 
 	// mongodb
 	mongodb.Setup(config.MongoDatabases)
