@@ -3,11 +3,9 @@ package jwt
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/projectpathap"
-	"alma-server/ap/src/common/util/jsonutil"
 	"errors"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 
 	"time"
@@ -41,7 +39,7 @@ func New(txTime time.Time, email string, pass string) string {
 }
 
 // Auth JWT token認証
-func Auth(r *http.Request) {
+func Auth(r *http.Request) *jwt.Token {
 
 	verifyBytes, err := ioutil.ReadFile(projectpathap.GetRoot() + "/config/jwt.rsa.pub.pkcs8")
 	chk.SE(err)
@@ -61,11 +59,9 @@ func Auth(r *http.Request) {
 
 	chk.SE(err)
 
-	log.Println("toekn is ", jsonutil.Marshal(token))
-
 	if !token.Valid {
 		chk.SE(errors.New("tokenが違います"))
 	}
 
-	log.Println("ok")
+	return token
 }
