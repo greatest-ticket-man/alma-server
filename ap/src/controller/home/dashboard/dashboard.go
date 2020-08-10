@@ -1,7 +1,9 @@
 package dashboard
 
 import (
+	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/response"
+	"html/template"
 	"net/http"
 )
 
@@ -13,7 +15,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/component/base.html",
 		map[string]interface{}{
 			"mainTitle":   "Dashboard",
-			"mainContent": "ダッシュボードコンテンツ",
+			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/component/home/dashboard/content.html", "")),
 			"script":      "",
 			"css":         "",
 		},
