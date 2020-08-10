@@ -15,6 +15,8 @@ const (
 	ThisCollectionName = "USER_ACCOUNT"
 
 	FEmail = "email"
+
+	fLoginTime = "lt"
 )
 
 var reflectType = reflect.TypeOf(&UserAccount{})
@@ -58,6 +60,25 @@ func GetFromEmail(ctx context.Context, email string) *UserAccount {
 	query := bson.M{FEmail: email}
 
 	result := getDb(ctx).FindOne(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.(*UserAccount)
+}
+
+// FindAndUpdate .
+func FindAndUpdate(ctx context.Context, email string, txTime time.Time) *UserAccount {
+
+	query := bson.M{FEmail: email}
+
+	update := bson.M{
+		"$set": bson.M{
+			fLoginTime: txTime,
+		},
+	}
+
+	result := getDb(ctx).FindOneAndUpdate(query, update, reflectType)
 	if result == nil {
 		return nil
 	}
