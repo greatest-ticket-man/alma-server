@@ -2,9 +2,11 @@ package login
 
 import (
 	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/util/cookieutil"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/CommonHTMLService"
 	"alma-server/ap/src/domain/login/LoginRpcService"
+	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"alma-server/ap/src/infrastructure/grpc/proto/login"
 	"encoding/json"
 	"net/http"
@@ -39,6 +41,9 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	// logic
 	result := LoginRpcService.Login(r.Context(), txTime, req.Email, req.Password)
 
+	// tokenを追加
+	cookieutil.SetCookie(w, txTime, "token", result.Token)
+
 	// response
-	response.JSON(w, result)
+	response.JSON(w, &common.Empty{})
 }
