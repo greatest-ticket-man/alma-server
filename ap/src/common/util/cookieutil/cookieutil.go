@@ -32,3 +32,18 @@ func GetCookie(r *http.Request, name string) string {
 
 	return cookie.Value
 }
+
+// DeleteCookie Cookieを削除する
+func DeleteCookie(w http.ResponseWriter, r *http.Request, txTime time.Time, name string) {
+
+	cookie, err := r.Cookie(name)
+	if err == http.ErrNoCookie {
+		return
+	}
+	chk.SE(err)
+
+	// 削除
+	cookie.MaxAge = -1
+	cookie.Expires = txTime
+	http.SetCookie(w, cookie)
+}
