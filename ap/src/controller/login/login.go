@@ -3,12 +3,10 @@ package login
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/httputil/response"
-	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/domain/CommonHTMLService"
 	"alma-server/ap/src/domain/login/LoginRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/login"
 	"encoding/json"
-	"log"
 	"net/http"
 	"time"
 )
@@ -37,8 +35,6 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	// time
 	txTime := time.Now()
-
-	log.Println("req is ", jsonutil.Marshal(req))
 
 	// logic
 	result := LoginRpcService.Login(r.Context(), txTime, req.Email, req.Password)
