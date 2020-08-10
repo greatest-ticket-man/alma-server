@@ -3,6 +3,7 @@ package jwt
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/projectpathap"
+	"crypto/rsa"
 	"errors"
 	"fmt"
 	"io/ioutil"
@@ -14,15 +15,30 @@ import (
 	request "github.com/dgrijalva/jwt-go/request"
 )
 
+var signKey *rsa.PrivateKey
+var verifyKey *rsa.PublicKey
+
+// Setup setup
+func Setup() {
+
+	// privateKey
+	signBytes, err := ioutil.ReadFile(projectpathap.GetRoot() + "/config/jwt.rsa")
+	chk.SE(err)
+	s, err := jwt.ParseRSAPrivateKeyFromPEM(signBytes)
+	chk.SE(err)
+	signKey = s
+
+	// publicKey
+	verifyBytes, err := ioutil.ReadFile(projectpathap.GetRoot() + "/config/jwt.rsa.pub.pkcs8")
+	chk.SE(err)
+	v, err := jwt.ParseRSAPublicKeyFromPEM(verifyBytes)
+	chk.SE(err)
+	verifyKey = v
+
+}
+
 // New JWT tokenの発行
 func New(txTime time.Time, mid string, email string) string {
-
-	signBytes, err := ioutil.ReadFile(projectpathap.GetRoot() + "/config/jwt.rsa")
-
-	chk.SE(err)
-
-	signKey, err := jwt.ParseRSAPrivateKeyFromPEM(signBytes)
-	chk.SE(err)
 
 	// create token
 	token := jwt.New(jwt.SigningMethodRS256)
@@ -41,12 +57,6 @@ func New(txTime time.Time, mid string, email string) string {
 
 // Auth JWT token認証
 func Auth(r *http.Request) *jwt.Token {
-
-	verifyBytes, err := ioutil.ReadFile(projectpathap.GetRoot() + "/config/jwt.rsa.pub.pkcs8")
-	chk.SE(err)
-
-	verifyKey, err := jwt.ParseRSAPublicKeyFromPEM(verifyBytes)
-	chk.SE(err)
 
 	token, err := request.ParseFromRequest(r, request.AuthorizationHeaderExtractor, func(token *jwt.Token) (interface{}, error) {
 
