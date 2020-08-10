@@ -47,25 +47,27 @@ func Router() *negroni.Negroni {
 	router.HandleFunc("/", top.PageHTML).Methods("GET")
 	router.HandleFunc("/dashboard", dashboard.PageHTML).Methods("GET")
 
-	router.HandleFunc("/api/hello", hello.API).Methods("GET")
-
-	router.HandleFunc("/hello", hello.HTML).Methods("GET")
-
 	router.HandleFunc("/login", login.PageHTML).Methods("GET")
 	router.HandleFunc("/login", login.Login).Methods("POST")
 
 	router.HandleFunc("/signup", signup.PageHTML).Methods("GET")
 	router.HandleFunc("/signup", signup.Signup).Methods("POST")
 
-	router.HandleFunc("/todo", todo.PageHTML).Methods("GET")
-	router.HandleFunc("/todo/create", todo.CreateTodo).Methods("POST")
-	router.HandleFunc("/todo/remove", todo.RemoveTodo).Methods("POST")
-
-	// test
-	router.HandleFunc("/test", test.PageHTML).Methods("GET")
-
-	// static
+	// static Staticコンテンツ
 	router.PathPrefix("/static").Handler(http.StripPrefix("/static", http.FileServer(http.Dir("asset/static/")))).Methods("GET")
+
+	// auth ログイン中のコンテンツはここ
+	authRouter := mux.NewRouter().PathPrefix("/").Subrouter().StrictSlash(true)
+	authRouter.HandleFunc("/hello", hello.HTML).Methods("GET")
+	authRouter.HandleFunc("/test", test.PageHTML).Methods("GET")
+	authRouter.HandleFunc("/todo", todo.PageHTML).Methods("GET")
+	authRouter.HandleFunc("/todo/create", todo.CreateTodo).Methods("POST")
+	authRouter.HandleFunc("/todo/remove", todo.RemoveTodo).Methods("POST")
+
+	router.PathPrefix("/").Handler(negroni.New(
+		negroni.HandlerFunc(middleware.AuthMiddleware),
+		negroni.Wrap(authRouter),
+	))
 
 	// regist
 	n.UseHandler(router)
