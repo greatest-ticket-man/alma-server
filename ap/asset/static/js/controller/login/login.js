@@ -34,15 +34,15 @@ class Login {
             password: passMd5,
         };
 
-        let response = await window.Alma.req.post('/login', window.Alma.req.createPostData(data), {reload: false});
+        let response = await window.Alma.req.post('/login', window.Alma.req.createPostData(data), { reload: false });
         if (!response.success) {
             alert("ログインに失敗しました");
             return;
         }
 
         // 遷移
-        window.location.href = '/test';
-        
+        window.location.href = '/home/dashboard';
+
     }
 }
 
@@ -66,6 +66,5 @@ function blurFunc() {
 
 inputs.forEach(input => {
     input.addEventListener('focus', focusFunc);
-    input.addEventListener('blur',blurFunc );
+    input.addEventListener('blur', blurFunc);
 });
-
