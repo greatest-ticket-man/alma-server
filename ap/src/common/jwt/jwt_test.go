@@ -67,6 +67,33 @@ func Test(t *testing.T) {
 			g.Fail("エラーが発生しませんでした")
 		})
 
+		g.It("有効時間外のTokenを送信したとき", func() {
+
+			txTime := time.Now().Add(-24 * time.Hour)
+
+			tokenStr := jwt.New(txTime, "sunjin@sunjin.com", "sunjin")
+
+			req, err := http.NewRequest("GET", "/aaa", nil)
+			chk.SE(err)
+
+			// header
+			req.Header.Set("Authorization", fmt.Sprintf("BEARER %s", tokenStr))
+
+			defer func() {
+				if err := recover(); err != nil {
+					if fmt.Sprintf("%v", err) != "Token is expired" {
+						g.Fail("想定していないエラー")
+					}
+				}
+			}()
+
+			t := jwt.Auth(req)
+
+			g.Fail("エラーが発生しませんでした")
+			log.Println("t is ", jsonutil.Marshal(t))
+
+		})
+
 	})
 
 }
