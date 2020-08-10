@@ -86,10 +86,8 @@ class AccountMenu {
     // logout ログアウトする
     logout() {
 
-        // TODO なんかのログアウト処理
-
         // ログアウト画面に遷移
-        window.location.href = '/login';
+        window.location.href = '/logout';
     }
 
 }

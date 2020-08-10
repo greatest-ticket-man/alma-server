@@ -53,6 +53,8 @@ func Router() *negroni.Negroni {
 	router.HandleFunc("/signup", signup.PageHTML).Methods("GET")
 	router.HandleFunc("/signup", signup.Signup).Methods("POST")
 
+	router.HandleFunc("/logout", login.Logout)
+
 	// static Staticコンテンツ
 	router.PathPrefix("/static").Handler(http.StripPrefix("/static", http.FileServer(http.Dir("asset/static/")))).Methods("GET")
 

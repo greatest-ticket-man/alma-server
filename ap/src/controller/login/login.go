@@ -47,3 +47,16 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	// response
 	response.JSON(w, &common.Empty{})
 }
+
+// Logout ログアウト処理
+func Logout(w http.ResponseWriter, r *http.Request) {
+
+	// time
+	txTime := time.Now()
+
+	// tokenを削除
+	cookieutil.DeleteCookie(w, r, txTime, "token")
+
+	// response
+	response.RedirectHTML(w, r, "/login")
+}
