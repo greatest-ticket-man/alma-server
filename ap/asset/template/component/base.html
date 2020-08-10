@@ -24,20 +24,20 @@
 
 <body>
     <!-- Header -->
-    <div class="header">
-        <button class="js-menu-show-hide header__menu-toggle material-icons" aria-label="ナビゲーション メニュー">menu</button>
-        <img class="header__icon" src="/static/img/ticket-icon.svg" alt="">
-        <div class="header__title">Greatest Ticket Man</div>
-        <button class="js-event-menu-show header__event">
-            <p class="header__event-text">イベントの選択</p>
-            <span class="header__event-icon material-icons">keyboard_arrow_down</span>
+    <div class="base__header">
+        <button class="js-menu-show-hide base__header__menu-toggle material-icons" aria-label="ナビゲーション メニュー">menu</button>
+        <img class="base__header__icon" src="/static/img/ticket-icon.svg" alt="">
+        <div class="base__header__title">Greatest Ticket Man</div>
+        <button class="js-event-menu-show base__header__event">
+            <p class="base__header__event-text">イベントの選択</p>
+            <span class="base__header__event-icon material-icons">keyboard_arrow_down</span>
         </button>
-        <div class="header__search">
-            <span class="header__search-icon material-icons">search</span>
-            <input class="header__search-input" type="text" placeholder="キーワードを入力">
+        <div class="base__header__search">
+            <span class="base__header__search-icon material-icons">search</span>
+            <input class="base__header__search-input" type="text" placeholder="キーワードを入力">
         </div>
-        <div class="header__account">
-            <button class="js-account-menu-show-hide header__account-icon material-icons">person</button>
+        <div class="base__header__account">
+            <button class="js-account-menu-show-hide base__header__account-icon material-icons">person</button>
         </div>
     </div>
 
@@ -210,15 +210,15 @@
     </aside>
 
 
-    <div class="content">
+    <div class="base__content">
 
         <!-- Sidebar -->
-        <aside class="content__sidebar">
-            <header class="content__sidebar__header">
+        <aside class="base__content__sidebar">
+            <header class="base__content__sidebar__header">
                 Side Bar Header
             </header>
 
-            <ul class="content__sidebar__menu">
+            <ul class="base__content__sidebar__menu">
                 <li>One</li>
                 <li>Two</li>
                 <li>Three</li>
@@ -227,11 +227,11 @@
         </aside>
 
         <!-- Main -->
-        <main class="content__main">
-            <header class="content__main__header">
+        <main class="base__content__main">
+            <header class="base__content__main__header">
                 {{.mainTitle}}
             </header>
-            <div class="content__main__content">
+            <div class="base__content__main__content">
                 <!-- ココに各種のコンテンツが入る予定 -->
                 {{.mainContent}}
             </div>

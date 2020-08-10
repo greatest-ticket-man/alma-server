@@ -12,7 +12,7 @@ html, body {
 }
 
 /* Header */
-.base__header {
+.header {
     width: 100%;
     height: 50px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -28,7 +28,7 @@ html, body {
     top: 0;
 }
 
-.base__header__menu-toggle {
+.header__menu-toggle {
     background: none;
     border: none;
     width: 24px;
@@ -41,22 +41,22 @@ html, body {
     border-radius: 3px;
 }
 
-.base__header__menu-toggle:hover {
+.header__menu-toggle:hover {
     background: rgb(170, 170, 170);
 }
 
-.base__header__icon {
+.header__icon {
     width: 35px;
     color: #fff;
     margin-right: 20px;
 }
 
-.base__header__title {
+.header__title {
     font-size: large;
     margin-right: 20px;
 }
 
-.base__header__event {
+.header__event {
     margin-right: 20px;
     display: flex;
     align-items: center;
@@ -69,15 +69,15 @@ html, body {
     color: #fff;
 }
 
-.base__header__event .base__header__event-text {
+.header__event .header__event-text {
     margin-right: 5px;
 }
 
-.base__header__event:hover {
+.header__event:hover {
     background: rgb(170, 170, 170);
 }
 
-.base__header__search {
+.header__search {
     margin: auto;
 
     display: flex;
@@ -90,20 +90,20 @@ html, body {
     border-radius: 3px; /*ボックス角の丸み*/
 }
 
-.base__header__search:hover {
+.header__search:hover {
     background: rgb(170, 170, 170);
 }
 
-.base__header__search-icon {
+.header__search-icon {
     margin: 0 10px;
 }
 
-.base__header__search:focus-within {
+.header__search:focus-within {
     background: #fff;
     color: #000;
 }
 
-.base__header__search-input {
+.header__search-input {
     font-size: 16px;
     width: 100%;
     background: none;
@@ -112,19 +112,19 @@ html, body {
     color: #fff;
 }
 
-.base__header__search-input:focus {
+.header__search-input:focus {
     color: #000; 
 }
 
-.base__header__search-input::placeholder {
+.header__search-input::placeholder {
     color: #fff;
 }
 
-.base__header__search-input:focus::placeholder {
+.header__search-input:focus::placeholder {
     color: #666;
 }
 
-.base__header__account {
+.header__account {
     margin-left: auto;
     width: 50px;
     height: 50px;
@@ -134,7 +134,7 @@ html, body {
     justify-content: center;
 }
 
-.base__header__account-icon {
+.header__account-icon {
     background: none;
     border: none;
     color: #fff;
@@ -142,20 +142,20 @@ html, body {
     border-radius: 3px;
 }
 
-.base__header__account-icon:hover {
+.header__account-icon:hover {
     background: rgb(170, 170, 170);
 }
 
 /* Content */
-.base__content {
+.content {
     display: flex;
 }
 
-.base__content__main {
+.content__main {
     flex: 1;
 }
 
-.base__content__main__header {
+.content__main__header {
     height: 50px;
     padding: 0 25px;
     border-bottom: 1px solid #ccc;
@@ -167,7 +167,7 @@ html, body {
     background: #fafafa; /* スクロールしたときの、content__main__contentが見えないように、背景と同じ色に塗りつぶす */
 }
 
-.base__content__sidebar {
+.content__sidebar {
     width: 250px;
     border-right: 1px solid #ccc;
     position: sticky;
@@ -178,7 +178,7 @@ html, body {
     pointer-events: auto;
 }
 
-.base__content__sidebar__header {
+.content__sidebar__header {
     height: 50px;
     border-bottom: 1px solid #ccc;
     padding: 0 15px;
@@ -187,7 +187,7 @@ html, body {
     font-size: large;
 }
 
-.base__content__sidebar__menu {
+.content__sidebar__menu {
     flex: 1;
     list-style: none;
     padding: 0;
@@ -198,18 +198,18 @@ html, body {
     height: calc(100vh - 100px); /* いい感じにするやつ */
 }
 
-.base__content__sidebar__menu li {
+.content__sidebar__menu li {
     height: 40px;
     line-height: 40px;
     padding: 0 16px;
 }
 
-.base__content__sidebar__menu li:hover {
+.content__sidebar__menu li:hover {
     background: #ccc;
 }
 
 @media screen and (max-width: 756px) {
-    .base__content__sidebar {
+    .content__sidebar {
         display: none;
     }
 }
