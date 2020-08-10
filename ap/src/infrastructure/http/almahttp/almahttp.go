@@ -60,6 +60,7 @@ func Router() *negroni.Negroni {
 	// auth ログイン中のコンテンツはここ
 	authRouter := mux.NewRouter().PathPrefix("/").Subrouter().StrictSlash(true)
 	authRouter.HandleFunc("/home/dashboard", dashboard.PageHTML).Methods("GET")
+	authRouter.HandleFunc("/home/dashboard/empty", dashboard.PageHTMLEmpty).Methods("GET")
 	authRouter.HandleFunc("/hello", hello.HTML).Methods("GET")
 	authRouter.HandleFunc("/test", test.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/todo", todo.PageHTML).Methods("GET")
