@@ -35,22 +35,14 @@ class Login {
         };
 
         let response = await window.Alma.req.post('/login', window.Alma.req.createPostData(data), {reload: false});
-
-
-        console.log("response is ", response);
-        if (response.success) {
-
-            // cookieに入れる
-            console.log("result is ", response.result);
-            const result = response.result;
-            console.log("token is ", result.token);
-            // 暗号化済み著名cookie
-            alert("wait");
-
-            // 遷移
-            // TODO tokenを使用して、Centralに遷移する
-            window.location.href = '/test';
+        if (!response.success) {
+            alert("ログインに失敗しました");
+            return;
         }
+
+        // 遷移
+        window.location.href = '/test';
+        
     }
 }
 
