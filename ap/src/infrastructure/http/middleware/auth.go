@@ -1,21 +1,20 @@
 package middleware
 
 import (
+	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/jwt"
 	"alma-server/ap/src/common/util/cookieutil"
 	"alma-server/ap/src/common/util/httputil/response"
-	"alma-server/ap/src/common/util/jsonutil"
 	"fmt"
-	"log"
 	"net/http"
 	"net/url"
+	"time"
 )
 
 // AuthMiddleware 認証
 func AuthMiddleware(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 
-	log.Println("============== auth !!! ================")
-
+	// cookieからtokenを取得
 	tokenStr := cookieutil.GetCookie(r, "token")
 
 	token, err := jwt.Parse(tokenStr)
@@ -25,9 +24,18 @@ func AuthMiddleware(w http.ResponseWriter, r *http.Request, next http.HandlerFun
 		return
 	}
 
-	// TODO contextにデータを突っ込む, midとかemailとか
-	log.Println("token is ", jsonutil.Marshal(token))
+	// commonDataを追加する
+	claimMap := jwt.GetClaimMap(token)
+	commonData := &almactx.CommonData{
+		TxTime: time.Now(),
+		Mid:    claimMap["mid"].(string),
+		Email:  claimMap["email"].(string),
+	}
 
-	next(w, r)
+	ctx := almactx.WithData(r.Context(), commonData)
 
+	// 新しいtokenをセットする(refresh token)
+	cookieutil.SetCookie(w, commonData.TxTime, "token", jwt.New(commonData.TxTime, commonData.Mid, commonData.Email))
+
+	next(w, r.WithContext(ctx))
 }

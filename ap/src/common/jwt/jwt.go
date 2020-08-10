@@ -47,7 +47,7 @@ func New(txTime time.Time, mid string, email string) string {
 
 	// set claims
 	claims := token.Claims.(jwt.MapClaims)
-	claims["name"] = email
+	claims["email"] = email
 	claims["mid"] = mid
 	claims["exp"] = txTime.Add(expireDuration).Unix()
 
@@ -62,6 +62,11 @@ func New(txTime time.Time, mid string, email string) string {
 func Parse(tokenStr string) (*jwt.Token, error) {
 	token, err := jwt.Parse(tokenStr, keyFunc)
 	return token, err
+}
+
+// GetClaimMap claimを取得する
+func GetClaimMap(token *jwt.Token) jwt.MapClaims {
+	return token.Claims.(jwt.MapClaims)
 }
 
 // Auth JWT token認証
