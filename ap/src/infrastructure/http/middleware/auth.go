@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"alma-server/ap/src/common/util/cookieutil"
 	"log"
 	"net/http"
 )
@@ -17,6 +18,9 @@ func AuthMiddleware(w http.ResponseWriter, r *http.Request, next http.HandlerFun
 	// TODO 認証がとおった場合は新しいTokenを送信する
 
 	log.Println("============== auth !!! ================")
+
+	token := cookieutil.GetCookie(r, "token")
+	log.Println("token is ", token)
 
 	next(w, r)
 

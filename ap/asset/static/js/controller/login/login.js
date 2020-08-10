@@ -40,8 +40,11 @@ class Login {
         console.log("response is ", response);
         if (response.success) {
 
-            // TODO localStorageにTokenを保存する
+            // cookieに入れる
             console.log("result is ", response.result);
+            const result = response.result;
+            console.log("token is ", result.token);
+            // 暗号化済み著名cookie
             alert("wait");
 
             // 遷移
