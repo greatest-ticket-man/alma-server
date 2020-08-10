@@ -18,6 +18,8 @@ import (
 var signKey *rsa.PrivateKey
 var verifyKey *rsa.PublicKey
 
+const expireDuration = 10 * time.Hour
+
 // Setup setup
 func Setup() {
 
@@ -47,7 +49,7 @@ func New(txTime time.Time, mid string, email string) string {
 	claims := token.Claims.(jwt.MapClaims)
 	claims["name"] = email
 	claims["mid"] = mid
-	claims["exp"] = txTime.Add(10 * time.Hour).Unix()
+	claims["exp"] = txTime.Add(expireDuration).Unix()
 
 	tokenString, err := token.SignedString(signKey)
 	chk.SE(err)
