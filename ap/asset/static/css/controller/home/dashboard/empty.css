@@ -1,5 +1,17 @@
-.message__container {
+.content {
     margin: 10px;
+}
+
+.message__container {
     padding: 20px;
     background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+.recent-event {
+    padding: 20px;
+}
+
+.recent-event__title {
+    font-size: 1.3em;
 }
