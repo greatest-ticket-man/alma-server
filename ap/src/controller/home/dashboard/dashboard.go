@@ -32,8 +32,8 @@ func PageHTMLEmpty(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"mainTitle":   "ダッシュボード",
 			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/content.html", "")),
-			"script":      "",
-			"css":         template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/css.html", "")), // 複数のファイルを指定させるためにhtmlを指定しています
+			"script":      template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/script.html", "")),
+			"css":         template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/css.html", "")),
 		},
 	)
 }
