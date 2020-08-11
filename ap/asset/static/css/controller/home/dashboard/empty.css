@@ -3,9 +3,42 @@
 }
 
 .message__container {
-    padding: 20px;
+    padding: 10px 20px;
     background: rgba(0, 0, 0, 0.1);
     border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message__container__message {
+    font-size: 0.8em;
+}
+
+.message__container__button-select {
+    margin: 0;
+    border: none;
+    padding: 10px 24px;
+    background: none;
+    border-radius: 2px;
+    color: royalblue;
+}
+
+.message__container__button-select:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.message__container__button-create {
+    margin: 0;
+    border: none;
+    padding: 10px 24px;
+    background: none;
+    border-radius: 2px;
+    color: #000;
+}
+
+.message__container__button-create:hover {
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .recent-event {
