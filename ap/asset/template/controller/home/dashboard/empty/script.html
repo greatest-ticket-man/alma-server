@@ -1,0 +1,25 @@
+<script>
+    'use strict';
+
+    class EmptyDashboard {
+        constructor() {
+
+            // getEl
+            this.createEventPageShowButtonEl = document.querySelector('.js-event-create-page-show')
+
+            this.goEventCreatePage = this.goEventCreatePage.bind(this);
+
+            this.addEventListener();
+        }
+
+        addEventListener() {
+            this.createEventPageShowButtonEl.addEventListener('click', this.goEventCreatePage);
+        }
+
+        goEventCreatePage() {
+            window.location.href = '/event/create';
+        }
+    }
+
+    new EmptyDashboard();
+</script>
