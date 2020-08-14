@@ -3,35 +3,47 @@
     <div class="input-container">
         <span class="input-container__title">イベント名</span>
         <span class="input-container__desc">(必須)</span>
-        <input class="input-container__input" type="text">
+        <input class="input-container__input" type="text" autocomplete="off" id="js-event-title">
         <span class="input-container__desc">イベント名はあとで変更できます</span>
     </div>
     <div class="input-container">
         <span class="input-container__title">組織</span>
         <span class="input-container__desc">(省略可)</span>
-        <input class="input-container__input" type="text">
+        <input class="input-container__input" type="text" list="group-candidate" autocomplete="organization" id="js-event-group">
         <span class="input-container__desc">主催の組織を選択してください</span>
+        <span class="input-container__desc">あとで追加することもできます</span>
     </div>
     <div class="input-container">
         <span class="input-conatiner__title">メンバー</span>
         <span class="input-container__desc">(省略可)</span>
-        <input type="text">
+        <div class="input-container__email-input">
+            <input class="input-container__input" type="text" list="member-candidate" autocomplete="email">
+            <button>追加</button>
+        </div>
         <span class="input-container__desc">追加したいメンバーのIDかメールアドレスを追加してください</span>
+        <span class="input-container__desc">あとで追加することもできます</span>
+        TODO table
+
     </div>
 
-    TODO  作成したら、そのイベントのダッシュボードに遷移したい
+
+    <!-- 作成完了したら、そのイベントのダッシュボードに遷移 -->
+    <!-- キャンセルしたら１つ前のページに戻る -->
     <div class="button-container">
-        <button class="button-container__create">作成</button>
+        <button class="js-event-create button-container__create">作成</button>
+        <button class="js-event-create-cancel button-container__cancel">キャンセル</button>
     </div>
 
-<!--     
-    組織：
-    メンバー(メールアドレスか何かで登録？)：
 
-    候補を出すやつ
-    https://www.tagindex.com/html5/form/datalist.html
+    <datalist id="group-candidate">
+        <option value="AAA-"></option>
+        <option value="BBB-"></option>
+        <option value="CCC-"></option>
+    </datalist>
 
-    enterか追加を押すとメンバーのリストが下に追加されるようにしたい
+    <datalist id="member-candidate">
+        <option value="sunjin">sunjin110@gmail.com:尹舜真</option>
+    </datalist>
 
-    カンマ区切りで入れると、複数追加されるようにしたい -->
+
 </main>
