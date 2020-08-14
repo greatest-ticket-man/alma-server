@@ -8,21 +8,29 @@
             this.cancelCreateEventButtonEl = document.querySelector('.js-event-create-cancel');
             this.createEventButtonEl = document.querySelector('.js-event-create');
 
-            
-
             this.emailTextEl = document.querySelector('.js-email-text');
             this.addEmailTableButtonEl = document.querySelector('.js-email-table-add');
             this.emailTableEl = document.querySelector('.js-email-table');
 
             this.backBeforePage = this.backBeforePage.bind(this);
             this.addMemberToTable = this.addMemberToTable.bind(this);
-
+            
             this.addEventListener();
         }
 
         addEventListener() {
+
             this.cancelCreateEventButtonEl.addEventListener('click', this.backBeforePage);
             this.addEmailTableButtonEl.addEventListener('click', this.addMemberToTable);
+
+            // Enterで発火するように変更
+            const me = this;
+            this.emailTextEl.addEventListener('keypress', function(element) {
+                if(element.keyCode === 13) {
+                    element.preventDefault();
+                    me.addEmailTableButtonEl.click();
+                }
+            })
         }
 
         // backBeforePage 前のページに戻る
@@ -39,6 +47,8 @@
             if (!emailText) {
                 return;
             }
+
+            // TODO ,でparse
 
             // TODO serverと通信, idとかnameを取得する, email検索, なければ新規扱い
 
