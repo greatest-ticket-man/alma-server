@@ -135,11 +135,8 @@
 .event-menu__container__table {
     width: 100%;
     height: 100%;
-
     font-size: 12px;
-
     border-collapse: collapse;
-
 }
 
 .event-menu__container__table td:nth-child(1) {

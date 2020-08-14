@@ -17,28 +17,35 @@
         <span class="input-conatiner__title">メンバー</span>
         <span class="input-container__desc">(省略可)</span>
         <div class="input-container__email-container">
-            <input class="input-container__email-input" type="text" list="member-candidate" autocomplete="email">
-            <button class="input-container__email-add">追加</button>
+            <input class="js-email-text input-container__email-input" type="text" list="member-candidate" autocomplete="email">
+            <button class="js-email-table-add input-container__email-add">追加</button>
         </div>
         <span class="input-container__desc">追加したいメンバーのIDかメールアドレスを追加してください</span>
         <span class="input-container__desc">「,」で区切れば複数同時に追加することもできます</span>
         <span class="input-container__desc">あとで追加することもできます</span>
-        <table>
+        <table class="js-email-table input-container__email-table">
             <thead>
+                <!-- <tr>
+                    <td></td>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>権限</td>
+                    <td></td>
+                </tr> -->
+                <th></th>
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>権限</th>
+                <th></th>
             </thead>
             <tbody>
-                <tr>
-                    <td>sunjin</td>
-                    <td>尹舜真</td>
-                    <td>sunjin110@gmail.com</td>
-                    <td>観覧</td>
-                </tr>
+            
+              
             </tbody>
         </table>
+        <span class="input-container__desc">招待したユーザーにメールを送信します</span>
 
     </div>
 
