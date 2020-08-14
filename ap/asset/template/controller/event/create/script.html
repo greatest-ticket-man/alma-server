@@ -43,27 +43,22 @@
             // TODO serverと通信, idとかnameを取得する, email検索, なければ新規扱い
 
             // tableに追加
-            const len = this.emailTableEl.rows.length;
             let row = this.emailTableEl.insertRow(-1);
-            row.classList.add(`js-email-table-row-${len}`);
             row.insertCell(0).innerHTML = `<span class="input-container__email-table__icon material-icons">perm_identity</span>`;
             row.insertCell(1).innerHTML = `id`;
             row.insertCell(2).innerHTML = `name`;
             row.insertCell(3).innerHTML = emailText;
             row.insertCell(4).innerHTML = `観覧`;
-            row.insertCell(5).innerHTML = `<button class="input-container__email-table__delete-button  material-icons"'>delete</button>`;
+            row.insertCell(5).innerHTML = `<button class="input-container__email-table__delete-button  material-icons" onclick="eventCreate.deleteMemberToTable(this);"'>delete</button>`;
 
             // emailTextをcliear
             this.emailTextEl.value = '';
         }
 
         // deleteMemberToTable memberのtableを削除する
-        deleteMemberToTable(el) {
-
-
-
-            console.log("eee");
-
+        deleteMemberToTable(elem) {
+            let tr = elem.parentNode.parentNode;
+            this.emailTableEl.deleteRow(tr.sectionRowIndex);
         }
 
 
@@ -76,5 +71,5 @@
 
     }
 
-    new EventCreate();
+    const eventCreate = new EventCreate();
 </script>
