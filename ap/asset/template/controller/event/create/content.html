@@ -1,6 +1,30 @@
 <main class="content">
 
-    イベント名：<input type="text">
+    <div class="input-container">
+        <span class="input-container__title">イベント名</span>
+        <span class="input-container__desc">(必須)</span>
+        <input class="input-container__input" type="text">
+        <span class="input-container__desc">イベント名はあとで変更できます</span>
+    </div>
+    <div class="input-container">
+        <span class="input-container__title">組織</span>
+        <span class="input-container__desc">(省略可)</span>
+        <input class="input-container__input" type="text">
+        <span class="input-container__desc">主催の組織を選択してください</span>
+    </div>
+    <div class="input-container">
+        <span class="input-conatiner__title">メンバー</span>
+        <span class="input-container__desc">(省略可)</span>
+        <input type="text">
+        <span class="input-container__desc">追加したいメンバーのIDかメールアドレスを追加してください</span>
+    </div>
+
+    TODO  作成したら、そのイベントのダッシュボードに遷移したい
+    <div class="button-container">
+        <button class="button-container__create">作成</button>
+    </div>
+
+<!--     
     組織：
     メンバー(メールアドレスか何かで登録？)：
 
@@ -9,5 +33,5 @@
 
     enterか追加を押すとメンバーのリストが下に追加されるようにしたい
 
-    カンマ区切りで入れると、複数追加されるようにしたい
+    カンマ区切りで入れると、複数追加されるようにしたい -->
 </main>
