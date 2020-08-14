@@ -4,10 +4,7 @@ import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/jwt"
 	"alma-server/ap/src/common/util/cookieutil"
-	"alma-server/ap/src/common/util/httputil/response"
-	"fmt"
 	"net/http"
-	"net/url"
 	"time"
 )
 
@@ -17,12 +14,17 @@ func AuthMiddleware(w http.ResponseWriter, r *http.Request, next http.HandlerFun
 	// cookieからtokenを取得
 	tokenStr := cookieutil.GetCookie(r, "token")
 
-	token, err := jwt.Parse(tokenStr)
-	if err != nil || !token.Valid {
-		// redirect
-		response.RedirectHTML(w, r, fmt.Sprintf("/login?fallback=%s", url.QueryEscape(r.RequestURI)))
-		return
-	}
+	token, _ := jwt.Parse(tokenStr)
+	// TODO どうにかする
+	// if err != nil || !token.Valid {
+
+	// 	log.Println("redirect...")
+	// 	log.Println("err is ", err)
+
+	// 	// redirect
+	// 	response.RedirectHTML(w, r, fmt.Sprintf("/login?fallback=%s", url.QueryEscape(r.RequestURI)))
+	// 	return
+	// }
 
 	// commonDataを追加する
 	claimMap := jwt.GetClaimMap(token)
