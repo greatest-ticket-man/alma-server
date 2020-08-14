@@ -1,0 +1,37 @@
+<script>
+    'use strict';
+
+    class EventCreate {
+        constructor() {
+
+            // getEl
+            this.cancelCreateEventButtonEl = document.querySelector('.js-event-create-cancel');
+            this.createEventButtonEl = document.querySelector('.js-event-create');
+
+            this.backBeforePage = this.backBeforePage.bind(this);
+
+
+            this.addEventListener();
+        }
+
+        addEventListener() {
+            this.cancelCreateEventButtonEl.addEventListener('click', this.backBeforePage);
+        }
+
+        // backBeforePage 前のページに戻る
+        backBeforePage() {
+            window.history.back(-1);
+            return false;
+        }
+
+        // createEvent
+        createEvent() {
+
+            
+        }
+
+
+    }
+
+    new EventCreate();
+</script>

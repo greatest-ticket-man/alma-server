@@ -15,7 +15,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"mainTitle":   "イベントの作成",
 			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/create/content.html", "")),
-			"script":      "",
+			"script":      template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/create/script.html", "")),
 			"css":         template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/create/css.html", "")),
 		},
 	)
