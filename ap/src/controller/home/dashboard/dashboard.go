@@ -16,8 +16,8 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"mainTitle":   "ダッシュボード",
 			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/content.html", "")),
-			"script":      "",
-			"css":         "",
+			"script":      template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/script.html", "")),
+			"css":         template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/css.html", "")),
 		},
 	)
 
