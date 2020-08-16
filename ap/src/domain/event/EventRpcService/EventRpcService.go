@@ -23,6 +23,7 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName, map[string]string{"": ""}, map[string]string{"": ""})
 
 	return &event.CreateEventReply{
-		EventId: eventID,
+		EventId:   eventID,
+		EventName: eventName,
 	}
 }

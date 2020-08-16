@@ -82,8 +82,6 @@
         // createEvent
         async createEvent() {
 
-            
-
             const eventName = this.eventTitleEl.value;
             const organizationName = this.organizationNameEl.value;
 
@@ -101,6 +99,7 @@
 
             // Sesstionに追加
             window.Alma.localStorage.set(window.Alma.localStorage.event_id, response.result.event_id);
+            window.Alma.localStorage.set(window.Alma.localStorage.event_name, response.result.event_name);
 
             // 遷移
             window.location.href = '/home/dashboard';
