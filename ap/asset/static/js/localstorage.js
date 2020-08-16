@@ -4,7 +4,8 @@ window.Alma = window.Alma || {};
     class LocalStorage {
 
         constructor() {
-            this.event_id = 'event_id';
+            this.event_id = 'event_id'; // イベントのID
+            this.event_name = 'event_name'; // イベント名
         }
 
         /**

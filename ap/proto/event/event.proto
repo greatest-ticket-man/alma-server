@@ -19,6 +19,7 @@ message CreateEventRequest {
 // イベント作成のリプライ
 message CreateEventReply {
     string event_id = 1; // 作成されたイベントID
+    string event_name = 2; // イベント名
 }
 
 // MemberInfo 追加されたメンバー情報
