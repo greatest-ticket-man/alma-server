@@ -12,8 +12,14 @@
             this.addEmailTableButtonEl = document.querySelector('.js-email-table-add');
             this.emailTableEl = document.querySelector('.js-email-table');
 
+            // value
+            this.eventTitleEl = document.getElementById('js-event-title');
+            this.organizationNameEl = document.getElementById('js-event-organization');
+            
+
             this.backBeforePage = this.backBeforePage.bind(this);
             this.addMemberToTable = this.addMemberToTable.bind(this);
+            this.createEvent = this.createEvent.bind(this);
             
             this.addEventListener();
         }
@@ -22,6 +28,7 @@
 
             this.cancelCreateEventButtonEl.addEventListener('click', this.backBeforePage);
             this.addEmailTableButtonEl.addEventListener('click', this.addMemberToTable);
+            this.createEventButtonEl.addEventListener('click', this.createEvent);
 
             // Enterで発火するように変更
             const me = this;
@@ -73,9 +80,29 @@
 
 
         // createEvent
-        createEvent() {
+        async createEvent() {
 
             
+
+            const eventName = this.eventTitleEl.value;
+            const organizationName = this.organizationNameEl.value;
+
+            const data = {
+                event_name: eventName,
+                organization_name: organizationName,
+                member_info_list: null,
+            };
+            
+            let response = await window.Alma.req.post('/event/create', window.Alma.req.createPostData(data), { reload: false });
+            if (!response.success) {
+                alert('作成に失敗しました');
+                return;
+            }
+
+            console.log('response is ', response);
+
+            // 遷移
+
         }
 
 
