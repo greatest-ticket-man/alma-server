@@ -102,10 +102,8 @@
             window.Alma.localStorage.set(window.Alma.localStorage.event_name, response.result.event_name);
 
             // 遷移
-            window.location.href = '/home/dashboard';
+            window.Alma.location.href(window.Alma.location.home_dashboard);
         }
-
-
     }
 
     const eventCreate = new EventCreate();
