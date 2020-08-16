@@ -3,11 +3,8 @@ window.Alma = window.Alma || {};
     class Location {
 
         constructor() {
-            // TODO href path
-
             this.event_create = '/event/create';
             this.home_dashboard = '/home/dashboard';
-
         }
 
 
