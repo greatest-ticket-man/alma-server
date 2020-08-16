@@ -8,8 +8,6 @@ class EventMenu {
 
         this.eventMenuContainerEl = document.querySelector('.js-event-menu-container');
 
-        this.eventNameEl = document.querySelector('.js-event-name');
-
         this.hideButtonEl = document.querySelector('.js-event-menu-hide');
 
         this.goEventCreateFormButtonEl = document.querySelector('.js-go-event-create-form');
@@ -20,9 +18,7 @@ class EventMenu {
         this.goEventCreateForm = this.goEventCreateForm.bind(this);
 
         // Eventの登録
-        this.addEventListener();
-
-        this.setEventName();
+        this.addEventListener();   
     }
 
     // addEventListener 各要素にイベントを追加する
@@ -40,19 +36,6 @@ class EventMenu {
 
         this.goEventCreateFormButtonEl.addEventListener('click', this.goEventCreateForm);
 
-    }
-
-    // setEventName イベントの名前を表示させる
-    setEventName() {   
-
-        const eventName = window.Alma.localStorage.get(window.Alma.localStorage.event_name);
-        
-        // なければそのまま返す
-        if (eventName == null) {
-            return;
-        }
-
-        this.eventNameEl.innerHTML = eventName;
     }
 
     // blockClicks クリックイベントを無効にする
