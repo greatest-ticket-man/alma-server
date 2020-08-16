@@ -45,7 +45,7 @@ class Login {
         window.Alma.localStorage.set(window.Alma.localStorage.email, response.result.email);
 
         // 遷移
-        window.location.href = '/home/dashboard';
+        window.Alma.location.href(window.Alma.location.home_dashboard);
     }
 }
 

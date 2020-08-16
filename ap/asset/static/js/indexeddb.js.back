@@ -26,11 +26,6 @@ window.Alma = window.Alma || {};
 
         }
 
-        test() {
-
-            
-
-        }
 
     }
 
