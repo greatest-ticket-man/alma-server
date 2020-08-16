@@ -63,6 +63,7 @@ func Router() *negroni.Negroni {
 	authRouter.HandleFunc("/home/dashboard", dashboard.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/home/dashboard/empty", dashboard.PageHTMLEmpty).Methods("GET")
 	authRouter.HandleFunc("/event/create", eventcreate.PageHTML).Methods("GET")
+	authRouter.HandleFunc("/event/create", eventcreate.Event).Methods("POST")
 	authRouter.HandleFunc("/hello", hello.HTML).Methods("GET")
 	authRouter.HandleFunc("/test", test.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/todo", todo.PageHTML).Methods("GET")

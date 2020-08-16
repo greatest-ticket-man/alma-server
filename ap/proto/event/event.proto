@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/event";
+
+package event;
+
+// RPC
+service Event {
+    rpc Create(CreateEventRequest) returns (CreateEventReply);
+}
+
+// イベント作成のリクエスト
+message CreateEventRequest {
+    string event_name = 1;
+    string organization_name = 2;
+    repeated MemberInfo member_info_list = 3;
+}
+
+// イベント作成のリプライ
+message CreateEventReply {
+    string event_id = 1; // 作成されたイベントID
+}
+
+// MemberInfo 追加されたメンバー情報
+message MemberInfo {
+    string email = 1; // 
+    string authority = 2; // イベントごとの権限
+}

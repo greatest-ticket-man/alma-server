@@ -38,7 +38,6 @@ func doServerErrorProcess(w http.ResponseWriter, err interface{}) {
 			e.Err,
 		)
 	case *almaerror.LogicError:
-		// TODO req statuscode emsgとかをどうにかする
 		reason = errmsg.Get("ja", e.MessageCode, e.Params...)
 		log.Printf("[LOGIC ERROR] statuscode=%d msgcode=%s msg=%s", e.StatusCode, e.MessageCode, reason)
 	case *almaerror.BillingError:
@@ -54,13 +53,10 @@ func doServerErrorProcess(w http.ResponseWriter, err interface{}) {
 		}
 
 		reason = "課金Errorです"
-
 	case error:
-		// TODO
-		log.Println("Unknown errorです", e)
+		log.Printf("Unknown error: %+v\n", e)
 		reason = "不明なエラーが発生しました"
 	default:
-		// TODO
 		log.Println("到達不能Errorです")
 		reason = "到達不能Errorが発生しました"
 
