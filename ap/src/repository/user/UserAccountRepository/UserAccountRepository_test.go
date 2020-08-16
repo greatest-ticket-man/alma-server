@@ -37,7 +37,7 @@ func Test(t *testing.T) {
 			mid := uniqueidutil.GenerateUniqueID()
 
 			// ObjectIDが取得できること
-			result := UserAccountRepository.Insert(ctx, txTime, mid, "test@test.com", "test password")
+			result := UserAccountRepository.Insert(ctx, txTime, mid, "test_name", "test@test.com", "test password")
 
 			g.Assert(mid).Eql(result)
 		})

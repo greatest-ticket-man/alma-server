@@ -50,8 +50,8 @@
             <div class="account-menu__details">
                 <span class="account-menu__details__icon material-icons">person</span>
                 <div class="account-menu__details__links">
-                    <b class="account-menu__details__links__name">Sunjin Yun</b>
-                    <span class="account-menu__details__links__email">sunjin110@gmail.com</span>
+                    <b class="js-account-name account-menu__details__links__name">user name</b>
+                    <span class="js-account-email account-menu__details__links__email">user email</span>
                 </div>
             </div>
             <footer class="account-menu__footer">
@@ -161,12 +161,12 @@
     </div>
 
     <!-- script -->
+    <script src="/static/js/localstorage.js"></script>
     <script src="/static/js/common/detabinator.js"></script>
     <script src="/static/js/common/side-nav.js"></script>
     <script src="/static/js/common/account-menu.js"></script>
     <script src="/static/js/common/event-menu.js"></script>
     <script src="/static/js/request.js"></script>
-    <script src="/static/js/localstorage.js"></script>
     {{.script}}
 
 </body>

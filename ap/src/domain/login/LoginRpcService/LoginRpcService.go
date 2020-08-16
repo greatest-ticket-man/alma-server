@@ -28,5 +28,7 @@ func Login(ctx context.Context, txTime time.Time, email string, password string)
 
 	return &login.LoginReply{
 		Token: token,
+		Name:  userAccount.Name,
+		Email: userAccount.Email,
 	}
 }
