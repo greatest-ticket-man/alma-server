@@ -40,9 +40,12 @@ class Login {
             return;
         }
 
+        // LocalStorageに追加
+        window.Alma.localStorage.set(window.Alma.localStorage.name, response.result.name);
+        window.Alma.localStorage.set(window.Alma.localStorage.email, response.result.email);
+
         // 遷移
         window.location.href = '/home/dashboard';
-
     }
 }
 

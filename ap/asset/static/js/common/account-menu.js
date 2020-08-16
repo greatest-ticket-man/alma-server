@@ -10,6 +10,9 @@ class AccountMenu {
 
         this.accountLogoutButtonEl = document.querySelector('.js-account-logout');
 
+        this.accountNameEl = document.querySelector('.js-account-name');
+        this.accountEmailEl = document.querySelector('.js-account-email');
+
 
         this.detabinator = new Detabinator(this.accountMenuContainerEl);
         this.detabinator.inert = true;
@@ -25,6 +28,9 @@ class AccountMenu {
 
         // Eventの登録
         this.addEventListener();
+
+        // Account情報をセット
+        this.setAccountInfo();
     }
 
     // applyPassive passive event listeningがサポートされている場合は有効にする
@@ -45,6 +51,12 @@ class AccountMenu {
 
         this.supportsPassive = isSupported;
         return this.applyPassive();
+    }
+
+    // setAccountInfo アカウント情報をLocalStorageから取得して表示する
+    setAccountInfo() {
+        this.accountNameEl.innerHTML = window.Alma.localStorage.get(window.Alma.localStorage.name);
+        this.accountEmailEl.innerHTML = window.Alma.localStorage.get(window.Alma.localStorage.email);
     }
 
     // addEventListener 各要素にイベントを追加する

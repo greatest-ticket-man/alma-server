@@ -6,6 +6,8 @@ window.Alma = window.Alma || {};
         constructor() {
             this.event_id = 'event_id'; // イベントのID
             this.event_name = 'event_name'; // イベント名
+            this.name = 'name'; // ユーザーの名前
+            this.email = 'email'; // ユーザーのメールアドレス
         }
 
         /**

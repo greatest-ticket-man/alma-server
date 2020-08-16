@@ -23,6 +23,7 @@ func Signup(ctx context.Context, txTime time.Time, email string, password string
 	UserAccountRepository.Insert(ctx,
 		txTime,
 		uniqueidutil.GenerateUniqueID(),
+		"", // 名前はあとでつけられるようにする
 		email,
 		password,
 	)

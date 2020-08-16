@@ -4,13 +4,9 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/login";
 
 package login;
 
-import "common/common.proto";
-
 // RPC
 service Login {
     rpc Login(LoginRequest) returns (LoginReply) {}
-
-    rpc Test(common.Empty) returns (common.Empty) {}
 }
 
 message LoginRequest {
@@ -20,4 +16,6 @@ message LoginRequest {
 
 message LoginReply {
     string token = 1;
+    string name = 2;
+    string email = 3;
 }
