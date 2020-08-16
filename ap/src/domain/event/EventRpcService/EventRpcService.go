@@ -1,18 +1,16 @@
 package EventRpcService
 
 import (
-	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"context"
-	"log"
 	"time"
 )
 
 // CreateEvent .
 func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, memberInfoList []*event.MemberInfo) *event.CreateEventReply {
 
-	log.Println("mid", mid, "txTime", txTime, "eventName", eventName, "organizationName", organizationName, "memberInfoList is ", jsonutil.Marshal(memberInfoList))
+	// log.Println("mid", mid, "txTime", txTime, "eventName", eventName, "organizationName", organizationName, "memberInfoList is ", jsonutil.Marshal(memberInfoList))
 
 	// organizationは存在しない場合はLogicError
 
