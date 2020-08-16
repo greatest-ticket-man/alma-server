@@ -3,6 +3,7 @@ package EventRpcService
 import (
 	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
+	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"context"
 	"log"
 	"time"
@@ -17,5 +18,10 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 
 	// memberは、メールだけ送る。ペンディング状態にする。メールで参加したら本登録になる
 
-	return &event.CreateEventReply{}
+	// 追加
+	eventID := UserEventRepository.Insert(ctx, txTime, eventName, organizationName, map[string]string{"": ""}, map[string]string{"": ""})
+
+	return &event.CreateEventReply{
+		EventId: eventID.Hex(),
+	}
 }
