@@ -47,6 +47,7 @@ class EventMenu {
 
         const eventName = window.Alma.localStorage.get(window.Alma.localStorage.event_name);
         
+        // なければそのまま返す
         if (eventName == null) {
             return;
         }
