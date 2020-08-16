@@ -99,10 +99,8 @@
                 return;
             }
 
-            console.log('response is ', response);
-
             // 遷移
-
+            window.location.href = `/home/dashboard?eid=${response.result.event_id}`;
         }
 
 
