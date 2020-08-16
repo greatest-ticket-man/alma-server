@@ -99,8 +99,11 @@
                 return;
             }
 
+            // Sesstionに追加
+            window.Alma.localStorage.set(window.Alma.localStorage.event_id, response.result.event_id);
+
             // 遷移
-            window.location.href = `/home/dashboard?eid=${response.result.event_id}`;
+            window.location.href = '/home/dashboard';
         }
 
 
