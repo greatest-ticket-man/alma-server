@@ -1,6 +1,8 @@
 package EventRpcService
 
 import (
+	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/error/errmsg"
 	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"alma-server/ap/src/repository/user/event/UserEventRepository"
@@ -26,4 +28,23 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 		EventId:   eventID,
 		EventName: eventName,
 	}
+}
+
+// GetEvent イベントのデータを取得する
+func GetEvent(ctx context.Context, mid string, eventID string) *event.HomeReply {
+
+	userEvent := UserEventRepository.Get(ctx, eventID)
+	// if userEvent ==
+	// TODO
+	if userEvent == nil {
+		// TODO error handling
+		chk.LE(errmsg.LoginFailed)
+	}
+
+	return &event.HomeReply{
+		EventId:   eventID,
+		EventName: userEvent.Name,
+		// TODO
+	}
+
 }
