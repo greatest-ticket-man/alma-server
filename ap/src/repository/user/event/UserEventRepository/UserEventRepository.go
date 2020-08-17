@@ -5,12 +5,17 @@ import (
 	"context"
 	"reflect"
 	"time"
+
+	"gopkg.in/mgo.v2/bson"
 )
 
 // イベントの情報リポジトリ
 const (
 	// ThisCollectionName .
 	ThisCollectionName = "USER_EVENT"
+
+	// FEventID .
+	FEventID = "_id"
 )
 
 var reflectType = reflect.TypeOf(&UserEvent{})
@@ -42,4 +47,17 @@ func Insert(ctx context.Context, txTime time.Time, eventID string, name string, 
 	}
 
 	return getDb(ctx).InsertOne(userEvent)
+}
+
+// Get .
+func Get(ctx context.Context, eventID string) *UserEvent {
+
+	query := bson.M{FEventID: eventID}
+
+	result := getDb(ctx).FindOne(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.(*UserEvent)
 }

@@ -23,6 +23,9 @@ const (
 
 	// SignupAlreadyUseEmail このメールアドレスはすでに使用されています
 	SignupAlreadyUseEmail = "SignupAlreadyUseEmail"
+
+	// EventNotFound イベントが存在しません
+	EventNotFound = "EventNotFound"
 )
 
 var msgMap = map[string]map[string]string{
@@ -32,5 +35,6 @@ var msgMap = map[string]map[string]string{
 		LoginFailed:           "ログインに失敗しました",
 		LoginWrongPassword:    "パスワードが違います",
 		SignupAlreadyUseEmail: "このメールアドレスはすでに使用されています",
+		EventNotFound:         "イベントが見つかりませんでした、イベントを指定してください",
 	},
 }

@@ -4,9 +4,13 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/event";
 
 package event;
 
+import "common/common.proto";
+
 // RPC
 service Event {
     rpc Create(CreateEventRequest) returns (CreateEventReply);
+
+    rpc Home(common.EventRequest) returns (HomeReply);
 }
 
 // イベント作成のリクエスト
@@ -20,6 +24,14 @@ message CreateEventRequest {
 message CreateEventReply {
     string event_id = 1; // 作成されたイベントID
     string event_name = 2; // イベント名
+}
+
+// イベントホームのリプライ
+message HomeReply {
+    string event_id = 1; // イベントID
+    string event_name = 2; // イベント名
+    string organization_name = 3; // 組織
+    // TODO その他
 }
 
 // MemberInfo 追加されたメンバー情報
