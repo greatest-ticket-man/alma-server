@@ -11,6 +11,8 @@ service Event {
     rpc Create(CreateEventRequest) returns (CreateEventReply);
 
     rpc Home(common.EventRequest) returns (HomeReply);
+
+    rpc GetEvent(common.EventRequest) returns (GetEventNameReply);
 }
 
 // イベント作成のリクエスト
@@ -38,4 +40,10 @@ message HomeReply {
 message MemberInfo {
     string email = 1; // 
     string authority = 2; // イベントごとの権限
+}
+
+// GetEventNameReply イベント名
+message GetEventNameReply {
+    string event_id = 1;
+    string event_name = 2;
 }
