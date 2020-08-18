@@ -33,18 +33,16 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 // GetEvent イベントのデータを取得する
 func GetEvent(ctx context.Context, mid string, eventID string) *event.HomeReply {
 
+	// TODO 下記のEventにアクセスする権限があるかを確認する
+
 	userEvent := UserEventRepository.Get(ctx, eventID)
-	// if userEvent ==
-	// TODO
 	if userEvent == nil {
-		// TODO error handling
-		chk.LE(errmsg.LoginFailed)
+		// イベントが存在しません
+		chk.LE(errmsg.EventNotFound)
 	}
 
 	return &event.HomeReply{
 		EventId:   eventID,
 		EventName: userEvent.Name,
-		// TODO
 	}
-
 }
