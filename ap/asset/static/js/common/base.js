@@ -10,6 +10,8 @@ class Base {
 
     // setEvent eventidのURLが変わっている場合は、そのイベントに切り替える
     // TODO 名前は適宜変わる可能性があるため、毎度取得する
+    // TODO https://www.it-swarm.dev/ja/http/url%E3%82%AF%E3%82%A8%E3%83%AA%E3%83%91%E3%83%A9%E3%83%A1%E3%83%BC%E3%82%BF%E3%82%92http-get%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88%E3%81%AB%E8%BF%BD%E5%8A%A0%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%E3%81%AF%EF%BC%9F/834905187/
+    // ↑サーバーがわでGetRequest変更できないかな
     async setEvent() {
 
         const eventIdParam = this.getParam('event'); // 優先度1
@@ -21,9 +23,6 @@ class Base {
             return;
         }
 
-
-        // let eventName = '';
-        
         let eventId = eventIdLocal;
         if (eventIdParam) {
             eventId = eventIdParam;
