@@ -3,11 +3,11 @@ package login
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/cookieutil"
+	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/CommonHTMLService"
 	"alma-server/ap/src/domain/login/LoginRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/login"
-	"encoding/json"
 	"net/http"
 	"time"
 )
@@ -31,7 +31,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	// param
 	req := &login.LoginRequest{}
-	err := json.NewDecoder(r.Body).Decode(req)
+	err := param.JSON(r, req)
 	chk.SE(err)
 
 	// time

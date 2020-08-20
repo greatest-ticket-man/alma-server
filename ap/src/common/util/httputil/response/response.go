@@ -34,7 +34,7 @@ func ERROR(w http.ResponseWriter, reason string) {
 		"success": false,
 		"reason":  reason,
 	}
-	// w.WriteHeader(http.StatusBadRequest)
+
 	w.WriteHeader(http.StatusOK)
 	jsonutil.Write(w, resultMap)
 }
