@@ -35,8 +35,9 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 					"eventId":   result.EventId,
 					"eventName": result.EventName,
 				})),
-			"script": template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/javascript.html", "")),
-			"css":    template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/css.html", "")),
+			"script":    template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/javascript.html", "")),
+			"css":       template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/css.html", "")),
+			"eventName": result.EventName,
 		},
 	)
 }
