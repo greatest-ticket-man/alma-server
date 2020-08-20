@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventService"
+	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"html/template"
 	"net/http"
 )
@@ -12,6 +13,17 @@ import (
 // PageHTML Dashboard
 func PageHTML(w http.ResponseWriter, r *http.Request) {
 	eventID := param.Value(r, "event")
+
+	// なにも指定されていない場合は、Emptyにリダイレクト
+	if eventID == "" {
+		response.RedirectHTML(w, r, "/home/dashboard/empty")
+	}
+
+	userEvent := EventService.GetEvent(r.Context(), eventID)
+	if userEvent == nil {
+		// TODO error message
+		userEvent = &UserEventRepository.UserEvent{Name: "TODO このパターンはエラーメッセージを出すようにする"}
+	}
 
 	response.HTML(
 		w,
@@ -21,7 +33,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/content.html", "")),
 			"script":      template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/script.html", "")),
 			"css":         template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/css.html", "")),
-			"eventName":   EventService.GetEventName(r.Context(), eventID),
+			"eventName":   userEvent.Name,
 		},
 	)
 }
@@ -37,6 +49,7 @@ func PageHTMLEmpty(w http.ResponseWriter, r *http.Request) {
 			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/content.html", "")),
 			"script":      template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/script.html", "")),
 			"css":         template.HTML(htmlutil.CreateTemplateToString("/template/controller/home/dashboard/empty/css.html", "")),
+			"eventName":   EventService.DefaultEventName,
 		},
 	)
 }
