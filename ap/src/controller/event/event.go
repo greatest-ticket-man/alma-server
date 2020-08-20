@@ -2,11 +2,10 @@ package event
 
 import (
 	"alma-server/ap/src/common/almactx"
-	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
-	"encoding/json"
 	"net/http"
 )
 
@@ -15,7 +14,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	// param
 	req := &common.EventRequest{
-		Event: r.FormValue("event"),
+		Event: param.Value(r, "event"),
 	}
 
 	ctx := r.Context()
@@ -37,18 +36,26 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
-// GetEvent イベント名を取得する
-func GetEvent(w http.ResponseWriter, r *http.Request) {
+// UpdatePageHTML event update form
+func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 
 	// param
-	req := &common.EventRequest{}
-	err := json.NewDecoder(r.Body).Decode(req)
-	chk.SE(err)
+	req := &common.EventRequest{
+		Event: param.Value(r, "event"),
+	}
 
 	ctx := r.Context()
-
 	mid := almactx.GetMid(ctx)
 
 	result := EventRpcService.GetEvent(ctx, mid, req.Event)
-	response.JSON(w, result)
+
+	response.BaseHTML(
+		w,
+		"イベント情報編集",
+		"/template/controller/event/update/content.html",
+		map[string]interface{}{},
+		"/template/controller/event/update/script.html",
+		"/template/controller/event/update/css.html",
+		result.EventName,
+	)
 }
