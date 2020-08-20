@@ -3,6 +3,7 @@ package response
 import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/jsonutil"
+	"html/template"
 	"net/http"
 )
 
@@ -20,6 +21,28 @@ func JSON(w http.ResponseWriter, result interface{}) {
 func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 	w.WriteHeader(http.StatusOK)
 	htmlutil.Template(w, path, data)
+}
+
+// BaseHTML baseテンプレートでhtmlを返す
+func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, mainDataMap map[string]interface{},
+	scriptPath string, cssPath string, eventName string) {
+
+	if eventName == "" {
+		eventName = "イベントの選択"
+	}
+
+	HTML(
+		w,
+		"/template/component/base.html",
+		map[string]interface{}{
+			"mainTitle":   mainTitle,
+			"mainContent": template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
+			"script":      template.HTML(htmlutil.CreateTemplateToString(scriptPath, "")),
+			"css":         template.HTML(htmlutil.CreateTemplateToString(cssPath, "")),
+			"eventName":   eventName,
+		},
+	)
+
 }
 
 // RedirectHTML redirect
