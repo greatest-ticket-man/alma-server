@@ -3,12 +3,10 @@ package event
 import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/error/chk"
-	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"encoding/json"
-	"html/template"
 	"net/http"
 )
 
@@ -25,20 +23,17 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	result := EventRpcService.GetEvent(ctx, mid, req.Event)
 
-	response.HTML(
+	response.BaseHTML(
 		w,
-		"/template/component/base.html",
+		"イベント情報",
+		"/template/controller/event/content.html",
 		map[string]interface{}{
-			"mainTitle": "イベント情報",
-			"mainContent": template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/content.html",
-				map[string]interface{}{
-					"eventId":   result.EventId,
-					"eventName": result.EventName,
-				})),
-			"script":    template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/javascript.html", "")),
-			"css":       template.HTML(htmlutil.CreateTemplateToString("/template/controller/event/css.html", "")),
+			"eventId":   result.EventId,
 			"eventName": result.EventName,
 		},
+		"/template/controller/event/javascript.html",
+		"/template/controller/event/css.html",
+		result.EventName,
 	)
 }
 
