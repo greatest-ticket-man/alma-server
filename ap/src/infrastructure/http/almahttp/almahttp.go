@@ -3,7 +3,6 @@ package almahttp
 import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/controller/event"
-	eventcreate "alma-server/ap/src/controller/event/create"
 	"alma-server/ap/src/controller/hello"
 	"alma-server/ap/src/controller/home/dashboard"
 	"alma-server/ap/src/controller/login"
@@ -64,8 +63,8 @@ func Router() *negroni.Negroni {
 	authRouter.HandleFunc("/home/dashboard", dashboard.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/home/dashboard/empty", dashboard.PageHTMLEmpty).Methods("GET")
 	authRouter.HandleFunc("/event", event.PageHTML).Methods("GET")
-	authRouter.HandleFunc("/event/create", eventcreate.PageHTML).Methods("GET")
-	authRouter.HandleFunc("/event/create", eventcreate.Event).Methods("POST")
+	authRouter.HandleFunc("/event/create", event.CreatePageHTML).Methods("GET")
+	authRouter.HandleFunc("/event/create", event.CreateEvent).Methods("POST")
 	authRouter.HandleFunc("/event/update", event.UpdatePageHTML).Methods("GET")
 	authRouter.HandleFunc("/hello", hello.HTML).Methods("GET")
 	authRouter.HandleFunc("/test", test.PageHTML).Methods("GET")
