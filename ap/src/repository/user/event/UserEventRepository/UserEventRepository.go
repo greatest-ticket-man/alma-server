@@ -25,7 +25,7 @@ type UserEvent struct {
 	ID            string            `bson:"_id,omitempty"`
 	Name          string            `bson:"name"`
 	Organization  string            `bson:"organization"`
-	MemberMap     map[string]string `bson:"members"`
+	MemberMap     map[string]string `bson:"members"` // https://docs.mongodb.com/manual/core/index-multikey/ マルチキーインデックスを使って、主t句できるようにする
 	TempMemberMap map[string]string `bson:"tempmembers"`
 	CreateTime    time.Time         `bson:"ct"`
 	UpdateTime    time.Time         `bson:"ut"`
