@@ -18,7 +18,7 @@ const (
 	FEventID = "_id"
 )
 
-var reflectType = reflect.TypeOf(&UserEvent{})
+var reflectType = reflect.TypeOf((*UserEvent)(nil))
 
 // UserEvent .
 type UserEvent struct {

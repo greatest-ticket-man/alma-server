@@ -48,6 +48,8 @@ class EventCreate {
         const eventName = this.eventTitleEl.value;
         const organizationName = this.organizationNameEl.value;
 
+        
+
         const data = {
             event_name: eventName,
             organization_name: organizationName,
@@ -64,7 +66,7 @@ class EventCreate {
         window.Alma.localStorage.set(window.Alma.localStorage.event_id, response.result.event_id);
 
         // 遷移
-        window.Alma.location.href(window.Alma.location.home_dashboard);
+        // window.Alma.location.href(window.Alma.location.home_dashboard);
     }
 }
 

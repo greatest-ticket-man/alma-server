@@ -14,6 +14,7 @@ var ConfigData *AlmaConfig
 type AlmaConfig struct {
 	Mode           string      `toml:"mode"`
 	RootDirectory  string      `toml:"rootdirectory"`
+	MasterCacheDir string      `toml:"mastercachedir"`
 	HTTPServer     *HTTPServer `toml:"httpserver"`
 	Mail           *Mail       `toml:"mail"`
 	Stripe         *Stripe     `toml:"stripe"`

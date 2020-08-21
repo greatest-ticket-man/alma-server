@@ -6,6 +6,8 @@ mode = "local"
 # ルートディレクトリ、指定なしだとビルドしたときの標準になる
 rootdirectory = ""
 
+mastercachedir="alma-master" # マスターキャッシュ保存ディレクトリ
+
 [httpserver]
 address = ":3000"
 allow_origin = "*" # 許可するドメイン
