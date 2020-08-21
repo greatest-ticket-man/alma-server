@@ -33,7 +33,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"eventId":   result.EventId,
 			"eventName": result.EventName,
 		},
-		"/template/controller/event/javascript.html",
+		"/template/controller/event/script.html",
 		"/template/controller/event/css.html",
 		result.EventName,
 	)

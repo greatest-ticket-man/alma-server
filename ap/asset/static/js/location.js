@@ -5,6 +5,7 @@ window.Alma = window.Alma || {};
         constructor() {
             this.event_info = '/event';
             this.event_create = '/event/create';
+            this.event_update = '/event/update';
             this.home_dashboard = '/home/dashboard';
         }
 
