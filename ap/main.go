@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/jobrunner"
 	"alma-server/ap/src/common/jwt"
+	"alma-server/ap/src/infrastructure/mastercache/cacheall"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"alma-server/ap/src/infrastructure/mongodb/index"
 	"alma-server/ap/src/infrastructure/server"
@@ -30,6 +31,9 @@ func main() {
 
 	// stripe
 	stripe.Setup(config.Stripe)
+
+	// cache setup
+	cacheall.LoadMaster(config.MasterCacheDir)
 
 	// jobrunner
 	jobrunner.Run()

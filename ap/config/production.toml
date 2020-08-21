@@ -6,6 +6,8 @@ mode = "production"
 # ルートディレクトリ、指定なしだとビルドしたときの標準になる
 rootdirectory = "/home/www"
 
+mastercachedir="/home/www/alma-master" # マスターキャッシュ保存ディレクトリ
+
 [httpserver]
 address = ":443"
 allow_origin = "*" # 許可するドメイン
