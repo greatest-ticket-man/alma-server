@@ -46,12 +46,14 @@ class EventForm {
 
         // tableに追加
         let row = this.emailTableEl.insertRow(-1);
-        row.insertCell(0).innerHTML = `<span class="input-container__email-table__icon material-icons">perm_identity</span>`;
-        row.insertCell(1).innerHTML = `id`;
-        row.insertCell(2).innerHTML = `name`;
-        row.insertCell(3).innerHTML = emailText;
-        row.insertCell(4).innerHTML = `観覧`;
-        row.insertCell(5).innerHTML = `<button class="input-container__email-table__delete-button  material-icons" onclick="formCreate.deleteMemberToTable(this);"'>delete</button>`;
+        row.innerHTML = unescape(`
+            <td><span class="input-container__email-table__icon material-icons">perm_identity</span></td>
+            <td>id</td>
+            <td>name</td>
+            <td>${emailText}</td>
+            <td>観覧</td>
+            <td><button class="input-container__email-table__delete-button  material-icons" onclick="formCreate.deleteMemberToTable(this);"'>delete</button></td>
+        `);
 
         // emailTextをcliear
         this.emailTextEl.value = '';
