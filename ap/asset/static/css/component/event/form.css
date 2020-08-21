@@ -76,7 +76,6 @@
 
 .input-container__email-table__icon {
     font-size: 1.4em;
-    text-align: center;
 }
 
 .input-container__email-table__delete-button {
@@ -86,4 +85,8 @@
     border: none;
     border-radius: 2px;
     cursor: pointer;
+}
+
+.display-none {
+    display: none;
 }

@@ -4,11 +4,23 @@ import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/error/errmsg"
 	"alma-server/ap/src/common/util/uniqueidutil"
+	"alma-server/ap/src/domain/event/EventComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
+	"alma-server/ap/src/repository/master/authority/MstEventAuthRepository"
 	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"context"
 	"time"
 )
+
+// CreatePage イベント作成ページ
+func CreatePage() *event.CreateEventPageReply {
+
+	mstEventAuthList := MstEventAuthRepository.GetList()
+
+	return &event.CreateEventPageReply{
+		EventAuthInfoList: EventComponent.CreateEventAuthInfoList(mstEventAuthList),
+	}
+}
 
 // CreateEvent .
 func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, memberInfoList []*event.MemberInfo) *event.CreateEventReply {

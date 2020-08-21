@@ -18,7 +18,9 @@ const ThisCollectionName = "MST_EVENT_AUTH"
 // Role(役割)を組み合わせて、細かな権限を作成できるようにする
 type MstEventAuth struct {
 	ID         string          `bson:"_id,omitempty" json:"_id"`
-	Name       string          `bson:"name" json:"name"`   // 権限の名前
+	Name       string          `bson:"name" json:"name"` // 権限の名前
+	Desc       string          `bson:"desc" json:"desc"`
+	Order      int32           `bson:"order" json:"order"` // 表示順
 	RoleMap    map[string]bool `bson:"roles" json:"roles"` // 役割の詳細 key: roleID, value: 有効かどうか
 	IsRoot     bool            `bson:"root" json:"root"`
 	CreateTime time.Time       `bson:"ct" json:"ct"`
