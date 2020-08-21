@@ -10,7 +10,7 @@ import "common/common.proto";
 service Event {
 
   // イベント作成ページ
-  rpc CreatePageHTML(common.Empty) returns ();
+  rpc CreatePageHTML(common.Empty) returns (CreateEventPageReply);
 
   // イベントを作成
   rpc CreateEvent(CreateEventRequest) returns (CreateEventReply);
