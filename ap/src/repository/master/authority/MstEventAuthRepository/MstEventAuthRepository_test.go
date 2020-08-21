@@ -22,11 +22,21 @@ func Test(t *testing.T) {
 
 		g.It("データが受け取れることを確認する", func() {
 
-			result := MstEventAuthRepository.Get("test-data")
+			result := MstEventAuthRepository.Get("test-data-1")
 
 			log.Println("result is ", jsonutil.Marshal(result))
 
 			g.Assert(result == nil).IsFalse("データが取得できませんでした")
+
+		})
+
+		g.It("リストを受け取る", func() {
+
+			list := MstEventAuthRepository.GetList()
+
+			log.Println("list is ", jsonutil.Marshal(list))
+
+			g.Assert(len(list) == 0).IsFalse()
 
 		})
 
