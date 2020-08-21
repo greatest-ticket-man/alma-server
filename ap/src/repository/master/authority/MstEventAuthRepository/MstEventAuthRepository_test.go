@@ -2,9 +2,7 @@ package MstEventAuthRepository_test
 
 import (
 	"alma-server/ap/src/common/test"
-	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/repository/master/authority/MstEventAuthRepository"
-	"log"
 	"testing"
 
 	"github.com/franela/goblin"
@@ -24,8 +22,6 @@ func Test(t *testing.T) {
 
 			result := MstEventAuthRepository.Get("test-data-1")
 
-			log.Println("result is ", jsonutil.Marshal(result))
-
 			g.Assert(result == nil).IsFalse("データが取得できませんでした")
 
 		})
@@ -33,8 +29,6 @@ func Test(t *testing.T) {
 		g.It("リストを受け取る", func() {
 
 			list := MstEventAuthRepository.GetList()
-
-			log.Println("list is ", jsonutil.Marshal(list))
 
 			g.Assert(len(list) == 0).IsFalse()
 
