@@ -25,7 +25,7 @@ func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 
 // BaseHTML baseテンプレートでhtmlを返す
 func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, mainDataMap map[string]interface{},
-	scriptPath string, cssPath string, eventName string) {
+	scriptPathList []string, cssPathList []string, eventName string) {
 
 	if eventName == "" {
 		eventName = "イベントの選択"
@@ -35,15 +35,36 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, m
 		w,
 		"/template/component/base.html",
 		map[string]interface{}{
-			"mainTitle":   mainTitle,
-			"mainContent": template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
-			"script":      template.HTML(htmlutil.CreateTemplateToString(scriptPath, "")),
-			"css":         template.HTML(htmlutil.CreateTemplateToString(cssPath, "")),
-			"eventName":   eventName,
+			"mainTitle":      mainTitle,
+			"mainContent":    template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
+			"scriptPathList": scriptPathList,
+			"cssPathList":    cssPathList,
+			"eventName":      eventName,
 		},
 	)
 
 }
+
+// func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, mainDataMap map[string]interface{},
+// 	scriptPath string, cssPath string, eventName string) {
+
+// 	if eventName == "" {
+// 		eventName = "イベントの選択"
+// 	}
+
+// 	HTML(
+// 		w,
+// 		"/template/component/base.html",
+// 		map[string]interface{}{
+// 			"mainTitle":   mainTitle,
+// 			"mainContent": template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
+// 			"script":      template.HTML(htmlutil.CreateTemplateToString(scriptPath, "")),
+// 			"css":         template.HTML(htmlutil.CreateTemplateToString(cssPath, "")),
+// 			"eventName":   eventName,
+// 		},
+// 	)
+
+// }
 
 // RedirectHTML redirect
 func RedirectHTML(w http.ResponseWriter, r *http.Request, url string) {

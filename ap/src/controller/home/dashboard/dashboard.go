@@ -29,8 +29,8 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"ダッシュボード",
 		"/template/controller/home/dashboard/content.html",
 		nil,
-		"/template/controller/home/dashboard/script.html",
-		"/template/controller/home/dashboard/css.html",
+		[]string{"/static/js/controller/home/dashboard/dashboard.js"},
+		[]string{"/static/css/controller/home/dashboard/dashboard.css"},
 		userEvent.Name,
 	)
 }
@@ -43,8 +43,8 @@ func PageHTMLEmpty(w http.ResponseWriter, r *http.Request) {
 		"ダッシュボード",
 		"/template/controller/home/dashboard/empty/content.html",
 		nil,
-		"/template/controller/home/dashboard/empty/script.html",
-		"/template/controller/home/dashboard/empty/css.html",
+		[]string{"/static/js/controller/home/dashboard/empty/dashboard_empty.js"},
+		[]string{"/static/css/controller/home/dashboard/empty/dashboard_empty.css"},
 		"",
 	)
 }

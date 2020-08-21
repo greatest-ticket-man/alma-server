@@ -22,7 +22,9 @@
     <link rel="icon" href="/static/img/favicon.ico">
 
     <!-- Custom Css -->
-    {{.css}}
+    {{ range $_, $cssPath := .cssPathList }}
+    <link rel="stylesheet" href="{{ $cssPath }}">
+    {{ end }}
 </head>
 
 <body>
@@ -169,7 +171,12 @@
     <script src="/static/js/request.js"></script>
     <script src="/static/js/location.js"></script> <!-- localstorage.jsに依存 -->
     <script src="/static/js/common/base.js"></script>
-    {{.script}}
+    
+    {{ range $_, $scriptPath := .scriptPathList }}
+    <script src="{{ $scriptPath }}"></script>
+    {{ end }}
+
+
 
 </body>
 
