@@ -27,7 +27,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 	response.BaseHTML(
 		w,
 		"ダッシュボード",
-		"/template/controller/home/dashboard/content.html",
+		"/template/controller/home/dashboard/dashboard.html",
 		nil,
 		[]string{"/static/js/controller/home/dashboard/dashboard.js"},
 		[]string{"/static/css/controller/home/dashboard/dashboard.css"},
@@ -41,7 +41,7 @@ func PageHTMLEmpty(w http.ResponseWriter, r *http.Request) {
 	response.BaseHTML(
 		w,
 		"ダッシュボード",
-		"/template/controller/home/dashboard/empty/content.html",
+		"/template/controller/home/dashboard/empty/dashboard_empty.html",
 		nil,
 		[]string{"/static/js/controller/home/dashboard/empty/dashboard_empty.js"},
 		[]string{"/static/css/controller/home/dashboard/empty/dashboard_empty.css"},
