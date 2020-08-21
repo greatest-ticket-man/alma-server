@@ -50,7 +50,10 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", ""),
 		},
-		[]string{"/static/js/controller/event/create/event_create.js"},
+		[]string{
+			"/static/js/controller/event/create/event_create.js",
+			"/static/js/component/event/form.js",
+		},
 		[]string{
 			"/static/css/component/event/form.css",
 			"/static/css/controller/event/create/event_create.css",
@@ -99,7 +102,9 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", ""),
 		},
-		nil,
+		[]string{
+			"/static/js/component/event/form.js",
+		},
 		[]string{
 			"/static/css/component/event/form.css",
 			"/static/css/controller/event/update/event_update.css",
