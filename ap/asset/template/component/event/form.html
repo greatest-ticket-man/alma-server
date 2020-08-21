@@ -3,14 +3,14 @@
     <div class="input-container">
         <span class="input-container__title">イベント名</span>
         <span class="input-container__desc">(必須)</span>
-        <input class="input-container__input" type="text" autocomplete="off" id="js-event-title">
+        <input class="input-container__input" type="text" autocomplete="off" id="js-event-title" value="{{.eventName}}">
         <span class="input-container__desc">イベント名はあとで変更できます</span>
     </div>
     <div class="input-container">
         <span class="input-container__title">組織</span>
         <span class="input-container__desc">(省略可)</span>
         <input class="input-container__input" type="text" list="organization-candidate" autocomplete="organization"
-            id="js-event-organization">
+            id="js-event-organization" value="{{.eventOrganization}}">
         <span class="input-container__desc">主催の組織を選択してください</span>
         <span class="input-container__desc">あとで追加することもできます</span>
     </div>
