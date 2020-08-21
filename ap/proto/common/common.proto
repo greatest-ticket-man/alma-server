@@ -4,14 +4,13 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/common";
 
 package common;
 
-message Empty {
-}
+message Empty {}
 
 message Error {
-    int32 ecode = 1;
-    string emsg = 2;
+  int32 ecode = 1;
+  string emsg = 2;
 }
 
 message EventRequest {
-    string event = 1; // eventID
+  string event = 1; // eventID
 }
