@@ -11,8 +11,6 @@ import (
 
 var reflectType = reflect.TypeOf((*MstEventAuth)(nil))
 
-// var reflectType = reflect.TypeOf(&MstEventAuth{})
-
 // ThisCollectionName .
 const ThisCollectionName = "MST_EVENT_AUTH"
 
@@ -38,8 +36,22 @@ func LoadCache(cacheAll *gocache.Cache, dir string) {
 	cacheutil.Set(cacheAll, ThisCollectionName, m)
 }
 
+func get() map[string]*MstEventAuth {
+	c, _ := mastercache.Cache.Get(ThisCollectionName)
+	return c.(map[string]*MstEventAuth)
+}
+
 // Get .
 func Get(eventAuthID string) *MstEventAuth {
-	c, _ := mastercache.Cache.Get(ThisCollectionName)
-	return c.(map[string]*MstEventAuth)[eventAuthID]
+	return get()[eventAuthID]
+}
+
+// GetList リストをすべて取得する
+func GetList() []*MstEventAuth {
+	m := get()
+	var list []*MstEventAuth
+	for _, v := range m {
+		list = append(list, v)
+	}
+	return list
 }
