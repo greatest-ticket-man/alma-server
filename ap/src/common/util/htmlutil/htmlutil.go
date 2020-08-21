@@ -18,13 +18,13 @@ func Template(w io.Writer, path string, data interface{}) {
 }
 
 // CreateTemplateToString pathからtemplateを作成する
-func CreateTemplateToString(path string, data interface{}) string {
+func CreateTemplateToString(path string, data interface{}) template.HTML {
 
 	buf := new(bytes.Buffer)
 
 	Template(buf, path, data)
 
-	return buf.String()
+	return template.HTML(buf.String())
 }
 
 // getTemplateFromPath pathからtemplateを取得する

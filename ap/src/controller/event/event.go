@@ -3,6 +3,7 @@ package event
 import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventRpcService"
@@ -90,7 +91,9 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		w,
 		"イベント情報編集",
 		"/template/controller/event/update/content.html",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", ""),
+		},
 		"/template/controller/event/update/script.html",
 		"/template/controller/event/update/css.html",
 		result.EventName,

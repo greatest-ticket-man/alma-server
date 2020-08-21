@@ -1,6 +1,51 @@
 <div class="form-container">
 
-    TODO formをcomponentにする
+    <div class="input-container">
+        <span class="input-container__title">イベント名</span>
+        <span class="input-container__desc">(必須)</span>
+        <input class="input-container__input" type="text" autocomplete="off" id="js-event-title">
+        <span class="input-container__desc">イベント名はあとで変更できます</span>
+    </div>
+    <div class="input-container">
+        <span class="input-container__title">組織</span>
+        <span class="input-container__desc">(省略可)</span>
+        <input class="input-container__input" type="text" list="organization-candidate" autocomplete="organization"
+            id="js-event-organization">
+        <span class="input-container__desc">主催の組織を選択してください</span>
+        <span class="input-container__desc">あとで追加することもできます</span>
+    </div>
+    <div class="input-container">
+        <span class="input-conatiner__title">メンバー</span>
+        <span class="input-container__desc">(省略可)</span>
+        <div class="input-container__email-container">
+            <input class="js-email-text input-container__email-input" type="text" list="member-candidate"
+                autocomplete="email">
+            <button class="js-email-table-add input-container__email-add">追加</button>
+        </div>
+        <span class="input-container__desc">追加したいメンバーのIDかメールアドレスを追加してください</span>
+        <span class="input-container__desc">「,」で区切れば複数同時に追加することもできます</span>
+        <span class="input-container__desc">あとで追加することもできます</span>
+        <table class="js-email-table input-container__email-table">
+            <thead>
+                <th></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>権限</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <!-- table data -->
+            </tbody>
+        </table>
+        <span class="input-container__desc">招待したユーザーにメールを送信します</span>
+    </div>
+
+
+
+    <div class="input-container">
+        <span class="input-container__title"></span>
+    </div>
 
 
     <!-- datalist -->
