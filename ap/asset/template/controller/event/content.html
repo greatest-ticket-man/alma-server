@@ -1,45 +1,41 @@
 <main class="content">
 
-    TODO https://docs.mongodb.com/manual/core/index-multikey/
-    <br>
-    マルチキーインデックスを使ってメンバーの参照を高速化する
-    <br>
-    1万人超えることはないので、Memberもone documentで大丈夫だと思う
-    <br>
-
-    <div class="event-info__title">
-        イベント名 : {{ .eventName }}
+    <div class="event-container">
+        <span class="event-container__title">イベント名</span>
+        <span class="event-container__desc">イベントのタイトルです</span>
+        <p class="event-container__value">{{ .eventName }}</p>
     </div>
 
-    <div class="event-info__desc">
-        イベントID : {{ .eventId }}
+    <div class="event-container">
+        <span class="event-container__title">イベントID</span>
+        <span class="event-container__desc">イベント識別ID、変更不可</span>
+        <p class="event-container__value">{{ .eventId }}</p>
     </div>
 
-    <div class="event-info__agenda">
-        日程 : 
+    <div class="event-container">
+        <span class="event-container__title">組織</span>
+        <span class="event-container__desc">主催している団体</span>
+        <p class="event-container__value">{{ .organization }}</p>
+        
     </div>
 
-    <div class="event-info__organication">
-        組織 : 
+    <div class="event-container">
+        <span class="event-container__title">メンバー</span>
+        <span class="event-container__desc">参加メンバー</span>        
     </div>
 
-    <div class="event-info__place">
-        場所 : 
+    <div class="event-container">
+        <span class="event-container__title">公演日程</span>
+        <span class="event-container__desc"></span>
     </div>
 
-    
-
-    <div class="event-info__member">
-        メンバーもここに出す、Infiniteなんたらしたい
+    <div class="event-container">
+        <span class="event-container__title">公演会場</span>
+        <span class="event-container__desc"></span>
     </div>
 
-    <div>
-        キャパ設定
+    <div class="button-container">
+        <button class="button-container__update">編集</button>
     </div>
-
-    <div>
-        <button>編集</button>
-    </div>
-
 
 </main>
