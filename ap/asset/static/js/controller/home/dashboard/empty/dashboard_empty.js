@@ -1,0 +1,23 @@
+'use strict';
+
+class EmptyDashboard {
+    constructor() {
+
+        // getEl
+        this.createEventPageShowButtonEl = document.querySelector('.js-event-create-page-show');
+
+        this.goEventCreatePage = this.goEventCreatePage.bind(this);
+
+        this.addEventListener();
+    }
+
+    addEventListener() {
+        this.createEventPageShowButtonEl.addEventListener('click', this.goEventCreatePage);
+    }
+
+    goEventCreatePage() {
+        window.Alma.location.href(window.Alma.location.event_create, { eventPath: false });
+    }
+}
+
+new EmptyDashboard();

@@ -1,0 +1,125 @@
+.content {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 30px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.input-container__title {
+    font-size: 1.2em;
+}
+
+.input-container__desc {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8em;
+}
+
+.input-container__input {
+    height: 32px;
+    font-size: 1.0em;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+}
+
+.input-container__input:focus {
+    border: none;
+    
+}
+
+.input-container__email-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-container__email-input {
+    height: 32px;
+    font-size: 1.0em;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    margin-right: 16px;
+    width: 100%;
+}
+
+.input-container__email-add {
+    border: none;
+    padding: 6px 18px;
+    border-radius: 2px;
+    color: #fff;
+    background: royalblue;
+    white-space: nowrap;
+}
+
+.input-container__email-add:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.input-container__email-table {
+    margin: 16px 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 0.8em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    border-collapse: collapse;
+}
+
+.input-container__email-table th {
+    border-bottom: 1px solid #ddd;
+    padding: 4px 8px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.input-container__email-table td {
+    border-bottom:1px solid #ddd;
+    padding: 4px 8px;
+}
+
+.input-container__email-table__icon {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.input-container__email-table__delete-button {
+    font-size: 1.4em;
+    text-align: center;
+    background: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+
+.button-container__create {
+    margin-right: 16px;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 2px;
+    color: #fff;
+    background: royalblue;
+}
+
+.button-container__create:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.button-container__cancel {
+    
+    border: none;
+    padding: 10px 24px;
+    background: none;
+    border-radius: 2px;
+    color: #000;
+}
+
+.button-container__cancel:hover {
+    background: rgba(0, 0, 0, 0.2);
+}

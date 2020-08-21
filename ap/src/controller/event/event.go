@@ -34,8 +34,8 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"eventId":   result.EventId,
 			"eventName": result.EventName,
 		},
-		"/template/controller/event/script.html",
-		"/template/controller/event/css.html",
+		[]string{"/static/js/controller/event/event.js"},
+		[]string{"/static/css/controller/event/event.css"},
 		result.EventName,
 	)
 }
@@ -48,8 +48,8 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		"イベント作成",
 		"/template/controller/event/create/content.html",
 		nil,
-		"/template/controller/event/create/script.html",
-		"/template/controller/event/create/css.html",
+		[]string{"/static/js/controller/event/create/event_create.js"},
+		[]string{"/static/css/controller/event/create/event_create.css"},
 		"",
 	)
 }
@@ -94,8 +94,8 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", ""),
 		},
-		"/template/controller/event/update/script.html",
-		"/template/controller/event/update/css.html",
+		nil,
+		[]string{"/static/css/component/event/form.css"},
 		result.EventName,
 	)
 }
