@@ -9,6 +9,9 @@ class EventForm {
         this.addEmailTableButtonEl = document.querySelector('.js-email-table-add');
         this.emailTableEl = document.querySelector('.js-email-table');
 
+        // this.emailTableRowTemplateEl = document.querySelector('.js-email-table-row-template');
+        this.emailTablePulldownEl = document.querySelector('.js-email-table-pulldown');
+
         this.addMemberToTable = this.addMemberToTable.bind(this);
 
         this.addEventListener();
@@ -40,20 +43,29 @@ class EventForm {
             return;
         }
 
-        // TODO ,でparse
-
-        // TODO serverと通信, idとかnameを取得する, email検索, なければ新規扱い
-
         // tableに追加
         let row = this.emailTableEl.insertRow(-1);
+
+        // pullDownを取得
+        let pullDown = this.emailTablePulldownEl;
+        pullDown.removeAttribute('.display-none');
+
         row.innerHTML = unescape(`
-            <td><span class="input-container__email-table__icon material-icons">perm_identity</span></td>
-            <td>id</td>
-            <td>name</td>
-            <td>${emailText}</td>
-            <td>観覧</td>
-            <td><button class="input-container__email-table__delete-button  material-icons" onclick="formCreate.deleteMemberToTable(this);"'>delete</button></td>
+            <tr>
+                <td>
+                    <span class="input-container__email-table__icon material-icons">perm_identity</span>
+                </td>
+                <td>id</td>
+                <td>name</td>
+                <td>${emailText}</td>
+                <td>
+                    ${this.emailTablePulldownEl.innerHTML}
+                </td>
+                <td><button class="input-container__email-table__delete-button  material-icons"
+                        onclick="formCreate.deleteMemberToTable(this);">delete</button></td>
+            </tr>
         `);
+
 
         // emailTextをcliear
         this.emailTextEl.value = '';

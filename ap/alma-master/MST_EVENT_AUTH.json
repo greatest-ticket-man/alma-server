@@ -1,6 +1,6 @@
-{"_id":"test-data-1","name":"test-auth-1","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":true}
-{"_id":"test-data-2","name":"test-auth-2","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false}
-{"_id":"test-data-3","name":"test-auth-3","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false}
-{"_id":"test-data-4","name":"test-auth-4","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false}
-{"_id":"test-data-5","name":"test-auth-5","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false}
-{"_id":"test-data-6","name":"test-auth-6","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false}
+{"_id":"test-data-1","name":"test-auth-1","desc":"権限1","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":true,"order":1}
+{"_id":"test-data-2","name":"test-auth-2","desc":"権限2","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false,"order":2}
+{"_id":"test-data-3","name":"test-auth-3","desc":"権限3","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false,"order":3}
+{"_id":"test-data-4","name":"test-auth-4","desc":"権限4","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false,"order":4}
+{"_id":"test-data-5","name":"test-auth-5","desc":"権限5","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false,"order":5}
+{"_id":"test-data-6","name":"test-auth-6","desc":"権限6","roles":{"test-role-1":"aa","test-role-2":"bb"},"root":false,"order":6}

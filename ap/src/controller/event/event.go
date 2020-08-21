@@ -43,15 +43,15 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 // CreatePageHTML イベント作成画面
 func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 
+	result := EventRpcService.CreatePage()
+
 	response.BaseHTML(
 		w,
 		"イベント作成",
 		"/template/controller/event/create/event_create.html",
 		map[string]interface{}{
 			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", map[string]interface{}{
-				"result": &event.CreateEventPageReply{
-					EventAuthInfoList: []*event.EventAuthInfo{},
-				},
+				"result": result,
 			}),
 		},
 		[]string{
