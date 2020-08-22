@@ -62,5 +62,5 @@ message GetEventNameReply {
 message EventAuthInfo {
   string event_auth_id = 1;   // イベント権限のID
   string event_auth_name = 2; // イベント権限の名前
-  string event_atuh_desc = 3; // イベント権限の説明
+  string event_auth_desc = 3; // イベント権限の説明
 }

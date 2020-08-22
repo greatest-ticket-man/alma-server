@@ -59,12 +59,13 @@
         <option value="sunjin">sunjin110@gmail.com:尹舜真</option>
     </datalist>
 
+    
+
     <!-- メンバー追加時のデータ -->
     <div class="js-email-table-pulldown display-none">
-        <select class="input-container__email-table__pulldow">
-            <option value="">権限の選択</option>
+        <select class="input-container__email-table__pulldown">
             {{ range $_, $eventAuthInfo := .result.EventAuthInfoList }}
-            <option value="{{ $eventAuthInfo.EventAuthId }}">{{ $eventAuthInfo.EventAuthName }}</option>
+            <option value="{{ $eventAuthInfo.EventAuthId }}">{{ $eventAuthInfo.EventAuthName }} : {{ $eventAuthInfo.EventAuthDesc }}</option>
             {{ end }}
         </select>
     </div>

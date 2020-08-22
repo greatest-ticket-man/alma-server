@@ -87,6 +87,27 @@
     cursor: pointer;
 }
 
+
+.input-container__email-table__pulldown {
+    
+    background: none;
+    border-radius: 2px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border: none;
+    font-size: 0.8em;
+    padding: 4px;
+}
+
+.input-container__email-table__pulldown:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.input-container__email-table__pulldown:focus {
+    background: none;
+}
+
 .display-none {
     display: none;
 }

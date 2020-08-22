@@ -19,7 +19,7 @@ func CreateEventAuthInfoList(mstEventAuthList []*MstEventAuthRepository.MstEvent
 		eventAuthInfo := &event.EventAuthInfo{
 			EventAuthId:   mstEventAuth.ID,
 			EventAuthName: mstEventAuth.Name,
-			EventAtuhDesc: mstEventAuth.Desc,
+			EventAuthDesc: mstEventAuth.Desc,
 		}
 
 		eventAuthInfoList = append(eventAuthInfoList, eventAuthInfo)
