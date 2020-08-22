@@ -40,7 +40,7 @@ func Router() *negroni.Negroni {
 
 	// log and recovery
 	n.Use(negroni.NewLogger())
-	// n.Use(negroni.NewRecovery())
+	n.Use(negroni.NewRecovery())
 
 	// router
 	router := mux.NewRouter()
