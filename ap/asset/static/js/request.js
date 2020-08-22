@@ -2,34 +2,18 @@ window.Alma = window.Alma || {};
 (function(_Alma) {
 
     class Req {
-        // async post(url, data, options = { reload: true }) {
 
-        //     try {
-        //         const response = await fetch(url, data);
-        //         const json = await response.json();
-        //         if (response.status == 200) {
-        //             console.log(`通信に成功しました: ${JSON.stringify(json)}`);
-        //             if (options.reload === true) {
-        //                 window.Alma.toast.success('成功しました');
-        //                 setTimeout(() => location.reload(), 2000);
-        //             }
-        //             return json;
-        //         } 
-        //         if (response.status === 500) {
-        //             window.Alma.toast.error('失敗しました...');
-        //             console.log(json);
-        //         } else if (response.status !== 200) {
-        //             window.Alma.toast.error('失敗しました...');
-        //             console.log(json);
-        //         }
-        //     } catch (e) {
-        //         console.log("error====");
-        //         console.log(e);
-        //     }
-        // }
+        async get(url, data, params = {}, options = { reload: true }) {
+            return this.fetch(url, data, options);
+        }
 
         async post(url, data, options = { reload: true }) {
+            return this.fetch(url, data, options);
+        }
 
+        // fetch jsonを取得する
+        async fetch(url, data, options) {
+            
             try {
                 const response = await fetch(url, data);
                 const json = await response.json();
@@ -41,7 +25,7 @@ window.Alma = window.Alma || {};
                         setTimeout(() => location.reload(), 2000);
                     }
                     return json;
-                }  else {
+                } else {
                     window.Alma.toast.error("失敗しました");
                     console.log(json);
                     return json;
@@ -50,11 +34,12 @@ window.Alma = window.Alma || {};
             } catch (e) {
                 console.log(e);
             }
+
         }
 
-        createPostData(data = {}, cache = 'no-cache') {
-            return {
-                method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        createData(data = {}, cache = 'no-cache', method = '') {
+             return {
+                method: method, // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, cors, *same-origin
                 cache: cache, // *default, no-cache, reload, force-cache, only-if-cached
                 credentials: 'same-origin', // include, same-origin, *omit
@@ -67,6 +52,16 @@ window.Alma = window.Alma || {};
                 body: JSON.stringify(data), // 本文のデータ型は 'Content-Type' ヘッダーと一致する必要があります
             };
         }
+
+        createPostData(data = {}, cache = 'no-cache') {
+            return this.createData(data, cache, 'POST');
+        }
+
+        createGetData(data = {}, cache = 'no-cache') {
+            return this.createData(data, cache, 'GET'); 
+        }
+        
+
     }
 
     _Alma.req = new Req();

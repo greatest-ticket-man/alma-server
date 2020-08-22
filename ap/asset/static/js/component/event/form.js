@@ -13,15 +13,14 @@ class EventForm {
         this.emailTablePulldownEl = document.querySelector('.js-email-table-pulldown');
 
         this.addMemberToTable = this.addMemberToTable.bind(this);
+        this.pushTable = this.pushTable.bind(this);
 
         this.addEventListener();
     }
 
     addEventListener() {
 
-        // this.cancelCreateEventButtonEl.addEventListener('click', this.backBeforePage);
         this.addEmailTableButtonEl.addEventListener('click', this.addMemberToTable);
-        // this.createEventButtonEl.addEventListener('click', this.createEvent);
 
         // Enterで発火するように変更
         const me = this;
@@ -43,6 +42,25 @@ class EventForm {
             return;
         }
 
+        /// TODO split
+
+        let emailTextList = emailText.split(',');
+
+        console.log("email txt list is ", emailTextList);
+
+        // TODO listに則って、データを取得する
+
+        emailTextList.forEach(emailText => {
+            this.pushTable('id', 'name', emailText);
+        })
+
+
+        // emailTextをcliear
+        this.emailTextEl.value = '';
+    }
+
+    
+    pushTable(id, name, email) {
         // tableに追加
         let row = this.emailTableEl.insertRow(-1);
 
@@ -55,9 +73,9 @@ class EventForm {
                 <td>
                     <span class="input-container__email-table__icon material-icons">perm_identity</span>
                 </td>
-                <td>id</td>
-                <td>name</td>
-                <td>${emailText}</td>
+                <td>${id}</td>
+                <td>${name}</td>
+                <td>${email}</td>
                 <td class="input-container__email-table__td">
                     ${this.emailTablePulldownEl.innerHTML}
                 </td>
@@ -65,10 +83,6 @@ class EventForm {
                         onclick="formCreate.deleteMemberToTable(this);">delete</button></td>
             </tr>
         `);
-
-
-        // emailTextをcliear
-        this.emailTextEl.value = '';
     }
 
     // deleteMemberToTable memberのtableを削除する

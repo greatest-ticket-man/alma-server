@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/error/almaerror"
 	"alma-server/ap/src/common/error/errmsg"
 	"alma-server/ap/src/common/util/httputil/response"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -33,6 +34,9 @@ func doServerErrorProcess(w http.ResponseWriter, err interface{}) {
 
 	case *almaerror.SystemError:
 		reason = "エラーが発生しました" // System的なErrorなのでViewには見せない
+
+		fmt.Printf("%+v", e.Err)
+
 		log.Printf("[SYSTEM ERROR] statuscode=%d msgcode=%s msg=%s err=%v", e.StatusCode, e.MessageCode,
 			errmsg.Get("ja", e.MessageCode, e.Params...),
 			e.Err,
