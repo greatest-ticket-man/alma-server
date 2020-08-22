@@ -58,7 +58,7 @@ class EventForm {
                 <td>id</td>
                 <td>name</td>
                 <td>${emailText}</td>
-                <td>
+                <td class="input-container__email-table__td">
                     ${this.emailTablePulldownEl.innerHTML}
                 </td>
                 <td><button class="input-container__email-table__delete-button  material-icons"

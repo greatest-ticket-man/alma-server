@@ -26,14 +26,6 @@ class EventCreate {
         this.cancelCreateEventButtonEl.addEventListener('click', this.backBeforePage);
         this.createEventButtonEl.addEventListener('click', this.createEvent);
 
-        // Enterで発火するように変更
-        const me = this;
-        this.emailTextEl.addEventListener('keypress', function (element) {
-            if (element.keyCode === 13) {
-                element.preventDefault();
-                me.addEmailTableButtonEl.click();
-            }
-        })
     }
 
     // backBeforePage 前のページに戻る
