@@ -2,7 +2,8 @@
 
 // use /static/js/component/event/form.js
 
-
+// TODO
+// EventFormが存在するかを確認する
 
 class EventCreate {
     constructor() {
