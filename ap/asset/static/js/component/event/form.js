@@ -1,5 +1,9 @@
 'use strict';
 
+// use /static/js/util/validation/validation.js validationUtil
+
+
+
 class EventForm {
 
     constructor() {
@@ -42,25 +46,26 @@ class EventForm {
             return;
         }
 
-        /// TODO split
-
+        // split
         let emailTextList = emailText.split(',');
 
-        console.log("email txt list is ", emailTextList);
-
-        // TODO listに則って、データを取得する
-
         emailTextList.forEach(emailText => {
-            this.pushTable('id', 'name', emailText);
-        })
 
+            if (!ValidationUtil.email(emailText)) {
+                // TODO toast
+                alert(`${emailText}はメールアドレスではありません`);
+                return;
+            }
+
+            this.pushTable(emailText);
+        })
 
         // emailTextをcliear
         this.emailTextEl.value = '';
     }
 
     
-    pushTable(id, name, email) {
+    pushTable(email) {
         // tableに追加
         let row = this.emailTableEl.insertRow(-1);
 
@@ -73,8 +78,6 @@ class EventForm {
                 <td>
                     <span class="input-container__email-table__icon material-icons">perm_identity</span>
                 </td>
-                <td>${id}</td>
-                <td>${name}</td>
                 <td>${email}</td>
                 <td class="input-container__email-table__td">
                     ${this.emailTablePulldownEl.innerHTML}
