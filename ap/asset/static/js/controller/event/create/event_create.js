@@ -48,11 +48,7 @@ class EventCreate {
             member_info_list: memberInfoList,
         };
 
-        console.log("data is ", data);
-
         let response = await window.Alma.req.post('/event/create', window.Alma.req.createPostData(data), { reload: false });
-
-        console.log("reseponse is ", response);
 
         if (!response || !response.success) {
             alert('作成に失敗しました');
