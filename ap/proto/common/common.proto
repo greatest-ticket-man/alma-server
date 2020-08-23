@@ -14,3 +14,7 @@ message Error {
 message EventRequest {
   string event = 1; // eventID
 }
+
+message EmailRequest {
+  string email = 1; // email
+}

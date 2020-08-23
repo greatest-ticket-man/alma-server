@@ -4,7 +4,14 @@ window.Alma = window.Alma || {};
     class Req {
 
         async get(url, data, params = {}, options = { reload: true }) {
-            return this.fetch(url, data, options);
+
+            // パラメータを追加
+            const urlObj = new URL(url, `${location.protocol}//${document.domain}:${location.port}`);
+            for (const [key, value] of Object.entries(params)) {
+                urlObj.searchParams.set(key, value);
+            }
+
+            return this.fetch(urlObj.toString(), data, options);
         }
 
         async post(url, data, options = { reload: true }) {
