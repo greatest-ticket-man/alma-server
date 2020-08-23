@@ -6,10 +6,12 @@ import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
+	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -74,6 +76,8 @@ func CreateEvent(w http.ResponseWriter, r *http.Request) {
 	req := &event.CreateEventRequest{}
 	err := json.NewDecoder(r.Body).Decode(req)
 	chk.SE(err)
+
+	log.Println("req is ", jsonutil.Marshal(req))
 
 	ctx := r.Context()
 

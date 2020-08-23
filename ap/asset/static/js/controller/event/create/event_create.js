@@ -1,5 +1,9 @@
 'use strict';
 
+// use /static/js/component/event/form.js
+
+
+
 class EventCreate {
     constructor() {
 
@@ -41,14 +45,32 @@ class EventCreate {
         const organizationName = this.organizationNameEl.value;
 
 
-        console.log("emailTableEl is ", this.emailTableEl);
+        // TODO form.jsでこれを実装する
+        let memberInfoList = [];
+        for (let row of this.emailTableEl.rows) {
 
-        
+            let memberInfo = {
+                email: '',
+                authority: '',
+            };
+
+            for (let cell of row.cells) {
+                if (cell.classList.contains('js-email-table-email')) {
+                    memberInfo.email = cell.innerText;
+                }
+                else if (cell.classList.contains('js-email-table-auth')) {
+                    const select = cell.children[0];
+                    memberInfo.authority = select.value;
+                }
+            }
+
+            memberInfoList.push(memberInfo);
+        }
 
         const data = {
             event_name: eventName,
             organization_name: organizationName,
-            member_info_list: null,
+            member_info_list: memberInfoList,
         };
 
         console.log("data is ", data);

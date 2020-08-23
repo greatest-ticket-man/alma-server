@@ -39,11 +39,13 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 func Insert(ctx context.Context, txTime time.Time, eventID string, name string, organization string, memberMap map[string]string, tempMemberMap map[string]string) interface{} {
 
 	userEvent := &UserEvent{
-		ID:           eventID,
-		Name:         name,
-		Organization: organization,
-		CreateTime:   txTime,
-		UpdateTime:   txTime,
+		ID:            eventID,
+		Name:          name,
+		Organization:  organization,
+		MemberMap:     memberMap,
+		TempMemberMap: tempMemberMap,
+		CreateTime:    txTime,
+		UpdateTime:    txTime,
 	}
 
 	return getDb(ctx).InsertOne(userEvent)

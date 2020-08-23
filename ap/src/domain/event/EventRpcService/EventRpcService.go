@@ -33,8 +33,14 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 
 	eventID := uniqueidutil.GenerateUniqueID()
 
+	// TODO tempMember
+	tempMemberMap := map[string]string{}
+	for _, memberInfo := range memberInfoList {
+		tempMemberMap[memberInfo.Email] = memberInfo.Authority
+	}
+
 	// 追加
-	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName, map[string]string{"": ""}, map[string]string{"": ""})
+	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName, nil, tempMemberMap)
 
 	return &event.CreateEventReply{
 		EventId:   eventID,
