@@ -12,7 +12,7 @@ class EventInfo {
     }
 
     addEventListener() {
-    this.updateEventButtonEl.addEventListener('click', this.goUpdateEventPage);
+        this.updateEventButtonEl.addEventListener('click', this.goUpdateEventPage);
     }
 
     // goUpdateEventPage 編集ページに遷移

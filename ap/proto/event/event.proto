@@ -12,8 +12,13 @@ service Event {
   // イベント作成ページ
   rpc CreatePage(common.Empty) returns (CreateEventPageReply);
 
+  // イベントの更新ページ
+  rpc UpdatePage(common.EventRequest) returns (common.Empty);
+
   // イベントを作成
   rpc CreateEvent(CreateEventRequest) returns (CreateEventReply);
+
+  // 
 
   rpc Home(common.EventRequest) returns (HomeReply);
 
@@ -36,6 +41,14 @@ message CreateEventRequest {
 message CreateEventReply {
   string event_id = 1;   // 作成されたイベントID
   string event_name = 2; // イベント名
+}
+
+// イベント編集のリクエスト
+message UpdateEventRequest {
+  string event_id = 1;
+  string event_name = 2;
+  string organization_name = 3;
+  repeated MemberInfo member_info_list = 4;
 }
 
 // イベントホームのリプライ

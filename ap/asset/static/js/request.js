@@ -3,6 +3,11 @@ window.Alma = window.Alma || {};
 
     class Req {
 
+        constructor() {
+            this.event_create = '/event/create';
+            this.event_update = '/event/update';
+        }
+
         async get(url, data, params = {}, options = { reload: true }) {
 
             // パラメータを追加

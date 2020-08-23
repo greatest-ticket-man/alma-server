@@ -69,28 +69,6 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
-// CreateEvent イベントの作成
-func CreateEvent(w http.ResponseWriter, r *http.Request) {
-
-	// param
-	req := &event.CreateEventRequest{}
-	err := json.NewDecoder(r.Body).Decode(req)
-	chk.SE(err)
-
-	log.Println("req is ", jsonutil.Marshal(req))
-
-	ctx := r.Context()
-
-	mid := almactx.GetMid(ctx)
-	txTime := almactx.GetTxTime(ctx)
-
-	// create event
-	reply := EventRpcService.CreateEvent(ctx, mid, txTime, req.EventName, req.OrganizationName, req.MemberInfoList)
-
-	// response
-	response.JSON(w, reply)
-}
-
 // UpdatePageHTML event update form
 func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 
@@ -117,6 +95,7 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		[]string{
 			"/static/js/util/validation/validation.js",
 			"/static/js/component/event/form.js",
+			"/static/js/controller/event/update/event_update.js",
 		},
 		[]string{
 			"/static/css/component/event/form.css",
@@ -124,4 +103,48 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		},
 		result.EventName,
 	)
+}
+
+// CreateEvent イベントの作成
+func CreateEvent(w http.ResponseWriter, r *http.Request) {
+
+	// param
+	req := &event.CreateEventRequest{}
+	err := json.NewDecoder(r.Body).Decode(req)
+	chk.SE(err)
+
+	log.Println("req is ", jsonutil.Marshal(req))
+
+	ctx := r.Context()
+
+	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
+
+	// create event
+	reply := EventRpcService.CreateEvent(ctx, mid, txTime, req.EventName, req.OrganizationName, req.MemberInfoList)
+
+	// response
+	response.JSON(w, reply)
+}
+
+// UpdateEvent イベントの更新
+func UpdateEvent(w http.ResponseWriter, r *http.Request) {
+
+	// param
+	req := &event.UpdateEventRequest{}
+	err := param.JSON(r, req)
+	chk.SE(err)
+
+	log.Println("req is ", jsonutil.Marshal(req))
+
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
+
+	// update event
+	EventRpcService.UpdateEvent(ctx, mid, txTime, req.EventId, req.EventName, req.OrganizationName, req.MemberInfoList)
+
+	// response
+	response.JSON(w, &common.Empty{})
+
 }
