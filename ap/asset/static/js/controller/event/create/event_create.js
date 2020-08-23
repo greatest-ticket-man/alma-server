@@ -2,8 +2,12 @@
 
 // use /static/js/component/event/form.js
 
-// TODO
 // EventFormが存在するかを確認する
+if (typeof eventForm === 'undefined') {
+    alert('依存しているeventFormが見つかりませんでした');
+    console.error('eventFormが見つかりません');
+    console.error('/static/js/component/event/form.jsをimportしてください');
+}
 
 class EventCreate {
     constructor() {
@@ -11,14 +15,6 @@ class EventCreate {
         // getEl
         this.cancelCreateEventButtonEl = document.querySelector('.js-event-create-cancel');
         this.createEventButtonEl = document.querySelector('.js-event-create');
-
-        this.emailTextEl = document.querySelector('.js-email-text');
-        this.emailTableEl = document.querySelector('.js-email-table-body');
-
-        // value
-        this.eventTitleEl = document.getElementById('js-event-title');
-        this.organizationNameEl = document.getElementById('js-event-organization');
-
 
         this.backBeforePage = this.backBeforePage.bind(this);
         this.createEvent = this.createEvent.bind(this);
@@ -42,31 +38,9 @@ class EventCreate {
     // createEvent
     async createEvent() {
 
-        const eventName = this.eventTitleEl.value;
-        const organizationName = this.organizationNameEl.value;
-
-
-        // TODO form.jsでこれを実装する
-        let memberInfoList = [];
-        for (let row of this.emailTableEl.rows) {
-
-            let memberInfo = {
-                email: '',
-                authority: '',
-            };
-
-            for (let cell of row.cells) {
-                if (cell.classList.contains('js-email-table-email')) {
-                    memberInfo.email = cell.innerText;
-                }
-                else if (cell.classList.contains('js-email-table-auth')) {
-                    const select = cell.children[0];
-                    memberInfo.authority = select.value;
-                }
-            }
-
-            memberInfoList.push(memberInfo);
-        }
+        const eventName = eventForm.getEventName();
+        const organizationName = eventForm.getOrganizationName();
+        const memberInfoList = eventForm.getMemberInfoList();
 
         const data = {
             event_name: eventName,

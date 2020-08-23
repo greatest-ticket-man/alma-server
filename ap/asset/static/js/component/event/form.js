@@ -13,15 +13,14 @@ if (typeof ValidationUtil === 'undefined') {
 class EventForm {
 
     constructor() {
-
-
-
         // getEl
         this.emailTextEl = document.querySelector('.js-email-text');
         this.addEmailTableButtonEl = document.querySelector('.js-email-table-add');
         this.emailTableEl = document.querySelector('.js-email-table-body');
-
         this.emailTablePulldownEl = document.querySelector('.js-email-table-pulldown');
+
+        this.eventTitleEl = document.getElementById('js-event-title');
+        this.organizationNameEl = document.getElementById('js-event-organization');
 
         this.addMemberToTable = this.addMemberToTable.bind(this);
         this.pushTable = this.pushTable.bind(this);
@@ -100,6 +99,46 @@ class EventForm {
         let tr = elem.parentNode.parentNode;
         this.emailTableEl.deleteRow(tr.sectionRowIndex);
     }
+
+    // getEventName eventNameのValueを取得する
+    getEventName() {
+        return this.eventTitleEl.value;
+    }
+
+    // getOrganizationName
+    getOrganizationName() {
+        return this.organizationNameEl.value;
+    }
+
+    // getMemberInfoList tableのデータを取得する
+    getMemberInfoList() {
+
+        let memberInfoList = [];
+
+        for (let row of this.emailTableEl.rows) {
+
+            let memberInfo = {
+                email: '',
+                authority: '',
+            };
+
+            for (let cell of row.cells) {
+
+                if (cell.classList.contains('js-email-table-email')) {
+                    memberInfo.email = cell.innerText;
+                } else if (cell.classList.contains('js-email-table-auth')) {
+                    const select = cell.children[0];
+                    memberInfo.authority = select.value;
+                }
+
+            }
+            memberInfoList.push(memberInfo);
+        }
+
+        return memberInfoList;
+    }
+
+    
 
 }
 
