@@ -85,8 +85,8 @@ class EventForm {
                 <td>
                     <span class="input-container__email-table__icon material-icons">perm_identity</span>
                 </td>
-                <td>${email}</td>
-                <td class="input-container__email-table__td">
+                <td class="js-email-table-email">${email}</td>
+                <td class="js-email-table-auth input-container__email-table__td">
                     ${this.emailTablePulldownEl.innerHTML}
                 </td>
                 <td><button class="input-container__email-table__delete-button  material-icons"
