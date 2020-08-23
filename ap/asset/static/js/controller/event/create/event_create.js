@@ -8,7 +8,7 @@ class EventCreate {
         this.createEventButtonEl = document.querySelector('.js-event-create');
 
         this.emailTextEl = document.querySelector('.js-email-text');
-        this.emailTableEl = document.querySelector('.js-email-table');
+        this.emailTableEl = document.querySelector('.js-email-table-body');
 
         // value
         this.eventTitleEl = document.getElementById('js-event-title');
@@ -39,6 +39,9 @@ class EventCreate {
 
         const eventName = this.eventTitleEl.value;
         const organizationName = this.organizationNameEl.value;
+
+
+        console.log("emailTableEl is ", this.emailTableEl);
 
         
 

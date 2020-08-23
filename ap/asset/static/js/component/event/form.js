@@ -19,9 +19,8 @@ class EventForm {
         // getEl
         this.emailTextEl = document.querySelector('.js-email-text');
         this.addEmailTableButtonEl = document.querySelector('.js-email-table-add');
-        this.emailTableEl = document.querySelector('.js-email-table');
+        this.emailTableEl = document.querySelector('.js-email-table-body');
 
-        // this.emailTableRowTemplateEl = document.querySelector('.js-email-table-row-template');
         this.emailTablePulldownEl = document.querySelector('.js-email-table-pulldown');
 
         this.addMemberToTable = this.addMemberToTable.bind(this);
