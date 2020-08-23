@@ -57,9 +57,9 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			}),
 		},
 		[]string{
-			"/static/js/controller/event/create/event_create.js",
 			"/static/js/util/validation/validation.js",
 			"/static/js/component/event/form.js",
+			"/static/js/controller/event/create/event_create.js",
 		},
 		[]string{
 			"/static/css/component/event/form.css",
