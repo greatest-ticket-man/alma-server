@@ -90,7 +90,7 @@ class EventForm {
                     ${this.emailTablePulldownEl.innerHTML}
                 </td>
                 <td><button class="input-container__email-table__delete-button  material-icons"
-                        onclick="formCreate.deleteMemberToTable(this);">delete</button></td>
+                        onclick="eventForm.deleteMemberToTable(this);">delete</button></td>
             </tr>
         `);
     }
@@ -103,4 +103,4 @@ class EventForm {
 
 }
 
-const formCreate = new EventForm();
+const eventForm = new EventForm();
