@@ -2,11 +2,19 @@
 
 // use /static/js/util/validation/validation.js validationUtil
 
+// 依存Classの存在を確認
+if (typeof ValidationUtil === 'undefined') {
+    alert('依存しているValidationUtilが見つかりませんでした');
+    console.error('ValidationUtilが見つかりません');
+    console.error('/static/js/util/validation/validation.jsをimportしてください');
+}
 
 
 class EventForm {
 
     constructor() {
+
+
 
         // getEl
         this.emailTextEl = document.querySelector('.js-email-text');
