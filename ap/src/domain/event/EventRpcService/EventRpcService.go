@@ -48,6 +48,33 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 	}
 }
 
+// UpdateEvent .
+func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID string, eventName string, organizationName string, memberInfoList []*event.MemberInfo) bool {
+
+	// TODO event を取得する
+
+	// TODO 編集権限があるかを確認する
+
+	// TODO
+	userEvent := UserEventRepository.Get(ctx, eventID)
+	if userEvent == nil {
+		// イベントが存在しません
+		chk.LE(errmsg.EventNotFound)
+	}
+
+	// TODO errhandling 編集権限がありません
+
+	tempMemberMap := map[string]string{}
+	for _, memberInfo := range memberInfoList {
+		tempMemberMap[memberInfo.Email] = memberInfo.Authority
+	}
+
+	// update
+	UserEventRepository.Update(ctx, txTime, eventID, eventName, organizationName, nil, tempMemberMap)
+
+	return false
+}
+
 // GetEvent イベントのデータを取得する
 func GetEvent(ctx context.Context, mid string, eventID string) *event.HomeReply {
 

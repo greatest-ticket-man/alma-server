@@ -7,6 +7,8 @@ window.Alma = window.Alma || {};
             this.event_create = '/event/create';
             this.event_update = '/event/update';
             this.home_dashboard = '/home/dashboard';
+
+            this.baseURL = `${location.protocol}//${document.domain}:${location.port}`;
         }
 
 
@@ -16,7 +18,7 @@ window.Alma = window.Alma || {};
          */
         href(path, options = { eventPath: true }) {
 
-            const url = new URL(path, `${location.protocol}//${document.domain}:${location.port}`);
+            const url = new URL(path, this.baseURL);
             const params = new URLSearchParams(url.search.slice(1));
 
             // eventのparamがない場合は、追加する
@@ -30,6 +32,22 @@ window.Alma = window.Alma || {};
 
             // 遷移
             window.location.href = `${path}?${params.toString()}`;
+        }
+
+        /**
+         * URLのKeyを取得する
+         * @param {string} key param key
+         */
+        getParam(key = '', path) {
+
+            if (!path) {
+                path = location.href;
+            }
+
+            const url = new URL(path, this.baseURL);
+            const parmas = new URLSearchParams(url.search.slice(1));
+            return parmas.get(key);
+
         }
 
     }
