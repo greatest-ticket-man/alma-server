@@ -113,8 +113,6 @@ func CreateEvent(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(req)
 	chk.SE(err)
 
-	log.Println("req is ", jsonutil.Marshal(req))
-
 	ctx := r.Context()
 
 	mid := almactx.GetMid(ctx)
