@@ -46,13 +46,10 @@ func Router() *negroni.Negroni {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", top.PageHTML).Methods("GET")
-
 	router.HandleFunc("/login", login.PageHTML).Methods("GET")
 	router.HandleFunc("/login", login.Login).Methods("POST")
-
 	router.HandleFunc("/signup", signup.PageHTML).Methods("GET")
 	router.HandleFunc("/signup", signup.Signup).Methods("POST")
-
 	router.HandleFunc("/logout", login.Logout)
 
 	// static Staticコンテンツ
