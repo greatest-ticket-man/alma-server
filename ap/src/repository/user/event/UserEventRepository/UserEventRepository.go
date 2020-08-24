@@ -3,7 +3,6 @@ package UserEventRepository
 import (
 	"alma-server/ap/src/infrastructure/mongodb"
 	"context"
-	"fmt"
 	"reflect"
 	"time"
 
@@ -73,9 +72,11 @@ func Update(ctx context.Context, txTime time.Time, eventID string, name string, 
 	}
 
 	// tempMemberMap
+	tempMemberSetMap := bson.M{}
 	for email, auth := range tempMemberMap {
-		set[fmt.Sprintf("%s.%s", fTempMemberMap, email)] = auth // TODO .をescapeする方法を探す
+		tempMemberSetMap[email] = auth
 	}
+	set[fTempMemberMap] = tempMemberSetMap
 
 	update := bson.M{
 		"$set": set,
