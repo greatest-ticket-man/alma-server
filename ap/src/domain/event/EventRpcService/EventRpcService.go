@@ -23,7 +23,7 @@ func CreatePage() *event.CreateEventPageReply {
 }
 
 // CreateEvent .
-func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, memberInfoList []*event.MemberInfo) *event.CreateEventReply {
+func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, memberList []*event.MemberInfo) *event.CreateEventReply {
 
 	// log.Println("mid", mid, "txTime", txTime, "eventName", eventName, "organizationName", organizationName, "memberInfoList is ", jsonutil.Marshal(memberInfoList))
 
@@ -34,13 +34,24 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 	eventID := uniqueidutil.GenerateUniqueID()
 
 	// TODO tempMember
-	tempMemberMap := map[string]string{}
-	for _, memberInfo := range memberInfoList {
-		tempMemberMap[memberInfo.Email] = memberInfo.Authority
+	// tempMemberMap := map[string]string{}
+	// for _, memberInfo := range memberInfoList {
+	// tempMemberMap[memberInfo.Email] = memberInfo.Authority
+	// }
+
+	memberInfoList := []*UserEventRepository.MemberInfo{
+		{
+			Mid:        mid,
+			AuthID:     "todo root",
+			CreateTime: txTime,
+			UpdateTime: txTime,
+		},
 	}
 
+	tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
+
 	// 追加
-	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName, nil, tempMemberMap)
+	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName, memberInfoList, tempMemberInfoList)
 
 	return &event.CreateEventReply{
 		EventId:   eventID,
@@ -49,7 +60,7 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 }
 
 // UpdateEvent .
-func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID string, eventName string, organizationName string, memberInfoList []*event.MemberInfo) bool {
+func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID string, eventName string, organizationName string, memberList []*event.MemberInfo) bool {
 
 	// TODO event を取得する
 
@@ -64,13 +75,10 @@ func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID stri
 
 	// TODO errhandling 編集権限がありません
 
-	tempMemberMap := map[string]string{}
-	for _, memberInfo := range memberInfoList {
-		tempMemberMap[memberInfo.Email] = memberInfo.Authority
-	}
+	tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
 
 	// update
-	UserEventRepository.Update(ctx, txTime, eventID, eventName, organizationName, nil, tempMemberMap)
+	UserEventRepository.Update(ctx, txTime, eventID, eventName, organizationName, tempMemberInfoList)
 
 	return false
 }

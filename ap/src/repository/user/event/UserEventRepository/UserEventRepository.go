@@ -17,27 +17,45 @@ const (
 	// FEventID .
 	FEventID = "_id"
 
-	fName          = "name"
-	fOrganization  = "organization"
-	fMemberMap     = "members"
-	fTempMemberMap = "tempmembers"
-	fCreateTime    = "ct"
-	fUpdateTime    = "ut"
+	fName           = "name"
+	fOrganization   = "organization"
+	FMemberList     = "members"
+	FTempMemberList = "tmps"
+	fCreateTime     = "ct"
+	fUpdateTime     = "ut"
+
+	FMemberInfoMid = "mid"
+
+	FTempMemberInfoEmail = "email"
 )
 
 var reflectType = reflect.TypeOf((*UserEvent)(nil))
 
-// var reflectType = reflect.TypeOf(&UserEvent{})
-
 // UserEvent .
 type UserEvent struct {
-	ID            string            `bson:"_id,omitempty"`
-	Name          string            `bson:"name"`
-	Organization  string            `bson:"organization"`
-	MemberMap     map[string]string `bson:"members,omitempty"` // https://docs.mongodb.com/manual/core/index-multikey/ マルチキーインデックスを使って、主t句できるようにする // 将来的にListにする？
-	TempMemberMap map[string]string `bson:"tempmembers"`       // key: email, value: 権限
-	CreateTime    time.Time         `bson:"ct"`
-	UpdateTime    time.Time         `bson:"ut"`
+	ID             string            `bson:"_id,omitempty"`
+	Name           string            `bson:"name"`
+	Organization   string            `bson:"organization"`
+	MemberList     []*MemberInfo     `bson:"members"`
+	TempMemberList []*TempMemberInfo `bson:"tmps"`
+	CreateTime     time.Time         `bson:"ct"`
+	UpdateTime     time.Time         `bson:"ut"`
+}
+
+// MemberInfo .
+type MemberInfo struct {
+	Mid        string    `bson:"mid"`
+	AuthID     string    `bson:"auth"`
+	CreateTime time.Time `bson:"ct"`
+	UpdateTime time.Time `bson:"ut"`
+}
+
+// TempMemberInfo .
+type TempMemberInfo struct {
+	Email      string    `bson:"email"`
+	AuthID     string    `bson:"auth"`
+	CreateTime time.Time `bson:"ct"`
+	UpdateTime time.Time `bson:"ut"`
 }
 
 func getDb(ctx context.Context) *mongodb.AlmaCollection {
@@ -45,46 +63,40 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 }
 
 // Insert イベントの作成
-func Insert(ctx context.Context, txTime time.Time, eventID string, name string, organization string, memberMap map[string]string, tempMemberMap map[string]string) interface{} {
+func Insert(ctx context.Context, txTime time.Time, eventID string, name string, organization string, memberList []*MemberInfo, tempMemberList []*TempMemberInfo) interface{} {
 
 	userEvent := &UserEvent{
-		ID:            eventID,
-		Name:          name,
-		Organization:  organization,
-		MemberMap:     memberMap,
-		TempMemberMap: tempMemberMap,
-		CreateTime:    txTime,
-		UpdateTime:    txTime,
+		ID:             eventID,
+		Name:           name,
+		Organization:   organization,
+		MemberList:     memberList,
+		TempMemberList: tempMemberList,
+		CreateTime:     txTime,
+		UpdateTime:     txTime,
 	}
 
 	return getDb(ctx).InsertOne(userEvent)
 }
 
 // Update イベントの編集
-func Update(ctx context.Context, txTime time.Time, eventID string, name string, organization string, memberMap map[string]string, tempMemberMap map[string]string) int32 {
+func Update(ctx context.Context, txTime time.Time, eventID string, name string, organization string, tempMemberList []*TempMemberInfo) int32 {
 
 	query := bson.M{FEventID: eventID}
 
-	set := bson.M{
-		fName:         name,
-		fOrganization: organization,
-		fUpdateTime:   txTime,
-	}
-
-	// tempMemberMap
-	tempMemberSetMap := bson.M{}
-	for email, auth := range tempMemberMap {
-		tempMemberSetMap[email] = auth
-	}
-	set[fTempMemberMap] = tempMemberSetMap
-
 	update := bson.M{
-		"$set": set,
+		"$set": bson.M{
+			fName:         name,
+			fOrganization: organization,
+			fUpdateTime:   txTime,
+		},
+		"$push": bson.M{
+			FTempMemberList: bson.M{
+				"$each": tempMemberList,
+			},
+		},
 	}
 
-	// TODO memberMap
 	return getDb(ctx).UpdateOne(query, update)
-
 }
 
 // Get .
