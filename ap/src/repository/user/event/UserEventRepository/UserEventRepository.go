@@ -89,7 +89,7 @@ func Update(ctx context.Context, txTime time.Time, eventID string, name string, 
 			fOrganization: organization,
 			fUpdateTime:   txTime,
 		},
-		"$push": bson.M{
+		"$addToSet": bson.M{
 			FTempMemberList: bson.M{
 				"$each": tempMemberList,
 			},
