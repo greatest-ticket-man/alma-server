@@ -68,3 +68,6 @@ https://github.com/GoogleChromeLabs/ui-element-samples/tree/gh-pages/side-nav
 見たいジャンルがわかりやすい
 
 今までの芝居は正直どんな芝居してるのか全くわかんねえ
+
+# toaster no dependence
+https://github.com/se-panfilov/mini-toastr
