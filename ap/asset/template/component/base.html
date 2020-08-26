@@ -163,6 +163,8 @@
     </div>
 
     <!-- script -->
+    <script src="/static/js/util/mini-toastr/mini-toastr.js"></script>
+    
     <script src="/static/js/localstorage.js"></script>
     <script src="/static/js/common/detabinator.js"></script>
     <script src="/static/js/common/side-nav.js"></script>
@@ -171,6 +173,7 @@
     <script src="/static/js/request.js"></script>
     <script src="/static/js/location.js"></script> <!-- localstorage.jsに依存 -->
     <script src="/static/js/common/base.js"></script>
+    
     
     {{ range $_, $scriptPath := .scriptPathList }}
     <script src="{{ $scriptPath }}"></script>
