@@ -45,7 +45,7 @@ class EventCreate {
         const data = {
             event_name: eventName,
             organization_name: organizationName,
-            member_info_list: memberInfoList,
+            invite_member_list: memberInfoList,
         };
 
         let response = await window.Alma.req.post(window.Alma.req.event_create, window.Alma.req.createPostData(data), { reload: false });

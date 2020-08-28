@@ -6,12 +6,10 @@ import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
-	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"encoding/json"
-	"log"
 	"net/http"
 )
 
@@ -119,7 +117,7 @@ func CreateEvent(w http.ResponseWriter, r *http.Request) {
 	txTime := almactx.GetTxTime(ctx)
 
 	// create event
-	reply := EventRpcService.CreateEvent(ctx, mid, txTime, req.EventName, req.OrganizationName, req.MemberInfoList)
+	reply := EventRpcService.CreateEvent(ctx, mid, txTime, req.EventName, req.OrganizationName, req.InviteMemberList)
 
 	// response
 	response.JSON(w, reply)
@@ -133,14 +131,12 @@ func UpdateEvent(w http.ResponseWriter, r *http.Request) {
 	err := param.JSON(r, req)
 	chk.SE(err)
 
-	log.Println("req is ", jsonutil.Marshal(req))
-
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
 
 	// update event
-	EventRpcService.UpdateEvent(ctx, mid, txTime, req.EventId, req.EventName, req.OrganizationName, req.MemberInfoList)
+	EventRpcService.UpdateEvent(ctx, mid, txTime, req.EventId, req.EventName, req.OrganizationName, req.InviteMemberList)
 
 	// response
 	response.JSON(w, &common.Empty{})

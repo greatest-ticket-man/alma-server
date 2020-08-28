@@ -34,6 +34,19 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 	return mongodb.GetUserCollection(ctx, ThisCollectionName)
 }
 
+// Get .
+func Get(ctx context.Context, email string) *UserEventInviteMember {
+
+	query := bson.M{FEmail: email}
+
+	result := getDb(ctx).FindOne(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.(*UserEventInviteMember)
+}
+
 // InsertBulk 一括で招待メンバーを登録する
 func InsertBulk(ctx context.Context, userEventInviteMemberList []*UserEventInviteMember) []interface{} {
 	return getDb(ctx).InsertMany(toInterface(userEventInviteMemberList))
