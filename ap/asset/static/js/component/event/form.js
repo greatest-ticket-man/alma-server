@@ -65,7 +65,7 @@ class EventForm {
             this.pushTable(emailText);
         })
 
-        // emailTextをcliear
+        // emailTextをclier
         this.emailTextEl.value = '';
     }
 
