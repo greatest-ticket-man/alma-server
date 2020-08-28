@@ -59,16 +59,16 @@ window.Alma = window.Alma || {};
                         'border-radius': '3px',
                         'box-shadow': '#3c3b3b 0 0 12px',
                         width: '300px',
-                        [`&.${ERROR_CLASS}`]: {
+                        [`&.${this.ERROR_CLASS}`]: {
                             'background-color': '#D5122B'
                         },
-                        [`&.${WARN_CLASS}`]: {
+                        [`&.${this.WARN_CLASS}`]: {
                             'background-color': '#F5AA1E'
                         },
-                        [`&.${SUCCESS_CLASS}`]: {
+                        [`&.${this.SUCCESS_CLASS}`]: {
                             'background-color': '#7AC13E'
                         },
-                        [`&.${INFO_CLASS}`]: {
+                        [`&.${this.INFO_CLASS}`]: {
                             'background-color': '#4196E1'
                         },
                         '&:hover': {
@@ -118,7 +118,6 @@ window.Alma = window.Alma || {};
             this.isInitialised = true;
 
             return this;
-
         }
 
         setIcon(type, nodeType = 'i', attrs = []) {
@@ -163,17 +162,19 @@ window.Alma = window.Alma || {};
             const flat = this.flatten(obj);
             let str = JSON.stringify(flat, null, 2);
             str = str.replace(/"([^"]*)": {/g, '$1 {')
-                    .replace(/"([^"]*)"/g, '$1')
-                    .replace(/(\w*-?\w*): ([\w\d .#]*),?/g, '$1: $2;')
-                    .replace(/},/g, '}\n')
-                    .replace(/ &([.:])/g, '$1');
-            
-            return str.substr(1, str.lastIndexOf('}' -1));
+                .replace(/"([^"]*)"/g, '$1')
+                .replace(/(\w*-?\w*): ([\w\d .#]*),?/g, '$1: $2;')
+                .replace(/},/g, '}\n')
+                .replace(/ &([.:])/g, '$1');
+
+            str = str.substr(1, str.lastIndexOf('}') - 1);
+
+            return str;
         }
 
         flatten(obj, into, prefix) {
             into = into || {};
-            prefix = prefix || EMPTY_STRING;
+            prefix = prefix || this.EMPTY_STRING;
 
             for (const k in obj) {
                 if (obj.hasOwnProperty(k)) {
@@ -223,12 +224,12 @@ window.Alma = window.Alma || {};
         }
 
         getTypeClass(type) {
-            if (type === SUCCESS) return SUCCESS_CLASS;
-            if (type === WARN) return WARN_CLASS;
-            if (type === ERROR) return ERROR_CLASS;
-            if (type === INFO) return INFO_CLASS;
+            if (type === this.SUCCESS) return this.SUCCESS_CLASS;
+            if (type === this.WARN) return this.WARN_CLASS;
+            if (type === this.ERROR) return this.ERROR_CLASS;
+            if (type === this.INFO) return this.INFO_CLASS;
 
-            return EMPTY_STRING;
+            return this.EMPTY_STRING;
         }
 
         appendStyle(css) {
