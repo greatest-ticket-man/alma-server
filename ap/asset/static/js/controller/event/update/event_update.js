@@ -54,7 +54,7 @@ class EventUpdate{
         let response = await window.Alma.req.post(window.Alma.req.event_update, window.Alma.req.createPostData(data), { reload: false });
 
         if (!response || !response.success) {
-            window.Alma.toast.error('イベントの更新に失敗しました');
+            window.Alma.toast.error('イベントの更新に失敗しました', 'エラー');
             return;
         }
 
