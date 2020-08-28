@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/member";
+
+package member;
+
+import "common/common.proto";
+
+// RPC
+service Member {
+
+    // PageHTML
+    rpc PageHTML(common.EventRequest) returns (common.EventNameReply);
+}

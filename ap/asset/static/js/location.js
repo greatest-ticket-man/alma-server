@@ -6,6 +6,7 @@ window.Alma = window.Alma || {};
             this.event_info = '/event';
             this.event_create = '/event/create';
             this.event_update = '/event/update';
+            this.member_info = '/member';
             this.home_dashboard = '/home/dashboard';
 
             this.baseURL = `${location.protocol}//${document.domain}:${location.port}`;
