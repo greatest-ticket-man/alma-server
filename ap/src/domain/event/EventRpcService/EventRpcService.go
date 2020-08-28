@@ -3,6 +3,7 @@ package EventRpcService
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/error/errmsg"
+	"alma-server/ap/src/common/executor"
 	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/domain/event/EventComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
@@ -51,11 +52,19 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 	// tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
 
 	// 追加
-	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName)
+	// UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName)
 
-	// TODO memberを追加
+	var units []*executor.Unit
 
-	// TODO tmpmemberを追加
+	// Event add
+	units = append(units, UserEventRepository.CreateEventExecutor(ctx, txTime, eventID, eventName, organizationName))
+
+	// Member add
+
+	// TempMemebrAdd .
+
+	// execut
+	executor.Do(units...)
 
 	return &event.CreateEventReply{
 		EventId:   eventID,

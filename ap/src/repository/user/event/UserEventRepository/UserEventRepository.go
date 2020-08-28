@@ -58,6 +58,12 @@ func Insert(ctx context.Context, txTime time.Time, eventID string, name string, 
 	return getDb(ctx).InsertOne(userEvent)
 }
 
+// Remove イベントの削除
+func Remove(ctx context.Context, eventID string) int32 {
+	query := bson.M{FEventID: eventID}
+	return getDb(ctx).DeleteOne(query)
+}
+
 // Update イベントの編集
 func Update(ctx context.Context, txTime time.Time, eventID string, name string, organization string) int32 {
 
