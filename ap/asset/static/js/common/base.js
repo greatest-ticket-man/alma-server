@@ -13,7 +13,6 @@ class Base {
 
     goDashboardPage() {
 
-        console.log("hoge");
         // 遷移
         window.Alma.location.href(window.Alma.location.home_dashboard);
     }
