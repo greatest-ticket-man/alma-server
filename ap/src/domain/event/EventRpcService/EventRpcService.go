@@ -39,19 +39,23 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 	// tempMemberMap[memberInfo.Email] = memberInfo.Authority
 	// }
 
-	memberInfoList := []*UserEventRepository.MemberInfo{
-		{
-			Mid:        mid,
-			AuthID:     "todo root",
-			CreateTime: txTime,
-			UpdateTime: txTime,
-		},
-	}
+	// memberInfoList := []*UserEventRepository.MemberInfo{
+	// 	{
+	// 		Mid:        mid,
+	// 		AuthID:     "todo root",
+	// 		CreateTime: txTime,
+	// 		UpdateTime: txTime,
+	// 	},
+	// }
 
-	tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
+	// tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
 
 	// 追加
-	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName, memberInfoList, tempMemberInfoList)
+	UserEventRepository.Insert(ctx, txTime, eventID, eventName, organizationName)
+
+	// TODO memberを追加
+
+	// TODO tmpmemberを追加
 
 	return &event.CreateEventReply{
 		EventId:   eventID,
@@ -75,10 +79,10 @@ func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID stri
 
 	// TODO errhandling 編集権限がありません
 
-	tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
+	// tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
 
 	// update
-	UserEventRepository.Update(ctx, txTime, eventID, eventName, organizationName, tempMemberInfoList)
+	UserEventRepository.Update(ctx, txTime, eventID, eventName, organizationName)
 
 	return false
 }
