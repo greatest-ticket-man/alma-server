@@ -27,24 +27,3 @@ func CreateEventAuthInfoList(mstEventAuthList []*MstEventAuthRepository.MstEvent
 
 	return eventAuthInfoList
 }
-
-// CreateTempMemberInfoList .
-// func CreateTempMemberInfoList(txTime time.Time, memberInfoList []*event.MemberInfo) []*UserEventRepository.TempMemberInfo {
-
-// 	var list []*UserEventRepository.TempMemberInfo
-
-// 	for _, memberInfo := range memberInfoList {
-
-// 		tempMemberInfo := &UserEventRepository.TempMemberInfo{
-// 			Email:      memberInfo.Email,
-// 			AuthID:     memberInfo.Authority,
-// 			CreateTime: txTime,
-// 			UpdateTime: txTime,
-// 		}
-
-// 		list = append(list, tempMemberInfo)
-
-// 	}
-
-// 	return list
-// }
