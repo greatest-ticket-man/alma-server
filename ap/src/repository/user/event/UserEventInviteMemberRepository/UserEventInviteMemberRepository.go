@@ -17,6 +17,9 @@ const (
 
 	// FEmail .
 	FEmail = "_id"
+
+	// FEventID .
+	FEventID = "event"
 )
 
 var reflectType = reflect.TypeOf((*UserEventInviteMember)(nil))
