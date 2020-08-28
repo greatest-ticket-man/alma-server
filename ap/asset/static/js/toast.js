@@ -12,6 +12,10 @@
  * https://github.com/se-panfilov/mini-toastr
  * 
  * fadeOutが２回呼ばれて無限ループするバグがあったので修正
+ * 
+ * collbackを呼ぶタイミングが気持ち悪かったので変更
+ * 変更前 ) toast前, 自動削除されるタイミング
+ * 変更後 ) 手動削除, 自動削除のタイミング
  */
 
 window.Alma = window.Alma || {};
@@ -153,7 +157,7 @@ window.Alma = window.Alma || {};
             notificationElem.className = `${this.NOTIFICATION_CLASS} ${this.getTypeClass(type)}`;
 
             notificationElem.onclick = function() {
-                config.animation(notificationElem, null);
+                config.animation(notificationElem, cb);
             };
 
             if (title) {
@@ -168,10 +172,6 @@ window.Alma = window.Alma || {};
 
             config.node.insertBefore(notificationElem, config.node.firstChild);
             setTimeout(() => config.animation(notificationElem, cb), timeout || config.timeout);
-
-            if (cb) {
-                cb();
-            }
 
             return this;
         }

@@ -1,7 +1,5 @@
 'use strict';
 
-console.log("aaa")
-
 // use /static/js/component/event/form.js
 
 // EventFormが存在するかを確認する
@@ -56,15 +54,15 @@ class EventUpdate{
         let response = await window.Alma.req.post(window.Alma.req.event_update, window.Alma.req.createPostData(data), { reload: false });
 
         if (!response || !response.success) {
-            alert('更新に失敗しました');
+            window.Alma.toast.error('イベントの更新に失敗しました');
             return;
         }
 
-        // TODO message toast
-        alert('イベントの編集に成功しました');
 
-        // 遷移
-        window.Alma.location.href(window.Alma.location.event_info);
+        window.Alma.toast.success('イベントの更新に成功しました', 'イベント', 2000, function() {
+            // 遷移
+            window.Alma.location.href(window.Alma.location.event_info);
+        });
     }
 
 }

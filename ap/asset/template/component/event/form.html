@@ -63,7 +63,7 @@
     <!-- メンバー追加時のデータ -->
     <div class="js-email-table-pulldown display-none">
         <select class="input-container__email-table__pulldown">
-            {{ range $_, $eventAuthInfo := .result.EventAuthInfoList }}
+            {{ range $_, $eventAuthInfo := .eventAuthInfoList }}
             <option value="{{ $eventAuthInfo.EventAuthId }}">{{ $eventAuthInfo.EventAuthName }} : {{ $eventAuthInfo.EventAuthDesc }}</option>
             {{ end }}
         </select>

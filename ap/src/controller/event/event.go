@@ -51,7 +51,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/event/create/event_create.html",
 		map[string]interface{}{
 			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", map[string]interface{}{
-				"result": result,
+				"eventAuthInfoList": result.EventAuthInfoList,
 			}),
 		},
 		[]string{
@@ -78,7 +78,7 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
 
-	result := EventRpcService.GetEvent(ctx, mid, req.Event)
+	result := EventRpcService.UpdatePage(ctx, mid, req.Event)
 
 	response.BaseHTML(
 		w,
@@ -87,7 +87,8 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"eventForm": htmlutil.CreateTemplateToString("/template/component/event/form.html", map[string]interface{}{
 				"eventName":         result.EventName,
-				"eventOrganization": "組織名",
+				"eventOrganization": result.OrganizationName,
+				"eventAuthInfoList": result.EventAuthInfoList,
 			}),
 		},
 		[]string{

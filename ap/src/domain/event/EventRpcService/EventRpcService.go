@@ -25,6 +25,25 @@ func CreatePage() *event.CreateEventPageReply {
 	}
 }
 
+// UpdatePage イベント編集ページ
+func UpdatePage(ctx context.Context, mid string, eventID string) *event.UpdateEventPageReply {
+
+	userEvent := UserEventRepository.Get(ctx, eventID)
+	if userEvent == nil {
+		// イベントが存在しません
+		chk.LE(errmsg.EventNotFound)
+	}
+
+	mstEventAuthList := MstEventAuthRepository.GetList()
+
+	return &event.UpdateEventPageReply{
+		EventName:         userEvent.Name,
+		OrganizationName:  userEvent.Organization,
+		EventAuthInfoList: EventComponent.CreateEventAuthInfoList(mstEventAuthList),
+	}
+
+}
+
 // CreateEvent .
 func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, inviteMemberList []*event.InviteMemberInfo) *event.CreateEventReply {
 
