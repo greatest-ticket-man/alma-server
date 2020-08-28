@@ -80,6 +80,27 @@ func Update(ctx context.Context, txTime time.Time, eventID string, name string, 
 	return getDb(ctx).UpdateOne(query, update)
 }
 
+// FindOneAndUpdate イベントを取得してその後Updateする
+func FindOneAndUpdate(ctx context.Context, txTime time.Time, eventID string, name string, organization string) *UserEvent {
+
+	query := bson.M{FEventID: eventID}
+
+	update := bson.M{
+		"$set": bson.M{
+			fName:         name,
+			fOrganization: organization,
+			fUpdateTime:   txTime,
+		},
+	}
+
+	result := getDb(ctx).FindOneAndUpdate(query, update, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.(*UserEvent)
+}
+
 // Get .
 func Get(ctx context.Context, eventID string) *UserEvent {
 
