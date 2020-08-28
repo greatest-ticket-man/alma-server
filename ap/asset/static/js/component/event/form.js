@@ -58,8 +58,7 @@ class EventForm {
         emailTextList.forEach(emailText => {
 
             if (!ValidationUtil.email(emailText)) {
-                // TODO toast
-                alert(`${emailText}はメールアドレスではありません`);
+                window.Alma.toast.warn(`${emailText}はメールアドレスではありません`);
                 return;
             }
 
