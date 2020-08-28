@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/franela/goblin"
-	"gopkg.in/mgo.v2/bson"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 // go test -v -count=1 -timeout 30s alma-server/ap/src/repository/user/UserAccountRepository
