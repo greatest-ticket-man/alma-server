@@ -6,8 +6,9 @@ import (
 	"reflect"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"gopkg.in/mgo.v2/bson"
+	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
 // イベントのメンバーリポジトリ
@@ -47,7 +48,7 @@ func InsertBulk(ctx context.Context, txTime time.Time, userEventMemberList []*Us
 }
 
 // Upsert メンバーを一人追加する、すでにいる場合はAuthIDのみUpdateする
-func Upsert(ctx context.Context, txTime time.Time, mid string, eventID string, authID string) int32 {
+func Upsert(ctx context.Context, mid string, txTime time.Time, eventID string, authID string) int32 {
 
 	query := bson.M{FEventID: eventID, FMid: mid}
 
@@ -64,6 +65,47 @@ func Upsert(ctx context.Context, txTime time.Time, mid string, eventID string, a
 	}
 
 	return getDb(ctx).UpsertOne(query, upsert)
+}
+
+// FindOneAndUpsert 取得して、メンバー情報を変更する
+// 変更前のデータを取得します
+func FindOneAndUpsert(ctx context.Context, mid string, txTime time.Time, eventID string, authID string) *UserEventMember {
+
+	query := bson.M{FEventID: eventID, FMid: mid}
+
+	upsert := bson.M{
+		"$setOnInsert": bson.M{
+			FMid:        mid,
+			FEventID:    eventID,
+			fCreateTime: txTime,
+		},
+		"$set": bson.M{
+			fAuth:       authID,
+			fUpdateTime: txTime,
+		},
+	}
+
+	isBefore := options.Before
+	isUpsert := true
+
+	opt := &options.FindOneAndUpdateOptions{
+		ReturnDocument: &isBefore,
+		Upsert:         &isUpsert,
+	}
+
+	result := getDb(ctx).FindOneAndUpdate(query, upsert, reflectType, opt)
+	if result == nil {
+		return nil
+	}
+
+	return result.(*UserEventMember)
+}
+
+// Remove メンバーを一人削除する
+func Remove(ctx context.Context, mid string, txTime time.Time, eventID string) int32 {
+	query := bson.M{FMid: mid, FEventID: eventID}
+
+	return getDb(ctx).DeleteOne(query)
 }
 
 // RemoveMany メンバーを複数削除する
