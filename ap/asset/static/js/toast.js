@@ -1,5 +1,17 @@
 'use strict';
 
+/**
+ * 
+ * 使い方
+ * window.Alma.toast.success(message, title, timeout, collback, config); // success
+ * window.Alma.toast.info(message, title, timeout, collback, config); // info
+ * window.Alma.toast.warn(message, title, timeout, collback, config); // warn
+ * window.Alma.toast.error(message, title, timeout, collback, config); // error
+ * 
+ * この実装を移植
+ * https://github.com/se-panfilov/mini-toastr
+ */
+
 window.Alma = window.Alma || {};
 (function(_Alma) {
 
