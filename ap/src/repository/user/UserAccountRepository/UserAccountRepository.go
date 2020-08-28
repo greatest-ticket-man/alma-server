@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"time"
 
-	"gopkg.in/mgo.v2/bson"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 // ユーザーのアカウント情報のリポジトリ
