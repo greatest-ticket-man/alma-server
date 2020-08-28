@@ -10,6 +10,8 @@
  * 
  * この実装を移植
  * https://github.com/se-panfilov/mini-toastr
+ * 
+ * fadeOutが２回呼ばれて無限ループするバグがあったので修正
  */
 
 window.Alma = window.Alma || {};
