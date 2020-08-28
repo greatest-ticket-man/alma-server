@@ -34,7 +34,7 @@ message CreateEventPageReply {
 message CreateEventRequest {
   string event_name = 1;
   string organization_name = 2;
-  repeated MemberInfo member_info_list = 3;
+  repeated InviteMemberInfo invite_member_list = 3; // 招待するメンバーのリスト
 }
 
 // イベント作成のリプライ
@@ -48,7 +48,7 @@ message UpdateEventRequest {
   string event_id = 1;
   string event_name = 2;
   string organization_name = 3;
-  repeated MemberInfo member_info_list = 4;
+  repeated InviteMemberInfo invite_member_list = 4;
 }
 
 // イベントホームのリプライ
@@ -56,11 +56,10 @@ message HomeReply {
   string event_id = 1;          // イベントID
   string event_name = 2;        // イベント名
   string organization_name = 3; // 組織
-                                // TODO その他
 }
 
-// MemberInfo 追加されたメンバー情報
-message MemberInfo {
+// InviteMemberInfo 招待されるメンバーの情報
+message InviteMemberInfo {
   string email = 1;     //
   string authority = 2; // イベントごとの権限
 }

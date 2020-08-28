@@ -3,7 +3,9 @@ package EventComponent
 import (
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"alma-server/ap/src/repository/master/authority/MstEventAuthRepository"
+	"alma-server/ap/src/repository/user/event/UserEventInviteMemberRepository"
 	"sort"
+	"time"
 )
 
 // CreateEventAuthInfoList .
@@ -26,4 +28,26 @@ func CreateEventAuthInfoList(mstEventAuthList []*MstEventAuthRepository.MstEvent
 	}
 
 	return eventAuthInfoList
+}
+
+// CreateInviteMemberList .
+func CreateInviteMemberList(eventID string, txTime time.Time, list []*event.InviteMemberInfo) []*UserEventInviteMemberRepository.UserEventInviteMember {
+
+	var userEventInviteMemberList []*UserEventInviteMemberRepository.UserEventInviteMember
+
+	for _, inviteMemberInfo := range list {
+
+		userEventInviteMember := &UserEventInviteMemberRepository.UserEventInviteMember{
+			Email:      inviteMemberInfo.Email,
+			EventID:    eventID,
+			AuthID:     inviteMemberInfo.Authority,
+			CreateTime: txTime,
+			UpdateTime: txTime,
+		}
+
+		userEventInviteMemberList = append(userEventInviteMemberList, userEventInviteMember)
+
+	}
+
+	return userEventInviteMemberList
 }

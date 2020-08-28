@@ -8,6 +8,7 @@ import (
 	"alma-server/ap/src/domain/event/EventComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"alma-server/ap/src/repository/master/authority/MstEventAuthRepository"
+	"alma-server/ap/src/repository/user/event/UserEventInviteMemberRepository"
 	"alma-server/ap/src/repository/user/event/UserEventMemberRepository"
 	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"context"
@@ -25,12 +26,12 @@ func CreatePage() *event.CreateEventPageReply {
 }
 
 // CreateEvent .
-// TODO memberInfoをinviteMemberInfoにする
-func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, memberList []*event.MemberInfo) *event.CreateEventReply {
+func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName string, organizationName string, inviteMemberList []*event.InviteMemberInfo) *event.CreateEventReply {
 
 	eventID := uniqueidutil.GenerateUniqueID()
 
 	// TODO 招待メンバーたちに、招待のMailを贈る
+	userEventInviteMemberList := EventComponent.CreateInviteMemberList(eventID, txTime, inviteMemberList)
 
 	var units []*executor.Unit
 
@@ -38,11 +39,12 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 	units = append(units, UserEventRepository.CreateEventExecutor(ctx, txTime, eventID, eventName, organizationName))
 
 	// Member add
-	// 自分をRootユーザーで登録する
 	units = append(units, UserEventMemberRepository.CreateEventMemberExecutor(ctx, mid, txTime, eventID, "todo root"))
 
 	// TempMemebrAdd .
-	// units = append(units, UserEventInviteMemberRepository.BulkInsertInviteMemberExecutor(ctx))
+	if len(userEventInviteMemberList) > 0 {
+		units = append(units, UserEventInviteMemberRepository.BulkInsertInviteMemberExecutor(ctx, userEventInviteMemberList))
+	}
 
 	// execut
 	executor.Do(units...)
@@ -54,7 +56,7 @@ func CreateEvent(ctx context.Context, mid string, txTime time.Time, eventName st
 }
 
 // UpdateEvent .
-func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID string, eventName string, organizationName string, memberList []*event.MemberInfo) bool {
+func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID string, eventName string, organizationName string, inviteMemberList []*event.InviteMemberInfo) bool {
 
 	// TODO event を取得する
 
