@@ -264,15 +264,19 @@ window.Alma = window.Alma || {};
         }
 
         fadeOut(element, cb) {
+
             if (element.style.opacity && element.style.opacity > 0.05) {
                 element.style.opacity = element.style.opacity - 0.05;
             } else if (element.style.opacity && element.style.opacity <= 0.1) {
-                if (element.parenetNode) {
+                if (element.parentNode) {
                     element.parentNode.removeChild(element);
                     if (cb) {
                         cb();
                     }
                 }
+
+                // なぜかもう一度走ってしまう場合があるため、必ずreturnするようにする
+                return;
             } else {
                 element.style.opacity = 0.9;
             }
