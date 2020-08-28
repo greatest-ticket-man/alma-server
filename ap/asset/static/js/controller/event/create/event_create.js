@@ -51,7 +51,7 @@ class EventCreate {
         let response = await window.Alma.req.post(window.Alma.req.event_create, window.Alma.req.createPostData(data), { reload: false });
 
         if (!response || !response.success) {
-            alert('作成に失敗しました');
+            window.Alma.toast.error('イベントの作成に失敗しました');
             return;
         }
 
