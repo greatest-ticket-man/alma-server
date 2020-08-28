@@ -16,6 +16,13 @@ const (
 	ThisCollectionName = "USER_EVENT_MEMBER"
 
 	fMemberID = "_id"
+
+	FEventID = "event"
+	FMid     = "mid"
+	fAuth    = "auth"
+
+	fCreateTime = "ct"
+	fUpdateTime = "ut"
 )
 
 var reflectType = reflect.TypeOf((*UserEventMember)(nil))
@@ -37,6 +44,26 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 // InsertBulk メンバーを複数追加する
 func InsertBulk(ctx context.Context, txTime time.Time, userEventMemberList []*UserEventMember) []interface{} {
 	return getDb(ctx).InsertMany(toInterface(userEventMemberList))
+}
+
+// Upsert メンバーを一人追加する、すでにいる場合はAuthIDのみUpdateする
+func Upsert(ctx context.Context, txTime time.Time, mid string, eventID string, authID string) int32 {
+
+	query := bson.M{FEventID: eventID, FMid: mid}
+
+	upsert := bson.M{
+		"$setOnInsert": bson.M{
+			FMid:        mid,
+			FEventID:    eventID,
+			fCreateTime: txTime,
+		},
+		"$set": bson.M{
+			fAuth:       authID,
+			fUpdateTime: txTime,
+		},
+	}
+
+	return getDb(ctx).UpsertOne(query, upsert)
 }
 
 // RemoveMany メンバーを複数削除する
