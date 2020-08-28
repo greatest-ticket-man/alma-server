@@ -13,7 +13,7 @@ service Event {
   rpc CreatePage(common.Empty) returns (CreateEventPageReply);
 
   // イベントの更新ページ
-  rpc UpdatePage(common.EventRequest) returns (common.Empty);
+  rpc UpdatePage(common.EventRequest) returns (UpdateEventPageReply);
 
   // イベントを作成
   rpc CreateEvent(CreateEventRequest) returns (CreateEventReply);
@@ -28,6 +28,13 @@ service Event {
 // イベント作成ページのReply
 message CreateEventPageReply {
   repeated EventAuthInfo event_auth_info_list = 1; // イベント権限のリスト
+}
+
+// イベント編集ページのReply 
+message UpdateEventPageReply {
+  repeated EventAuthInfo event_auth_info_list = 1; // イベント権限のリスト
+  string event_name = 2;
+  string organization_name = 3;
 }
 
 // イベント作成のリクエスト
