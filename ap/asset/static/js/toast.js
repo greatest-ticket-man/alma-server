@@ -8,12 +8,16 @@ window.Alma = window.Alma || {};
         // constructor
         constructor() {
 
+            // bind
+            this.fadeOut = this.fadeOut.bind(this);
+
+            // const
             const ERROR = 'error';
             const WARN = 'warn';
             const SUCCESS = 'success';
             const INFO = 'info';
 
-            // const
+
             this.EMPTY_STRING = '';
             this.LIB_NAME = 'mini-toastr';
             this.ERROR = ERROR;
@@ -263,12 +267,6 @@ window.Alma = window.Alma || {};
 
             setTimeout(() => this.fadeOut.apply(this, [element, cb]), 1000 / 30);
         }
-
-
-
-
-        
-
     }
 
     _Alma.toast = new Toast();
