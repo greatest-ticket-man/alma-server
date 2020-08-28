@@ -71,12 +71,21 @@ func UpdateEvent(ctx context.Context, mid string, txTime time.Time, eventID stri
 
 	// TODO errhandling 編集権限がありません
 
-	// tempMemberInfoList := EventComponent.CreateTempMemberInfoList(txTime, memberList)
+	userEventInviteMemberList := EventComponent.CreateInviteMemberList(eventID, txTime, inviteMemberList)
 
-	// update
-	UserEventRepository.Update(ctx, txTime, eventID, eventName, organizationName)
+	var units []*executor.Unit
+	// Event update
 
-	return false
+	units = append(units, UserEventRepository.UpdateEventExecutor(ctx, txTime, eventID, eventName, organizationName))
+
+	// TempMemebrAdd .
+	if len(userEventInviteMemberList) > 0 {
+		units = append(units, UserEventInviteMemberRepository.BulkInsertInviteMemberExecutor(ctx, userEventInviteMemberList))
+	}
+
+	executor.Do(units...)
+
+	return true
 }
 
 // GetEvent イベントのデータを取得する
