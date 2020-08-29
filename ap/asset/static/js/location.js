@@ -8,6 +8,7 @@ window.Alma = window.Alma || {};
             this.event_update = '/event/update';
             this.member_info = '/member';
             this.home_dashboard = '/home/dashboard';
+            this.home_dashboard_empty = '/home/dashboard/empty';
 
             this.baseURL = `${location.protocol}//${document.domain}:${location.port}`;
         }
@@ -17,7 +18,12 @@ window.Alma = window.Alma || {};
          * 遷移する
          * ex) window.Alma.location.href(window.Alma.location.event_info);
          */
-        href(path, options = { eventPath: true }) {
+        href(path = "", options = { eventPath: true, ordinaryMode: false }) {
+            // 通常遷移モード
+            if (options.ordinaryMode) {
+                window.location.href = path;
+                return;
+            } 
 
             const url = new URL(path, this.baseURL);
             const params = new URLSearchParams(url.search.slice(1));
@@ -29,6 +35,11 @@ window.Alma = window.Alma || {};
                 if (eventId) {
                     params.append('event', eventId);
                 } 
+            }
+
+            // eventPath trueでイベントパス持っているときにLocalStorageにあたりを塗り替える
+            if (options.eventPath == true && params.has('event')) {
+                window.Alma.localStorage.set(window.Alma.localStorage.event_id, params.get('event'));
             }
 
             // 遷移
