@@ -45,7 +45,7 @@ class EventMenu {
     showEventMenu() {
         this.eventMenuEl.classList.add('event-menu--visible');
 
-        // TODO イベントtableを作成する
+        // イベントtableを作成する
         this.createEventTable();
     }
 
@@ -81,7 +81,7 @@ class EventMenu {
             search_text: "todo",
         };
 
-        let response = await window.Alma.req.get(window.Alma.req.event_list, window.Alma.req.createGetData({}), param, {reload: false});
+        let response = await window.Alma.req.get(window.Alma.req.event_list, param);
 
         if (!response || !response.success) {
             window.Alma.toast.error('イベントのリスト取得に失敗しました');
