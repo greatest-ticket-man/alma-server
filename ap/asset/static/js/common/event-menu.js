@@ -45,14 +45,22 @@ class EventMenu {
     showEventMenu() {
         this.eventMenuEl.classList.add('event-menu--visible');
 
-        // TODO イベントリストを取得する
-        this.getEventList();
+        // TODO イベントtableを作成する
+        this.createEventTable();
+        console.log("aaa");
     }
+
+    // createEventTable イベントテーブルを作成する
+    async createEventTable() {
+
+        let eventInfoList = await this.getEventList();
+        console.log("eventInfoList is ", eventInfoList);
+
+    }
+    
 
     // getEventList 自分が参加しているイベントのリストを取得する
     async getEventList() {
-
-        console.log("let's");
 
         const param = {
             search_text: "todo",
@@ -60,9 +68,12 @@ class EventMenu {
 
         let response = await window.Alma.req.get(window.Alma.req.event_list, window.Alma.req.createGetData({}), param, {reload: false});
 
-        console.log("evnet get list is ", response);
+        if (!response || !response.success) {
+            window.Alma.toast.error('イベントのリスト取得に失敗しました');
+            return;
+        }
 
-
+        return response.result.event_info_list;
     }
 
     // hideEventMenu イベントメニューを非表示
