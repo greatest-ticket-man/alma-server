@@ -26,10 +26,16 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 	response.BaseHTML(
 		w,
 		"メンバー情報",
+		"/template/controller/member/head.html",
+		map[string]interface{}{},
 		"/template/controller/member/member.html",
 		map[string]interface{}{},
-		nil,
-		nil,
+		[]string{
+			"/static/js/controller/member/member.js",
+		},
+		[]string{
+			"/static/css/controller/member/member.css",
+		},
 		result.EventName,
 	)
 

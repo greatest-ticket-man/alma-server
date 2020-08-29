@@ -24,11 +24,17 @@ func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 }
 
 // BaseHTML baseテンプレートでhtmlを返す
-func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, mainDataMap map[string]interface{},
+func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, headContentpath map[string]interface{}, mainContentPath string, mainDataMap map[string]interface{},
 	scriptPathList []string, cssPathList []string, eventName string) {
 
 	if eventName == "" {
 		eventName = "イベントの選択"
+	}
+
+	// headContentはpathがある場合のみ追加する
+	headContent := template.HTML("")
+	if headContentPath != "" {
+		headContent = template.HTML(htmlutil.CreateTemplateToString(headContentPath, headContentpath))
 	}
 
 	HTML(
@@ -36,6 +42,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, m
 		"/template/component/base.html",
 		map[string]interface{}{
 			"mainTitle":      mainTitle,
+			"headContent":    headContent,
 			"mainContent":    template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
 			"scriptPathList": scriptPathList,
 			"cssPathList":    cssPathList,
@@ -44,27 +51,6 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, m
 	)
 
 }
-
-// func BaseHTML(w http.ResponseWriter, mainTitle string, mainContentPath string, mainDataMap map[string]interface{},
-// 	scriptPath string, cssPath string, eventName string) {
-
-// 	if eventName == "" {
-// 		eventName = "イベントの選択"
-// 	}
-
-// 	HTML(
-// 		w,
-// 		"/template/component/base.html",
-// 		map[string]interface{}{
-// 			"mainTitle":   mainTitle,
-// 			"mainContent": template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
-// 			"script":      template.HTML(htmlutil.CreateTemplateToString(scriptPath, "")),
-// 			"css":         template.HTML(htmlutil.CreateTemplateToString(cssPath, "")),
-// 			"eventName":   eventName,
-// 		},
-// 	)
-
-// }
 
 // RedirectHTML redirect
 func RedirectHTML(w http.ResponseWriter, r *http.Request, url string) {
