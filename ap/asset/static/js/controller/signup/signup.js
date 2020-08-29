@@ -15,8 +15,6 @@ class Signup {
 
     addEventListener() {
 
-        console.log("b el is ", this.signupButtonEl);
-
         this.signupButtonEl.addEventListener('click', this.signup);
     }
 

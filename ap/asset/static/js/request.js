@@ -6,9 +6,12 @@ window.Alma = window.Alma || {};
         constructor() {
             this.event_create = '/event/create';
             this.event_update = '/event/update';
+            this.event_list = '/event/list'; // get
         }
 
-        async get(url, data, params = {}, options = { reload: true }) {
+        async get(url, params = {}, options = { reload: false }) {
+
+            const data = this.createGetData();
 
             // パラメータを追加
             const urlObj = new URL(url, `${location.protocol}//${document.domain}:${location.port}`);
@@ -19,7 +22,7 @@ window.Alma = window.Alma || {};
             return this.fetch(urlObj.toString(), data, options);
         }
 
-        async post(url, data, options = { reload: true }) {
+        async post(url, data, options = { reload: false }) {
             return this.fetch(url, data, options);
         }
 
@@ -45,14 +48,14 @@ window.Alma = window.Alma || {};
                 }
 
             } catch (e) {
-                // window.Alma.toast.error('通信に失敗しました');
+                window.Alma.toast.error('通信に失敗しました');
                 console.log(e);
             }
 
         }
 
         createData(data = {}, cache = 'no-cache', method = '') {
-             return {
+            const d = {
                 method: method, // *GET, POST, PUT, DELETE, etc.
                 mode: 'cors', // no-cors, cors, *same-origin
                 cache: cache, // *default, no-cache, reload, force-cache, only-if-cached
@@ -63,16 +66,21 @@ window.Alma = window.Alma || {};
                 },
                 redirect: 'follow', // manual, *follow, error
                 referrer: 'no-referrer', // no-referrer, *client
-                body: JSON.stringify(data), // 本文のデータ型は 'Content-Type' ヘッダーと一致する必要があります
             };
+
+            // GETはbodyは追加できない
+            if (method === 'POST') {
+                d.body = JSON.stringify(data); // 本文のデータ型は 'Content-Type' ヘッダーと一致する必要があります
+            }
+            return d;
         }
 
         createPostData(data = {}, cache = 'no-cache') {
             return this.createData(data, cache, 'POST');
         }
 
-        createGetData(data = {}, cache = 'no-cache') {
-            return this.createData(data, cache, 'GET'); 
+        createGetData(cache = 'no-cache') {
+            return this.createData(null, cache, 'GET'); 
         }
         
 
