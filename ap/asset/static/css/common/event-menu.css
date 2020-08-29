@@ -154,6 +154,18 @@
     border-top:1px solid #ddd;
 }
 
+.event-menu__container__table__row:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.event-menu__container__table__event-name {
+    cursor: pointer;
+}
+
+.event-menu__container__table__event-name:hover {
+    color: royalblue;
+    text-decoration: royalblue underline;
+}
 
 
 .event-menu__container__footer {

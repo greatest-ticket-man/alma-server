@@ -36,7 +36,6 @@ window.Alma = window.Alma || {};
                 if (json.success) {
                     console.log(`通信に成功しました: ${JSON.stringify(json)}`);
                     if (options.reload === true) {
-                        // window.Alma.toast.success('成功しました');
                         window.Alma.toast.success('成功しました');
                         setTimeout(() => location.reload(), 2000);
                     }

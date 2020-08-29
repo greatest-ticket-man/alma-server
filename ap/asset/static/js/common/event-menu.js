@@ -14,6 +14,7 @@ class EventMenu {
         this.hideEventMenu = this.hideEventMenu.bind(this);
         this.blockClicks = this.blockClicks.bind(this);
         this.goEventCreateForm = this.goEventCreateForm.bind(this);
+        this.switchEvent = this.switchEvent.bind(this);
 
         // Eventの登録
         this.addEventListener();   
@@ -53,7 +54,7 @@ class EventMenu {
     async createEventTable() {
 
         // 先にTableをリセットする
-        this.eventMenuTableEl.innerHTML = '';
+        this.eventMenuTableEl.textContent = '';
 
         let eventInfoList = await this.getEventList();
         if (!eventInfoList) {
@@ -63,13 +64,15 @@ class EventMenu {
         const me = this;
         eventInfoList.forEach(eventInfo => {
             let row = me.eventMenuTableEl.insertRow(-1);
-            row.innerHTML = unescape(`
+            row.innerHTML = `
                 <tr>
                     <td><span class="event-menu__container__table__icon material-icons">star</span></td>
-                    <td>${eventInfo.event_name}</td>
+                    <td class="event-menu__container__table__event-name">${eventInfo.event_name}</td>
                     <td>${eventInfo.event_id}</td>
                 </tr>
-            `);
+            `;
+            row.classList.add('event-menu__container__table__row');
+            row.setAttribute("onclick", `eventMenu.switchEvent('${eventInfo.event_id}');`);
         });
     }
     
@@ -98,8 +101,22 @@ class EventMenu {
 
     // goEventCreateForm 
     goEventCreateForm() {
-        window.location.href = '/event/create';
+        window.Alma.location.href(window.Alma.location.event_create, { ordinaryMode: true});
+    }
+
+    // switchEvent イベントを切り替える
+    switchEvent(eventId) {
+        // localStorageを切り替える
+        window.Alma.localStorage.set(window.Alma.localStorage.event_id, eventId);
+
+        let path = window.location.pathname;
+        // EmptyのURLのみ判定して、普通のDashboardに遷移するようにする
+        if (path === window.Alma.location.home_dashboard_empty) {
+            path = window.Alma.location.home_dashboard;
+        } 
+
+        window.Alma.location.href(`${path}?event=${eventId}`, {ordinaryMode: true});
     }
 }
 
-new EventMenu();
+const eventMenu = new EventMenu();
