@@ -123,3 +123,20 @@ func GetEvent(ctx context.Context, mid string, eventID string) *event.HomeReply 
 		EventName: userEvent.Name,
 	}
 }
+
+// GetEventList 自分が参加しているイベントリストを取得する
+func GetEventList(ctx context.Context, mid string, txTime time.Time, searchText string) *event.GetEventListReply {
+
+	// 自分が参加しているイベントを取得
+	// この量は何万件になることは無いので、midでヒットするものをすべて取得する
+	userEventMemberList := UserEventMemberRepository.GetList(ctx, mid)
+	if len(userEventMemberList) == 0 {
+		// なければそのまま返す
+		return nil
+	}
+
+	eventIDList := EventComponent.CreateEventIDFromUserEventMember(userEventMemberList)
+	userEventList := UserEventRepository.GetListInEventID(ctx, eventIDList)
+
+	return EventComponent.CreateGetEventListReply(userEventList)
+}

@@ -18,11 +18,12 @@ service Event {
   // イベントを作成
   rpc CreateEvent(CreateEventRequest) returns (CreateEventReply);
 
-  // 
-
   rpc Home(common.EventRequest) returns (HomeReply);
 
   rpc GetEvent(common.EventRequest) returns (GetEventNameReply);
+
+  // GetEventList
+  rpc GetEventList(GetEventListRequest) returns (GetEventListReply);
 }
 
 // イベント作成ページのReply
@@ -77,9 +78,26 @@ message GetEventNameReply {
   string event_name = 2;
 }
 
+// GetEventListRequest イベントリストのRequest
+message GetEventListRequest {
+  string search_text = 1;
+}
+
+// GetEventListReply イベントリストのReply
+message GetEventListReply {
+  repeated EventInfo event_info_list = 1;
+}
+
+// EventInfo 
+message EventInfo {
+  string event_id = 1;
+  string event_name = 2;
+}
+
 // EventAuthInfo
 message EventAuthInfo {
   string event_auth_id = 1;   // イベント権限のID
   string event_auth_name = 2; // イベント権限の名前
   string event_auth_desc = 3; // イベント権限の説明
 }
+

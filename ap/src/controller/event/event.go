@@ -141,5 +141,21 @@ func UpdateEvent(w http.ResponseWriter, r *http.Request) {
 
 	// response
 	response.JSON(w, &common.Empty{})
+}
 
+// GetEventList イベントのリストを取得する
+func GetEventList(w http.ResponseWriter, r *http.Request) {
+
+	req := &event.GetEventListRequest{
+		SearchText: param.Value(r, "search_text"),
+	}
+
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
+
+	result := EventRpcService.GetEventList(ctx, mid, txTime, req.SearchText)
+
+	// response
+	response.JSON(w, result)
 }
