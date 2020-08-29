@@ -113,3 +113,20 @@ func Get(ctx context.Context, eventID string) *UserEvent {
 
 	return result.(*UserEvent)
 }
+
+// GetListInEventID .
+func GetListInEventID(ctx context.Context, eventIDList []string) []*UserEvent {
+
+	query := bson.M{
+		FEventID: bson.M{
+			"$in": eventIDList,
+		},
+	}
+
+	result := getDb(ctx).Find(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.([]*UserEvent)
+}

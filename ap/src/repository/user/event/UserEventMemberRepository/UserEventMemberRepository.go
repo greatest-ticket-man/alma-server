@@ -42,6 +42,19 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 	return mongodb.GetUserCollection(ctx, ThisCollectionName)
 }
 
+// GetList 自分が参加しているイベントデータを取得する
+func GetList(ctx context.Context, mid string) []*UserEventMember {
+
+	query := bson.M{FMid: mid}
+
+	result := getDb(ctx).Find(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.([]*UserEventMember)
+}
+
 // InsertBulk メンバーを複数追加する
 func InsertBulk(ctx context.Context, txTime time.Time, userEventMemberList []*UserEventMember) []interface{} {
 	return getDb(ctx).InsertMany(toInterface(userEventMemberList))

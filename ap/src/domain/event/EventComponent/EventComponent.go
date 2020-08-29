@@ -4,6 +4,8 @@ import (
 	"alma-server/ap/src/infrastructure/grpc/proto/event"
 	"alma-server/ap/src/repository/master/authority/MstEventAuthRepository"
 	"alma-server/ap/src/repository/user/event/UserEventInviteMemberRepository"
+	"alma-server/ap/src/repository/user/event/UserEventMemberRepository"
+	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"sort"
 	"time"
 )
@@ -50,4 +52,36 @@ func CreateInviteMemberList(eventID string, txTime time.Time, list []*event.Invi
 	}
 
 	return userEventInviteMemberList
+}
+
+// CreateEventIDFromUserEventMember メンバーリストからEventIDのリストを作成する
+func CreateEventIDFromUserEventMember(userEventMemberList []*UserEventMemberRepository.UserEventMember) []string {
+
+	var eventIDList []string
+
+	for _, userEventMember := range userEventMemberList {
+		eventIDList = append(eventIDList, userEventMember.EventID)
+	}
+
+	return eventIDList
+}
+
+// CreateGetEventListReply .
+func CreateGetEventListReply(userEventList []*UserEventRepository.UserEvent) *event.GetEventListReply {
+
+	var eventInfoList []*event.EventInfo
+
+	for _, userEvent := range userEventList {
+
+		eventInfo := &event.EventInfo{
+			EventId:   userEvent.ID,
+			EventName: userEvent.Name,
+		}
+
+		eventInfoList = append(eventInfoList, eventInfo)
+	}
+
+	return &event.GetEventListReply{
+		EventInfoList: eventInfoList,
+	}
 }
