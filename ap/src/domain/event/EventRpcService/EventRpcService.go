@@ -138,5 +138,7 @@ func GetEventList(ctx context.Context, mid string, txTime time.Time, searchText 
 	eventIDList := EventComponent.CreateEventIDFromUserEventMember(userEventMemberList)
 	userEventList := UserEventRepository.GetListInEventID(ctx, eventIDList)
 
+	// TODO search textでfiltering
+
 	return EventComponent.CreateGetEventListReply(userEventList)
 }
