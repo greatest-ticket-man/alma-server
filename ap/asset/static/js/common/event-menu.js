@@ -47,15 +47,30 @@ class EventMenu {
 
         // TODO イベントtableを作成する
         this.createEventTable();
-        console.log("aaa");
     }
 
     // createEventTable イベントテーブルを作成する
     async createEventTable() {
 
-        let eventInfoList = await this.getEventList();
-        console.log("eventInfoList is ", eventInfoList);
+        // 先にTableをリセットする
+        this.eventMenuTableEl.innerHTML = '';
 
+        let eventInfoList = await this.getEventList();
+        if (!eventInfoList) {
+            return;
+        }
+
+        const me = this;
+        eventInfoList.forEach(eventInfo => {
+            let row = me.eventMenuTableEl.insertRow(-1);
+            row.innerHTML = unescape(`
+                <tr>
+                    <td><span class="event-menu__container__table__icon material-icons">star</span></td>
+                    <td>${eventInfo.event_name}</td>
+                    <td>${eventInfo.event_id}</td>
+                </tr>
+            `);
+        });
     }
     
 
