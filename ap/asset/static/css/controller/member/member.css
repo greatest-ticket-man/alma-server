@@ -35,14 +35,28 @@
     display: flex;
 }
 
+.member-table__container {
+    /* background: red; */
+    overflow: scroll hidden;
+    /* display: block; */
+    background: rgba(0, 0, 0, 0.2);
+}
+
 .member-table {
     border-collapse: collapse;
     border: 1px solid #ddd;
     white-space: nowrap;
+    /* table-layout: fixed; */
+    width: 100%;
 }
 
 .member-table__head {
     border: 1px solid #ddd;
+    text-align: left;
+}
+
+.member-table__head th {
+    padding: 8px 32px;
 }
 
 .member-table__body tr {
@@ -50,5 +64,6 @@
 }
 
 .member-table__body td {
+    text-align: left;
     padding: 8px 32px;
 }
