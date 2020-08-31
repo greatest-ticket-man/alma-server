@@ -36,7 +36,7 @@
 }
 
 .member-table__container {
-    overflow: scroll hidden;
+    overflow: auto hidden;
     background: rgba(0, 0, 0, 0.2);
     width: calc(100vw - 250px);
 }
