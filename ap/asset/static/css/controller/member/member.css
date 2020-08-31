@@ -36,17 +36,17 @@
 }
 
 .member-table__container {
-    /* background: red; */
     overflow: scroll hidden;
-    /* display: block; */
     background: rgba(0, 0, 0, 0.2);
+    width: calc(100vw - 250px);
 }
+
 
 .member-table {
     border-collapse: collapse;
     border: 1px solid #ddd;
     white-space: nowrap;
-    /* table-layout: fixed; */
+    
     width: 100%;
 }
 
@@ -66,4 +66,11 @@
 .member-table__body td {
     text-align: left;
     padding: 8px 32px;
+}
+
+/* side navが消える位置で、widthをmaxにする */
+@media screen and (max-width: 756px) {
+    .member-table__container{
+        width: 100vw;
+    }
 }
