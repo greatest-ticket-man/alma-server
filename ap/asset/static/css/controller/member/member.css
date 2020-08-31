@@ -36,9 +36,9 @@
 }
 
 .member-table__container {
-    overflow: auto hidden;
-    background: rgba(0, 0, 0, 0.2);
+    overflow: auto;
     width: calc(100vw - 250px);
+    height: calc(100vh - 100px);
 }
 
 
@@ -46,13 +46,13 @@
     border-collapse: collapse;
     border: 1px solid #ddd;
     white-space: nowrap;
-    
     width: 100%;
 }
 
 .member-table__head {
     border: 1px solid #ddd;
     text-align: left;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .member-table__head th {
