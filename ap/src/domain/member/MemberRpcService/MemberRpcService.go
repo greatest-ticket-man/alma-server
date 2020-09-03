@@ -12,6 +12,10 @@ func PageHTML(ctx context.Context, mid string, txTime time.Time, eventID string)
 
 	userEvent := EventService.GetEvent(ctx, eventID)
 
+	// TODO get member page
+
+	// TODO paging
+
 	return &common.EventNameReply{
 		EventName: userEvent.Name,
 	}

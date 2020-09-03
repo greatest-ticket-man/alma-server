@@ -10,5 +10,20 @@ import "common/common.proto";
 service Member {
 
     // PageHTML
-    rpc PageHTML(common.EventRequest) returns (common.EventNameReply);
+    rpc PageHTML(common.EventRequest) returns (PageHTMLReply);
 }
+
+message PageHTMLReply {
+
+    string event_name = 1;
+
+    
+
+}
+
+message MemberInfo {
+    string name = 1;
+    string email = 2;
+    string auth = 3;
+}
+
