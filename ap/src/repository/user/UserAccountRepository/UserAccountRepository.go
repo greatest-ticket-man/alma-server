@@ -15,6 +15,7 @@ const (
 	ThisCollectionName = "USER_ACCOUNT"
 
 	FEmail = "email"
+	FMid   = "_id"
 
 	fLoginTime = "lt"
 )
@@ -67,6 +68,23 @@ func GetFromEmail(ctx context.Context, email string) *UserAccount {
 	}
 
 	return result.(*UserAccount)
+}
+
+// GetList midListからデータを取得する
+func GetList(ctx context.Context, midList []string) []*UserAccount {
+
+	query := bson.M{
+		FMid: bson.M{
+			"$in": midList,
+		},
+	}
+
+	result := getDb(ctx).Find(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.([]*UserAccount)
 }
 
 // FindAndUpdate .
