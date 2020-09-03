@@ -1,6 +1,7 @@
 syntax = "proto3";
 
-option go_package = "alma-server/ap/src/infrastructure/grpc/proto/member";
+// option go_package = "alma-server/ap/src/infrastructure/grpc/proto/member";
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/member;vendor";
 
 package member;
 
