@@ -5,6 +5,7 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/member";
 package member;
 
 import "common/common.proto";
+import "google/protobuf/timestamp.proto";
 
 // RPC
 service Member {
@@ -16,7 +17,7 @@ service Member {
 message PageHTMLReply {
 
     string event_name = 1;
-
+    repeated MemberInfo member_info_list = 2;
     
 
 }
@@ -25,5 +26,6 @@ message MemberInfo {
     string name = 1;
     string email = 2;
     string auth = 3;
+    google.protobuf.Timestamp created_at = 4;
 }
 
