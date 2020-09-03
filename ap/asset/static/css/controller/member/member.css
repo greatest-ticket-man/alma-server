@@ -61,12 +61,18 @@
 
 .member-table__body tr {
     border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.member-table__body tr:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .member-table__body td {
     text-align: left;
     padding: 8px 32px;
 }
+
 
 /* side navが消える位置で、widthをmaxにする */
 @media screen and (max-width: 756px) {
