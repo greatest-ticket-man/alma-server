@@ -55,6 +55,19 @@ func GetList(ctx context.Context, mid string) []*UserEventMember {
 	return result.([]*UserEventMember)
 }
 
+// GetListFromEventID 指定したイベントに参加している人を取得する
+func GetListFromEventID(ctx context.Context, eventID string) []*UserEventMember {
+
+	query := bson.M{FEventID: eventID}
+
+	result := getDb(ctx).Find(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.([]*UserEventMember)
+}
+
 // InsertBulk メンバーを複数追加する
 func InsertBulk(ctx context.Context, txTime time.Time, userEventMemberList []*UserEventMember) []interface{} {
 	return getDb(ctx).InsertMany(toInterface(userEventMemberList))
