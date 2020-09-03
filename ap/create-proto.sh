@@ -15,7 +15,7 @@
 # cd $DIR/proto
 # find . -name "*.proto" -type f -exec protoc --proto_path . --go_out=plugins=grpc:$OUT_DIR {} \;
 
-DIR = `pwd`
+DIR=`pwd`
 
 cd ../..
 OUT_DIR=`pwd`
@@ -28,4 +28,6 @@ export PATH="$PATH:$HOME/go/bin"
 
 cd $DIR/proto
 
-find . -type d -name vendor -prune -o -type f -name "*.proto" -exec protoc --proto_path=. -Ivendor/protobuf/src --go_out=plugins=grpc:${OUT_DIR} {}\;
+
+find . -type d -name vendor -prune -o -type f -name "*.proto" | xargs --replace=SomeFile protoc --proto_path=. -Ivendor/protobuf/src SomeFile --go_out=plugins=grpc:${OUT_DIR}
+
