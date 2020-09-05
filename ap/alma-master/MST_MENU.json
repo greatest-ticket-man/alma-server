@@ -1,7 +1,7 @@
 {"_id":"test","title":"test","children":["a","b","c"],"ct":"2020-07-08T18:10:40.287+09:00","ut":"2020-07-08T18:10:40.287+09:00"}
 {"_id":"top","title":"TOP","children":["event_top","member_top"]}
-{"_id":"event_top","title":"イベント","path":"/event","children":["event"]}
-{"_id":"event","title":"イベント情報","path":"/event","children":[]}
-{"_id":"member_top","title":"メンバー","path":"/member","children":["member","member_invite"]}
-{"_id":"member","title":"メンバー情報","path":"/member","children"[]}
-{"_id":"member_invite","title":"招待中メンバー情報","path":"/member/invite","children":[]}
+{"_id":"event_top","title":"イベント","path":"/event","parent":"top","children":["event"]}
+{"_id":"event","title":"イベント情報","path":"/event","parent":"event_top","children":[]}
+{"_id":"member_top","title":"メンバー","path":"/member","parent":"top","children":["member","member_invite"]}
+{"_id":"member","title":"メンバー情報","path":"/member","parent":"member_top","children"[]}
+{"_id":"member_invite","title":"招待中メンバー情報","parent":"member_top","path":"/member/invite","children":[]}
