@@ -4,7 +4,9 @@ import (
 	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/domain/account/AccountComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/member"
+	memberinvite "alma-server/ap/src/infrastructure/grpc/proto/member/invite"
 	"alma-server/ap/src/repository/user/UserAccountRepository"
+	"alma-server/ap/src/repository/user/event/UserEventInviteMemberRepository"
 	"alma-server/ap/src/repository/user/event/UserEventMemberRepository"
 )
 
@@ -44,4 +46,24 @@ func CreateMemberInfoList(userEventMemberList []*UserEventMemberRepository.UserE
 	}
 
 	return memberInfoList
+}
+
+// CreateMemberInviteInfoList .
+func CreateMemberInviteInfoList(userEventInviteMemberList []*UserEventInviteMemberRepository.UserEventInviteMember) []*memberinvite.MemberInviteInfo {
+
+	var memberInviteInfoList []*memberinvite.MemberInviteInfo
+	for _, userEventInviteMember := range userEventInviteMemberList {
+
+		memberInvite := &memberinvite.MemberInviteInfo{
+			Email:     userEventInviteMember.Email,
+			Auth:      userEventInviteMember.AuthID,
+			CreatedAt: dateutil.TimeToTimestamp(userEventInviteMember.CreateTime),
+		}
+
+		memberInviteInfoList = append(memberInviteInfoList, memberInvite)
+
+	}
+
+	return memberInviteInfoList
+
 }

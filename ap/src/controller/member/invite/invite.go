@@ -4,7 +4,7 @@ import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
-	"alma-server/ap/src/domain/event/EventRpcService"
+	"alma-server/ap/src/domain/member/MemberInviteRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"net/http"
 )
@@ -19,9 +19,9 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
-	// txTime := almactx.GetTxTime(ctx)
+	txTime := almactx.GetTxTime(ctx)
 
-	result := EventRpcService.GetEvent(ctx, mid, req.Event)
+	result := MemberInviteRpcService.PageHTML(ctx, mid, txTime, req.Event)
 
 	response.BaseHTML(
 		w,
@@ -29,12 +29,13 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"",
 		map[string]interface{}{},
 		"/template/controller/member/invite/member_invite.html",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"memberInviteInfoList": result.MemberInviteInfoList,
+		},
 		[]string{},
 		[]string{
 			"/static/css/controller/member/invite/member_invite.css",
 		},
 		result.EventName,
 	)
-
 }

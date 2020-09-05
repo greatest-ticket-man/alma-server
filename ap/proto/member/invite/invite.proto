@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/member/invite";
+
+package invite;
+
+import "common/common.proto";
+import "google/protobuf/timestamp.proto";
+
+// RPC
+service MemberInvite {
+
+    // PageHTML 
+    rpc PageHTML(common.EventRequest) returns (PageHTMLReply);
+}
+
+message PageHTMLReply {
+    string event_name = 1;
+    repeated MemberInviteInfo member_invite_info_list = 2;
+}
+
+message MemberInviteInfo {
+    string email = 1;
+    string auth = 2;
+    google.protobuf.Timestamp created_at = 3;
+}
+
