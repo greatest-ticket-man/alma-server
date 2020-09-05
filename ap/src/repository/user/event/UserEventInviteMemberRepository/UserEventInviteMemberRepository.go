@@ -50,6 +50,19 @@ func Get(ctx context.Context, email string) *UserEventInviteMember {
 	return result.(*UserEventInviteMember)
 }
 
+// GetList .
+func GetList(ctx context.Context, eventID string) []*UserEventInviteMember {
+
+	query := bson.M{FEventID: eventID}
+
+	result := getDb(ctx).Find(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.([]*UserEventInviteMember)
+}
+
 // InsertBulk 一括で招待メンバーを登録する
 func InsertBulk(ctx context.Context, userEventInviteMemberList []*UserEventInviteMember) []interface{} {
 	return getDb(ctx).InsertMany(toInterface(userEventInviteMemberList))
