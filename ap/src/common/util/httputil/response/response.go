@@ -37,6 +37,11 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 		headContent = template.HTML(htmlutil.CreateTemplateToString(headContentPath, headContentpath))
 	}
 
+	// TODO sidebar
+	// menuID := "member"
+
+	// TODO sidemenu
+
 	HTML(
 		w,
 		"/template/component/base.html",
@@ -47,6 +52,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 			"scriptPathList": scriptPathList,
 			"cssPathList":    cssPathList,
 			"eventName":      eventName,
+			"sideBar":        template.HTML(htmlutil.CreateTemplateToString("/template/component/side_bar.html", nil)),
 		},
 	)
 
