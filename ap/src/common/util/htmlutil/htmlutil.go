@@ -9,7 +9,6 @@ import (
 	"html/template"
 	"io"
 	"path/filepath"
-	"time"
 
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
@@ -19,8 +18,9 @@ var funcMap = template.FuncMap{
 	"add": func(i1 int, i2 int) int {
 		return i1 + i2
 	},
-	"timestampToTime": func(ts *timestamppb.Timestamp) time.Time {
-		return dateutil.TimestampToTime(ts)
+	"timestampToTime": func(ts *timestamppb.Timestamp) string {
+		t := dateutil.TimestampToTime(ts)
+		return dateutil.FormatYyyyMmDdSs(t)
 	},
 }
 
