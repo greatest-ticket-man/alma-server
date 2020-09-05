@@ -12,6 +12,7 @@ import (
 
 // go test -v -cover=1 -timeout 30s alma-server/ap/src/domain/menu/MenuService
 
+func Test(t *testing.T) {
 
 	test.Setup()
 
