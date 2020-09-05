@@ -29,7 +29,9 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/member/head.html",
 		map[string]interface{}{},
 		"/template/controller/member/member.html",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"memberInfoList": result.MemberInfoList,
+		},
 		[]string{
 			"/static/js/controller/member/member.js",
 		},
