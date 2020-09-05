@@ -38,7 +38,7 @@
                         <td>{{ $memberInfo.Name }}</td>
                         <td>{{ $memberInfo.Email }}</td>
                         <td>{{ $memberInfo.Auth }}</td>
-                        <td>{{ $memberInfo.CreatedAt }}</td>
+                        <td>{{ $memberInfo.CreatedAt | timestampToTime }}</td>
                     </tr>
 
                     {{ end }}
