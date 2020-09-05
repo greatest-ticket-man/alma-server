@@ -44,7 +44,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 
 	HTML(
 		w,
-		"/template/component/base.html",
+		"/template/component/base/base.html",
 		map[string]interface{}{
 			"mainTitle":      mainTitle,
 			"headContent":    headContent,
@@ -52,7 +52,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 			"scriptPathList": scriptPathList,
 			"cssPathList":    cssPathList,
 			"eventName":      eventName,
-			"sideBar":        template.HTML(htmlutil.CreateTemplateToString("/template/component/side_bar.html", nil)),
+			"sideBar":        template.HTML(htmlutil.CreateTemplateToString("/template/component/base/side_bar.html", nil)),
 		},
 	)
 
