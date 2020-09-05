@@ -22,7 +22,7 @@ func Test(t *testing.T) {
 
 		g.It("GetMenu", func() {
 
-			result := MenuService.GetMenu("test")
+			result := MenuService.GetMenu("top")
 			log.Println("result is ", jsonutil.Marshal(result))
 
 		})
