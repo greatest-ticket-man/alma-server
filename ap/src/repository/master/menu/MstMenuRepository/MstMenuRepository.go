@@ -18,8 +18,10 @@ var reflectType = reflect.TypeOf((*MstMenu)(nil))
 type MstMenu struct {
 	ID         string    `bson:"_id" json:"_id"`           // 識別ID unique
 	Title      string    `bson:"title" json:"title"`       // 表示する名前
+	Desc       string    `bson:"desc" json:"desc"`         // 説明
 	Parent     string    `bson:"parent" json:"parent"`     // 親のID
 	Children   []string  `bson:"children" json:"children"` // 子どもたちのID
+	Path       string    `bson:"path" json:"path"`         // クリックしたときに遷移するpath
 	CreateTime time.Time `bson:"ct" json:"ct"`
 	UpdateTime time.Time `bson:"ut" json:"ut"`
 }
