@@ -22,7 +22,7 @@ class SideBar {
         const me = this;
         this.sideBarMenuRowElList.forEach(function(elem) {
             elem.addEventListener('click', me.goPath);
-        })
+        });
 
     }
 

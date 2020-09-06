@@ -1,5 +1,5 @@
 {"_id":"test","title":"test","children":["a","b","c"],"ct":"2020-07-08T18:10:40.287+09:00","ut":"2020-07-08T18:10:40.287+09:00"}
-{"_id":"top","title":"TOP","children":["event_top","member_top"]}
+{"_id":"side_nav","title":"Greatest Ticket Man","children":["event_top","member_top"]}
 {"_id":"event_top","title":"イベント","path":"/event","parent":"top","children":["event"]}
 {"_id":"event","title":"イベント情報","path":"/event","parent":"event_top","children":[]}
 {"_id":"member_top","title":"メンバー","path":"/member","parent":"top","children":["member","member_invite"]}

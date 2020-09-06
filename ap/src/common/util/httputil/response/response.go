@@ -3,6 +3,7 @@ package response
 import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/jsonutil"
+	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/infrastructure/grpc/proto/menu"
 	"html/template"
 	"net/http"
@@ -44,7 +45,8 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 		sideBar = template.HTML(htmlutil.CreateTemplateToString("/template/component/base/side_bar.html", mstMenu))
 	}
 
-	// TODO sidemenu
+	// sidenav
+	sideNav := template.HTML(htmlutil.CreateTemplateToString("/template/component/base/side_nav.html", MenuService.GetMenu("side_nav", "")))
 
 	HTML(
 		w,
@@ -57,6 +59,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 			"cssPathList":    cssPathList,
 			"eventName":      eventName,
 			"sideBar":        sideBar,
+			"sideNav":        sideNav,
 		},
 	)
 

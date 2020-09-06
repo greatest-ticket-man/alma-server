@@ -1,0 +1,26 @@
+<aside class="js-side-nav side-nav">
+    <nav class="js-side-nav-container side-nav__container">
+        <header class="side-nav__header">
+            {{ .Title }}
+        </header>
+        <ul class="side-nav__menu">
+            {{ range $childMenu := .ChildMenuInfoList }}
+            <li class="js-side-nav-row">
+                {{ $childMenu.Title }}
+                <div hidden class="js-side-nav-path">{{ $childMenu.Path }}</div>
+                <!-- <ul>
+
+                    {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
+
+                    <li>
+                        {{ $grandChildMenu.Title }}
+                    </li>
+
+                    {{ end }}
+
+                </ul> -->
+            </li>    
+            {{ end }}
+        </ul>
+    </nav>
+</aside>
