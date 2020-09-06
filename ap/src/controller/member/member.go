@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/member/MemberRpcService"
+	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"net/http"
 )
@@ -39,6 +40,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/css/controller/member/member.css",
 		},
 		result.EventName,
+		MenuService.GetMenu("member_top", "member"),
 	)
 
 }

@@ -34,6 +34,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		[]string{"/static/js/controller/home/dashboard/dashboard.js"},
 		[]string{"/static/css/controller/home/dashboard/dashboard.css"},
 		userEvent.Name,
+		nil,
 	)
 }
 
@@ -50,5 +51,6 @@ func PageHTMLEmpty(w http.ResponseWriter, r *http.Request) {
 		[]string{"/static/js/controller/home/dashboard/empty/dashboard_empty.js"},
 		[]string{"/static/css/controller/home/dashboard/empty/dashboard_empty.css"},
 		"",
+		nil,
 	)
 }

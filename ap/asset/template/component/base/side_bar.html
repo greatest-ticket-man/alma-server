@@ -1,12 +1,13 @@
 <aside class="base__content__sidebar">
     <header class="base__content__sidebar__header">
-        Side Bar Header
-        TODO ここをどうにかする
+        {{ .Title }}
+        <template>{{ .Path }}</template>
     </header>
-
     <ul class="base__content__sidebar__menu">
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
+        {{ range $childMenu := .ChildMenuInfoList }}
+            <li>
+                {{ $childMenu.Title }}
+            </li>
+        {{ end }}
     </ul>
 </aside>

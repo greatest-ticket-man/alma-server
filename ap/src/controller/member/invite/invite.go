@@ -37,5 +37,6 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/css/controller/member/invite/member_invite.css",
 		},
 		result.EventName,
+		nil,
 	)
 }

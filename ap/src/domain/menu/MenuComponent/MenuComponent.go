@@ -6,12 +6,13 @@ import (
 )
 
 // CreateMenuInfo .
-func CreateMenuInfo(mstMenu *MstMenuRepository.MstMenu, childMenuInfoList []*menu.MenuInfo) *menu.MenuInfo {
+func CreateMenuInfo(mstMenu *MstMenuRepository.MstMenu, selectedMenuID string, childMenuInfoList []*menu.MenuInfo) *menu.MenuInfo {
 
 	return &menu.MenuInfo{
 		Title:             mstMenu.Title,
 		Desc:              mstMenu.Desc,
 		Path:              mstMenu.Path,
+		IsSelected:        mstMenu.ID == selectedMenuID,
 		ChildMenuInfoList: childMenuInfoList,
 	}
 
