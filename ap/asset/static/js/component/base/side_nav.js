@@ -33,6 +33,9 @@ class SideNav {
         this.update = this.update.bind(this);
         this.goPath = this.goPath.bind(this);
         this.goDashboard = this.goDashboard.bind(this);
+        this.showSubMenu = this.showSubMenu.bind(this);
+        this.hideAllSubMenu = this.hideAllSubMenu.bind(this);
+        
 
         // fieldの初期化
         this.startX = 0;
@@ -83,6 +86,7 @@ class SideNav {
         const me = this;
         this.sideNavMenuRowElList.forEach(function(elem) {
             elem.addEventListener('click', me.goPath);
+            elem.addEventListener('mouseenter', me.showSubMenu);
         });
 
         this.sideNavHeader.addEventListener('click', this.goDashboard);
@@ -191,6 +195,25 @@ class SideNav {
         this.transitionEndTime = 0.13;
 
         this.sideNavEl.addEventListener('transitionend', this.onTransitionEnd);
+    }
+
+    // showSubMenu SubMenuを表示する
+    showSubMenu(elem) {
+
+        this.hideAllSubMenu();
+
+        let sideNavMenuRowEl = elem.currentTarget;
+        let sideNavSubMenuContainerEl = sideNavMenuRowEl.querySelector('.side-nav__sub-menu__container');
+        sideNavSubMenuContainerEl.classList.add('side-nav__sub-menu__container-visible');
+
+    }
+
+    // hideAllSubMenu すべてのSubMenuを非表示にする
+    hideAllSubMenu() {
+        this.sideNavMenuRowElList.forEach(function(elem) {
+            let sideNavSubMenuContainerEl = elem.querySelector('.side-nav__sub-menu__container');
+            sideNavSubMenuContainerEl.classList.remove('side-nav__sub-menu__container-visible');
+        });
     }
 
     goDashboard() {
