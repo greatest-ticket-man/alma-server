@@ -5,21 +5,29 @@
         </header>
         <ul class="side-nav__menu">
             {{ range $childMenu := .ChildMenuInfoList }}
-            <li class="js-side-nav-row">
+            <li class="js-side-nav-row side-nav__menu__li">
                 {{ $childMenu.Title }}
                 <div hidden class="js-side-nav-path">{{ $childMenu.Path }}</div>
-                <!-- <ul>
 
-                    {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
 
-                    <li>
-                        {{ $grandChildMenu.Title }}
-                    </li>
 
-                    {{ end }}
+                <div class="side-nav__sub-menu">
+                    <div class="side-nav__sub-menu__container">
+                        <ul>
+                            {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
+                            <li>
+                                {{ $grandChildMenu.Title }}
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </div>
 
-                </ul> -->
-            </li>    
+
+                </div>
+
+
+
+            </li>
             {{ end }}
         </ul>
     </nav>
