@@ -81,13 +81,25 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.side-nav__menu li {
+.side-nav__menu__li {
     height: 48px;
     line-height: 48px;
     padding: 0 16px;
     cursor: pointer;
 }
 
-.side-nav__menu li:hover {
+.side-nav__menu__li:hover {
     background: rgba(0, 0, 0, 0.1);
+}
+
+.side-nav__sub-menu {
+  background: greenyellow;
+  /* position: fixed; */
+  position: relative;
+  overflow: hidden;
+  pointer-events: none;
+  opacity: 0.4;
+  z-index: 3;
+  
+
 }
