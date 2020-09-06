@@ -10,8 +10,10 @@ class SideNav {
 
         // SideNavのContainerElement
         this.sideNavContainerEl = document.querySelector('.js-side-nav-container');
+        this.sideNavSubContainerElList = document.querySelectorAll('.side-nav__sub-menu__container');
 
         this.sideNavMenuRowElList = document.querySelectorAll('.js-side-nav-row');
+        this.sideNavSubMenuRowElList = document.querySelectorAll('.js-side-nav-sub-row');
 
         this.sideNavHeader = document.querySelector('.js-side-nav-header');
 
@@ -32,6 +34,7 @@ class SideNav {
         this.onTransitionEnd = this.onTransitionEnd.bind(this);
         this.update = this.update.bind(this);
         this.goPath = this.goPath.bind(this);
+        this.goSubPath = this.goSubPath.bind(this);
         this.goDashboard = this.goDashboard.bind(this);
         this.showSubMenu = this.showSubMenu.bind(this);
         this.hideAllSubMenu = this.hideAllSubMenu.bind(this);
@@ -88,6 +91,16 @@ class SideNav {
             elem.addEventListener('click', me.goPath);
             elem.addEventListener('mouseenter', me.showSubMenu);
         });
+
+
+        this.sideNavSubContainerElList.forEach(function (elem) {
+            // menuのclick eventが優先されてしまうため、先にブロックする
+            elem.addEventListener('click', me.blockClicks);
+        });
+
+        this.sideNavSubMenuRowElList.forEach(function (elem) {
+            elem.addEventListener('click', me.goSubPath);
+        })
 
         this.sideNavHeader.addEventListener('click', this.goDashboard);
     }
@@ -222,12 +235,22 @@ class SideNav {
         window.Alma.location.href(window.Alma.location.home_dashboard);
     }
 
+    // menuの遷移
     goPath(elem) {
         let sideNavMenuRow = elem.currentTarget;
         let path = sideNavMenuRow.querySelector('.js-side-nav-path').innerText;
 
         window.Alma.location.href(path);
     }
+
+    // subMenuの遷移
+    goSubPath(elem) {
+        let sideNavSubMenuRow = elem.currentTarget;
+        let path = sideNavSubMenuRow.querySelector('.js-side-nav-sub-path').innerText;
+
+        window.Alma.location.href(path);
+    }
+    
 }
 
 new SideNav();
