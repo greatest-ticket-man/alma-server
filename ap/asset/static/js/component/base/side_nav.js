@@ -13,6 +13,8 @@ class SideNav {
 
         this.sideNavMenuRowElList = document.querySelectorAll('.js-side-nav-row');
 
+        this.sideNavHeader = document.querySelector('.js-side-nav-header');
+
 
         // Containerの子にフォーカスできるかどうかを制御
         // 初期状態が画面外のため、フォーカスを無効にする
@@ -30,6 +32,7 @@ class SideNav {
         this.onTransitionEnd = this.onTransitionEnd.bind(this);
         this.update = this.update.bind(this);
         this.goPath = this.goPath.bind(this);
+        this.goDashboard = this.goDashboard.bind(this);
 
         // fieldの初期化
         this.startX = 0;
@@ -82,6 +85,7 @@ class SideNav {
             elem.addEventListener('click', me.goPath);
         });
 
+        this.sideNavHeader.addEventListener('click', this.goDashboard);
     }
 
     // onTouchStart .
@@ -187,6 +191,10 @@ class SideNav {
         this.transitionEndTime = 0.13;
 
         this.sideNavEl.addEventListener('transitionend', this.onTransitionEnd);
+    }
+
+    goDashboard() {
+        window.Alma.location.href(window.Alma.location.home_dashboard);
     }
 
     goPath(elem) {
