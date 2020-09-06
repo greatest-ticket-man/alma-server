@@ -11,6 +11,8 @@ class SideNav {
         // SideNavのContainerElement
         this.sideNavContainerEl = document.querySelector('.js-side-nav-container');
 
+        this.sideNavMenuRowElList = document.querySelectorAll('.js-side-nav-row');
+
 
         // Containerの子にフォーカスできるかどうかを制御
         // 初期状態が画面外のため、フォーカスを無効にする
@@ -27,6 +29,7 @@ class SideNav {
         this.onTouchEnd = this.onTouchEnd.bind(this);
         this.onTransitionEnd = this.onTransitionEnd.bind(this);
         this.update = this.update.bind(this);
+        this.goPath = this.goPath.bind(this);
 
         // fieldの初期化
         this.startX = 0;
@@ -73,6 +76,11 @@ class SideNav {
         this.sideNavEl.addEventListener('touchstart', this.onTouchStart, this.applyPassive());
         this.sideNavEl.addEventListener('touchmove', this.onTouchMove, this.applyPassive());
         this.sideNavEl.addEventListener('touchend', this.onTouchEnd);
+
+        const me = this;
+        this.sideNavMenuRowElList.forEach(function(elem) {
+            elem.addEventListener('click', me.goPath);
+        });
 
     }
 
@@ -179,6 +187,13 @@ class SideNav {
         this.transitionEndTime = 0.13;
 
         this.sideNavEl.addEventListener('transitionend', this.onTransitionEnd);
+    }
+
+    goPath(elem) {
+        let sideNavMenuRow = elem.currentTarget;
+        let path = sideNavMenuRow.querySelector('.js-side-nav-path').innerText;
+
+        window.Alma.location.href(path);
     }
 }
 
