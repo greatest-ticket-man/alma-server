@@ -125,6 +125,7 @@
     font-size: 0.8em;
     height: 32px;
     line-height: 32px;
+    width: 100%;
 }
 
 .side-nav__sub-menu__li:hover {
