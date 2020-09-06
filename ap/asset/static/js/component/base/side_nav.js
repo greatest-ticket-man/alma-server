@@ -195,6 +195,8 @@ class SideNav {
         this.transitionEndTime = 0.13;
 
         this.sideNavEl.addEventListener('transitionend', this.onTransitionEnd);
+
+        this.hideAllSubMenu();
     }
 
     // showSubMenu SubMenuを表示する
