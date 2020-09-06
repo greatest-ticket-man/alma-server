@@ -17,6 +17,7 @@
     display: flex; /* 文字の中央揃え */
     align-items: center; /* 文字の中央揃え */
     font-size: large;
+    cursor: pointer;
 }
 
 .base__content__sidebar__menu {
@@ -34,10 +35,16 @@
     height: 40px;
     line-height: 40px;
     padding: 0 16px;
+    cursor: pointer;
 }
 
 .base__content__sidebar__menu li:hover {
-    background: #ccc;
+    background: #ddd;
+}
+
+.base__content__sidebar__menu__li--selected {
+    background: #e0eeff;
+    color: royalblue;
 }
 
 @media screen and (max-width: 756px) {
