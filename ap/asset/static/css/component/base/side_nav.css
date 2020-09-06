@@ -89,5 +89,5 @@
 }
 
 .side-nav__menu li:hover {
-    background: #ccc;
+    background: rgba(0, 0, 0, 0.1);
 }
