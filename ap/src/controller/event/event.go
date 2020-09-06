@@ -39,6 +39,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		[]string{"/static/js/controller/event/event.js"},
 		[]string{"/static/css/controller/event/event.css"},
 		result.EventName,
+		nil,
 	)
 }
 
@@ -68,6 +69,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/css/controller/event/create/event_create.css",
 		},
 		"",
+		nil,
 	)
 }
 
@@ -107,6 +109,7 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/css/controller/event/update/event_update.css",
 		},
 		result.EventName,
+		nil,
 	)
 }
 

@@ -11,12 +11,13 @@ import (
 
 // GetMenu メニューを取得する
 // 無限ループが発生する可能性があるので、取得に3秒以上かかった場合はPanicする
-func GetMenu(menuID string) *menu.MenuInfo {
+// selectedMenuID: 選択状態にしたいMenuIDを指定する
+func GetMenu(menuID string, selectedMenuID string) *menu.MenuInfo {
 	mstMenuMap := MstMenuRepository.GetMap()
 
 	ch := make(chan *menu.MenuInfo)
 	go func() {
-		ch <- getMenu(menuID, mstMenuMap)
+		ch <- getMenu(menuID, selectedMenuID, mstMenuMap)
 	}()
 
 	select {
@@ -28,7 +29,7 @@ func GetMenu(menuID string) *menu.MenuInfo {
 	}
 }
 
-func getMenu(menuID string, mstMenuMap map[string]*MstMenuRepository.MstMenu) *menu.MenuInfo {
+func getMenu(menuID string, selectedMenuID string, mstMenuMap map[string]*MstMenuRepository.MstMenu) *menu.MenuInfo {
 
 	mstMenu := mstMenuMap[menuID]
 	if mstMenu == nil {
@@ -37,8 +38,8 @@ func getMenu(menuID string, mstMenuMap map[string]*MstMenuRepository.MstMenu) *m
 
 	var childMenuInfoList []*menu.MenuInfo
 	for _, childMenuID := range mstMenu.Children {
-		childMenuInfoList = append(childMenuInfoList, getMenu(childMenuID, mstMenuMap))
+		childMenuInfoList = append(childMenuInfoList, getMenu(childMenuID, selectedMenuID, mstMenuMap))
 	}
 
-	return MenuComponent.CreateMenuInfo(mstMenu, childMenuInfoList)
+	return MenuComponent.CreateMenuInfo(mstMenu, selectedMenuID, childMenuInfoList)
 }

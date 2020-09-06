@@ -3,6 +3,7 @@ package response
 import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/jsonutil"
+	"alma-server/ap/src/infrastructure/grpc/proto/menu"
 	"html/template"
 	"net/http"
 )
@@ -25,7 +26,7 @@ func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 
 // BaseHTML baseテンプレートでhtmlを返す
 func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, headContentpath map[string]interface{}, mainContentPath string, mainDataMap map[string]interface{},
-	scriptPathList []string, cssPathList []string, eventName string) {
+	scriptPathList []string, cssPathList []string, eventName string, mstMenu *menu.MenuInfo) {
 
 	if eventName == "" {
 		eventName = "イベントの選択"
@@ -37,8 +38,11 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 		headContent = template.HTML(htmlutil.CreateTemplateToString(headContentPath, headContentpath))
 	}
 
-	// TODO sidebar
-	// menuID := "member"
+	// sidebar sidebarの指定がある場合のみ、SideBarを読み込む
+	var sideBar template.HTML
+	if mstMenu != nil {
+		sideBar = template.HTML(htmlutil.CreateTemplateToString("/template/component/base/side_bar.html", mstMenu))
+	}
 
 	// TODO sidemenu
 
@@ -52,7 +56,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 			"scriptPathList": scriptPathList,
 			"cssPathList":    cssPathList,
 			"eventName":      eventName,
-			"sideBar":        template.HTML(htmlutil.CreateTemplateToString("/template/component/base/side_bar.html", nil)),
+			"sideBar":        sideBar,
 		},
 	)
 

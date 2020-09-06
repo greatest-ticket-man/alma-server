@@ -3,5 +3,5 @@
 {"_id":"event_top","title":"イベント","path":"/event","parent":"top","children":["event"]}
 {"_id":"event","title":"イベント情報","path":"/event","parent":"event_top","children":[]}
 {"_id":"member_top","title":"メンバー","path":"/member","parent":"top","children":["member","member_invite"]}
-{"_id":"member","title":"メンバー情報","path":"/member","parent":"member_top","children"[]}
+{"_id":"member","title":"メンバー情報","path":"/member","parent":"member_top","children":[]}
 {"_id":"member_invite","title":"招待中メンバー情報","parent":"member_top","path":"/member/invite","children":[]}
