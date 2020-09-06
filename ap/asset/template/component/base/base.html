@@ -19,8 +19,10 @@
     <!-- SideNav -->
     <link rel="stylesheet" href="/static/css/component/base/side_nav.css">
 
+    {{ if ne .sideBar "" }}
     <!-- SideBar -->
     <link rel="stylesheet" href="/static/css/component/base/side_bar.css">
+    {{ end }}
 
     <link rel="icon" href="/static/img/favicon.ico">
 
@@ -151,12 +153,15 @@
     <script src="/static/js/location.js"></script> <!-- localstorage.jsに依存 -->
     <script src="/static/js/common/detabinator.js"></script>
     <script src="/static/js/component/base/side_nav.js"></script>
-    <script src="/static/js/component/base/side_bar.js"></script> <!-- location.jsに依存 -->
     <script src="/static/js/component/base/account_menu.js"></script>
     <script src="/static/js/component/base/event_menu.js"></script>
     <script src="/static/js/request.js"></script>
     
     <script src="/static/js/component/base/base.js"></script>
+
+    {{ if ne .sideBar "" }}
+    <script src="/static/js/component/base/side_bar.js"></script> <!-- location.jsに依存 -->
+    {{ end }}
     
     
     {{ range $scriptPath := .scriptPathList }}
