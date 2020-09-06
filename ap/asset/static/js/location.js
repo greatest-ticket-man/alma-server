@@ -9,6 +9,7 @@ window.Alma = window.Alma || {};
             this.member_info = '/member';
             this.home_dashboard = '/home/dashboard';
             this.home_dashboard_empty = '/home/dashboard/empty';
+            this.reserve_info = '/reserve';
 
             this.baseURL = `${location.protocol}//${document.domain}:${location.port}`;
         }
