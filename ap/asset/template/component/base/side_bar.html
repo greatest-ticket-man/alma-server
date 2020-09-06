@@ -1,15 +1,15 @@
 <aside class="base__content__sidebar">
     <header class="js-sidebar-header base__content__sidebar__header">
         {{ .Title }}
-        <div class="js-sidebar-header-path">{{.Path}}</div>
+        <div class="js-sidebar-header-path" hidden>{{.Path}}</div>
         
     </header>
     <ul class="base__content__sidebar__menu">
         {{ range $childMenu := .ChildMenuInfoList }}
             {{ if eq $childMenu.IsSelected true }}
-            <li class="base__content__sidebar__menu__li--selected">
+            <li class="js-sidebar-menu-row base__content__sidebar__menu__li--selected">
             {{ else }}
-            <li class="base__content__sidebar__menu__li">
+            <li class="js-sidebar-menu-row">
             {{ end }}
                 {{ $childMenu.Title }}
                 <div class="js-sidebar-path" hidden>{{ $childMenu.Path }}</div>
