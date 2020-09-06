@@ -33,7 +33,7 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 	}
 
 	// headContentはpathがある場合のみ追加する
-	headContent := template.HTML("")
+	var headContent template.HTML
 	if headContentPath != "" {
 		headContent = template.HTML(htmlutil.CreateTemplateToString(headContentPath, headContentpath))
 	}
