@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/member/MemberInviteRpcService"
+	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"net/http"
 )
@@ -37,6 +38,6 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/css/controller/member/invite/member_invite.css",
 		},
 		result.EventName,
-		nil,
+		MenuService.GetMenu("member_top", "member_invite"),
 	)
 }
