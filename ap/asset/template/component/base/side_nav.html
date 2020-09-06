@@ -12,8 +12,9 @@
                 <div class="side-nav__sub-menu__container">
                     <ul class="side-nav__sub-menu">
                         {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
-                        <li class="side-nav__sub-menu__li">
+                        <li class="js-side-nav-sub-row side-nav__sub-menu__li">
                             {{ $grandChildMenu.Title }}
+                            <div hidden class="js-side-nav-sub-path">{{ $grandChildMenu.Path }}</div>
                         </li>
                         {{ end }}
                     </ul>
