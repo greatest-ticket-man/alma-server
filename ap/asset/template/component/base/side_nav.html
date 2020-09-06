@@ -9,24 +9,15 @@
                 {{ $childMenu.Title }}
                 <div hidden class="js-side-nav-path">{{ $childMenu.Path }}</div>
 
-
-
-                <div class="side-nav__sub-menu">
-                    <div class="side-nav__sub-menu__container">
-                        <ul>
-                            {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
-                            <li>
-                                {{ $grandChildMenu.Title }}
-                            </li>
-                            {{ end }}
-                        </ul>
-                    </div>
-
-
+                <div class="side-nav__sub-menu__container">
+                    <ul class="side-nav__sub-menu">
+                        {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
+                        <li class="side-nav__sub-menu__li">
+                            {{ $grandChildMenu.Title }}
+                        </li>
+                        {{ end }}
+                    </ul>
                 </div>
-
-
-
             </li>
             {{ end }}
         </ul>
