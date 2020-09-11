@@ -1,7 +1,7 @@
 # local.toml
 
 # 環境
-mode = "local"
+mode = "locallll"
 
 # ルートディレクトリ、指定なしだとビルドしたときの標準になる
 rootdirectory = ""

@@ -1,13 +1,14 @@
 package htmlutil
 
 import (
+	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/error/chk"
-	"alma-server/ap/src/common/projectpathap"
 	"alma-server/ap/src/common/util/dateutil"
+	"alma-server/ap/src/infrastructure/file/almafile"
 	"bytes"
-	"fmt"
 	"html/template"
 	"io"
+	"io/ioutil"
 	"path/filepath"
 
 	"google.golang.org/protobuf/types/known/timestamppb"
@@ -48,7 +49,17 @@ func getTemplateFromPath(path string) *template.Template {
 	// Newにファイル名を与える必要がある
 	tname := filepath.Base(path)
 
-	temp, err := template.New(tname).Funcs(funcMap).ParseFiles(fmt.Sprintf("%s/asset%s", projectpathap.GetRoot(), path))
+	assetFileSystem := almafile.GetAssetFileSystem(config.ConfigData)
+
+	file, err := assetFileSystem.Open(path)
+	defer file.Close()
 	chk.SE(err)
+
+	content, err := ioutil.ReadAll(file)
+	chk.SE(err)
+
+	temp, err := template.New(tname).Funcs(funcMap).Parse(string(content))
+	chk.SE(err)
+
 	return temp
 }
