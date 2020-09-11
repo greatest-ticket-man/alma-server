@@ -14,6 +14,7 @@ import (
 	"alma-server/ap/src/controller/ticket"
 	"alma-server/ap/src/controller/todo"
 	"alma-server/ap/src/controller/top"
+	"alma-server/ap/src/infrastructure/file/almafile"
 	"alma-server/ap/src/infrastructure/http/middleware"
 	"net/http"
 
@@ -56,8 +57,9 @@ func Router() *negroni.Negroni {
 	router.HandleFunc("/signup", signup.Signup).Methods("POST")
 	router.HandleFunc("/logout", login.Logout)
 
-	// static Staticコンテンツ
-	router.PathPrefix("/static").Handler(http.StripPrefix("/static", http.FileServer(http.Dir("asset/static/")))).Methods("GET")
+	// static file
+	staticFileSystem := almafile.GetStaticFileSystem(config.ConfigData)
+	router.PathPrefix("/static").Handler(http.StripPrefix("/static", http.FileServer(staticFileSystem))).Methods("GET")
 
 	// auth ログイン中のコンテンツはここ
 	authRouter := mux.NewRouter().PathPrefix("/").Subrouter().StrictSlash(true)
