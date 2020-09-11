@@ -73,7 +73,6 @@ func Shutdown() {
 
 	// http api
 	HTTPServer.Shutdown(context.Background())
-
 }
 
 // Run Server Start
