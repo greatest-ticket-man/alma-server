@@ -6,10 +6,14 @@ FILENAME='alma-ap'
 go get github.com/rakyll/statik
 
 rm -rf ./statik
+rm -rf ./src/infrastructure/file/asset
 
 # static file
-statik -src=./asset/static -ns=static -dest=./statik -p=static
-statik -src=./asset -ns=asset
+statik -src=./asset/static -ns=static -dest=./src/infrastructure/file/asset -p=static
+statik -src=./asset -ns=asset -dest=./src/infrastructure/file -p=asset
+
+mv ./src/infrastructure/file/asset/static/statik.go ./src/infrastructure/file/asset/static/static.go
+mv ./src/infrastructure/file/asset/statik.go ./src/infrastructure/file/asset/asset.go
 
 GOOS='linux'
 GOARCH='amd64'
