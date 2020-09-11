@@ -10,9 +10,6 @@ import (
 	// static
 	_ "alma-server/ap/statik/static"
 
-	// template
-	_ "alma-server/ap/statik/template"
-
 	// asset
 	_ "alma-server/ap/statik"
 

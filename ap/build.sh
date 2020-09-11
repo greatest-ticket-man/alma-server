@@ -9,7 +9,6 @@ rm -rf ./statik
 
 # static file
 statik -src=./asset/static -ns=static -dest=./statik -p=static
-statik -src=./asset/template -ns=template -dest=./statik -p=template
 statik -src=./asset -ns=asset
 
 GOOS='linux'
