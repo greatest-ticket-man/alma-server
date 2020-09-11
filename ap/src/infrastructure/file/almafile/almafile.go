@@ -8,10 +8,10 @@ import (
 	"path/filepath"
 
 	// static
-	_ "alma-server/ap/statik/static"
+	_ "alma-server/ap/src/infrastructure/file/asset/static"
 
 	// asset
-	_ "alma-server/ap/statik"
+	_ "alma-server/ap/src/infrastructure/file/asset"
 
 	"github.com/rakyll/statik/fs"
 )
