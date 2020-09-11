@@ -11,6 +11,7 @@ require (
 	github.com/google/uuid v1.1.2
 	github.com/gorilla/mux v1.8.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
+	github.com/rakyll/statik v0.1.7
 	github.com/rs/xid v1.2.1
 	github.com/stripe/stripe-go/v71 v71.48.0
 	go.mongodb.org/mongo-driver v1.4.1
