@@ -8,37 +8,6 @@
     max-width: 480px;
 }
 
-/* form */
-
-.input-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    margin-bottom: 20px;
-}
-
-.input__title {
-    font-size: 1.2em;
-}
-
-.input__desc {
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 0.8em;
-}
-
-.input__input {
-    height: 32px;
-    font-size: 1.0em;
-    border-radius: 2px;
-    border: 1px solid #ccc;
-}
-
-.input__input:focus {
-    border: none;
-}
-
-
-/* form */
 .button__create {
     margin-right: 16px;
     border: none;
