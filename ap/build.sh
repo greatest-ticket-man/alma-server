@@ -12,6 +12,7 @@ rm -rf ./src/infrastructure/file/asset
 statik -src=./asset/static -ns=static -dest=./src/infrastructure/file/asset -p=static
 statik -src=./asset -ns=asset -dest=./src/infrastructure/file -p=asset
 
+# statik.goになるので、ファイル名変更
 mv ./src/infrastructure/file/asset/static/statik.go ./src/infrastructure/file/asset/static/static.go
 mv ./src/infrastructure/file/asset/statik.go ./src/infrastructure/file/asset/asset.go
 
