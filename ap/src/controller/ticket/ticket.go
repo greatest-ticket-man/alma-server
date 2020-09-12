@@ -26,12 +26,15 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 	response.BaseHTML(
 		w,
 		"チケット",
-		"",
+		"/template/controller/ticket/head.html",
 		map[string]interface{}{},
 		"/template/controller/ticket/ticket.html",
 		map[string]interface{}{},
 		[]string{},
-		[]string{},
+		[]string{
+			"/static/css/component/common/content_head_button/content_head_button.css",
+			"/static/css/controller/ticket/ticket.css",
+		},
 		result.EventName,
 		MenuService.GetMenu("ticket_top", "ticket"),
 	)
