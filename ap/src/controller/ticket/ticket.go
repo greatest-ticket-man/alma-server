@@ -69,6 +69,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			),
 		},
 		[]string{
+			"/static/js/component/ticket/form.js",
 			"/static/js/controller/ticket/create/ticket_create.js",
 		},
 		[]string{
