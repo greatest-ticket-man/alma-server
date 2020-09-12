@@ -38,7 +38,8 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/js/controller/ticket/ticket.js",
 		},
 		[]string{
-			"/static/css/component/common/content_head_button/content_head_button.css",
+			"/static/css/common/table/table.css",
+			"/static/css/common/content_head_button/content_head_button.css",
 			"/static/css/controller/ticket/ticket.css",
 		},
 		result.EventName,
@@ -76,7 +77,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/js/controller/ticket/create/ticket_create.js",
 		},
 		[]string{
-			"/static/css/component/common/content_head_button/content_head_button.css",
+			"/static/css/common/content_head_button/content_head_button.css",
 			"/static/css/component/ticket/form.css",
 			"/static/css/controller/ticket/create/ticket_create.css",
 		},
