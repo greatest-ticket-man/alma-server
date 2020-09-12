@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/jobrunner"
 	"alma-server/ap/src/common/jwt"
+	"alma-server/ap/src/common/logger"
 	"alma-server/ap/src/infrastructure/mastercache/cacheall"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"alma-server/ap/src/infrastructure/mongodb/index"
@@ -13,7 +14,21 @@ import (
 	"flag"
 )
 
+var (
+	hash      string
+	builddate string
+	goversion string
+	goos      string
+	goarch    string
+)
+
 func main() {
+
+	flag.Parse()
+	logger.Info(goversion)
+	logger.Infof("goos/goarch=%s/%s\n", goos, goarch)
+	logger.Infof("githash=%s\n", hash)
+	logger.Infof("build at %s\n", builddate)
 
 	// config setup
 	configPath := flag.String("f", "./config/local.toml", "config file path")
