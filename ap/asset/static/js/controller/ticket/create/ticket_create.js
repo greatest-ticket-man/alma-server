@@ -30,14 +30,13 @@ class TicketCreate {
 
     // createTicket 
     async createTicket() {
-        // TODO チケットの作成
-        // console.log("create ticket !! 未実装");
 
         const data = {
             ticket_id: ticketForm.getTicketId(),
             ticket_name: ticketForm.getTicketName(),
             ticket_price: Number(ticketForm.getTicketPrice()),
             ticket_desc: ticketForm.getTicketDesc(),
+            event_id: window.Alma.location.getParam('event'),
         };
 
         const response = await window.Alma.req.post(window.Alma.req.ticket_create, window.Alma.req.createPostData(data));
@@ -47,16 +46,9 @@ class TicketCreate {
         }
 
         window.Alma.toast.success('チケットの作成に成功しました', 'Greatest Ticket Man', 1500, function() {
-
-            // TODO 
             // 遷移
             window.Alma.location.href(window.Alma.location.ticket_info);
-
         });
-
-
-
-
     }
 
 
