@@ -6,6 +6,11 @@
     align-items: center;
 }
 
+/* backbuttonがあるときだけ、きれいに見せるためpasdding分左にずらす */
+.content-header__backbutton--include {
+    transform: translate(-25px, 0);
+}
+
 .content-header__button__container {
     margin: 0 64px;
     display: flex;
