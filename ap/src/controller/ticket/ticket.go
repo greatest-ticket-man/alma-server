@@ -62,7 +62,9 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{},
 		"/template/controller/ticket/create/ticket_create.html",
 		map[string]interface{}{},
-		[]string{},
+		[]string{
+			"/static/js/controller/ticket/create/ticket_create.js",
+		},
 		[]string{
 			"/static/css/component/common/content_head_button/content_head_button.css",
 		},
