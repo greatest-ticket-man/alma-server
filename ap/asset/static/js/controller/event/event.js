@@ -2,13 +2,12 @@
 
 class EventInfo {
     constructor() {
-    // getEl
-    this.updateEventButtonEl = document.querySelector('.js-event-update');
+        // getEl
+        this.updateEventButtonEl = document.querySelector('.js-event-update');
 
         this.goUpdateEventPage = this.goUpdateEventPage.bind(this);
 
         this.addEventListener();
-
     }
 
     addEventListener() {
@@ -17,9 +16,7 @@ class EventInfo {
 
     // goUpdateEventPage 編集ページに遷移
     goUpdateEventPage() {
-
-    // 遷移
-    window.Alma.location.href(window.Alma.location.event_update);
+        window.Alma.location.href(window.Alma.location.event_update);
     }
 }
 
