@@ -30,12 +30,41 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{},
 		"/template/controller/ticket/ticket.html",
 		map[string]interface{}{},
-		[]string{},
+		[]string{
+			"/static/js/controller/ticket/ticket.js",
+		},
 		[]string{
 			"/static/css/component/common/content_head_button/content_head_button.css",
 			"/static/css/controller/ticket/ticket.css",
 		},
 		result.EventName,
 		MenuService.GetMenu("ticket_top", "ticket"),
+	)
+}
+
+// CreatePageHTML チケットの作成画面
+func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
+
+	// param
+	req := &common.EventRequest{
+		Event: param.Value(r, "event"),
+	}
+
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+
+	result := EventRpcService.GetEvent(ctx, mid, req.Event)
+
+	response.BaseHTML(
+		w,
+		"チケット作成",
+		"",
+		nil,
+		"/template/controller/ticket/create/ticket_create.html",
+		map[string]interface{}{},
+		[]string{},
+		[]string{},
+		result.EventName,
+		MenuService.GetMenu("ticket_top", ""),
 	)
 }
