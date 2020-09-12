@@ -2,6 +2,7 @@ package ticket
 
 import (
 	"alma-server/ap/src/common/almactx"
+	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventRpcService"
@@ -61,12 +62,18 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/ticket/create/head.html",
 		map[string]interface{}{},
 		"/template/controller/ticket/create/ticket_create.html",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"ticketForm": htmlutil.CreateTemplateToString(
+				"/template/component/ticket/form.html",
+				map[string]interface{}{},
+			),
+		},
 		[]string{
 			"/static/js/controller/ticket/create/ticket_create.js",
 		},
 		[]string{
 			"/static/css/component/common/content_head_button/content_head_button.css",
+			"/static/css/component/ticket/form.css",
 			"/static/css/controller/ticket/create/ticket_create.css",
 		},
 		result.EventName,
