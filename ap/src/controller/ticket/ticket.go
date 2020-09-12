@@ -67,6 +67,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		},
 		[]string{
 			"/static/css/component/common/content_head_button/content_head_button.css",
+			"/static/css/controller/ticket/create/ticket_create.css",
 		},
 		result.EventName,
 		MenuService.GetMenu("ticket_top", ""),
