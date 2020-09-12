@@ -2,12 +2,16 @@ package ticket
 
 import (
 	"alma-server/ap/src/common/almactx"
+	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
+	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
+	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
+	"log"
 	"net/http"
 )
 
@@ -80,4 +84,17 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		result.EventName,
 		MenuService.GetMenu("ticket_top", ""),
 	)
+}
+
+// CreateTicket チケットの作成
+func CreateTicket(w http.ResponseWriter, r *http.Request) {
+
+	// param
+	req := &ticket.CreateTicketRequest{}
+	err := param.JSON(r, req)
+	chk.SE(err)
+
+	log.Println("request is ", jsonutil.Marshal(req))
+
+	response.JSON(w, &common.Empty{})
 }

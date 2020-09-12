@@ -59,7 +59,7 @@ class EventCreate {
         window.Alma.localStorage.set(window.Alma.localStorage.event_id, response.result.event_id);
 
         
-        window.Alma.toast.success('イベントの作成に成功しました', 'イベント', 2000, function() {
+        window.Alma.toast.success('イベントの作成に成功しました', 'Greatest Ticket Man', 2000, function() {
             // 遷移
             window.Alma.location.href(window.Alma.location.home_dashboard);
         });
