@@ -26,7 +26,7 @@ func HTML(w http.ResponseWriter, path string, data map[string]interface{}) {
 }
 
 // BaseHTML baseテンプレートでhtmlを返す
-func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, headContentpath map[string]interface{}, mainContentPath string, mainDataMap map[string]interface{},
+func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, headContentMap map[string]interface{}, mainContentPath string, mainDataMap map[string]interface{},
 	scriptPathList []string, cssPathList []string, eventName string, mstMenu *menu.MenuInfo) {
 
 	if eventName == "" {
@@ -34,9 +34,11 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 	}
 
 	// headContentはpathがある場合のみ追加する
-	var headContent template.HTML
+	// headContentがない場合は、titleだけ追加する
+	var headContent template.HTML = template.HTML(mainTitle)
 	if headContentPath != "" {
-		headContent = template.HTML(htmlutil.CreateTemplateToString(headContentPath, headContentpath))
+		headContentMap["mainTitle"] = mainTitle
+		headContent = template.HTML(htmlutil.CreateTemplateToString(headContentPath, headContentMap))
 	}
 
 	// sidebar sidebarの指定がある場合のみ、SideBarを読み込む
@@ -52,7 +54,6 @@ func BaseHTML(w http.ResponseWriter, mainTitle string, headContentPath string, h
 		w,
 		"/template/component/base/base.html",
 		map[string]interface{}{
-			"mainTitle":      mainTitle,
 			"headContent":    headContent,
 			"mainContent":    template.HTML(htmlutil.CreateTemplateToString(mainContentPath, mainDataMap)),
 			"scriptPathList": scriptPathList,

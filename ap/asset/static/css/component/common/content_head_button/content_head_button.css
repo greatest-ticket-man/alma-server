@@ -1,4 +1,12 @@
 .content-header {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-header__button__container {
     margin: 0 64px;
     display: flex;
     flex-direction: row;
