@@ -19,4 +19,5 @@ message CreateTicketRequest {
     string ticket_name = 2;
     int32 ticket_price = 3;
     string ticket_desc = 4;
+    string event_id = 5;
 }
