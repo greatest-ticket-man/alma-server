@@ -1,5 +1,14 @@
 'use strict';
 
+// use /static/js/component/ticket/form.js
+
+// TicketFormが存在するかを確認する
+if (typeof ticketForm === 'undefined') {
+    alert('依存しているticketFormが見つかりませんでした');
+    console.error('ticketFormがみつかりません');
+    console.error('/static/js/component/ticket/form.jsをimportしてください');
+}
+
 class TicketCreate {
     constructor() {
 
@@ -23,6 +32,11 @@ class TicketCreate {
     createTicket() {
         // TODO チケットの作成
         console.log("create ticket !! 未実装");
+
+        console.log(ticketForm.getTicketId());
+        console.log(ticketForm.getTicketName());
+        console.log(ticketForm.getTicketPrice());
+        console.log(ticketForm.getTicketDesc());
     }
 
 
