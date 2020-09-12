@@ -5,12 +5,9 @@ class TicketInfo {
         
         this.createTicketButtonEl = document.querySelector('.js-ticket-create');
 
-
         this.goCreateTicketPage = this.goCreateTicketPage.bind(this);
         
         this.addEventListener();
-
-
     }
 
     addEventListener() {
