@@ -58,12 +58,14 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 	response.BaseHTML(
 		w,
 		"チケット作成",
-		"",
-		nil,
+		"/template/controller/ticket/create/head.html",
+		map[string]interface{}{},
 		"/template/controller/ticket/create/ticket_create.html",
 		map[string]interface{}{},
 		[]string{},
-		[]string{},
+		[]string{
+			"/static/css/component/common/content_head_button/content_head_button.css",
+		},
 		result.EventName,
 		MenuService.GetMenu("ticket_top", ""),
 	)
