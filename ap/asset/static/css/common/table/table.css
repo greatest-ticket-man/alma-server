@@ -1,0 +1,43 @@
+.table__container {
+    overflow: auto;
+    width: calc(100vw - 250px); /* sub menu */
+    height: calc(100vh - 100px); /* header */
+}
+
+.table {
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.table__head {
+    border: 1px solid #ddd;
+    text-align: left;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table__head th {
+    padding: 8px 32px;
+}
+
+.table__body tr {
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.table__body tr:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.table__body td {
+    text-align: left;
+    padding: 8px 32px;
+}
+
+/* side navが消える位置で,widthをmaxにする */
+@media screen and (max-width: 756px) {
+    .table__container {
+        width: 100vw;
+    }
+}
