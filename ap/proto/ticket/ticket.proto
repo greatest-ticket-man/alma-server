@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/ticket";
+
+package ticket;
+
+import "common/common.proto";
+
+// RPC
+service Ticket {
+
+    // CreateTicket チケットの作成
+    rpc CreateTicket(CreateTicketRequest) returns (common.Empty);
+}
+
+// チケットの作成
+message CreateTicketRequest {
+    string ticket_id = 1;
+    string ticket_name = 2;
+    int32 ticket_price = 3;
+    string ticket_desc = 4;
+}

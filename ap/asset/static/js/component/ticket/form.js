@@ -9,11 +9,6 @@ class TicketForm {
         this.ticketPriceEl = document.getElementById('js-ticket-price');
         this.ticketDescEl = document.getElementById('js-ticket-desc');
 
-        this.addEventlistener();
-    }
-
-    addEventlistener() {
-
     }
 
     getTicketId() {
