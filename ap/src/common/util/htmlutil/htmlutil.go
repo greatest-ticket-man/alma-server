@@ -52,7 +52,10 @@ func getTemplateFromPath(path string) *template.Template {
 	assetFileSystem := almafile.GetAssetFileSystem(config.ConfigData)
 
 	file, err := assetFileSystem.Open(path)
-	defer file.Close()
+	defer func() {
+		err := file.Close()
+		chk.SE(err)
+	}()
 	chk.SE(err)
 
 	content, err := ioutil.ReadAll(file)
