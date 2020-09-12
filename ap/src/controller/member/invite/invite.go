@@ -35,6 +35,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		},
 		[]string{},
 		[]string{
+			"/static/css/common/table/table.css",
 			"/static/css/controller/member/invite/member_invite.css",
 		},
 		result.EventName,

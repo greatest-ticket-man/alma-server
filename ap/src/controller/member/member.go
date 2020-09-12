@@ -37,6 +37,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/js/controller/member/member.js",
 		},
 		[]string{
+			"/static/css/common/table/table.css",
 			"/static/css/common/content_head_button/content_head_button.css",
 			"/static/css/controller/member/member.css",
 		},

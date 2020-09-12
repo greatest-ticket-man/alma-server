@@ -1,3 +1,5 @@
+/* 共通のテーブルデザインのCSS */
+
 .table__container {
     overflow: auto;
     width: calc(100vw - 250px); /* sub menu */

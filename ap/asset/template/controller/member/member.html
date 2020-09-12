@@ -15,9 +15,9 @@
         
         テーブルにひっつけて、ソートする条件的なやつを -->
 
-        <div class="member-table__container">
-            <table class="member-table">
-                <thead class="member-table__head">
+        <div class="table__container">
+            <table class="table">
+                <thead class="table__head">
                     <tr>
                         <th><input type="checkbox" class="js-member-table-head-checkbox"></th>
                         <th>画像</th>
@@ -28,7 +28,7 @@
                     </tr>
                 </thead>
 
-                <tbody class="member-table__body">
+                <tbody class="table__body">
 
                     {{ range $memberInfo := .memberInfoList }}
 

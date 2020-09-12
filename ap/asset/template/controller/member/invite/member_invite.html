@@ -1,32 +1,30 @@
 <main class="content">
-    <div class="member-invite-container">
 
-        <div class="member-invite-table__container">
+    <div class="table__container">
 
-            <table class="member-invite-table">
-                <thead class="member-invite-table__head">
-                    <tr>
-                        <th><input type="checkbox" class="js-member-invite-table-head-checkbox"></th>
-                        <th>Email</th>
-                        <th>権限</th>
-                        <th>招待日</th>
-                    </tr>
-                </thead>
-                <tbody class="member-invite-table__body">
+        <table class="table">
+            <thead class="table__head">
+                <tr>
+                    <th><input type="checkbox" class="js-member-invite-table-head-checkbox"></th>
+                    <th>Email</th>
+                    <th>権限</th>
+                    <th>招待日</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
 
-                    {{ range $memberInviteInfo := .memberInviteInfoList }}
+                {{ range $memberInviteInfo := .memberInviteInfoList }}
 
-                    <tr class="js-member-invite-table-row">
-                        <td><input type="checkbox"></td>
-                        <td>{{ $memberInviteInfo.Email }}</td>
-                        <td>{{ $memberInviteInfo.Auth }}</td>
-                        <td>{{ $memberInviteInfo.CreatedAt | timestampToTime }}</td>
-                    </tr>
+                <tr class="js-member-invite-table-row">
+                    <td><input type="checkbox"></td>
+                    <td>{{ $memberInviteInfo.Email }}</td>
+                    <td>{{ $memberInviteInfo.Auth }}</td>
+                    <td>{{ $memberInviteInfo.CreatedAt | timestampToTime }}</td>
+                </tr>
 
-                    {{ end }}
+                {{ end }}
 
-                </tbody>
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
 </main>
