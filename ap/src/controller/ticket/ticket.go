@@ -90,6 +90,40 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 
 	// param
+	// req := &ticket.UpdatePageHTMLRequest{
+	// 	EventId:  param.Value(r, "event"),
+	// 	TicketId: param.Value(r, "ticketId"),
+	// }
+
+	// ctx := r.Context()
+	// mid := almactx.GetMid(ctx)
+
+	// result :=
+
+	response.BaseHTML(
+		w,
+		"チケットの編集",
+		"/template/controller/ticket/update/head.html",
+		map[string]interface{}{},
+		"/template/controller/ticket/update/ticket_update.html",
+		map[string]interface{}{
+			"ticketForm": htmlutil.CreateTemplateToString(
+				"/template/component/ticket/form.html",
+				map[string]interface{}{},
+			),
+		},
+		[]string{
+			"/static/js/component/ticket/form.js",
+			"/static/js/controller/ticket/update/ticket_update.js",
+		},
+		[]string{
+			"/static/css/common/content_head_button/content_head_button.css",
+			"/static/css/component/ticket/form.css",
+			"/static/css/controller/ticket/update/ticket_update.css",
+		},
+		"EventName TODO",
+		MenuService.GetMenu("ticket_top", ""),
+	)
 
 }
 
