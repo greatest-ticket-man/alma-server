@@ -32,11 +32,13 @@ class TicketCreate {
     async createTicket() {
 
         const data = {
-            ticket_id: ticketForm.getTicketId(),
-            ticket_name: ticketForm.getTicketName(),
-            ticket_price: Number(ticketForm.getTicketPrice()),
-            ticket_desc: ticketForm.getTicketDesc(),
-            event_id: window.Alma.location.getParam('event'),
+            ticket_info: {
+                ticket_id: ticketForm.getTicketId(),
+                ticket_name: ticketForm.getTicketName(),
+                ticket_price: Number(ticketForm.getTicketPrice()),
+                ticket_desc: ticketForm.getTicketDesc(),
+                event_id: window.Alma.location.getParam('event'),
+            },
         };
 
         const response = await window.Alma.req.post(window.Alma.req.ticket_create, window.Alma.req.createPostData(data));

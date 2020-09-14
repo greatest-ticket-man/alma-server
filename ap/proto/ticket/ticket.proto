@@ -9,12 +9,27 @@ import "common/common.proto";
 // RPC
 service Ticket {
 
+
+    // UpdatePageHTML チケットの編集画面
+    rpc UpdatePageHTML(UpdatePageHTMLRequest) returns (TicketInfo);
+
     // CreateTicket チケットの作成
     rpc CreateTicket(CreateTicketRequest) returns (common.Empty);
 }
 
+// チケットの編集画面Request
+message UpdatePageHTMLRequest {
+    string event_id = 1;
+    string ticket_id = 2;
+}
+
 // チケットの作成
 message CreateTicketRequest {
+    TicketInfo ticket_info = 1;
+}
+
+// チケット情報
+message TicketInfo {
     string ticket_id = 1;
     string ticket_name = 2;
     int32 ticket_price = 3;
