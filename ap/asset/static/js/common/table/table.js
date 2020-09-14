@@ -1,11 +1,13 @@
 'use strict';
 
 class TableInfo {
-    constructor() {
+    constructor(tableClass = "js-table", tableRowClass = "js-table-row", tableHeadCheckboxClass = "js-head-checkbox") {
+
+        this.tableEl = document.querySelector(`.${tableClass}`);
 
         // getEL
-        this.tableRowElList = document.querySelectorAll('.js-table-row');
-        this.tableHeadCheckboxEl = document.querySelector('.js-table-head-checkbox');
+        this.tableRowElList = this.tableEl.querySelectorAll(`.${tableRowClass}`);
+        this.tableHeadCheckboxEl = this.tableEl.querySelector(`.${tableHeadCheckboxClass}`);
 
         // bind
         this.checkRow = this.checkRow.bind(this);
@@ -17,7 +19,6 @@ class TableInfo {
     }
 
     addEventListener() {
-
         const me = this;
         this.tableRowElList.forEach(function(elem) {
             elem.addEventListener('click', me.checkRow);
