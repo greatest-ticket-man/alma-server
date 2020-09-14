@@ -86,6 +86,13 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 	)
 }
 
+// UpdatePageHTML チケットの編集画面
+func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
+
+	// param
+
+}
+
 // CreateTicket チケットの作成
 func CreateTicket(w http.ResponseWriter, r *http.Request) {
 
@@ -98,7 +105,8 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
 
-	TicketRpcService.CreateTicket(ctx, mid, txTime, req.EventId, req.TicketId, req.TicketName, req.TicketPrice, req.TicketDesc)
+	TicketRpcService.CreateTicket(ctx, mid, txTime, req.TicketInfo.EventId, req.TicketInfo.TicketId, req.TicketInfo.TicketName,
+		req.TicketInfo.TicketPrice, req.TicketInfo.TicketDesc)
 
 	response.JSON(w, &common.Empty{})
 }
