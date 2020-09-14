@@ -38,6 +38,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 			"ticketInfoList": result.TicketInfoList,
 		},
 		[]string{
+			"/static/js/common/table/table.js",
 			"/static/js/controller/ticket/ticket.js",
 		},
 		[]string{

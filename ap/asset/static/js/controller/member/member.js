@@ -46,14 +46,14 @@ class MemberInfo {
     checkAll() {
         this.memberTableRowElList.forEach(function(elem) {
             elem.children[0].children[0].checked = true;
-        })
+        });
     }
 
     // uncheckAll すべてのRowのcheckを外す
     uncheckAll() {
         this.memberTableRowElList.forEach(function(elem) {
             elem.children[0].children[0].checked = false;
-        })
+        });
     }
 
     
