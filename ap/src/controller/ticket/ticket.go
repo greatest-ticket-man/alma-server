@@ -6,11 +6,13 @@ import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
+	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/domain/ticket/TicketRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
+	"log"
 	"net/http"
 )
 
@@ -90,15 +92,18 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 
 	// param
-	// req := &ticket.UpdatePageHTMLRequest{
-	// 	EventId:  param.Value(r, "event"),
-	// 	TicketId: param.Value(r, "ticketId"),
-	// }
+	req := &ticket.UpdatePageRequest{
+		EventId:  param.Value(r, "event"),
+		TicketId: param.Value(r, "ticketId"),
+	}
 
-	// ctx := r.Context()
-	// mid := almactx.GetMid(ctx)
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
 
-	// result :=
+	log.Println("req is ", jsonutil.Marshal(req))
+
+	result := TicketRpcService.UpdatePage(ctx, mid, txTime, req.EventId, req.TicketId)
 
 	response.BaseHTML(
 		w,
@@ -109,7 +114,12 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 		map[string]interface{}{
 			"ticketForm": htmlutil.CreateTemplateToString(
 				"/template/component/ticket/form.html",
-				map[string]interface{}{},
+				map[string]interface{}{
+					"ticketId":    result.TicketInfo.TicketId,
+					"ticketName":  result.TicketInfo.TicketName,
+					"ticketPrice": result.TicketInfo.TicketPrice,
+					"ticketDesc":  result.TicketInfo.TicketDesc,
+				},
 			),
 		},
 		[]string{
@@ -121,7 +131,7 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/css/component/ticket/form.css",
 			"/static/css/controller/ticket/update/ticket_update.css",
 		},
-		"EventName TODO",
+		result.EventName,
 		MenuService.GetMenu("ticket_top", ""),
 	)
 
