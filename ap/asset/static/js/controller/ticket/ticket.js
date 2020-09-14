@@ -1,5 +1,12 @@
 'use strict';
 
+// TableInfoが存在するかを確認する
+if (typeof TableInfo === 'undefined') {
+    alert('依存しているTableInfoが見つかりませんでした');
+    console.error('TableInfoがみつかりません');
+    console.error('/static/js/common/table/table.jsをimportしてください');
+}
+
 class TicketInfo {
     constructor() {
         
