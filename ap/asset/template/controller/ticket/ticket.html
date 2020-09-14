@@ -1,6 +1,5 @@
 <main class="content">
 
-
     <div class="table__container">
         <table class="table">
             <thead class="table__head">
@@ -15,13 +14,15 @@
 
             <tbody class="table__body">
 
+                {{ range $ticketInfo := .ticketInfoList }}
                 <tr class="js-ticket-table-row">
                     <td><input type="checkbox"></td>
-                    <td>TicketID</td>
-                    <td>TicketName</td>
-                    <td>TicketPrice</td>
-                    <td>TicketDesc Intro</td>
+                    <td>{{ $ticketInfo.TicketId }}</td>
+                    <td>{{ $ticketInfo.TicketName }}</td>
+                    <td>{{ $ticketInfo.TicketPrice }}</td>
+                    <td>{{ $ticketInfo.TicketDesc }}</td>
                 </tr>
+                {{ end }}
 
             </tbody>
         </table>

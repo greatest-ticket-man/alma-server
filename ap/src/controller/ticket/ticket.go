@@ -34,7 +34,9 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/ticket/head.html",
 		map[string]interface{}{},
 		"/template/controller/ticket/ticket.html",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"ticketInfoList": result.TicketInfoList,
+		},
 		[]string{
 			"/static/js/controller/ticket/ticket.js",
 		},
