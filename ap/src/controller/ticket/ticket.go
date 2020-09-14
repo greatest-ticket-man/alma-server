@@ -6,13 +6,11 @@ import (
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
-	"alma-server/ap/src/common/util/jsonutil"
 	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/domain/ticket/TicketRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
-	"log"
 	"net/http"
 )
 
@@ -100,8 +98,6 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
-
-	log.Println("req is ", jsonutil.Marshal(req))
 
 	result := TicketRpcService.UpdatePage(ctx, mid, txTime, req.EventId, req.TicketId)
 
