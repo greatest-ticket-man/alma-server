@@ -9,7 +9,9 @@ if (typeof TableInfo === 'undefined') {
 
 class TicketInfo {
     constructor() {
-        
+
+        this.tableInfo = new TableInfo('js-ticket-table', 'js-ticket-table-row', 'js-table-head-checkbox');
+
         this.createTicketButtonEl = document.querySelector('.js-ticket-create');
 
         this.goCreateTicketPage = this.goCreateTicketPage.bind(this);
