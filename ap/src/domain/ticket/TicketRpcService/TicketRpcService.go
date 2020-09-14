@@ -12,12 +12,12 @@ import (
 // Page チケットのトップページ画面
 func Page(ctx context.Context, mid string, txTime time.Time, eventID string) *ticket.PageReply {
 
-	// todo 権限
-
 	userTicketList := UserTicketRepository.Find(ctx, eventID)
+	eventName := EventService.GetEventName(ctx, eventID)
 
 	return &ticket.PageReply{
-		TicketInfoList: nil,
+		TicketInfoList: TicketComponent.CreateTicketInfoList(userTicketList),
+		EventName:      eventName,
 	}
 }
 
