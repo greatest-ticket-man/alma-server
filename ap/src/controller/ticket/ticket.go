@@ -14,7 +14,7 @@ import (
 	"net/http"
 )
 
-// PageHTML .
+// PageHTML チケットの画面
 func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	// param
@@ -24,8 +24,9 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
 
-	result := EventRpcService.GetEvent(ctx, mid, req.Event)
+	result := TicketRpcService.Page(ctx, mid, txTime, req.Event)
 
 	response.BaseHTML(
 		w,
