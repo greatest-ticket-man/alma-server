@@ -28,6 +28,10 @@
     cursor: pointer;
 }
 
+.table__body tr:has(.ticket__check--visible) {
+    background: red;
+}
+
 /* .table__body tr:has(input[type=checkbox]:checked) {
     background: green;
 } */
