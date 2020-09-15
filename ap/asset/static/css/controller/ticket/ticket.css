@@ -5,3 +5,18 @@
     background: #fafafa;
 }
 
+
+
+.ticket__table__row .ticket__update__anchor {
+    text-decoration: none;
+    color: #000;
+    transition: 100ms;
+}
+
+.ticket__table__row:hover .ticket__update__anchor {
+    text-decoration: underline;
+}
+
+.ticket__update__anchor:hover {
+    color: royalblue;
+}

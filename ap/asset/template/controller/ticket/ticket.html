@@ -17,9 +17,9 @@
                 {{ $eventId := .eventId }}
 
                 {{ range $ticketInfo := .ticketInfoList }}
-                <tr class="js-ticket-table-row">
+                <tr class="js-ticket-table-row ticket__table__row">
                     <td><input type="checkbox"></td>
-                    <td><a href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
+                    <td><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
                     <td>{{ $ticketInfo.TicketName }}</td>
                     <td>{{ $ticketInfo.TicketPrice }}</td>
                     <td>{{ $ticketInfo.TicketDesc }}</td>
