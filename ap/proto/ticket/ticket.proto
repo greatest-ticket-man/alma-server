@@ -22,7 +22,8 @@ service Ticket {
 // チケットReply
 message PageReply {
     string event_name = 1;
-    repeated TicketInfo ticket_info_list = 2;
+    string event_id = 2;
+    repeated TicketInfo ticket_info_list = 3;
 }
 
 // チケットの編集画面Request

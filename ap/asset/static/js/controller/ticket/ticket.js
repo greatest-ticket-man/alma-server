@@ -27,6 +27,7 @@ class TicketInfo {
     goCreateTicketPage() {
         window.Alma.location.href(window.Alma.location.ticket_create);
     }
+
 }
 
 new TicketInfo();

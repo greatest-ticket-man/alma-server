@@ -14,10 +14,12 @@
 
             <tbody class="table__body">
 
+                {{ $eventId := .eventId }}
+
                 {{ range $ticketInfo := .ticketInfoList }}
                 <tr class="js-ticket-table-row">
                     <td><input type="checkbox"></td>
-                    <td>{{ $ticketInfo.TicketId }}</td>
+                    <td><a href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
                     <td>{{ $ticketInfo.TicketName }}</td>
                     <td>{{ $ticketInfo.TicketPrice }}</td>
                     <td>{{ $ticketInfo.TicketDesc }}</td>

@@ -18,6 +18,7 @@ func Page(ctx context.Context, mid string, txTime time.Time, eventID string) *ti
 	return &ticket.PageReply{
 		TicketInfoList: TicketComponent.CreateTicketInfoList(userTicketList),
 		EventName:      eventName,
+		EventId:        eventID,
 	}
 }
 
