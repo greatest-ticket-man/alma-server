@@ -28,6 +28,14 @@
     cursor: pointer;
 }
 
+/* .table__body tr:has(input[type=checkbox]:checked) {
+    background: green;
+} */
+
+/* .table__body tr:has(input[type=checkbox]:checked) {
+    background: green;
+} */
+
 .table__body tr:hover {
     background: rgba(0, 0, 0, 0.1);
 }
