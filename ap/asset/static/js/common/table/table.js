@@ -1,14 +1,14 @@
 'use strict';
 
 class TableInfo {
-    constructor(tableClass = "js-table", tableRowClass = "js-table-row", tableHeadCheckboxClass = "js-table-head-checkbox", tableCheckboxClass = "js-table-checkbox") {
+    constructor(tableClass = "js-table") {
 
+        // 複数のTableを表示する場合に、NameSpaceで分ける必要があるためこのように実装
         this.tableEl = document.querySelector(`.${tableClass}`);
 
-        // getEL
-        this.tableRowElList = this.tableEl.querySelectorAll(`.${tableRowClass}`);
-        this.tableHeadCheckboxEl = this.tableEl.querySelector(`.${tableHeadCheckboxClass}`);
-        this.tableCheckboxEl = this.tableEl.querySelectorAll(`.${tableCheckboxClass}`);
+        this.tableRowElList = this.tableEl.querySelectorAll('.js-row');
+        this.tableHeadCheckboxEl = this.tableEl.querySelector('.js-head-checkbox');
+        this.tableCheckboxEl = this.tableEl.querySelectorAll('.js-checkbox');
 
         // bind
         this.checkRow = this.checkRow.bind(this);
@@ -46,6 +46,13 @@ class TableInfo {
     checkRow(elem) {
         let checkBoxEl = elem.currentTarget.children[0].children[0];
         checkBoxEl.checked = !checkBoxEl.checked;
+
+        if (checkBoxEl.checked) {
+            elem.currentTarget.classList.add('table__row--selected')
+        } else {
+            elem.currentTarget.classList.remove('table__row--selected')
+        }
+
     }
 
     // checkAllRow .
@@ -61,6 +68,7 @@ class TableInfo {
     checkAll() {
         this.tableRowElList.forEach(function(elem) {
             elem.children[0].children[0].checked = true;
+            elem.classList.add('table__row--selected');
         });
     }
 
@@ -68,6 +76,7 @@ class TableInfo {
     uncheckAll() {
         this.tableRowElList.forEach(function(elem) {
             elem.children[0].children[0].checked = false;
+            elem.classList.remove('table__row--selected')
         });
     }
 }

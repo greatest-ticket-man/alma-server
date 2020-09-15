@@ -4,7 +4,7 @@
         <table class="js-ticket-table table">
             <thead class="table__head">
                 <tr>
-                    <th><input type="checkbox" class="js-ticket-table-head-checkbox"></th>
+                    <th><input type="checkbox" class="js-head-checkbox"></th>
                     <th>TicketID</th>
                     <th>TicketName</th>
                     <th>TicketPrice</th>
@@ -17,8 +17,8 @@
                 {{ $eventId := .eventId }}
 
                 {{ range $ticketInfo := .ticketInfoList }}
-                <tr class="js-ticket-table-row ticket__table__row">
-                    <td><input type="checkbox" class="js-table-checkbox ticket__check--visible"></td>
+                <tr class="js-row ticket__table__row">
+                    <td><input type="checkbox" class="js-checkbox"></td>
                     <td><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
                     <td>{{ $ticketInfo.TicketName }}</td>
                     <td>{{ $ticketInfo.TicketPrice }}</td>
