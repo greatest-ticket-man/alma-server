@@ -26,7 +26,7 @@ class TableInfo {
             elem.addEventListener('click', me.checkRow);
         });
 
-        
+        // クリックイベントを無効にして2重チェックされるのを防ぐ
         this.tableCheckboxEl.forEach(function(elem) {
             elem.addEventListener('click', me.blockClicks);
         });
@@ -44,10 +44,6 @@ class TableInfo {
 
     // checkRow そのテーブルのチェックする
     checkRow(elem) {
-
-        elem.stopPropagation();
-
-        console.log("check!");
         let checkBoxEl = elem.currentTarget.children[0].children[0];
         checkBoxEl.checked = !checkBoxEl.checked;
     }
