@@ -36,6 +36,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/ticket/ticket.html",
 		map[string]interface{}{
 			"ticketInfoList": result.TicketInfoList,
+			"eventId":        result.EventId,
 		},
 		[]string{
 			"/static/js/common/table/table.js",
