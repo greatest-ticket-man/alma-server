@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-.table__row--selected {
+.table__body .table__row--selected {
     background: #e0eeff;
 }
 
