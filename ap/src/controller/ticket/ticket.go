@@ -155,3 +155,10 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 
 	response.JSON(w, &common.Empty{})
 }
+
+// UpdateTicket チケット情報の更新
+func UpdateTicket(w http.ResponseWriter, r *http.Request) {
+
+	//
+
+}
