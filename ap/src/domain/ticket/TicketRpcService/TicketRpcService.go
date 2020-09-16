@@ -41,6 +41,7 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 	ticketPrice int32, ticketDesc string) bool {
 
 	// TODO check
+	// TODO EventIDが指定しているものと正しいか
 
 	// Create
 	UserTicketRepository.Insert(ctx, txTime, ticketID, eventID, ticketName, ticketDesc, ticketPrice)

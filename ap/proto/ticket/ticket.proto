@@ -17,6 +17,9 @@ service Ticket {
 
     // CreateTicket チケットの作成
     rpc CreateTicket(CreateTicketRequest) returns (common.Empty);
+
+    // UpdateTicket チケットの更新
+    rpc UpdateTicket(UpdateTicketRequest) returns (common.Empty);
 }
 
 // チケットReply
@@ -41,6 +44,12 @@ message UpdatePageReply {
 // チケットの作成
 message CreateTicketRequest {
     TicketInfo ticket_info = 1;
+}
+
+// チケットの編集
+message UpdateTicketRequest {
+    TicketInfo ticket_info = 1;
+    string event_id = 2;
 }
 
 // チケット情報

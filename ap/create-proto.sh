@@ -1,4 +1,8 @@
-#!/bin/sh
+#!/bin/sh -ex
+
+# git submodule
+git submodule init
+git submodule update
 
 DIR=`pwd`
 
@@ -16,4 +20,8 @@ cd $DIR/proto
 # find . -type d -name vendor -prune -o -type f -name "*.proto" | xargs --replace=AlmaProtoFile protoc --proto_path=. -Ivendor/protobuf/src AlmaProtoFile --go_out=plugins=grpc:${OUT_DIR}
 
 
-find . -type d -name vendor -prune -o -type f -name "*.proto" -exec echo {} \; | xargs --replace=AlmaProtoFile protoc --proto_path=. -Ivendor/protobuf/src AlmaProtoFile --go_out=plugins=grpc:${OUT_DIR}
+# find . -type d -name vendor -prune -o -type f -name "*.proto" -exec echo {} \; | xargs --replace=AlmaProtoFile protoc --proto_path=. -Ivendor/protobuf/src AlmaProtoFile --go_out=plugins=grpc:${OUT_DIR}
+# find . -type d -name vendor -prune -o -type f -name "*.proto" -exec echo {} \; | xargs --replace=AlmaProtoFile protoc --proto_path=. -Ivendor/protobuf/src AlmaProtoFile --go_out=plugins=grpc:${OUT_DIR}
+
+# macはreplace optionをサポートしていない
+find . -type d -name vendor -prune -o -type f -name "*.proto" -exec echo {} \; | xargs -I AlmaProtoFile protoc --proto_path=. -Ivendor/protobuf/src AlmaProtoFile --go_out=plugins=grpc:${OUT_DIR}
