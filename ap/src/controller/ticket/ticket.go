@@ -160,5 +160,16 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 func UpdateTicket(w http.ResponseWriter, r *http.Request) {
 
 	//
+	req := &ticket.UpdateTicketRequest{}
+	err := param.JSON(r, req)
+	chk.SE(err)
 
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
+
+	TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.TicketInfo.TicketId, req.TicketInfo.TicketName,
+		req.TicketInfo.TicketPrice, req.TicketInfo.TicketDesc)
+
+	response.JSON(w, &common.Empty{})
 }
