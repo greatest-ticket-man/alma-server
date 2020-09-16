@@ -47,3 +47,13 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 	UserTicketRepository.Insert(ctx, txTime, ticketID, eventID, ticketName, ticketDesc, ticketPrice)
 	return true
 }
+
+// UpdateTicket チケットの編集
+func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, ticketName string,
+	ticketPrice int32, ticketDesc string) bool {
+
+	// Update
+	// TODO
+	return false
+
+}
