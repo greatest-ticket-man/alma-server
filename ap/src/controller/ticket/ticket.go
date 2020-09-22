@@ -168,8 +168,10 @@ func UpdateTicket(w http.ResponseWriter, r *http.Request) {
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
 
-	TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.TicketInfo.TicketId, req.TicketInfo.TicketName,
-		req.TicketInfo.TicketPrice, req.TicketInfo.TicketDesc)
+	// TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.TicketInfo.TicketId, req.TicketInfo.TicketName,
+	// 	req.TicketInfo.TicketPrice, req.TicketInfo.TicketDesc)
+
+	TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.BeforeTicketId, req.TicketInfo)
 
 	response.JSON(w, &common.Empty{})
 }

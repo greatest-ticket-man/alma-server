@@ -50,6 +50,7 @@ message CreateTicketRequest {
 message UpdateTicketRequest {
     TicketInfo ticket_info = 1;
     string event_id = 2;
+    string before_ticket_id = 3;
 }
 
 // チケット情報

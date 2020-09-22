@@ -49,11 +49,22 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 }
 
 // UpdateTicket チケットの編集
-func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, ticketName string,
-	ticketPrice int32, ticketDesc string) bool {
+func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, beforeTicketID string, updateTicketInfo *ticket.TicketInfo) bool {
 
-	// Update
-	// TODO
-	return false
+	// TODO 先に新しいTicketIDが使われていないかを確認する
+
+	// TODO 大丈夫であれば、変更する
 
 }
+
+// UpdateTicket チケットの編集
+// func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, ticketName string,
+// 	ticketPrice int32, ticketDesc string) bool {
+
+// 	// TODO 先に、すでに指定したTicketIDが使われていないかを確認する
+
+// 	// Update
+// 	// TODO
+// 	return false
+
+// }
