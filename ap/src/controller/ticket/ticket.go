@@ -159,7 +159,6 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 // UpdateTicket チケット情報の更新
 func UpdateTicket(w http.ResponseWriter, r *http.Request) {
 
-	//
 	req := &ticket.UpdateTicketRequest{}
 	err := param.JSON(r, req)
 	chk.SE(err)
@@ -167,9 +166,6 @@ func UpdateTicket(w http.ResponseWriter, r *http.Request) {
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
-
-	// TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.TicketInfo.TicketId, req.TicketInfo.TicketName,
-	// 	req.TicketInfo.TicketPrice, req.TicketInfo.TicketDesc)
 
 	TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.BeforeTicketId, req.TicketInfo)
 
