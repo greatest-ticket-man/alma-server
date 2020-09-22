@@ -57,6 +57,7 @@ class TableInfo {
                 // http://sarchitect.net/10929
 
 
+                // arrayに変換する https://qiita.com/fivestar/items/074671e137497a8347ee
                 console.log(row.children);
                 // row.children.forEach(function(cell) {
 
