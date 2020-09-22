@@ -14,18 +14,27 @@ class TicketInfo {
 
         this.createTicketButtonEl = document.querySelector('.js-ticket-create');
 
+        this.reloadTicketButtonEl = document.querySelector('.js-ticket-reload');
+
         this.goCreateTicketPage = this.goCreateTicketPage.bind(this);
+        this.reloadTicketPage = this.reloadTicketPage.bind(this);
         
         this.addEventListener();
     }
 
     addEventListener() {
         this.createTicketButtonEl.addEventListener('click', this.goCreateTicketPage);
+        this.reloadTicketButtonEl.addEventListener('click', this.reloadTicketPage);
     }
 
     // goCreateTicketPage
     goCreateTicketPage() {
         window.Alma.location.href(window.Alma.location.ticket_create);
+    }
+
+    // reloadTicketPage
+    reloadTicketPage() {
+        window.Alma.location.href(window.Alma.location.ticket_info);
     }
 
 }
