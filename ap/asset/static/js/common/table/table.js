@@ -54,6 +54,7 @@ class TableInfo {
                 let obj = {};
 
                 // TODO data-keyとdata-valueを合わせてobjectを作成する
+                // http://sarchitect.net/10929
 
             }
 
