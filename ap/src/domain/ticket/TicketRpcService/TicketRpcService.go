@@ -64,3 +64,11 @@ func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 	UserTicketRepository.Update(ctx, txTime, beforeTicketID, eventID, updateTicketInfo.TicketName, updateTicketInfo.TicketDesc, updateTicketInfo.TicketPrice, updateTicketInfo.TicketId)
 	return true
 }
+
+// DeleteTicket チケットの削除
+func DeleteTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketIDList []string) int32 {
+
+	// TODO Action Log
+
+	return UserTicketRepository.RemoveMany(ctx, eventID, ticketIDList)
+}
