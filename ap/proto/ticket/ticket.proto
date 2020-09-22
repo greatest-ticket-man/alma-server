@@ -20,6 +20,9 @@ service Ticket {
 
     // UpdateTicket チケットの更新
     rpc UpdateTicket(UpdateTicketRequest) returns (common.Empty);
+
+    // DeleteTicket チケットの削除
+    rpc DeleteTicket(DeleteTicketRequest) returns (common.Empty);
 }
 
 // チケットReply
@@ -51,6 +54,12 @@ message UpdateTicketRequest {
     TicketInfo ticket_info = 1;
     string event_id = 2;
     string before_ticket_id = 3;
+}
+
+// チケットの削除Request
+message DeleteTicketRequest {
+    string event_id = 1;
+    repeated string ticket_id_list = 2;
 }
 
 // チケット情報
