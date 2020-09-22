@@ -30,7 +30,30 @@ class TicketUpdate {
 
     // updateTicket
     async updateTicket() {
-        alert('未実装');
+
+        // request
+        const data = {
+            ticket_info: {
+                ticket_id: ticketForm.getTicketId(),
+                ticket_name: ticketForm.getTicketName(),
+                ticket_price: Number(ticketForm.getTicketPrice()),
+                ticket_desc: ticketForm.getTicketDesc(),
+                event_id: window.Alma.location.getParam('event'),
+            },
+            event_id: window.Alma.location.getParam('event'),
+            before_ticket_id: window.Alma.location.getParam('ticketId'),
+        };
+
+        const response = await window.Alma.req.post(window.Alma.req.ticket_update, window.Alma.req.createPostData(data));
+        if (!response || !response.success) {
+            window.Alma.toast.error('チケットの編集に失敗しました');
+            return;
+        }
+        window.Alma.toast.success('チケットの編集に成功しました', 'Greatest Ticket Man', 1500, function() {
+            // 遷移
+            window.Alma.location.href(window.Alma.location.ticket_info);
+        });
+
     }
 
     // goTicketInfoPage
