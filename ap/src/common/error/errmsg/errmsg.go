@@ -26,6 +26,9 @@ const (
 
 	// EventNotFound イベントが存在しません
 	EventNotFound = "EventNotFound"
+
+	// TicketIDAlradyUse このチケットIDはすでに使用されています
+	TicketIDAlradyUse = "TicketIDAlradyUse"
 )
 
 var msgMap = map[string]map[string]string{
@@ -36,5 +39,6 @@ var msgMap = map[string]map[string]string{
 		LoginWrongPassword:    "パスワードが違います",
 		SignupAlreadyUseEmail: "このメールアドレスはすでに使用されています",
 		EventNotFound:         "イベントが見つかりませんでした、イベントを指定してください",
+		TicketIDAlradyUse:     "このチケットIDはすでに使用されています",
 	},
 }
