@@ -46,15 +46,24 @@ class TableInfo {
         // TODO
 
         let list = [];
-        this.tableRowElList.forEach(function(elem) {
+        this.tableRowElList.forEach(function(row) {
 
-            if (elem.querySelector('.js-checkbox').checked) {
-                console.log(elem);
+            if (row.querySelector('.js-checkbox').checked) {
+                console.log(row);
 
                 let obj = {};
 
                 // TODO data-keyとdata-valueを合わせてobjectを作成する
                 // http://sarchitect.net/10929
+
+
+                console.log(row.children);
+                // row.children.forEach(function(cell) {
+
+                //     console.log("cell is ", cell);
+
+                // });
+
 
             }
 
