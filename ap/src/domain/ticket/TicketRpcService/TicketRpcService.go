@@ -1,6 +1,8 @@
 package TicketRpcService
 
 import (
+	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/error/errmsg"
 	"alma-server/ap/src/domain/event/EventService"
 	"alma-server/ap/src/domain/ticket/TicketComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
@@ -52,9 +54,15 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, beforeTicketID string, updateTicketInfo *ticket.TicketInfo) bool {
 
 	// TODO 先に新しいTicketIDが使われていないかを確認する
+	userTicket := UserTicketRepository.FindOne(ctx, eventID, beforeTicketID)
+	if userTicket != nil {
+		// このチケットIDはすでに使用されています
+		chk.LE(errmsg.TicketIDAlradyUse)
+	}
 
-	// TODO 大丈夫であれば、変更する
-
+	// Update
+	UserTicketRepository.Update(ctx, txTime, beforeTicketID, eventID, updateTicketInfo.TicketName, updateTicketInfo.TicketDesc, updateTicketInfo.TicketPrice, updateTicketInfo.TicketId)
+	return true
 }
 
 // UpdateTicket チケットの編集

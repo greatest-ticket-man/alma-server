@@ -91,14 +91,15 @@ func Insert(ctx context.Context, txTime time.Time, ticketID string, eventID stri
 }
 
 // Update チケット情報の更新
-func Update(ctx context.Context, txTime time.Time, ticketID string, eventID string,
-	name string, desc string, price int32) int32 {
+func Update(ctx context.Context, txTime time.Time, beforeTicketID string, eventID string,
+	name string, desc string, price int32, ticketID string) int32 {
 
-	query := bson.M{FEventID: eventID, FTicketID: ticketID}
+	query := bson.M{FEventID: eventID, FTicketID: beforeTicketID}
 
 	update := bson.M{
 		"$set": bson.M{
 			fName:       name,
+			FTicketID:   ticketID,
 			fDesc:       desc,
 			fPrice:      price,
 			fUpdateTime: txTime,
