@@ -114,3 +114,16 @@ func Remove(ctx context.Context, ticketID string, eventID string) int32 {
 	query := bson.M{FEventID: eventID, FTicketID: ticketID}
 	return getDb(ctx).DeleteOne(query)
 }
+
+// RemoveMany チケットの複数削除
+func RemoveMany(ctx context.Context, eventID string, ticketIDList []string) int32 {
+
+	query := bson.M{
+		FEventID: eventID,
+		FTicketID: bson.M{
+			"$in": ticketIDList,
+		},
+	}
+
+	return getDb(ctx).DeleteMany(query)
+}
