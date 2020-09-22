@@ -9,6 +9,7 @@ window.Alma = window.Alma || {};
             this.event_list = '/event/list'; // get
             this.ticket_create = '/ticket/create';
             this.ticket_update = '/ticket/update';
+            this.ticket_delete = '/ticket/delete';
         }
 
         async get(url, params = {}, options = { reload: false }) {
