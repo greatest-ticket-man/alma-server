@@ -41,6 +41,27 @@ class TableInfo {
         evt.stopPropagation();
     }
 
+    // getChckRowList チェックされているRowデータを取得する
+    getCheckRowList() {
+        // TODO
+
+        let list = [];
+        this.tableRowElList.forEach(function(elem) {
+
+            if (elem.querySelector('.js-checkbox').checked) {
+                console.log(elem);
+
+                let obj = {};
+
+                // TODO data-keyとdata-valueを合わせてobjectを作成する
+
+            }
+
+        });
+
+
+    }
+
 
     // checkRow そのテーブルのチェックする
     checkRow(elem) {
@@ -52,7 +73,6 @@ class TableInfo {
         } else {
             elem.currentTarget.classList.remove('table__row--selected')
         }
-
     }
 
     // checkAllRow .

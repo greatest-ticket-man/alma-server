@@ -19,10 +19,10 @@
                 {{ range $ticketInfo := .ticketInfoList }}
                 <tr class="js-row ticket__table__row">
                     <td><input type="checkbox" class="js-checkbox"></td>
-                    <td><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
-                    <td>{{ $ticketInfo.TicketName }}</td>
-                    <td>{{ $ticketInfo.TicketPrice }}</td>
-                    <td>{{ $ticketInfo.TicketDesc }}</td>
+                    <td data-key='ticketId' data-value='{{ $ticketInfo.TicketId }}'><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
+                    <td data-key='ticketName' data-value='{{ $ticketInfo.TicketName }}'>{{ $ticketInfo.TicketName }}</td>
+                    <td data-key='ticketPrice' data-value='{{ $ticketInfo.TicketPrice }}'>{{ $ticketInfo.TicketPrice }}</td>
+                    <td data-key='ticketDesc' data-value='{{ $ticketInfo.TicketDesc }}'>{{ $ticketInfo.TicketDesc }}</td>
                 </tr>
                 {{ end }}
 
