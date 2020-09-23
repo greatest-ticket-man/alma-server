@@ -38,7 +38,9 @@ class TicketInfo {
     async deleteTicket() {
         // alert('未実装');
 
-        this.tableInfo.getCheckRowList();
+        const result = this.tableInfo.getCheckRowList();
+
+        console.log("result is ", result);
 
         // TODO チェックしたTicketIDを取得
 

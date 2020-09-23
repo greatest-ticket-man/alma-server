@@ -43,34 +43,23 @@ class TableInfo {
 
     // getChckRowList チェックされているRowデータを取得する
     getCheckRowList() {
-        // TODO
-
         let list = [];
         this.tableRowElList.forEach(function(row) {
 
             if (row.querySelector('.js-checkbox').checked) {
-                console.log(row);
-
                 let obj = {};
+                Array.from(row.children).forEach(function(cell) {
+                    const key = cell.getAttribute('data-key');
 
-                // TODO data-keyとdata-valueを合わせてobjectを作成する
-                // http://sarchitect.net/10929
-
-
-                // arrayに変換する https://qiita.com/fivestar/items/074671e137497a8347ee
-                console.log(row.children);
-                // row.children.forEach(function(cell) {
-
-                //     console.log("cell is ", cell);
-
-                // });
-
-
+                    if (key) {
+                        obj[key] = cell.getAttribute('data-value');
+                    }
+                });
+                list.push(obj);
             }
-
         });
 
-
+        return list;
     }
 
 
