@@ -1,13 +1,14 @@
+// bootstrap依存だから削除しなければ
 window.Alma = window.Alma || {};
 (function(_Alma) {
 
     class Modal {
 
         /**
-         * 
-         * @param {string} message 
-         * @param {function} func 
-         * @param {string} funcMessage 
+         * 確認Modal
+         * @param {string} message メッセージ
+         * @param {function} func okボタンを押したときの動作
+         * @param {string} funcMessage okボタンのメッセージ
          */
         confirm(message, func, funcMessage) {
             this.show('確認', message, func, funcMessage);

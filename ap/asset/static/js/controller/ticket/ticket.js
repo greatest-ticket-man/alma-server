@@ -36,26 +36,40 @@ class TicketInfo {
 
     // deleteTicket
     async deleteTicket() {
-        // alert('未実装');
 
-        const result = this.tableInfo.getCheckRowList();
+        // checkされているチケットを取得
+        let ticketIDList = [];
+        this.tableInfo.getCheckRowList().forEach(function(row) {
+            ticketIDList.push(row.ticketId);
+        });
 
-        console.log("result is ", result);
+        if (ticketIDList.length === 0) {
+            window.Alma.toast.warn('削除対象のチケットが選択されていません', 'Greatest Ticket Man');
+            return;
+        }
 
-        // TODO チェックしたTicketIDを取得
+        const data = {
+            event_id: window.Alma.location.getParam('event'),
+            ticket_id_list: ticketIDList,
+        };
 
+        const response = await window.Alma.req.post(window.Alma.req.ticket_delete, window.Alma.req.createPostData(data));
+        if (!response || !response.success) {
+            window.Alma.toast.error('チケットの削除に失敗しました');
+            return;
+        }
 
-        // TODO Modalを表示して、本当に削除していいかを確認する
+        window.Alma.toast.success('チケットの削除に成功しました', 'Greatest Ticket Man', 1500, function () {
+            // reload
+            window.Alma.location.href(window.Alma.location.ticket_info);
 
-        // TODO 通信して、削除する
+        });
     }
 
     // reloadTicketPage
     reloadTicketPage() {
         window.Alma.location.href(window.Alma.location.ticket_info);
     }
-
-    // TODO 削除, 確認Modalを作成する必要がある、めんどくさい
 
 }
 
