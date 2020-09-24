@@ -1,6 +1,10 @@
 package stringutil
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 // Uint32ToString .
 func Uint32ToString(num uint32) string {
@@ -21,4 +25,23 @@ func SplitLen(src string, splitLen int32) []string {
 	}
 
 	return result
+}
+
+// AddComma 数字をStringに変換して、3桁ずつにカンマをつける
+func AddComma(num int32) string {
+	arr := strings.Split(fmt.Sprintf("%d", num), "")
+	cnt := len(arr) - 1
+	res := ""
+	i2 := 0
+
+	for i := cnt; i >= 0; i-- {
+
+		if i2 > 2 && i2%3 == 0 {
+			res = fmt.Sprintf(",%s", res)
+		}
+		res = fmt.Sprintf("%s%s", arr[i], res)
+		i2++
+	}
+
+	return res
 }

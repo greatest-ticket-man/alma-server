@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/dateutil"
+	"alma-server/ap/src/common/util/stringutil"
 	"alma-server/ap/src/infrastructure/file/almafile"
 	"bytes"
 	"html/template"
@@ -22,6 +23,9 @@ var funcMap = template.FuncMap{
 	"timestampToTime": func(ts *timestamppb.Timestamp) string {
 		t := dateutil.TimestampToTime(ts)
 		return dateutil.FormatYyyyMmDdSs(t)
+	},
+	"addComma": func(num int32) string {
+		return stringutil.AddComma(num)
 	},
 }
 
