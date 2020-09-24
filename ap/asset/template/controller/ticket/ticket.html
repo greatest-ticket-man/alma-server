@@ -5,10 +5,10 @@
             <thead class="table__head">
                 <tr>
                     <th><input type="checkbox" class="js-head-checkbox"></th>
-                    <th>TicketID</th>
-                    <th>TicketName</th>
-                    <th>TicketPrice</th>
-                    <th>TicketDesc intro</th>
+                    <th>チケットID</th>
+                    <th>名前</th>
+                    <th>価格</th>
+                    <th>説明</th>
                 </tr>
             </thead>
 
@@ -21,7 +21,7 @@
                     <td><input type="checkbox" class="js-checkbox"></td>
                     <td data-key='ticketId' data-value='{{ $ticketInfo.TicketId }}'><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
                     <td data-key='ticketName' data-value='{{ $ticketInfo.TicketName }}'>{{ $ticketInfo.TicketName }}</td>
-                    <td data-key='ticketPrice' data-value='{{ $ticketInfo.TicketPrice }}'>{{ $ticketInfo.TicketPrice }}</td>
+                    <td data-key='ticketPrice' data-value='{{ $ticketInfo.TicketPrice }}'>{{ $ticketInfo.TicketPrice | addComma }}円</td>
                     <td data-key='ticketDesc' data-value='{{ $ticketInfo.TicketDesc }}'>{{ $ticketInfo.TicketDesc }}</td>
                 </tr>
                 {{ end }}
