@@ -17,8 +17,12 @@ func InternalServerErrorPageHTML(w http.ResponseWriter, r *http.Request, reason 
 		map[string]interface{}{
 			"reason": reason,
 		},
-		[]string{},
-		[]string{},
+		[]string{
+			"/static/js/common/5xx.js",
+		},
+		[]string{
+			"/static/css/common/5xx.css",
+		},
 		"",
 		nil,
 	)

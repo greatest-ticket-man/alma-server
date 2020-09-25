@@ -1,3 +1,8 @@
 <main class="content">
-    {{ .reason }}
+    <div class="error__content">
+        <h2>5xx</h2>
+        <h4>エラーが発生しました</h4>
+        <p>{{ .reason }}</p>
+        <a class="backbutton">Back To Dashboard</a>
+    </div>
 </main>
