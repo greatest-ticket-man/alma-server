@@ -2,6 +2,7 @@ package almahttp
 
 import (
 	"alma-server/ap/src/common/config"
+	"alma-server/ap/src/controller/common"
 	"alma-server/ap/src/controller/event"
 	"alma-server/ap/src/controller/hello"
 	"alma-server/ap/src/controller/home/dashboard"
@@ -85,6 +86,7 @@ func Router() *negroni.Negroni {
 	authRouter.HandleFunc("/todo", todo.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/todo/create", todo.CreateTodo).Methods("POST")
 	authRouter.HandleFunc("/todo/remove", todo.RemoveTodo).Methods("POST")
+	authRouter.NotFoundHandler = http.HandlerFunc(common.NotFoundPageHTML)
 
 	router.PathPrefix("/").Handler(negroni.New(
 		negroni.HandlerFunc(middleware.AuthMiddleware),

@@ -9,5 +9,6 @@
 {"_id":"member_invite","title":"招待中メンバー情報","parent":"member_top","path":"/member/invite","children":[]}
 {"_id":"reserve_top","title":"予約状況","path":"/reserve","parent":"top","children":["reserve"]}
 {"_id":"reserve","title":"予約情報","path":"/reserve","parent":"reserve_top","children":[]}
-{"_id":"ticket_top","title":"チケット","path":"/ticket","parent":"top","children":["ticket"]}
+{"_id":"ticket_top","title":"チケット","path":"/ticket","parent":"top","children":["ticket","ticket_sale"]}
 {"_id":"ticket","title":"チケット情報","path":"/ticket","parent":"ticket_top","children":[]}
+{"_id":"ticket_sale","title":"チケット販売設定","path":"/ticket/schedule","parent":"ticket_top","children":[]}
