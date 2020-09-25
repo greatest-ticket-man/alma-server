@@ -7,6 +7,7 @@ import (
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/controller/common"
 	"net/http"
+	"runtime"
 
 	stripego "github.com/stripe/stripe-go/v71"
 )
@@ -16,6 +17,9 @@ func ErrorHandlingMiddleware(w http.ResponseWriter, r *http.Request, next http.H
 
 	defer func() {
 		if panicErr := recover(); panicErr != nil {
+
+			stackTrace()
+
 			reason := logAndReason(w, panicErr)
 
 			if r.Method == "GET" { // GET requestの場合はUIを表示する
@@ -29,17 +33,14 @@ func ErrorHandlingMiddleware(w http.ResponseWriter, r *http.Request, next http.H
 	next(w, r)
 }
 
-// getServerErrorProcess GETRequest時の、Error処理
-func getHandling(w http.ResponseWriter, r *http.Request, err interface{}) {
-	reason := logAndReason(w, err)
-	common.InternalServerErrorPageHTML(w, r, reason)
+// stackTrace Errorが発生下場所を表示する
+func stackTrace() {
+	stack := make([]byte, 1024*8)
+	stack = stack[:runtime.Stack(stack, false)]
+	logger.Infof(string(stack))
 }
 
 func logAndReason(w http.ResponseWriter, err interface{}) string {
-
-	// TODO stack trace
-
-	// fmt.Printf("error: %+v", err)
 
 	var reason string
 	switch e := err.(type) {
