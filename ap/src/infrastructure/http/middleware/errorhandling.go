@@ -37,6 +37,10 @@ func getHandling(w http.ResponseWriter, r *http.Request, err interface{}) {
 
 func logAndReason(w http.ResponseWriter, err interface{}) string {
 
+	// TODO stack trace
+
+	// fmt.Printf("error: %+v", err)
+
 	var reason string
 	switch e := err.(type) {
 
