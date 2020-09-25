@@ -1,10 +1,11 @@
 package dashboard
 
 import (
+	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/error/errmsg"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventService"
-	"alma-server/ap/src/repository/user/event/UserEventRepository"
 	"net/http"
 )
 
@@ -20,8 +21,7 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	userEvent := EventService.GetEvent(r.Context(), eventID)
 	if userEvent == nil {
-		// TODO error message
-		userEvent = &UserEventRepository.UserEvent{Name: "TODO このパターンはエラーメッセージを出すようにする"}
+		chk.LE(errmsg.EventNotFound)
 	}
 
 	response.BaseHTML(
