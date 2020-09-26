@@ -20,7 +20,21 @@
         <span class="input__desc">(必須)</span>
         <input class="input__input" type="number" value='{{ .ticketPrice }}' min="0" id="js-ticket-price">
     </div>
-</div>         
+</div>
+<div class="form-container">
+    <div class="input-container">
+        <span class="input__title">販売数</span>
+        <span class="input__desc">(必須)</span>
+        <input class="input__input" type="number" min="1" id="js-ticket-stock">
+    </div>
+</div>   
+<div class="form-container">
+    <div class="input-container">
+        <span class="input__title">イベント開始時間</span>
+        <span class="input__desc">(必須)</span>
+        <input class="input__input" type="datetime-local" id="js-ticket-event-start-time">
+    </div>
+</div>
 <div class="form-container">
     <div class="input-container">
         <span class="input__title">説明</span>

@@ -69,4 +69,6 @@ message TicketInfo {
     int32 ticket_price = 3;
     string ticket_desc = 4;
     string event_id = 5;
+    int32 ticket_stock = 6;
+    string ticket_event_start_time = 7;
 }
