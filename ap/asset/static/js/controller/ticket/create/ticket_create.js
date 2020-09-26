@@ -35,7 +35,7 @@ class TicketCreate {
             ticket_info: {
                 ticket_id: ticketForm.getTicketId(),
                 ticket_name: ticketForm.getTicketName(),
-                ticket_price: Number(ticketForm.getTicketPrice()),
+                ticket_price: ticketForm.getTicketPrice(),
                 ticket_desc: ticketForm.getTicketDesc(),
                 event_id: window.Alma.location.getParam('event'),
             },

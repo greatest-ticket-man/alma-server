@@ -8,6 +8,8 @@ class TicketForm {
         this.ticketNameEl = document.getElementById('js-ticket-name');
         this.ticketPriceEl = document.getElementById('js-ticket-price');
         this.ticketDescEl = document.getElementById('js-ticket-desc');
+        this.ticketStockEl = document.getElementById('js-ticket-stock');
+        this.ticketEventStartTimeEl = document.getElementById('js-ticket-event-start-time');
 
     }
 
@@ -20,11 +22,19 @@ class TicketForm {
     }
 
     getTicketPrice() {
-        return this.ticketPriceEl.value;
+        return Number(this.ticketPriceEl.value);
+    }
+
+    getTicketStock() {
+        return Number(this.ticketStockEl.value);
     }
 
     getTicketDesc() {
         return this.ticketDescEl.value;
+    }
+
+    getTicketEventStartTime() {
+        return this.ticketEventStartTimeEl.value;
     }
 
 }
