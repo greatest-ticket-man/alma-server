@@ -38,8 +38,8 @@ class TicketForm {
      */
     getTicketEventStartTime() {
 
-        console.log("t ", this.ticketEventStartTimeEl.value);
-        return this.ticketEventStartTimeEl.value;
+        console.log("t ", new Date(this.ticketEventStartTimeEl.value).toISOString());
+        return new Date(this.ticketEventStartTimeEl.value);
     }
 
 }
