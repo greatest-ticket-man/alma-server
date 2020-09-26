@@ -77,16 +77,18 @@ func Find(ctx context.Context, eventID string) []*UserTicket {
 
 // Insert チケットの追加
 func Insert(ctx context.Context, txTime time.Time, ticketID string, eventID string,
-	name string, desc string, price int32) interface{} {
+	name string, desc string, price int32, stock int32, eventStartTime time.Time) interface{} {
 
 	userTicket := &UserTicket{
-		TicketID:   ticketID,
-		EventID:    eventID,
-		Name:       name,
-		Desc:       desc,
-		Price:      price,
-		CreateTime: txTime,
-		UpdateTime: txTime,
+		TicketID:       ticketID,
+		EventID:        eventID,
+		Name:           name,
+		Desc:           desc,
+		Price:          price,
+		Stock:          stock,
+		EventStartTime: eventStartTime,
+		CreateTime:     txTime,
+		UpdateTime:     txTime,
 	}
 
 	return getDb(ctx).InsertOne(userTicket)
@@ -94,7 +96,7 @@ func Insert(ctx context.Context, txTime time.Time, ticketID string, eventID stri
 
 // Update チケット情報の更新
 func Update(ctx context.Context, txTime time.Time, beforeTicketID string, eventID string,
-	name string, desc string, price int32, ticketID string) int32 {
+	name string, desc string, price int32, ticketID string, stock int32, eventStartTime time.Time) int32 {
 
 	query := bson.M{FEventID: eventID, FTicketID: beforeTicketID}
 

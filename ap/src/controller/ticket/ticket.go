@@ -3,6 +3,7 @@ package ticket
 import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
@@ -150,8 +151,12 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
 
-	TicketRpcService.CreateTicket(ctx, mid, txTime, req.TicketInfo.EventId, req.TicketInfo.TicketId, req.TicketInfo.TicketName,
-		req.TicketInfo.TicketPrice, req.TicketInfo.TicketDesc)
+	TicketRpcService.CreateTicket(ctx, mid, txTime,
+		req.TicketInfo.EventId, req.TicketInfo.TicketId,
+		req.TicketInfo.TicketName, req.TicketInfo.TicketPrice,
+		req.TicketInfo.TicketDesc, req.TicketInfo.TicketStock,
+		dateutil.ParseFormStrToTime(req.TicketInfo.TicketEventStartTime),
+	)
 
 	response.JSON(w, &common.Empty{})
 }

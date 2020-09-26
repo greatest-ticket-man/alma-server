@@ -3,6 +3,7 @@ package TicketRpcService
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/error/errmsg"
+	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/domain/event/EventService"
 	"alma-server/ap/src/domain/ticket/TicketComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
@@ -40,13 +41,13 @@ func UpdatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 
 // CreateTicket チケットの作成
 func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, ticketName string,
-	ticketPrice int32, ticketDesc string) bool {
+	ticketPrice int32, ticketDesc string, ticketStock int32, ticketEventStartTime time.Time) bool {
 
 	// TODO check
 	// TODO EventIDが指定しているものと正しいか
 
 	// Create
-	UserTicketRepository.Insert(ctx, txTime, ticketID, eventID, ticketName, ticketDesc, ticketPrice)
+	UserTicketRepository.Insert(ctx, txTime, ticketID, eventID, ticketName, ticketDesc, ticketPrice, ticketStock, ticketEventStartTime)
 	return true
 }
 
@@ -61,7 +62,12 @@ func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 	}
 
 	// Update
-	UserTicketRepository.Update(ctx, txTime, beforeTicketID, eventID, updateTicketInfo.TicketName, updateTicketInfo.TicketDesc, updateTicketInfo.TicketPrice, updateTicketInfo.TicketId)
+	UserTicketRepository.Update(
+		ctx, txTime, beforeTicketID, eventID,
+		updateTicketInfo.TicketName, updateTicketInfo.TicketDesc,
+		updateTicketInfo.TicketPrice, updateTicketInfo.TicketId,
+		updateTicketInfo.TicketStock, dateutil.ParseFormStrToTime(updateTicketInfo.TicketEventStartTime),
+	)
 	return true
 }
 

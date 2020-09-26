@@ -33,7 +33,12 @@ class TicketForm {
         return this.ticketDescEl.value;
     }
 
+    /**
+     * 2020-09-18T17:05
+     */
     getTicketEventStartTime() {
+
+        console.log("t ", this.ticketEventStartTimeEl.value);
         return this.ticketEventStartTimeEl.value;
     }
 
