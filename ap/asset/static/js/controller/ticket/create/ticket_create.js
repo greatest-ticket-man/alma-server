@@ -39,7 +39,7 @@ class TicketCreate {
                 ticket_desc: ticketForm.getTicketDesc(),
                 event_id: window.Alma.location.getParam('event'),
                 ticket_stock: ticketForm.getTicketStock(),
-                ticket_event_start_time: ticketForm.getTicketEventStartTime(),
+                ticket_event_start_time: window.Alma.dateutil.DateToTimestamp(ticketForm.getTicketEventStartTime()),
             },
         };
 
