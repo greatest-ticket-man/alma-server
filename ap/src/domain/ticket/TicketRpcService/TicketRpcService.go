@@ -66,7 +66,7 @@ func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 		ctx, txTime, beforeTicketID, eventID,
 		updateTicketInfo.TicketName, updateTicketInfo.TicketDesc,
 		updateTicketInfo.TicketPrice, updateTicketInfo.TicketId,
-		updateTicketInfo.TicketStock, dateutil.ParseFormStrToTime(updateTicketInfo.TicketEventStartTime),
+		updateTicketInfo.TicketStock, dateutil.TimestampToTime(updateTicketInfo.TicketEventStartTime),
 	)
 	return true
 }

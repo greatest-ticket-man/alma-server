@@ -5,6 +5,7 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/ticket";
 package ticket;
 
 import "common/common.proto";
+import "google/protobuf/timestamp.proto";
 
 // RPC
 service Ticket {
@@ -70,5 +71,5 @@ message TicketInfo {
     string ticket_desc = 4;
     string event_id = 5;
     int32 ticket_stock = 6;
-    string ticket_event_start_time = 7;
+    google.protobuf.Timestamp ticket_event_start_time = 7;
 }

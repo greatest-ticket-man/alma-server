@@ -155,7 +155,7 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 		req.TicketInfo.EventId, req.TicketInfo.TicketId,
 		req.TicketInfo.TicketName, req.TicketInfo.TicketPrice,
 		req.TicketInfo.TicketDesc, req.TicketInfo.TicketStock,
-		dateutil.ParseFormStrToTime(req.TicketInfo.TicketEventStartTime),
+		dateutil.TimestampToTime(req.TicketInfo.TicketEventStartTime),
 	)
 
 	response.JSON(w, &common.Empty{})
