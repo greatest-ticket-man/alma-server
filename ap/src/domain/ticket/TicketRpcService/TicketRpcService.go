@@ -54,11 +54,14 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 // UpdateTicket チケットの編集
 func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, beforeTicketID string, updateTicketInfo *ticket.TicketInfo) bool {
 
-	// 指定したチケットIDがすでに使われていないかを確認する
-	userTicket := UserTicketRepository.FindOne(ctx, eventID, updateTicketInfo.TicketId)
-	if userTicket != nil {
-		// このチケットIDはすでに使用されています
-		chk.LE(errmsg.TicketIDAlradyUse)
+	// ticketIDに変更がある場合のみ下記のチェックを行う
+	if beforeTicketID != updateTicketInfo.TicketId {
+		// 指定したチケットIDがすでに使われていないかを確認する
+		userTicket := UserTicketRepository.FindOne(ctx, eventID, updateTicketInfo.TicketId)
+		if userTicket != nil {
+			// このチケットIDはすでに使用されています
+			chk.LE(errmsg.TicketIDAlradyUse)
+		}
 	}
 
 	// Update
