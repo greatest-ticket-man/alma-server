@@ -4,8 +4,8 @@ import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
-	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/domain/menu/MenuService"
+	"alma-server/ap/src/domain/reserve/ReserveRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"net/http"
 )
@@ -20,8 +20,9 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 
 	ctx := r.Context()
 	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
 
-	result := EventRpcService.GetEvent(ctx, mid, req.Event)
+	result := ReserveRpcService.Page(ctx, mid, txTime, req.Event)
 
 	response.BaseHTML(
 		w,
