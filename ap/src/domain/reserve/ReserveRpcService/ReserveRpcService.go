@@ -21,7 +21,7 @@ func Page(ctx context.Context, mid string, txTime time.Time, eventID string) *re
 	}
 
 	// TODO reserve
-	userReserveList := UserReserveRepository.Find(ctx, eventID)
+	userReserveList := UserReserveRepository.GetList(ctx, eventID)
 
 	reserveInfoList := ReserveComponent.CreateReserveInfoList(userReserveList)
 

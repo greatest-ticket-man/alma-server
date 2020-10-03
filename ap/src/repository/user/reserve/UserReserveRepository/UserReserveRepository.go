@@ -45,8 +45,10 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 	return mongodb.GetUserCollection(ctx, ThisCollectionName)
 }
 
-// Find 条件が増えるかもなので、Findで
-func Find(ctx context.Context, eventID string) []*UserReserve {
+//
+
+// GetList 条件が増えるかもなので、Findで
+func GetList(ctx context.Context, eventID string) []*UserReserve {
 
 	query := bson.M{FEventID: eventID}
 
@@ -58,8 +60,8 @@ func Find(ctx context.Context, eventID string) []*UserReserve {
 	return result.([]*UserReserve)
 }
 
-// FindOne 予約情報を一つ取得する
-func FindOne(ctx context.Context, eventID string, reserveID string) *UserReserve {
+// Get 予約情報を一つ取得する
+func Get(ctx context.Context, eventID string, reserveID string) *UserReserve {
 
 	query := bson.M{FReserveID: reserveID, FEventID: eventID}
 
