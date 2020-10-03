@@ -27,10 +27,13 @@ message ReserveInfo {
     int32 no = 2; // そのEvent内でのuniqueな番号
     string ticket_name = 3; // 予約したチケット名
     int32 ticket_num = 4; // チケット枚数
-    string farst_name = 5; // 名
-    string last_name = 6; // 苗字
-    string notes = 7; // 備考
-    string email = 8; // email
-    google.protobuf.Timestamp created_at = 9; // 作成時間
-    google.protobuf.Timestamp updated_at = 10; // 更新時間    
+    string first_name = 5; // 名
+    string first_name_furigana = 6;
+    string last_name = 7; // 苗字
+    string last_name_furigana = 8;
+    string notes = 9; // 備考
+    string email = 10; // email
+    google.protobuf.Timestamp created_at = 11; // 作成時間
+    google.protobuf.Timestamp updated_at = 12; // 更新時間   
+    string customor_id = 13; // 顧客ID 
 }
