@@ -10,6 +10,7 @@ window.Alma = window.Alma || {};
             this.home_dashboard = '/home/dashboard';
             this.home_dashboard_empty = '/home/dashboard/empty';
             this.reserve_info = '/reserve';
+            this.reserve_create = '/reserve/create';
             this.ticket_info = '/ticket';
             this.ticket_create = '/ticket/create';
             this.ticket_update = '/ticket/update';
