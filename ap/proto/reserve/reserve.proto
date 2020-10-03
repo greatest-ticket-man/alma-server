@@ -32,6 +32,5 @@ message ReserveInfo {
     string notes = 7; // 備考
     string email = 8; // email
     google.protobuf.Timestamp created_at = 9; // 作成時間
-    google.protobuf.TImestamp updated_at = 10; // 更新時間
-    
+    google.protobuf.Timestamp updated_at = 10; // 更新時間    
 }
