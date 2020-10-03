@@ -10,7 +10,7 @@ if (typeof TableInfo === 'undefined') {
 class TicketInfo {
     constructor() {
 
-        this.tableInfo = new TableInfo('js-ticket-table', 'js-ticket-table-row', 'js-ticket-table-head-checkbox', 'js-table-checkbox');
+        this.tableInfo = new TableInfo('js-ticket-table');
 
         this.createTicketButtonEl = document.querySelector('.js-ticket-create');
         this.deleteTicketButtonEl = document.querySelector('.js-ticket-delete');
