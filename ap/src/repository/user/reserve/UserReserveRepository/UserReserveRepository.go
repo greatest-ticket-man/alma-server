@@ -15,7 +15,7 @@ const (
 	// ThisCollectionName .
 	ThisCollectionName = "USER_RESERVE"
 
-	// EReserveID .
+	// FReserveID .
 	FReserveID = "_id"
 
 	// FEventID .
@@ -45,7 +45,10 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 	return mongodb.GetUserCollection(ctx, ThisCollectionName)
 }
 
-//
+// Add .
+func Add(ctx context.Context, userReserve *UserReserve) interface{} {
+	return getDb(ctx).InsertOne(userReserve)
+}
 
 // GetList 条件が増えるかもなので、Findで
 func GetList(ctx context.Context, eventID string) []*UserReserve {
