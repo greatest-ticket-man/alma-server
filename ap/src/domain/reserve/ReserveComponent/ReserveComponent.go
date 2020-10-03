@@ -1,6 +1,7 @@
 package ReserveComponent
 
 import (
+	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/reserve"
 	"alma-server/ap/src/repository/user/reserve/UserReserveRepository"
 )
@@ -24,6 +25,8 @@ func CreateReserveInfoList(userReserveList []*UserReserveRepository.UserReserve)
 			Notes:             "TODO",
 			Email:             "TODO: customorから取得する",
 			CustomorId:        "TODO: customorができてから追加する",
+			CreatedAt:         dateutil.TimeToTimestamp(userReserve.CreateTime),
+			UpdatedAt:         dateutil.TimeToTimestamp(userReserve.UpdateTime),
 		}
 
 		reserveInfoList = append(reserveInfoList, reserveInfo)
