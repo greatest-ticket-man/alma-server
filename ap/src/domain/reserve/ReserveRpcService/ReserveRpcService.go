@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-// PageHTML .
-func PageHTML(ctx context.Context, mid uint64, txTime time.Time, eventID string) {
+// Page .
+func Page(ctx context.Context, mid uint64, txTime time.Time, eventID string) {
 
 }

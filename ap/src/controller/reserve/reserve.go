@@ -26,12 +26,17 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 	response.BaseHTML(
 		w,
 		"予約状況",
-		"",
+		"/template/controller/reserve/head.html",
 		map[string]interface{}{},
 		"/template/controller/reserve/reserve.html",
 		map[string]interface{}{},
-		[]string{},
-		[]string{},
+		[]string{
+			"/static/js/common/table/table.js",
+		},
+		[]string{
+			"/static/css/common/table/table.css",
+			"/static/css/common/content_head_button/content_head_button.css",
+		},
 		result.EventName,
 		MenuService.GetMenu("reserve_top", "reserve"),
 	)
