@@ -15,6 +15,7 @@ require (
 	github.com/rs/xid v1.2.1
 	github.com/stripe/stripe-go/v71 v71.48.0
 	go.mongodb.org/mongo-driver v1.4.1
+	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550 // indirect
 	google.golang.org/grpc v1.32.0
 	google.golang.org/protobuf v1.25.0
 )
