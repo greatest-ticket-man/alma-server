@@ -22,7 +22,6 @@
                 {{ range $reserveInfo := .reserveInfoList }}
 
                 <tr class="js-row reserve__table__row">
-
                     <td><input type="checkbox" class="js-checkbox"></td>
                     <td>
                         <a class="reserve__detail__anchor" href="/todo">{{ $reserveInfo.ReserveId }}</a>
@@ -35,10 +34,7 @@
                     <td>{{ $reserveInfo.CreatedAt | timestampToTime }}</td>
                     <td>{{ $reserveInfo.UpdatedAt | timestampToTime }}</td>
                 </tr>
-
                 {{ end }}
-
-
             </tbody>
 
         </table>
