@@ -1,4 +1,44 @@
 <main class="content">
+
+    <div class="table__container">
+        <table class="js-reserve-table table">
+            <thead class="table__head">
+                <tr>
+                    <th><input type="checkbox" class="js-head-checkbox"></th>
+                    <th>予約No.</th>
+                    <th>名前</th>
+                    <th>チケット</th>
+                    <th>枚数</th>
+                    <th>備考</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody class="table__body">
+
+                <tr class="js-row reserve__table__row">
+
+                    <td><input type="checkbox" class="js-checkbox"></td>
+                    <td data-key='a' data-value='hoge'>
+                        <a class="reserve__detail__anchor" href="/todo">ReserveID Goto Detail</a>
+                    </td>
+                    <td>名前</td>
+                    <td>チケット名</td>
+                    <td>枚数</td>
+                    <td>備考...</td>
+                    <td>Email</td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+</main>
+
+
+チケットの予約では、複数日時を、複数枚かえるようにする <br>
+View側では、別日の物は、別のものとしてみる(そっちの方がシンプルっぽい)
+<!-- <main class="content">
     予約ページ
     <br>
 
@@ -20,4 +60,4 @@
 
     <br>
     どれくらいうるかとかの設定ページもほしい、何日に何枚売ることができるのか？
-</main>
+</main> -->
