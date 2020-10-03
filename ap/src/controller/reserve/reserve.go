@@ -30,7 +30,10 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/reserve/head.html",
 		map[string]interface{}{},
 		"/template/controller/reserve/reserve.html",
-		map[string]interface{}{},
+		map[string]interface{}{
+			"reserveInfoList": result.ReserveInfoList,
+			"eventId":         result.EventId,
+		},
 		[]string{
 			"/static/js/common/table/table.js",
 		},
