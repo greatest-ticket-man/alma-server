@@ -22,10 +22,16 @@
     align-items: center;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .step-content:hover {
     background: rgba(0, 0, 0, 0.1);
+}
+
+.step-content--selected {
+    background: #e0eeff;
+    color: royalblue;
 }
 
 .step__title {
