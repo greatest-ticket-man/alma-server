@@ -20,6 +20,7 @@
     /* margin: 16px 32px; */
     margin: 8px 8px;
     padding: 16px 24px;
+    align-items: center;
 }
 
 .step-container:hover {
@@ -28,6 +29,11 @@
 
 .step__title {
     font-size: 1.1em;
+}
+
+.step__icon {
+    font-size: 0.8em;
+    margin: 0 4px;
 }
 
 .step__desc {
