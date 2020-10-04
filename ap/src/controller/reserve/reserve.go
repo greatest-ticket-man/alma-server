@@ -70,7 +70,9 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/reserve/create/reserve_create.html",
 		map[string]interface{}{},
 		[]string{},
-		[]string{},
+		[]string{
+			"/static/css/common/content_head_button/content_head_button.css",
+		},
 		result.EventName,
 		MenuService.GetMenu("reserve_top", ""),
 	)
