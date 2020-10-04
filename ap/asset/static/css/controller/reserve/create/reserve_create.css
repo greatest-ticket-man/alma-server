@@ -58,6 +58,7 @@
     height: 0;
     width: 0;
     will-change: opacity;
+    margin: 0;
 }
 
 .form-content--visible {
@@ -65,6 +66,7 @@
     pointer-events: auto;
     height: 100%;
     width: 100%;
+    margin: 24px;
 }
 
 /* side navが消える位置で, windthをmaxにする */
