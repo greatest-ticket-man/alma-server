@@ -65,13 +65,17 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 
 	response.BaseHTML(
 		w,
-		"予約作成",
+		"予約の作成",
 		"/template/controller/reserve/create/head.html",
 		map[string]interface{}{},
 		"/template/controller/reserve/create/reserve_create.html",
 		map[string]interface{}{
 			"reserveForm": htmlutil.CreateTemplateToString(
 				"/template/component/reserve/form.html",
+				map[string]interface{}{},
+			),
+			"orderForm": htmlutil.CreateTemplateToString(
+				"/template/component/reserve/order_form.html",
 				map[string]interface{}{},
 			),
 		},
@@ -81,7 +85,8 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		},
 		[]string{
 			"/static/css/component/reserve/form.css",
-			"/static/css/common/content_head_button/content_head_button.css",
+			// "/static/css/common/content_head_button/content_head_button.css",
+			"/static/css/controller/reserve/create/head.css",
 			"/static/css/controller/reserve/create/reserve_create.css",
 		},
 		result.EventName,

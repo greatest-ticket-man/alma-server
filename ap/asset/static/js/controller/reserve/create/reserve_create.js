@@ -21,6 +21,8 @@ class ReserveCreate {
 
         this.stepArrowIconElList = document.querySelectorAll('.js-arrow-icon');
 
+        this.subTitleEl = document.querySelector('.js-sub-title');
+
 
         // Bind
         this.goReserveInfoPage = this.goReserveInfoPage.bind(this);
@@ -56,31 +58,32 @@ class ReserveCreate {
         this.formContentAllHide();
 
         this.formInitEl.classList.add('form-content--visible');
+        this.subTitleEl.innerText = '';
 
     }
 
     // 購入情報のステップ
     stepOrder() {
-        this.switchForm(this.stepOrderEl, this.formOrderEl);
+        this.switchForm(this.stepOrderEl, this.formOrderEl, '購入情報');
     }
 
     // お客様情報のステップ
     stepCustomor() {
-        this.switchForm(this.stepCustomorEl, this.formCustomorEl);
+        this.switchForm(this.stepCustomorEl, this.formCustomorEl, 'お客様情報');
     }
 
     // お支払い情報のステップ
     stepPay() {
-        this.switchForm(this.stepPayEl, this.formPayEl);
+        this.switchForm(this.stepPayEl, this.formPayEl, '支払い情報');
     }
 
     // 確認画面のステップ
     stepConfirm() {
-        this.switchForm(this.stepConfirmEl, this.formConfirmEl);
+        this.switchForm(this.stepConfirmEl, this.formConfirmEl, '確認画面');
     }
 
     // switchForm
-    switchForm(stepEl, formEl) {
+    switchForm(stepEl, formEl, subTitle) {
         if (formEl.classList.contains('form-content--visible')) {
             this.stepInit();
             return;
@@ -93,6 +96,7 @@ class ReserveCreate {
         stepEl.classList.add('step-content--selected');
         let arrowEl = stepEl.querySelector('.js-arrow-icon');
         arrowEl.innerText = 'arrow_right_alt';
+        this.subTitleEl.innerText = subTitle;
     }
 
     // 全てのコンテンツを非表示にする

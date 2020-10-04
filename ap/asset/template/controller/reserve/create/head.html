@@ -1,8 +1,37 @@
-<div class="content-header content-header__backbutton--include">
+<!-- <div class="content-header content-header__backbutton--include">
 
     <button class="js-reserve-info-back content-header__button material-icons">
         keyboard_backspace
     </button>
+    <div class="content-header__title">
+        {{ .mainTitle }}
+    </div>
+    <div class="content-header__sub-title">
+        hoge
+    </div>
 
-    {{ .mainTitle }}
+
+</div> -->
+
+<div class="content-header">
+
+    <div class="header-content">
+        <div class="header__inner">
+            <button class="js-reserve-info-back header__button material-icons">
+                keyboard_backspace
+            </button>
+            <div class="header__title">
+                {{ .mainTitle }}
+            </div>
+            
+        </div>
+    </div>
+    <div class="header-content">
+
+        <div class="header__inner">
+            <div class="js-sub-title header__sub-title">
+                <!-- sub-title -->
+            </div>
+        </div>
+    </div>
 </div>
