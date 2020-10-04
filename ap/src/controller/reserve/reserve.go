@@ -2,6 +2,7 @@ package reserve
 
 import (
 	"alma-server/ap/src/common/almactx"
+	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventRpcService"
@@ -68,10 +69,19 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		"/template/controller/reserve/create/head.html",
 		map[string]interface{}{},
 		"/template/controller/reserve/create/reserve_create.html",
-		map[string]interface{}{},
-		[]string{},
+		map[string]interface{}{
+			"reserveForm": htmlutil.CreateTemplateToString(
+				"/template/component/reserve/form.html",
+				map[string]interface{}{},
+			),
+		},
 		[]string{
+			"/static/js/component/reserve/form.js",
+		},
+		[]string{
+			"/static/css/component/reserve/form.css",
 			"/static/css/common/content_head_button/content_head_button.css",
+			"/static/css/controller/reserve/create/reserve_create.css",
 		},
 		result.EventName,
 		MenuService.GetMenu("reserve_top", ""),

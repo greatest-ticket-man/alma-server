@@ -1,0 +1,9 @@
+.content {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 30px;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+}
