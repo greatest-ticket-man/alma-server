@@ -1,9 +1,42 @@
 .content {
     box-sizing: border-box;
     padding: 0;
+    display: grid;
+    
+    overflow: auto;
+    width: calc(100vw - 250px); /* sub menu */
+    height: calc(100vh - 100px);
+    grid-template-columns: 100%;
+    grid-template-columns: 300px minmax(300px, 1fr);
+
+}
+
+.step {
+    grid-row: 1;
+    grid-column: 1 / 2;
+    background: brown;
+}
+
+.form {
+    grid-row: 1;
+    grid-column: 2 / 3;
+    background: cornflowerblue;
+}
+
+/* side navが消える位置で, windthをmaxにする */
+@media screen and (max-width: 756px) {
+    .content {
+        width: 100vw;
+    }
+}
+
+
+/* .content {
+    box-sizing: border-box;
+    padding: 0;
     margin: 30px;
     background: #fafafa;
     display: flex;
     flex-direction: column;
     max-width: 480px;
-}
+} */
