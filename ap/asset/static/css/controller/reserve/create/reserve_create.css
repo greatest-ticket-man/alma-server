@@ -16,15 +16,16 @@
     border-right: 1px solid #ccc;
 }
 
-.step-container {
-    /* margin: 16px 32px; */
-    margin: 8px 8px;
-    padding: 16px 24px;
+.step-content {
+    margin: 8px 12px;
+    padding: 16px 12px;
     align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
-.step-container:hover {
-    background: rgba(0, 0, 0, 0.2);
+.step-content:hover {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .step__title {
