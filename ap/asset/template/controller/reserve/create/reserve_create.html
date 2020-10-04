@@ -1,30 +1,33 @@
 <main class="content">
     <div class="step">
         
-        <div class="step-content">
+        <div class="js-step-order step-content">
             <div class="step-content-inner">
                 <div class="step__title"><span class="step__icon material-icons">check_circle_outline</span>購入情報</div>
                 <div class="step__desc">まだ購入情報を入力していません</div>
             </div>
             <span class="material-icons">arrow_right_alt</span>
         </div>
-        <div class="step-content">
+        <div class="js-step-customor step-content">
             <div class="step-content-inner">
                 <div class="step__title"><span class="step__icon material-icons">add_circle_outline</span>お客様情報</div>
                 <div class="step__desc">まだお客様情報を入力していません</div>
             </div>
+            <span class="material-icons"></span>
         </div>
-        <div class="step-content">
+        <div class="js-step-pay step-content">
             <div class="step-content-inner">
                 <div class="step__title"><span class="step__icon material-icons">add_circle_outline</span>お支払い情報</div>
                 <div class="step__desc">まだお支払い情報をを入力します</div>
             </div>
+            <span class="material-icons"></span>
         </div>
-        <div class="step-content">
+        <div class="js-step-confirm step-content">
             <div class="step-content-inner">
                 <div class="step__title"><span class="step__icon material-icons">info</span>確認</div>
                 <div class="step__desc">(省略可能)</div>
             </div>
+            <span class="material-icons"></span>
         </div>
         <div class="button-container">
             <button class="alma__button__primary">作成</button>
@@ -33,32 +36,20 @@
     </div>
 
     <div class="form">
-        <div class="form-content form-content--visible">
+        <div class="js-form-init form-content form-content--visible">
             最初に表示する奴
         </div>
-        <div class="form-content">
+        <div class="js-form-order form-content">
             購入内容入力フォーム
         </div>
-        <div class="form-content">
+        <div class="js-form-customor form-content">
             お客様情報入力フォーム
         </div>
-        <div class="form-content">
+        <div class="js-form-pay form-content">
             お支払い情報入力フォーム
+        </div>
+        <div class="js-form-confirm form-content">
+            確認画面
         </div>
     </div>
 </main>
-
-
-
-<!-- <main class="content">
-
-
-
-    {{ .reserveForm }}
-
-    <div class="button-container">
-        <button class="alma__button__primary">作成</button>
-        <button class="alma__button__secondary">キャンセル</button>
-    </div>
-
-</main> -->
