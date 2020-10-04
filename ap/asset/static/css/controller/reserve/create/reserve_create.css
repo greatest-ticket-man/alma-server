@@ -8,19 +8,37 @@
     height: calc(100vh - 100px);
     grid-template-columns: 100%;
     grid-template-columns: 300px minmax(300px, 1fr);
-
 }
 
 .step {
     grid-row: 1;
     grid-column: 1 / 2;
-    background: brown;
+    border-right: 1px solid #ccc;
+}
+
+.step-container {
+    /* margin: 16px 32px; */
+    margin: 8px 8px;
+    padding: 16px 24px;
+}
+
+.step-container:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.step__title {
+    font-size: 1.1em;
+}
+
+.step__desc {
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 0.8em;
 }
 
 .form {
     grid-row: 1;
     grid-column: 2 / 3;
-    background: cornflowerblue;
+    /* background: cornflowerblue; */
 }
 
 /* side navが消える位置で, windthをmaxにする */
