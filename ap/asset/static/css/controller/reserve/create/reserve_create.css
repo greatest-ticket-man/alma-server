@@ -7,7 +7,7 @@
     width: calc(100vw - 250px); /* sub menu */
     height: calc(100vh - 100px);
     grid-template-columns: 100%;
-    grid-template-columns: 300px minmax(300px, 1fr);
+    grid-template-columns: 300px minmax(300px, 600px);
 }
 
 .step {
@@ -51,7 +51,6 @@
 .form {
     grid-row: 1;
     grid-column: 2 / 3;
-    /* background: cornflowerblue; */
 }
 
 .form-content {
