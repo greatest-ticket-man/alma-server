@@ -19,6 +19,8 @@ class ReserveCreate {
         this.formConfirmEl = document.querySelector('.js-form-confirm');
         this.formPayEl = document.querySelector('.js-form-pay');
 
+        this.stepArrowIconElList = document.querySelectorAll('.js-arrow-icon');
+
 
         // Bind
         this.goReserveInfoPage = this.goReserveInfoPage.bind(this);
@@ -89,6 +91,8 @@ class ReserveCreate {
 
         formEl.classList.add('form-content--visible');
         stepEl.classList.add('step-content--selected');
+        let arrowEl = stepEl.querySelector('.js-arrow-icon');
+        arrowEl.innerText = 'arrow_right_alt';
     }
 
     // 全てのコンテンツを非表示にする
@@ -106,6 +110,11 @@ class ReserveCreate {
         this.stepCustomorEl.classList.remove('step-content--selected');
         this.stepPayEl.classList.remove('step-content--selected');
         this.stepConfirmEl.classList.remove('step-content--selected');
+
+        // arrow icon hide
+        this.stepArrowIconElList.forEach(function(el) {
+            el.innerText = '';
+        }); 
     }
 
     // goReserveInfoPage 
