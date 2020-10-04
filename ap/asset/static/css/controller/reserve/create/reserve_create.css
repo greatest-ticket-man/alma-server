@@ -48,6 +48,21 @@
     /* background: cornflowerblue; */
 }
 
+.form-content {
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    width: 0;
+    will-change: opacity;
+}
+
+.form-content--visible {
+    opacity: 1;
+    pointer-events: auto;
+    height: 100%;
+    width: 100%;
+}
+
 /* side navが消える位置で, windthをmaxにする */
 @media screen and (max-width: 756px) {
     .content {
