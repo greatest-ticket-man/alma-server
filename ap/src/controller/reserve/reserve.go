@@ -77,6 +77,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		},
 		[]string{
 			"/static/js/component/reserve/form.js",
+			"/static/js/controller/reserve/create/reserve_create.js",
 		},
 		[]string{
 			"/static/css/component/reserve/form.css",
