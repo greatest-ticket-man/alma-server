@@ -29,6 +29,7 @@ class ReserveCreate {
         this.stepInit = this.stepInit.bind(this);
 
         this.formContentAllHide = this.formContentAllHide.bind(this);
+        this.stepContentAllDeselect = this.stepContentAllDeselect.bind(this);
         this.switchForm = this.switchForm.bind(this);
 
 
@@ -58,43 +59,53 @@ class ReserveCreate {
 
     // 購入情報のステップ
     stepOrder() {
-        this.switchForm(this.formOrderEl);
+        this.switchForm(this.stepOrderEl, this.formOrderEl);
     }
 
     // お客様情報のステップ
     stepCustomor() {
-        this.switchForm(this.formCustomorEl);
+        this.switchForm(this.stepCustomorEl, this.formCustomorEl);
     }
 
     // お支払い情報のステップ
     stepPay() {
-        this.switchForm(this.formPayEl);
+        this.switchForm(this.stepPayEl, this.formPayEl);
     }
 
     // 確認画面のステップ
     stepConfirm() {
-        this.switchForm(this.formConfirmEl);
+        this.switchForm(this.stepConfirmEl, this.formConfirmEl);
     }
 
     // switchForm
-    switchForm(formEl) {
+    switchForm(stepEl, formEl) {
         if (formEl.classList.contains('form-content--visible')) {
             this.stepInit();
             return;
         }
 
         this.formContentAllHide();
+        this.stepContentAllDeselect();
 
         formEl.classList.add('form-content--visible');
+        stepEl.classList.add('step-content--selected');
     }
 
     // 全てのコンテンツを非表示にする
     formContentAllHide() {
-        this.formInitEl.classList.remove('form-content--visible')
-        this.formOrderEl.classList.remove('form-content--visible')
+        this.formInitEl.classList.remove('form-content--visible');
+        this.formOrderEl.classList.remove('form-content--visible');
         this.formCustomorEl.classList.remove('form-content--visible');
         this.formPayEl.classList.remove('form-content--visible');
         this.formConfirmEl.classList.remove('form-content--visible');
+    }
+
+    // 全てのステップを選択解除する
+    stepContentAllDeselect() {
+        this.stepOrderEl.classList.remove('step-content--selected');
+        this.stepCustomorEl.classList.remove('step-content--selected');
+        this.stepPayEl.classList.remove('step-content--selected');
+        this.stepConfirmEl.classList.remove('step-content--selected');
     }
 
     // goReserveInfoPage 
