@@ -78,6 +78,14 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 				"/template/component/reserve/order_form.html",
 				map[string]interface{}{},
 			),
+			"customorForm": htmlutil.CreateTemplateToString(
+				"/template/component/reserve/customor_form.html",
+				map[string]interface{}{},
+			),
+			"payForm": htmlutil.CreateTemplateToString(
+				"/template/component/reserve/pay_form.html",
+				map[string]interface{}{},
+			),
 		},
 		[]string{
 			"/static/js/component/reserve/form.js",
