@@ -1,0 +1,45 @@
+/* 親要素のpaddingをリセット */
+.base__content__main__header {
+    padding: 0;
+}
+
+.content-header{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 300px minmax(300px, 600px);
+    height: 100%;
+    /* align-items: center; */
+}
+
+.header-content {
+    display: flex;
+    /* align-items: center; */
+    border-right: 1px solid #ccc;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+}
+
+.header__title {
+    padding: 0 8px;
+}
+
+.header__button {
+    background: none;
+    border: none;
+    margin: 0;
+    border-radius: 2px;
+    color: royalblue;
+}
+
+.header__button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.header__sub-title {
+    padding: 0 16px;
+}
