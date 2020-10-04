@@ -1,0 +1,31 @@
+/* common.css */
+/* このstyleはどこからでも使えるようになっている */
+/* 他のcssとclassがかぶらないように、prefixにalma__をつけること */
+
+/* alma__button__primary ボタンデザイン */
+.alma__button__primary {
+    margin: 8px;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 2px;
+    color: #fff;
+    background: royalblue;
+}
+
+.alma__button__primary:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* alma__button__secondary ボタンデザイン2 */
+.alma__button__secondary {
+    margin: 8px;
+    border: none;
+    padding: 10px 24px;
+    background: none;
+    border-radius: 2px;
+    color: #000;
+}
+
+.alma__button__secondary:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
