@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
+	"alma-server/ap/src/domain/event/EventRpcService"
 	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/domain/reserve/ReserveRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
@@ -46,4 +47,31 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		MenuService.GetMenu("reserve_top", "reserve"),
 	)
 
+}
+
+// CreatePageHTML 予約の作成画面
+func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
+
+	// param
+	req := &common.EventRequest{
+		Event: param.Value(r, "event"),
+	}
+
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+
+	result := EventRpcService.GetEvent(ctx, mid, req.Event)
+
+	response.BaseHTML(
+		w,
+		"予約作成",
+		"/template/controller/reserve/create/head.html",
+		map[string]interface{}{},
+		"/template/controller/reserve/create/reserve_create.html",
+		map[string]interface{}{},
+		[]string{},
+		[]string{},
+		result.EventName,
+		MenuService.GetMenu("reserve_top", ""),
+	)
 }
