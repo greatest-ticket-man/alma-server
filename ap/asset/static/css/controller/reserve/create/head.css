@@ -10,12 +10,10 @@
     display: grid;
     grid-template-columns: 300px minmax(300px, 600px);
     height: 100%;
-    /* align-items: center; */
 }
 
 .header-content {
     display: flex;
-    /* align-items: center; */
     border-right: 1px solid #ccc;
 }
 
