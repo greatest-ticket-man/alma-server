@@ -1,0 +1,58 @@
+# local.toml
+
+# 環境
+mode = "local"
+
+# ルートディレクトリ、指定なしだとビルドしたときの標準になる
+rootdirectory = ""
+
+mastercachedir="alma-master" # マスターキャッシュ保存ディレクトリ
+
+[httpserver]
+address = ":3000"
+allow_origin = "*" # 許可するドメイン
+tls = false # https接続
+certfile = ""
+keyfile = ""
+
+[mail]
+    [mail.gmail]
+    address = "greatestticketman@gmail.com"
+    password = "d31780844d660b7173a1b2d3bc20b688"
+
+[stripe] # test
+publickey = "pk_test_51H0J5vEoHR4iTtOzHNPYilRuLTQnaIQnmj7hZH0nawd5AXJsnSBCBkWZZY5iY8Kmh6y6MYLuYmltXOKw6TMzQ87i00WUAN6ZwB"
+secretkey = "sk_test_51H0J5vEoHR4iTtOzN3Qa86jOrtLcqGyK1fcKAjYVhfB3zNUMQkbHxOxpCHqVKafWY7aqkWt0vp93UJWTIL2nijV0002i4Kyk96"
+
+[[mongodatabases]]
+host = "localhost"
+port = "27017"
+db = "ALMA_USER"
+user = ""
+password = ""
+    [mongodatabases.option]
+    connecttimeoutms = "5000"
+    heartbeatintervalms = "60000" # 60秒
+    maxidletimems = "180000"
+    maxpoolsize = "4000"
+    readpreference = "primary" # Read Preference Mode is [primary, primaryPreferred, secondary, secondaryPreferred, nearest]
+    readconcernlevel = "local" # Primaryのみクエリを投げるので、local指定。readConcern is [local, available, majority, linearizable, snapshot]
+    w = "1" # write connection
+    sockettimeoutms = "10000" # 10秒
+
+[[mongodatabases]]
+host = "localhost"
+port = "27017"
+db = "ALMA_LOG"
+user = ""
+password = ""
+    [mongodatabases.option]
+    connecttimeoutms = "5000"
+    heartbeatintervalms = "60000" # 60秒
+    maxidletimems = "180000"
+    maxpoolsize = "4000"
+    readpreference = "primary" # Read Preference Mode is [primary, primaryPreferred, secondary, secondaryPreferred, nearest]
+    readconcernlevel = "local" # Primaryのみクエリを投げるので、local指定。readConcern is [local, available, majority, linearizable, snapshot]
+    w = "1" # write connection
+    sockettimeoutms = "10000" # 10秒
+
