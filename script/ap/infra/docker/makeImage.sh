@@ -19,6 +19,8 @@ cd $workspce
 # build image
 docker build --tag sunjin110/alma:${VERSION} .
 
-
 # build push
 docker push sunjin110/alma:${VERSION}
+
+# rm
+rm -rf ${workspce}/deploy
