@@ -12,13 +12,14 @@ var ConfigData *AlmaConfig
 
 // AlmaConfig .
 type AlmaConfig struct {
-	Mode           string      `toml:"mode"`
-	RootDirectory  string      `toml:"rootdirectory"`
-	MasterCacheDir string      `toml:"mastercachedir"`
-	HTTPServer     *HTTPServer `toml:"httpserver"`
-	Mail           *Mail       `toml:"mail"`
-	Stripe         *Stripe     `toml:"stripe"`
-	MongoDatabases []*MongoDB  `toml:"mongodatabases"`
+	Mode             string      `toml:"mode"`
+	RootDirectory    string      `toml:"rootdirectory"`
+	MasterCacheDir   string      `toml:"mastercachedir"`
+	HTTPServer       *HTTPServer `toml:"httpserver"`
+	PrometheusServer *HTTPServer `toml:"prometheus"`
+	Mail             *Mail       `toml:"mail"`
+	Stripe           *Stripe     `toml:"stripe"`
+	MongoDatabases   []*MongoDB  `toml:"mongodatabases"`
 }
 
 // HTTPServer http serverの設定

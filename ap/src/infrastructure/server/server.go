@@ -4,6 +4,7 @@ import (
 	"alma-server/ap/src/common/config"
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/infrastructure/http/almahttp"
+	"alma-server/ap/src/infrastructure/prometheus"
 	"context"
 	"fmt"
 	"log"
@@ -24,13 +25,12 @@ func Setup(config *config.HTTPServer) {
 
 	// http api server
 	HTTPServer = almahttp.Setup(config)
-	log.Println("api server : ", config.Address)
-
+	log.Println("ap server : ", config.Address)
 }
 
 // Serve serve
 func Serve(config *config.HTTPServer) {
-	log.Println("http api server start !")
+	log.Println("http ap server start !")
 	go func() {
 
 		var err error
@@ -80,6 +80,9 @@ func Run(config *config.HTTPServer) {
 
 	// serve
 	Serve(config)
+
+	// prometheus metrics serve
+	prometheus.Serve()
 
 	// kill commandが来たら正常終了する
 	quit := make(chan os.Signal, 1)

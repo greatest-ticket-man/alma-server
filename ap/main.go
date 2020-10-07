@@ -8,6 +8,7 @@ import (
 	"alma-server/ap/src/infrastructure/mastercache/cacheall"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"alma-server/ap/src/infrastructure/mongodb/index"
+	"alma-server/ap/src/infrastructure/prometheus"
 	"alma-server/ap/src/infrastructure/server"
 	"alma-server/ap/src/infrastructure/stripe"
 	"context"
@@ -52,6 +53,9 @@ func main() {
 
 	// jobrunner
 	jobrunner.Run()
+
+	// prometheus server setup
+	prometheus.Setup()
 
 	// server setup
 	server.Setup(config.HTTPServer)
