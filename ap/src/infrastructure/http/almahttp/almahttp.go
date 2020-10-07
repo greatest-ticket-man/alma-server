@@ -17,6 +17,7 @@ import (
 	"alma-server/ap/src/controller/top"
 	"alma-server/ap/src/infrastructure/file/almafile"
 	"alma-server/ap/src/infrastructure/http/middleware"
+	"alma-server/ap/src/infrastructure/prometheus"
 	"net/http"
 
 	"github.com/codegangsta/negroni"
@@ -47,6 +48,9 @@ func Router() *negroni.Negroni {
 	// log and recovery
 	n.Use(negroni.NewLogger())
 	// n.Use(negroni.NewRecovery())
+
+	// prometheus
+	n.Use(prometheus.NegroniMiddleware())
 
 	// router
 	router := mux.NewRouter()

@@ -9,9 +9,16 @@ rootdirectory = ""
 mastercachedir="alma-master" # マスターキャッシュ保存ディレクトリ
 
 [httpserver]
-address = ":3000"
+address = ":3001"
 allow_origin = "*" # 許可するドメイン
 tls = false # https接続
+certfile = ""
+keyfile = ""
+
+[prometheus]
+address = ":3002" # metricsのための、port
+allow_origin = "*" # 許可するドメイン
+tls = false 
 certfile = ""
 keyfile = ""
 
