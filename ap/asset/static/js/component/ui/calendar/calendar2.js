@@ -50,7 +50,7 @@ class Calendar {
 
         // title
         this.dateTitleEl.innerHTML = `${this.date.getFullYear()}年 ${this.months[this.date.getMonth()]}`;
-        this.dateDescEl.innerHTML = this.date.toDateString();
+        // this.dateDescEl.innerHTML = `${this.today.getDate()}日`;
 
         // 前の月の日付
         let days = '';

@@ -15,7 +15,7 @@
     height: 100%;
     width: 100%;
     background: #fafafa;
-    box-shadow: 0 0.5em 3em rgba(0, 0, 0, 0.4);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
     color: #222227;
     margin: 16px;
 }
@@ -51,7 +51,6 @@
 }
 
 .calendar__date__desc {
-    /* font-size: 1.6rem; */
     font-size: 16px;
 }
 
@@ -63,8 +62,6 @@
 }
 
 .calendar__weekday {
-    /* padding: 12px; */
-    /* padding: 1.2rem; */
     padding: 12px 0;
 }
 
@@ -78,23 +75,16 @@
 .calendar__day {
     font-size: 12px;
     padding: 12px;
-    /* font-size: 2rem;
-    padding: 2.5rem; */
 }
 
 .calendar__day:hover {
-    background: #eee;
-    color: #000;
+    background: rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
 
 .calendar__day--today {
-    background: #167e56;
-}
-
-.calendar__day--today:hover {
-    background: #167e56;
-    cursor: pointer;
+    background: #e0eeff;
+    color: royalblue;
 }
 
 .calendar__prev-date,
