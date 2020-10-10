@@ -6,7 +6,6 @@
 
     width: 100%;
     height: 100%;
-    background: #ccc; /* test */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,30 +14,36 @@
 .calendar {
     height: 100%;
     width: 100%;
-    background: #222227;
-    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
-    color: #fafafa;
+    background: #fafafa;
+    box-shadow: 0 0.5em 3em rgba(0, 0, 0, 0.4);
+    color: #222227;
+    margin: 16px;
 }
 
 .calendar__month {
     width: 100%;
-    height: 12rem;
     background: royalblue;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
     text-align: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    padding: 16px;
+    color: #fafafa;
 }
 
 .calendar__icon {
-    font-size: 2.5rem;
+    font-size: 32px;
     cursor: pointer;
+    border-radius: 50%;
+}
+
+.calendar__icon:hover {
+    background: #e0eeff;
+    color: royalblue;
 }
 
 .calendar__date__title {
-    font-size: 3rem;
+    font-size: 24px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
@@ -46,50 +51,40 @@
 }
 
 .calendar__date__desc {
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
+    font-size: 16px;
 }
 
 .calendar__weekdays {
     width: 100%;
-    height: 5rem;
-    padding: 0 0.4rem;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
 }
 
 .calendar__weekday {
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.1rem;
-    width: calc(44.2rem / 7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    /* padding: 12px; */
+    /* padding: 1.2rem; */
+    padding: 12px 0;
 }
 
 .calendar__days {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 0.2rem;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
 }
 
 .calendar__day {
-    font-size: 1.5rem;
-    margin: 0.3em;
-    width: calc(44.2rem / 7);
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
-    transition: background 0.2s;
+    font-size: 12px;
+    padding: 12px;
+    /* font-size: 2rem;
+    padding: 2.5rem; */
 }
 
 .calendar__day:hover {
-    background: #262626;
-    border: 0.2rem solid #777;
+    background: #eee;
+    color: #000;
     cursor: pointer;
 }
 
@@ -99,7 +94,6 @@
 
 .calendar__day--today:hover {
     background: #167e56;
-    border: 0.2rem solid #777;
     cursor: pointer;
 }
 
