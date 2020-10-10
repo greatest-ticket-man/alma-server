@@ -1,6 +1,7 @@
 package test
 
 import (
+	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/event/EventService"
@@ -26,9 +27,18 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		"",
 		map[string]interface{}{},
 		"/template/controller/test/test.html",
-		map[string]interface{}{},
-		[]string{},
-		[]string{},
+		map[string]interface{}{
+			"calendar": htmlutil.CreateTemplateToString(
+				"/template/component/ui/calendar/calendar2.html",
+				map[string]interface{}{},
+			),
+		},
+		[]string{
+			"/static/js/component/ui/calendar/calendar2.js",
+		},
+		[]string{
+			"/static/css/component/ui/calendar/calendar2.css",
+		},
 		result,
 		nil,
 	)
