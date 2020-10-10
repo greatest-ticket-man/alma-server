@@ -102,3 +102,8 @@
     border: 0.2rem solid #777;
     cursor: pointer;
 }
+
+.calendar__prev-date,
+.calendar__next-date {
+    opacity: 0.5;
+}
