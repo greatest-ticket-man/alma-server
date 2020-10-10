@@ -46,7 +46,7 @@ class Calendar {
         const firstDayIndex = this.getFirstDayIndex();
         const lastDayIndex = this.getLastDayIndex();
 
-        const nextDate = 7 - lastDayIndex - 1;
+        const nextDate = 7 - lastDayIndex;
 
         // title
         this.dateTitleEl.innerHTML = this.months[this.date.getMonth()];
@@ -55,22 +55,22 @@ class Calendar {
         // 前の月の日付
         let days = '';
         for (let i = firstDayIndex; i > 0; i--) {
-            days += `<div class="prev-date">${prevLastDate - i + 1}</div>`;
+            days += `<div class="prev-date calendar__day">${prevLastDate - i + 1}</div>`;
         }
 
         // 今月の日付
         for (let i = 1; i <= lastDate; i++) {
             if (i === this.today.getDate() 
                 && this.date.getMonth() === this.today.getMonth()) {
-                days += `<div class="today">${i}</div>`;
+                days += `<div class="calendar__day calendar__day--today">${i}</div>`;
             } else {
-                days += `<div>${i}</div>`;
+                days += `<div class="calendar__day">${i}</div>`;
             }
         }
 
         // 来月の日付
         for (let i = 1; i <= nextDate; i++) {
-            days += `<div class"next-date>${i}</div>`;
+            days += `<div class="next-date calendar__day">${i}</div>`;
         }
 
         this.daysEl.innerHTML = days;
