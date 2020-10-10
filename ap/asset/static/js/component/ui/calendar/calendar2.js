@@ -7,7 +7,6 @@ class Calendar {
         this.date = new Date();
         this.today = new Date();
         this.selectDate;
-        this.months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "９月", "10月", "11月", "12月"];
 
         // EL
         this.dateTitleEl = document.querySelector('.js-calendar-date-title');
