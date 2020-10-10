@@ -59,9 +59,11 @@
     width: 0;
     will-change: opacity;
     margin: 0;
+    display: none; /* display noneにしないと、消えている分の要素の長さスクロールできてしまう */
 }
 
 .form-content--visible {
+    display: block;
     opacity: 1;
     pointer-events: auto;
     height: 100%;
