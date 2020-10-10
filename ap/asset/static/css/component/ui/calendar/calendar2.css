@@ -1,3 +1,70 @@
-* {
-    /* background: red; */
+
+.calendar__container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    width: 100%;
+    height: 100%;
+    background: #ccc; /* test */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.calendar {
+    height: 100%;
+    width: 100%;
+    background: #222227;
+    box-shadow: 0 0.5rem 3rem rgba(0, 0, 0, 0.4);
+    color: #fafafa;
+}
+
+.calendar__month {
+    width: 100%;
+    height: 12rem;
+    background: royalblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    text-align: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.calendar__icon {
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+
+.calendar__date__title {
+    font-size: 3rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    margin-bottom: 1rem;
+}
+
+.calendar__date__desc {
+    font-size: 1.6rem;
+}
+
+.calendar__weekdays {
+    width: 100%;
+    height: 5rem;
+    padding: 0 0.4rem;
+    display: flex;
+    align-items: center;
+}
+
+.calendar__weekday {
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    width: calc(44.2rem / 7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
