@@ -76,7 +76,12 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			),
 			"orderForm": htmlutil.CreateTemplateToString(
 				"/template/component/reserve/order_form.html",
-				map[string]interface{}{},
+				map[string]interface{}{
+					"calendar": htmlutil.CreateTemplateToString(
+						"/template/component/ui/calendar/calendar2.html",
+						map[string]interface{}{},
+					),
+				},
 			),
 			"customerForm": htmlutil.CreateTemplateToString(
 				"/template/component/reserve/customer_form.html",
@@ -88,12 +93,13 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			),
 		},
 		[]string{
+			"/static/js/component/ui/calendar/calendar2.js", // calendar
 			"/static/js/component/reserve/form.js",
 			"/static/js/controller/reserve/create/reserve_create.js",
 		},
 		[]string{
+			"/static/css/component/ui/calendar/calendar2.css", // calendar
 			"/static/css/component/reserve/form.css",
-			// "/static/css/common/content_head_button/content_head_button.css",
 			"/static/css/controller/reserve/create/head.css",
 			"/static/css/controller/reserve/create/reserve_create.css",
 		},
