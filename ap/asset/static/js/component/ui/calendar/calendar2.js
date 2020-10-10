@@ -8,7 +8,7 @@ class Calendar {
         // valiable
         this.date = new Date();
         this.today = new Date(); // TODO select day
-        this.months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        this.months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "９月", "10月", "11月", "12月"];
 
         // EL
         this.dateTitleEl = document.querySelector('.js-calendar-date-title');
@@ -46,10 +46,10 @@ class Calendar {
         const firstDayIndex = this.getFirstDayIndex();
         const lastDayIndex = this.getLastDayIndex();
 
-        const nextDate = 7 - lastDayIndex;
+        const nextDate = 7 - lastDayIndex - 1;
 
         // title
-        this.dateTitleEl.innerHTML = this.months[this.date.getMonth()];
+        this.dateTitleEl.innerHTML = `${this.date.getFullYear()}年 ${this.months[this.date.getMonth()]}`;
         this.dateDescEl.innerHTML = this.date.toDateString();
 
         // 前の月の日付
