@@ -14,18 +14,23 @@ class Calendar {
         this.dateTitleEl = document.querySelector('.js-calendar-date-title');
         this.dateDescEl = document.querySelector('.js-calendar-date-desc');
         this.daysEl = document.querySelector('.js-calendar-days');
+        this.prevEl = document.querySelector('.js-calendar-prev');
+        this.nextEl = document.querySelector('.js-calendar-next');
 
         // bind
         this.renderCalendar = this.renderCalendar.bind(this);
+        this.prevMonth = this.prevMonth.bind(this);
+        this.nextMonth = this.nextMonth.bind(this);
 
+        // render ...
         this.renderCalendar();
 
         this.addEventListener();
-
     }
 
     addEventListener() {
-
+        this.prevEl.addEventListener('click', this.prevMonth);
+        this.nextEl.addEventListener('click', this.nextMonth);
     }
 
     // renderCalendar カレンダーをレンダリングする
@@ -45,7 +50,7 @@ class Calendar {
 
         // title
         this.dateTitleEl.innerHTML = this.months[this.date.getMonth()];
-        this.dateDescEl.innerHTML = this.today.toDateString();
+        this.dateDescEl.innerHTML = this.date.toDateString();
 
         // 前の月の日付
         let days = '';
@@ -57,7 +62,7 @@ class Calendar {
         for (let i = 1; i <= lastDate; i++) {
             if (i === this.today.getDate() 
                 && this.date.getMonth() === this.today.getMonth()) {
-                days += `<div class="today">${i}</div>`
+                days += `<div class="today">${i}</div>`;
             } else {
                 days += `<div>${i}</div>`;
             }
@@ -65,11 +70,20 @@ class Calendar {
 
         // 来月の日付
         for (let i = 1; i <= nextDate; i++) {
-            days += `<div class"next-date></div>"`
+            days += `<div class"next-date>${i}</div>`;
         }
 
         this.daysEl.innerHTML = days;
+    }
 
+    prevMonth() {
+        this.date.setMonth(this.date.getMonth() - 1);
+        this.renderCalendar();
+    }
+
+    nextMonth() {
+        this.date.setMonth(this.date.getMonth() + 1);
+        this.renderCalendar();
     }
 
     getLastDate() {
