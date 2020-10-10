@@ -27,7 +27,7 @@
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    padding: 16px;
+    padding: 10px;
     color: #fafafa;
 }
 
@@ -46,12 +46,10 @@
     font-size: 24px;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 0.2rem;
-    margin-bottom: 1rem;
 }
 
 .calendar__date__desc {
-    font-size: 16px;
+    font-size: 20px;
 }
 
 .calendar__weekdays {
@@ -59,6 +57,18 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
+}
+
+.calendar__weekday:first-child,
+.calendar__day:nth-child(7n + 1) {
+    color: #f44336;
+    font-weight: 600;
+}
+
+.calendar__weekday:last-child,
+.calendar__day:nth-child(7n) {
+    color: royalblue;
+    font-weight: 600;
 }
 
 .calendar__weekday {
@@ -75,11 +85,12 @@
 .calendar__day {
     font-size: 12px;
     padding: 12px;
+    cursor: pointer;
 }
 
-.calendar__day:hover {
+.calendar__day:hover:not(.calendar__day--selected){
     background: rgba(0, 0, 0, 0.1);
-    cursor: pointer;
+    
 }
 
 .calendar__day--today {
@@ -87,7 +98,19 @@
     color: royalblue;
 }
 
+.calendar__day--selected {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+
 .calendar__prev-date,
 .calendar__next-date {
     opacity: 0.5;
 }
+
+.calendar__prev-date:hover,
+.calendar__next-date:hover {
+    cursor: default;
+    background: #fafafa;
+}
+

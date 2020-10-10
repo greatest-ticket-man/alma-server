@@ -3,11 +3,10 @@
 class Calendar {
     constructor() {
 
-        console.log("calendar...");
-
         // valiable
         this.date = new Date();
-        this.today = new Date(); // TODO select day
+        this.today = new Date();
+        this.selectDate;
         this.months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "９月", "10月", "11月", "12月"];
 
         // EL
@@ -16,21 +15,58 @@ class Calendar {
         this.daysEl = document.querySelector('.js-calendar-days');
         this.prevEl = document.querySelector('.js-calendar-prev');
         this.nextEl = document.querySelector('.js-calendar-next');
+        this.dayListEl; // renderCalendar();ないで呼び出し
 
         // bind
         this.renderCalendar = this.renderCalendar.bind(this);
         this.prevMonth = this.prevMonth.bind(this);
         this.nextMonth = this.nextMonth.bind(this);
+        this.selectDay = this.selectDay.bind(this);
+        this.resetSelectDay = this.resetSelectDay.bind(this);
 
-        // render ...
+        // render 
         this.renderCalendar();
 
         this.addEventListener();
     }
 
     addEventListener() {
+        const me = this;
+        this.dayListEl.forEach(function(elem) {
+            elem.addEventListener('click', me.selectDay);
+        });
+
         this.prevEl.addEventListener('click', this.prevMonth);
         this.nextEl.addEventListener('click', this.nextMonth);
+    }
+
+    // selectDay 日付を選択する
+    selectDay(elem) {
+
+        let dayEl = elem.currentTarget;
+        if (!dayEl.classList.contains('calendar__day--selected')) {
+            this.resetSelectDay();
+            
+            dayEl.classList.add('calendar__day--selected');
+
+            this.selectDate = new Date(
+                this.date.getFullYear(),
+                this.date.getMonth(),
+                Number(dayEl.innerText),
+            );
+            this.dateDescEl.innerHTML = `${this.date.getFullYear()}/${this.date.getMonth()+1}/${this.selectDate.getDate()}`;
+        } else {
+            this.dateDescEl.innerHTML = `----/--/--`;
+            this.selectDate = null;
+            this.resetSelectDay();
+        }
+    }
+
+    // resetSelectDay 選択状態を解除する
+    resetSelectDay() {
+        this.dayListEl.forEach(function(elem) {
+            elem.classList.remove('calendar__day--selected');
+        });
     }
 
     // renderCalendar カレンダーをレンダリングする
@@ -49,8 +85,8 @@ class Calendar {
         const nextDate = 7 - lastDayIndex - 1;
 
         // title
-        this.dateTitleEl.innerHTML = `${this.date.getFullYear()}年 ${this.months[this.date.getMonth()]}`;
-        // this.dateDescEl.innerHTML = `${this.today.getDate()}日`;
+        this.dateTitleEl.innerHTML = `${this.date.getFullYear()}年 ${this.date.getMonth()+1}月`;
+        this.dateDescEl.innerHTML = `----/--/--`;
 
         // 前の月の日付
         let days = '';
@@ -62,9 +98,9 @@ class Calendar {
         for (let i = 1; i <= lastDate; i++) {
             if (i === this.today.getDate() 
                 && this.date.getMonth() === this.today.getMonth()) {
-                days += `<div class="calendar__day calendar__day--today">${i}</div>`;
+                days += `<div class="js-calendar-day calendar__day calendar__day--today">${i}</div>`;
             } else {
-                days += `<div class="calendar__day">${i}</div>`;
+                days += `<div class="js-calendar-day calendar__day">${i}</div>`;
             }
         }
 
@@ -73,17 +109,23 @@ class Calendar {
             days += `<div class="calendar__day calendar__next-date">${i}</div>`;
         }
 
+        // 表示を更新
         this.daysEl.innerHTML = days;
+
+        // eventをもう一度作成
+        this.dayListEl = document.querySelectorAll('.js-calendar-day');
     }
 
     prevMonth() {
         this.date.setMonth(this.date.getMonth() - 1);
         this.renderCalendar();
+        this.addEventListener();
     }
 
     nextMonth() {
         this.date.setMonth(this.date.getMonth() + 1);
         this.renderCalendar();
+        this.addEventListener();
     }
 
     getLastDate() {
