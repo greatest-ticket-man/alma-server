@@ -1,22 +1,35 @@
 package test
 
 import (
-	"alma-server/ap/src/common/almactx"
+	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
-	"log"
+	"alma-server/ap/src/domain/event/EventService"
+	"alma-server/ap/src/infrastructure/grpc/proto/common"
 	"net/http"
 )
 
 // PageHTML UIテスト画面
 func PageHTML(w http.ResponseWriter, r *http.Request) {
 
-	mid := almactx.GetMid(r.Context())
+	// param
+	req := &common.EventRequest{
+		Event: param.Value(r, "event"),
+	}
 
-	log.Println("mid is ", mid)
+	ctx := r.Context()
 
-	response.HTML(
+	result := EventService.GetEventName(ctx, req.Event)
+
+	response.BaseHTML(
 		w,
-		"/template/controller/test/page.html",
+		"テスト",
+		"",
 		map[string]interface{}{},
+		"/template/controller/test/test.html",
+		map[string]interface{}{},
+		[]string{},
+		[]string{},
+		result,
+		nil,
 	)
 }
