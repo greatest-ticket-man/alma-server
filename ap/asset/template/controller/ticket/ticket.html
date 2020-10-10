@@ -9,6 +9,8 @@
                     <th>名前</th>
                     <th>価格</th>
                     <th>説明</th>
+                    <th>在庫数</th>
+                    <th>開始時間</th>
                 </tr>
             </thead>
 
@@ -23,6 +25,9 @@
                     <td data-key='ticketName' data-value='{{ $ticketInfo.TicketName }}'>{{ $ticketInfo.TicketName }}</td>
                     <td data-key='ticketPrice' data-value='{{ $ticketInfo.TicketPrice }}'>{{ $ticketInfo.TicketPrice | addComma }}円</td>
                     <td data-key='ticketDesc' data-value='{{ $ticketInfo.TicketDesc }}'>{{ $ticketInfo.TicketDesc }}</td>
+                    <td data-key='ticketStock' data-value='{{ $ticketInfo.TicketStock }}'>{{ $ticketInfo.TicketStock | addComma}}</td>
+                    <td data-key='ticketEventStartTime' data-value='{{ $ticketInfo.TicketEventStartTime }}'>{{ $ticketInfo.TicketEventStartTime | timestampToTime}}</td>
+
                 </tr>
                 {{ end }}
 

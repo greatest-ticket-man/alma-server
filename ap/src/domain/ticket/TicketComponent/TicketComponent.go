@@ -1,6 +1,7 @@
 package TicketComponent
 
 import (
+	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
 )
@@ -23,11 +24,12 @@ func CreateTicketInfo(userTicket *UserTicketRepository.UserTicket) *ticket.Ticke
 	}
 
 	return &ticket.TicketInfo{
-		TicketId:    userTicket.TicketID,
-		EventId:     userTicket.EventID,
-		TicketName:  userTicket.Name,
-		TicketDesc:  userTicket.Desc,
-		TicketPrice: userTicket.Price,
+		TicketId:             userTicket.TicketID,
+		EventId:              userTicket.EventID,
+		TicketName:           userTicket.Name,
+		TicketDesc:           userTicket.Desc,
+		TicketPrice:          userTicket.Price,
+		TicketStock:          userTicket.Stock,
+		TicketEventStartTime: dateutil.TimeToTimestamp(userTicket.EventStartTime),
 	}
-
 }
