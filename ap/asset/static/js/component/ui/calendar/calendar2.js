@@ -55,7 +55,7 @@ class Calendar {
         // 前の月の日付
         let days = '';
         for (let i = firstDayIndex; i > 0; i--) {
-            days += `<div class="prev-date calendar__day">${prevLastDate - i + 1}</div>`;
+            days += `<div class="calendar__day calendar__prev-date">${prevLastDate - i + 1}</div>`;
         }
 
         // 今月の日付
@@ -70,7 +70,7 @@ class Calendar {
 
         // 来月の日付
         for (let i = 1; i <= nextDate; i++) {
-            days += `<div class="next-date calendar__day">${i}</div>`;
+            days += `<div class="calendar__day calendar__next-date">${i}</div>`;
         }
 
         this.daysEl.innerHTML = days;
