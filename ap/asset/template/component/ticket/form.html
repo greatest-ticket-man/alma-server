@@ -21,20 +21,31 @@
         <input class="input__input" type="number" value='{{ .ticketPrice }}' min="0" id="js-ticket-price">
     </div>
 </div>
-<div class="form-container">
-    <div class="input-container">
-        <span class="input__title">販売数</span>
-        <span class="input__desc">(必須)</span>
-        <input class="input__input" type="number" min="1" id="js-ticket-stock">
-    </div>
-</div>   
-<div class="form-container">
-    <div class="input-container">
-        <span class="input__title">イベント開始時間</span>
-        <span class="input__desc">(必須)</span>
-        <input class="input__input" type="datetime-local" id="js-ticket-event-start-time">
-    </div>
+
+
+<div class="multi-stack">
+
+    <table class="multi-stock__table">
+
+        <thead class="multi-stock__head">
+            <th>開始時間</th>
+            <th>在庫</th>
+            <th></th>
+        </thead>
+
+        <tbody class="multi-stock__body">
+
+            <tr class="multi-stock__row">
+                <td><input class="multi-stock__input" type="datetime-local" placeholder=""></td>
+                <td><input class="multi-stock__input" type="number"></td>
+                <td><button class="material-icons">delete</button></td>
+            </tr>
+            <!-- ここに追加していく -->
+        </tbody>
+    </table>
+    <button class="multi-stick__add-button">+ スケジュールとストックを追加</button>
 </div>
+
 <div class="form-container">
     <div class="input-container">
         <span class="input__title">説明</span>
@@ -42,3 +53,12 @@
         <textarea class="input__textarea" cols="30" rows="10" id="js-ticket-desc">{{ .ticketDesc }}</textarea>
     </div>
 </div>      
+
+<!-- template  -->
+<template>
+    <tr class="multi-stock__row">
+        <td><input type="datetime-local"></td>
+        <td><input type="number"></td>
+        <td><button class="material-icons">delete</button></td>
+    </tr>
+</template>

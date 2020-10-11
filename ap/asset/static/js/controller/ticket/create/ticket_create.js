@@ -28,18 +28,24 @@ class TicketCreate {
         this.ticketCreateButtonEl.addEventListener('click', this.createTicket);
     }
 
+
     // createTicket 
     async createTicket() {
 
         const data = {
             ticket_info: {
                 ticket_id: ticketForm.getTicketId(),
-                ticket_name: ticketForm.getTicketName(),
-                ticket_price: ticketForm.getTicketPrice(),
-                ticket_desc: ticketForm.getTicketDesc(),
+                name: ticketForm.getTicketName(),
+                price: ticketForm.getTicketPrice(),
+                desc: ticketForm.getTicketDesc(),
                 event_id: window.Alma.location.getParam('event'),
-                ticket_stock: ticketForm.getTicketStock(),
-                ticket_event_start_time: window.Alma.dateutil.DateToTimestamp(ticketForm.getTicketEventStartTime()),
+                // test
+                schedule_stock_list: [
+                    {
+                        event_start_time:  window.Alma.dateutil.DateToTimestamp(ticketForm.getTicketEventStartTime()),
+                        stock: 100,
+                    },
+                ],
             },
         };
 
@@ -54,6 +60,34 @@ class TicketCreate {
             window.Alma.location.href(window.Alma.location.ticket_info);
         });
     }
+
+
+    // // createTicket 
+    // async createTicket() {
+
+    //     const data = {
+    //         ticket_info: {
+    //             ticket_id: ticketForm.getTicketId(),
+    //             ticket_name: ticketForm.getTicketName(),
+    //             ticket_price: ticketForm.getTicketPrice(),
+    //             ticket_desc: ticketForm.getTicketDesc(),
+    //             event_id: window.Alma.location.getParam('event'),
+    //             ticket_stock: ticketForm.getTicketStock(),
+    //             ticket_event_start_time: window.Alma.dateutil.DateToTimestamp(ticketForm.getTicketEventStartTime()),
+    //         },
+    //     };
+
+    //     const response = await window.Alma.req.post(window.Alma.req.ticket_create, window.Alma.req.createPostData(data));
+    //     if (!response || !response.success) {
+    //         window.Alma.toast.error('チケットの作成に失敗しました');
+    //         return;
+    //     }
+
+    //     window.Alma.toast.success('チケットの作成に成功しました', 'Greatest Ticket Man', 1500, function() {
+    //         // 遷移
+    //         window.Alma.location.href(window.Alma.location.ticket_info);
+    //     });
+    // }
 
 
     // goTicketInfoPage

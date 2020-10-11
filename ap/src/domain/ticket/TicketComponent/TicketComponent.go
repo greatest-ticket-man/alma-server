@@ -5,6 +5,7 @@ import (
 	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
+	"time"
 )
 
 // CreateTicketInfoList .
@@ -19,7 +20,7 @@ func CreateTicketInfoList(userTicketList []*UserTicketRepository.UserTicket) []*
 
 // CreateUserTicket .
 // MapのIDは新しく作成します
-func CreateUserTicket(eventID string, ticketID string, name string, price int32, desc string, scheduleStockInfoList []*ticket.TicketScheduleStockInfo) *UserTicketRepository.UserTicket {
+func CreateUserTicket(txTime time.Time, eventID string, ticketID string, name string, price int32, desc string, scheduleStockInfoList []*ticket.TicketScheduleStockInfo) *UserTicketRepository.UserTicket {
 
 	scheduleStockMap := map[string]*UserTicketRepository.TicketScheduleStockInfo{}
 
@@ -39,6 +40,8 @@ func CreateUserTicket(eventID string, ticketID string, name string, price int32,
 		Price:                price,
 		Desc:                 desc,
 		ScheduleStockInfoMap: scheduleStockMap,
+		CreateTime:           txTime,
+		UpdateTime:           txTime,
 	}
 }
 
