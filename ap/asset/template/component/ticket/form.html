@@ -35,7 +35,7 @@
             <th></th>
         </thead>
 
-        <tbody class="multi-stock__body">
+        <tbody class="js-schedule-stock-table-body multi-stock__body">
             <tr class="multi-stock__row">
                 <td><input class="multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
                 <td><input class="multi-stock__input multi-stock__input-num" type="number"></td>
@@ -45,7 +45,7 @@
             
         </tbody>
     </table>
-    <button class="multi-stick__add-button">+ スケジュールを追加</button>
+    <button class="js-schedule-stock-add-button multi-stick__add-button">+ スケジュールを追加</button>
 </div>
 
 <div class="form-container">
@@ -57,10 +57,10 @@
 </div>      
 
 <!-- template  -->
-<template>
+<template id="js-schedule-stock-row-tmp">
     <tr class="multi-stock__row">
-        <td><input type="datetime-local"></td>
-        <td><input type="number"></td>
-        <td><button class="material-icons">delete</button></td>
+        <td><input class="multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
+        <td><input class="multi-stock__input multi-stock__input-num" type="number"></td>
+        <td><button class="multi-stock__delete-button material-icons">delete</button></td>
     </tr>
 </template>
