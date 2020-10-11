@@ -32,6 +32,9 @@ class TicketCreate {
     // createTicket 
     async createTicket() {
 
+
+
+
         const data = {
             ticket_info: {
                 ticket_id: ticketForm.getTicketId(),
@@ -39,13 +42,7 @@ class TicketCreate {
                 price: ticketForm.getTicketPrice(),
                 desc: ticketForm.getTicketDesc(),
                 event_id: window.Alma.location.getParam('event'),
-                // test
-                schedule_stock_list: [
-                    {
-                        event_start_time:  window.Alma.dateutil.DateToTimestamp(ticketForm.getTicketEventStartTime()),
-                        stock: 100,
-                    },
-                ],
+                schedule_stock_list: ticketForm.getScheduleStockInfoList(),
             },
         };
 
