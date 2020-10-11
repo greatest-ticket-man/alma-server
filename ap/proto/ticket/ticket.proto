@@ -74,6 +74,7 @@ message TicketInfo {
 }
 
 message TicketScheduleStockInfo {
-    google.protobuf.Timestamp event_start_time = 1;
-    int32 stock = 2;
+    string scheduleStockID = 1;
+    google.protobuf.Timestamp event_start_time = 2;
+    int32 stock = 3;
 }

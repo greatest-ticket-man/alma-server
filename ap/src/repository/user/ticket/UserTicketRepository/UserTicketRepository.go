@@ -33,15 +33,15 @@ var reflectType = reflect.TypeOf((*UserTicket)(nil))
 
 // UserTicket TicketIDとEventIDでUniqueになる予定
 type UserTicket struct {
-	ID                    *primitive.ObjectID        `bson:"_id,omitempty"`
-	TicketID              string                     `bson:"tid"`
-	EventID               string                     `bson:"eid"` // イベントのID
-	Name                  string                     `bson:"name"`
-	Desc                  string                     `bson:"desc"` // チケットの説明
-	Price                 int32                      `bson:"price"`
-	scheduleStockInfoList []*TicketScheduleStockInfo `bson:"sss"` // スケジュールとストック
-	CreateTime            time.Time                  `bson:"ct"`
-	UpdateTime            time.Time                  `bson:"ut"`
+	ID                   *primitive.ObjectID                 `bson:"_id,omitempty"`
+	TicketID             string                              `bson:"tid"`
+	EventID              string                              `bson:"eid"` // イベントのID
+	Name                 string                              `bson:"name"`
+	Desc                 string                              `bson:"desc"` // チケットの説明
+	Price                int32                               `bson:"price"`
+	ScheduleStockInfoMap map[string]*TicketScheduleStockInfo `bson:"ssm"`
+	CreateTime           time.Time                           `bson:"ct"`
+	UpdateTime           time.Time                           `bson:"ut"`
 }
 
 // TicketScheduleStockInfo スケジュールと在庫
