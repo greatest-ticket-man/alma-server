@@ -9,24 +9,25 @@ class TicketForm {
         this.ticketPriceEl = document.getElementById('js-ticket-price');
         this.ticketDescEl = document.getElementById('js-ticket-desc');
 
-        // this.ticketStockEl = document.getElementById('js-ticket-stock');
-        // this.ticketEventStartTimeEl = document.getElementById('js-ticket-event-start-time');
-
         this.scheduleStockTableEl = document.querySelector('.js-schedule-stock-table-body');
         this.scheduleStockTableAddButtonEl = document.querySelector('.js-schedule-stock-add-button');
         this.scheduleStockRowTmpEl = document.querySelector('#js-schedule-stock-row-tmp');
 
+        this.testButtonEl = document.querySelector('.js-test-button');
+
         // bind
         this.addMultiStockTable = this.addMultiStockTable.bind(this);
+        this.deleteMultiStockRow = this.deleteMultiStockRow.bind(this);
+
+        this.getScheduleStockInfoList = this.getScheduleStockInfoList.bind(this);
 
         this.addEventListener();
-
     }
 
     addEventListener() {
-
         this.scheduleStockTableAddButtonEl.addEventListener('click', this.addMultiStockTable);
 
+        this.testButtonEl.addEventListener('click', this.getScheduleStockInfoList);
     }
 
     getTicketId() {
@@ -41,6 +42,10 @@ class TicketForm {
         return Number(this.ticketPriceEl.value);
     }
 
+    getTicketDesc() {
+        return this.ticketDescEl.value;
+    }
+
     // addMultiStockTable テーブルのrowを追加する
     addMultiStockTable() {
         const t = this.scheduleStockRowTmpEl;
@@ -53,20 +58,27 @@ class TicketForm {
         this.scheduleStockTableEl.deleteRow(tr.sectionRowIndex);
     }
 
-    // getTicketStock() {
-    //     return Number(this.ticketStockEl.value);
-    // }
+    getScheduleStockInfoList() {
+        let scheduleStockInfoList = [];
 
-    // getTicketDesc() {
-    //     return this.ticketDescEl.value;
-    // }
+        for (let row of this.scheduleStockTableEl.rows) {
 
-    // /**
-    //  * 2020-09-18T17:05
-    //  */
-    // getTicketEventStartTime() {
-    //     return new Date(this.ticketEventStartTimeEl.value);
-    // }
+            console.log('row is ', row);
+
+
+            const stock = Number(row.querySelector('.js-stock').value);
+            const eventStartTime = new Date(row.querySelector('.js-schedule'));
+
+            let scueduleStockInfo = {
+                event_start_time: window.Alma.dateutil.DateToTimestamp(eventStartTime),
+                stock: stock,
+            };
+
+            scheduleStockInfoList.push(scueduleStockInfo);
+        }
+
+        return scheduleStockInfoList
+    }
 
 }
 

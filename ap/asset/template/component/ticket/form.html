@@ -37,8 +37,8 @@
 
         <tbody class="js-schedule-stock-table-body multi-stock__body">
             <tr class="multi-stock__row">
-                <td><input class="multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
-                <td><input class="multi-stock__input multi-stock__input-num" type="number"></td>
+                <td><input class="js-scuedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
+                <td><input class="js-stock multi-stock__input multi-stock__input-num" type="number"></td>
                 <td><button class="multi-stock__delete-button material-icons" onclick="ticketForm.deleteMultiStockRow(this);">clear</button></td>
             </tr>
             <!-- ここに追加していく -->
@@ -46,6 +46,7 @@
         </tbody>
     </table>
     <button class="js-schedule-stock-add-button multi-stick__add-button">+ スケジュールを追加</button>
+    <button class="js-test-button">test button</button>
 </div>
 
 <div class="form-container">
@@ -59,8 +60,8 @@
 <!-- template  -->
 <template id="js-schedule-stock-row-tmp">
     <tr class="multi-stock__row">
-        <td><input class="multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
-        <td><input class="multi-stock__input multi-stock__input-num" type="number"></td>
+        <td><input class="js-scuedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
+        <td><input class="js-stock multi-stock__input multi-stock__input-num" type="number"></td>
         <td><button class="multi-stock__delete-button material-icons" onclick="ticketForm.deleteMultiStockRow(this);">clear</button></td>
     </tr>
 </template>
