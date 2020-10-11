@@ -73,12 +73,12 @@
     border-radius: 2px;
     cursor: pointer;
     padding: 0;
+    color: rgba(0, 0, 0, 0.5);
 }
 
 .multi-stock__delete-button:hover {
     background: rgba(0, 0, 0, 0.2);
 }
-
 
 .multi-stick__add-button {
     margin: 12px 0;
