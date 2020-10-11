@@ -46,7 +46,7 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 	// TODO EventIDが指定しているものと正しいか
 
 	// Create
-	userTicket := TicketComponent.CreateUserTicket(eventID, ticketID, name, price, desc, scheduleStockInfoList)
+	userTicket := TicketComponent.CreateUserTicket(txTime, eventID, ticketID, name, price, desc, scheduleStockInfoList)
 	UserTicketRepository.Insert(ctx, userTicket)
 
 	return true
