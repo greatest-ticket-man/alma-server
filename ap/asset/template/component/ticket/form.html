@@ -25,25 +25,27 @@
 
 <div class="multi-stack">
 
-    <table class="multi-stock__table">
+    <div class="input__title">公演時間とチケット在庫</div>
+    <div class="input__desc">(必須)</div>
 
+    <table class="multi-stock__table">
         <thead class="multi-stock__head">
-            <th>開始時間</th>
+            <th>公演開始時間</th>
             <th>在庫</th>
             <th></th>
         </thead>
 
         <tbody class="multi-stock__body">
-
             <tr class="multi-stock__row">
-                <td><input class="multi-stock__input" type="datetime-local" placeholder=""></td>
-                <td><input class="multi-stock__input" type="number"></td>
-                <td><button class="material-icons">delete</button></td>
+                <td><input class="multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
+                <td><input class="multi-stock__input multi-stock__input-num" type="number"></td>
+                <td><button class="multi-stock__delete-button material-icons">delete</button></td>
             </tr>
             <!-- ここに追加していく -->
+            
         </tbody>
     </table>
-    <button class="multi-stick__add-button">+ スケジュールとストックを追加</button>
+    <button class="multi-stick__add-button">+ スケジュールを追加</button>
 </div>
 
 <div class="form-container">
