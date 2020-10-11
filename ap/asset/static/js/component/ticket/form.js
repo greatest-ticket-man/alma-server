@@ -13,8 +13,6 @@ class TicketForm {
         this.scheduleStockTableAddButtonEl = document.querySelector('.js-schedule-stock-add-button');
         this.scheduleStockRowTmpEl = document.querySelector('#js-schedule-stock-row-tmp');
 
-        this.testButtonEl = document.querySelector('.js-test-button');
-
         // bind
         this.addMultiStockTable = this.addMultiStockTable.bind(this);
         this.deleteMultiStockRow = this.deleteMultiStockRow.bind(this);
@@ -26,8 +24,6 @@ class TicketForm {
 
     addEventListener() {
         this.scheduleStockTableAddButtonEl.addEventListener('click', this.addMultiStockTable);
-
-        this.testButtonEl.addEventListener('click', this.getScheduleStockInfoList);
     }
 
     getTicketId() {
