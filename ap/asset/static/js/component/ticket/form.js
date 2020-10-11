@@ -63,9 +63,6 @@ class TicketForm {
 
         for (let row of this.scheduleStockTableEl.rows) {
 
-            console.log('row is ', row);
-
-
             const stock = Number(row.querySelector('.js-stock').value);
             const eventStartTime = new Date(row.querySelector('.js-schedule'));
 
