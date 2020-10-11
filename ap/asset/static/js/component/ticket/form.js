@@ -48,6 +48,11 @@ class TicketForm {
         this.scheduleStockTableEl.appendChild(clone);
     }
 
+    deleteMultiStockRow(elem) {
+        let tr = elem.parentNode.parentNode;
+        this.scheduleStockTableEl.deleteRow(tr.sectionRowIndex);
+    }
+
     // getTicketStock() {
     //     return Number(this.ticketStockEl.value);
     // }
