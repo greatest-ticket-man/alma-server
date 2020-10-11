@@ -5,7 +5,6 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/reserve";
 package reserve;
 
 import "common/common.proto";
-import "ticket/ticket.proto";
 import "google/protobuf/timestamp.proto";
 
 // RPC

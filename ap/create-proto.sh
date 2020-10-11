@@ -25,3 +25,5 @@ cd $DIR/proto
 
 # macはreplace optionをサポートしていない
 find . -type d -name vendor -prune -o -type f -name "*.proto" -exec echo {} \; | xargs -I AlmaProtoFile protoc --proto_path=. -Ivendor/protobuf/src AlmaProtoFile --go_out=plugins=grpc:${OUT_DIR}
+
+echo "==== create proto fin ===="
