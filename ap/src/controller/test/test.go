@@ -35,9 +35,11 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		},
 		[]string{
 			"/static/js/component/ui/calendar/calendar2.js",
+			"/static/js/controller/test/test.js",
 		},
 		[]string{
 			"/static/css/component/ui/calendar/calendar2.css",
+			"/static/css/controller/test/test.css",
 		},
 		result,
 		nil,
