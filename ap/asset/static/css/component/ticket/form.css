@@ -40,27 +40,55 @@
     border-collapse: collapse;
 }
 
+.multi-stock__head th {
+    text-align: left;
+    font-weight: normal;
+    font-size: 0.8em;
+}
+
 .multi-stock__row td {
-    padding: 0 8px;
+    padding-right: 8px;
 }
 
 .multi-stock__input {
     width: 100%;
     height: 24px;
-    font-size: 0.8em;
     border-radius: 2px;
     border: 1px solid #ccc;
 }
 
+.multi-stock__input-date {
+    font-size: 1em;
+}
+
+.multi-stock__input-num {
+    font-size: 0.8em;
+}
+
+.multi-stock__delete-button {
+    font-size: 1.4em;
+    text-align: center;
+    background: none;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.multi-stock__delete-button:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+
 .multi-stick__add-button {
-    margin: 10px;
+    margin: 12px 0;
     width: 100%;
-    margin-right: 16px;
     border: none;
     border-radius: 2px;
     border: 1px solid royalblue;
     color: royalblue;
     background: #fff;
+    cursor: pointer;
 }
 
 .multi-stick__add-button:hover {
