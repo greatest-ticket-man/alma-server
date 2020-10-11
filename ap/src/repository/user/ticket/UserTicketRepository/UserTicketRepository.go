@@ -33,16 +33,21 @@ var reflectType = reflect.TypeOf((*UserTicket)(nil))
 
 // UserTicket TicketIDとEventIDでUniqueになる予定
 type UserTicket struct {
-	ID             *primitive.ObjectID `bson:"_id,omitempty"`
-	TicketID       string              `bson:"tid"`
-	EventID        string              `bson:"eid"` // イベントのID
-	Name           string              `bson:"name"`
-	Desc           string              `bson:"desc"` // チケットの説明
-	Price          int32               `bson:"price"`
-	EventStartTime time.Time           `bson:"est"`   // イベントの開始時間
-	Stock          int32               `bson:"stock"` // 在庫数
-	CreateTime     time.Time           `bson:"ct"`
-	UpdateTime     time.Time           `bson:"ut"`
+	ID                    *primitive.ObjectID        `bson:"_id,omitempty"`
+	TicketID              string                     `bson:"tid"`
+	EventID               string                     `bson:"eid"` // イベントのID
+	Name                  string                     `bson:"name"`
+	Desc                  string                     `bson:"desc"` // チケットの説明
+	Price                 int32                      `bson:"price"`
+	scheduleStockInfoList []*TicketScheduleStockInfo `bson:"sss"` // スケジュールとストック
+	CreateTime            time.Time                  `bson:"ct"`
+	UpdateTime            time.Time                  `bson:"ut"`
+}
+
+// TicketScheduleStockInfo スケジュールと在庫
+type TicketScheduleStockInfo struct {
+	EventStartTime time.Time `bson:"est"`
+	Stock          int32     `bson:"stock"`
 }
 
 // getDb
@@ -76,21 +81,7 @@ func Find(ctx context.Context, eventID string) []*UserTicket {
 }
 
 // Insert チケットの追加
-func Insert(ctx context.Context, txTime time.Time, ticketID string, eventID string,
-	name string, desc string, price int32, stock int32, eventStartTime time.Time) interface{} {
-
-	userTicket := &UserTicket{
-		TicketID:       ticketID,
-		EventID:        eventID,
-		Name:           name,
-		Desc:           desc,
-		Price:          price,
-		Stock:          stock,
-		EventStartTime: eventStartTime,
-		CreateTime:     txTime,
-		UpdateTime:     txTime,
-	}
-
+func Insert(ctx context.Context, userTicket *UserTicket) interface{} {
 	return getDb(ctx).InsertOne(userTicket)
 }
 
