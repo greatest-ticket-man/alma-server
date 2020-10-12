@@ -18,8 +18,6 @@ window.Alma = window.Alma || {};
             this.show = this.show.bind(this);
             this.delete = this.delete.bind(this);
             this.blockClicks = this.blockClicks.bind(this);
-
-
         }
 
         addEventListener() {
@@ -28,7 +26,15 @@ window.Alma = window.Alma || {};
             this.modalCancelButtonEl.addEventListener('click', this.delete);
         }
 
-        show() {
+        /**
+         * show modalを表示する
+         * @param {string} icon titleの前のicon
+         * @param {string} title title
+         * @param {string} body modalの　boday
+         * @param {function} func okボタンを押したときの動作
+         * @param {string} funcMessage okボタンのメッセージ
+         */
+        show(icon, title, body, func, funcMessage) {
             let modalContainerEl = document.createElement('div');
             modalContainerEl.classList.add('js-modal-container', 'modal__container');
             modalContainerEl.innerHTML = `
@@ -51,6 +57,7 @@ window.Alma = window.Alma || {};
             this.modalContainerEl = document.querySelector('.js-modal-container');
             this.modalEl = document.querySelector('.js-modal');
 
+            // add event litener
             this.addEventListener();
         }
 
