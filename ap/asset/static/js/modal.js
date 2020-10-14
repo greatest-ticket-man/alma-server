@@ -2,6 +2,9 @@
 
 // modal.jsは、/static/css/modal.cssに依存しています
 
+// 今のところ、modalは1画面に1つのみサポートしています
+// 2つ以上表示する必要が出てきた場合は、prefixを変更して別々に動作するように切り替えます
+
 window.Alma = window.Alma || {};
 (function(_Alma) {
 
