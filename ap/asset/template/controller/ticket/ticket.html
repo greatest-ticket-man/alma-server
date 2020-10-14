@@ -9,8 +9,8 @@
                     <th>名前</th>
                     <th>価格</th>
                     <th>説明</th>
-                    <th>在庫数</th>
-                    <th>開始時間</th>
+                    <!-- <th>在庫数</th>
+                    <th>開始時間</th> -->
                 </tr>
             </thead>
 
@@ -22,11 +22,11 @@
                 <tr class="js-row ticket__table__row">
                     <td><input type="checkbox" class="js-checkbox"></td>
                     <td data-key='ticketId' data-value='{{ $ticketInfo.TicketId }}'><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
-                    <td data-key='ticketName' data-value='{{ $ticketInfo.TicketName }}'>{{ $ticketInfo.TicketName }}</td>
-                    <td data-key='ticketPrice' data-value='{{ $ticketInfo.TicketPrice }}'>{{ $ticketInfo.TicketPrice | addComma }}円</td>
-                    <td data-key='ticketDesc' data-value='{{ $ticketInfo.TicketDesc }}'>{{ $ticketInfo.TicketDesc }}</td>
-                    <td data-key='ticketStock' data-value='{{ $ticketInfo.TicketStock }}'>{{ $ticketInfo.TicketStock | addComma}}</td>
-                    <td data-key='ticketEventStartTime' data-value='{{ $ticketInfo.TicketEventStartTime }}'>{{ $ticketInfo.TicketEventStartTime | timestampToTime}}</td>
+                    <td data-key='ticketName' data-value='{{ $ticketInfo.Name }}'>{{ $ticketInfo.Name }}</td>
+                    <td data-key='ticketPrice' data-value='{{ $ticketInfo.Price }}'>{{ $ticketInfo.Price | addComma }}円</td>
+                    <td data-key='ticketDesc' data-value='{{ $ticketInfo.Desc }}'>{{ $ticketInfo.Desc }}</td>
+                    <!-- <td data-key='ticketStock' data-value='{ $ticketInfo.TicketStock }'>{ $ticketInfo.TicketStock | addComma}</td>
+                    <td data-key='ticketEventStartTime' data-value='{ $ticketInfo.TicketEventStartTime }'>{ $ticketInfo.TicketEventStartTime | timestampToTime}</td> -->
 
                 </tr>
                 {{ end }}
