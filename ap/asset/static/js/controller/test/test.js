@@ -18,7 +18,7 @@ class Test {
     }
 
     testModal() {
-        window.Alma.modal.info('title', 'body', function() {
+        window.Alma.modal.warn('title', 'body', function() {
             alert('ok!');
             window.Alma.modal.delete();
         }, '確認');
