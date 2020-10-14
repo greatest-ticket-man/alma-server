@@ -18,7 +18,10 @@ class Test {
     }
 
     testModal() {
-        window.Alma.modal.show();
+        window.Alma.modal.info('title', 'body', function() {
+            alert('ok!');
+            window.Alma.modal.delete();
+        }, '確認');
     }
 }
 
