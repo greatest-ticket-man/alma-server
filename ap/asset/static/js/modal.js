@@ -56,6 +56,17 @@ window.Alma = window.Alma || {};
         }
 
         /**
+         * warn
+         * @param {string} title title
+         * @param {string} body modalの内容
+         * @param {function} func okボタンを押したときの動作
+         * @param {string} funcMessage okボタンのメッセージ
+         */
+        warn(title, body, func, funcMessage) {
+            this.show('warning', title, body, func, funcMessage);
+        }
+
+        /**
          * show modalを表示する
          * @param {string} icon titleの前のicon, material-iconsをサポート
          * @param {string} title title
