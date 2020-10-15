@@ -116,10 +116,12 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"ticketForm": htmlutil.CreateTemplateToString(
 				"/template/component/ticket/form.html",
 				map[string]interface{}{
-					"ticketId":    result.TicketInfo.TicketId,
-					"ticketName":  result.TicketInfo.Name,
-					"ticketPrice": result.TicketInfo.Price,
-					"ticketDesc":  result.TicketInfo.Desc,
+					"ticketId":          result.TicketInfo.TicketId,
+					"name":              result.TicketInfo.Name,
+					"price":             result.TicketInfo.Price,
+					"desc":              result.TicketInfo.Desc,
+					"eventId":           result.TicketInfo.EventId,
+					"scheduleStockList": result.TicketInfo.ScheduleStockList,
 				},
 			),
 		},

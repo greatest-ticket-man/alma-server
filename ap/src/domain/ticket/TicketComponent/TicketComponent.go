@@ -70,5 +70,3 @@ func CreateTicketInfo(userTicket *UserTicketRepository.UserTicket) *ticket.Ticke
 		ScheduleStockList: scheduleStockList,
 	}
 }
-
-// func ConvertScheduleStockListTo
