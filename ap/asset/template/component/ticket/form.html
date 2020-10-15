@@ -37,9 +37,6 @@
 
         <tbody class="js-schedule-stock-table-body multi-stock__body">
 
-            <!-- Updateの場合はここに、gotemplateで追加する? -->
-            <!-- 最後に空欄データ↓を追加しても別におかしくないよね -->
-
             {{ range $scheduleStock := .scheduleStockList }}
                 <tr class="multi-stock__row">
                     <td><input class="js-schedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder="" value='{{ $scheduleStock.EventStartTime | timestampToDateTime }}'></td>
