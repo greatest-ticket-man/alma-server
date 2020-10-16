@@ -26,7 +26,7 @@ class TicketForm {
         this.scheduleStockTableAddButtonEl.addEventListener('click', this.addMultiStockTable);
     }
 
-    // setReadOnlyTicketId ticketIDを編集できないように修正する
+    // setReadOnlyTicketId ticketIDを編集できないようにする
     setReadOnlyTicketId() {
         this.ticketIdEl.readOnly = true;
     }

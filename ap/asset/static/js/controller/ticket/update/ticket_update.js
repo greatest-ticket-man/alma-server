@@ -38,17 +38,13 @@ class TicketUpdate {
         const data = {
             ticket_info: {
                 ticket_id: ticketForm.getTicketId(),
-
-                // ticket_id: ticketForm.getTicketId(),
-                // ticket_name: ticketForm.getTicketName(),
-                // ticket_price: ticketForm.getTicketPrice(),
-                // ticket_desc: ticketForm.getTicketDesc(),
-                // event_id: window.Alma.location.getParam('event'),
-                // ticket_stock: ticketForm.getTicketStock(),
-                // ticket_event_start_time: window.Alma.dateutil.DateToTimestamp(ticketForm.getTicketEventStartTime()),
+                name: ticketForm.getTicketName(),
+                price: ticketForm.getTicketPrice(),
+                desc: ticketForm.getTicketDesc(),
+                event_id: window.Alma.location.getParam('event'),
+                schedule_stock_list: ticketForm.getScheduleStockInfoList(),
             },
             event_id: window.Alma.location.getParam('event'),
-            before_ticket_id: window.Alma.location.getParam('ticketId'),
         };
 
         const response = await window.Alma.req.post(window.Alma.req.ticket_update, window.Alma.req.createPostData(data));

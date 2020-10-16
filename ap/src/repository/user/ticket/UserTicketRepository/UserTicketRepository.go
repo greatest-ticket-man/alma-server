@@ -22,30 +22,31 @@ const (
 	// FEventID .
 	FEventID = "eid"
 
-	fName       = "name"
-	fDesc       = "desc"
-	fPrice      = "price"
-	fCreateTime = "ct"
-	fUpdateTime = "ut"
+	fName                 = "name"
+	fDesc                 = "desc"
+	fPrice                = "price"
+	fScheduleStockInfoMap = "ssm"
+	fCreateTime           = "ct"
+	fUpdateTime           = "ut"
 )
 
 var reflectType = reflect.TypeOf((*UserTicket)(nil))
 
 // UserTicket TicketIDとEventIDでUniqueになる予定
 type UserTicket struct {
-	ID                   *primitive.ObjectID                 `bson:"_id,omitempty"`
-	TicketID             string                              `bson:"tid"`
-	EventID              string                              `bson:"eid"` // イベントのID
-	Name                 string                              `bson:"name"`
-	Desc                 string                              `bson:"desc"` // チケットの説明
-	Price                int32                               `bson:"price"`
-	ScheduleStockInfoMap map[string]*TicketScheduleStockInfo `bson:"ssm"`
-	CreateTime           time.Time                           `bson:"ct"`
-	UpdateTime           time.Time                           `bson:"ut"`
+	ID                   *primitive.ObjectID           `bson:"_id,omitempty"`
+	TicketID             string                        `bson:"tid"`
+	EventID              string                        `bson:"eid"` // イベントのID
+	Name                 string                        `bson:"name"`
+	Desc                 string                        `bson:"desc"` // チケットの説明
+	Price                int32                         `bson:"price"`
+	ScheduleStockInfoMap map[string]*ScheduleStockInfo `bson:"ssm"`
+	CreateTime           time.Time                     `bson:"ct"`
+	UpdateTime           time.Time                     `bson:"ut"`
 }
 
-// TicketScheduleStockInfo スケジュールと在庫
-type TicketScheduleStockInfo struct {
+// ScheduleStockInfo スケジュールと在庫
+type ScheduleStockInfo struct {
 	EventStartTime time.Time `bson:"est"`
 	Stock          int32     `bson:"stock"`
 }
@@ -86,21 +87,19 @@ func Insert(ctx context.Context, userTicket *UserTicket) interface{} {
 }
 
 // Update チケット情報の更新
-func Update(ctx context.Context, txTime time.Time, beforeTicketID string, eventID string,
-	name string, desc string, price int32, ticketID string, stock int32, eventStartTime time.Time) int32 {
-
-	query := bson.M{FEventID: eventID, FTicketID: beforeTicketID}
+func Update(ctx context.Context, txTime time.Time, ticketID string, eventID string,
+	name string, desc string, price int32, scheduleStockInfoMap map[string]*ScheduleStockInfo) int32 {
+	query := bson.M{FEventID: eventID, FTicketID: ticketID}
 
 	update := bson.M{
 		"$set": bson.M{
-			fName:       name,
-			FTicketID:   ticketID,
-			fDesc:       desc,
-			fPrice:      price,
-			fUpdateTime: txTime,
+			fName:                 name,
+			fDesc:                 desc,
+			fPrice:                price,
+			fScheduleStockInfoMap: scheduleStockInfoMap,
+			fUpdateTime:           txTime,
 		},
 	}
-
 	return getDb(ctx).UpdateOne(query, update)
 }
 
