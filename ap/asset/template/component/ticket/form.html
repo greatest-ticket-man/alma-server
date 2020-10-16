@@ -40,6 +40,7 @@
 
             {{ range $scheduleStock := .scheduleStockList }}
                 <tr class="multi-stock__row">
+                    <div class="js-schedule-stock-id">{{ $scheduleStock.ScheduleStockId }}</div>
                     <td><input class="js-schedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder="" value='{{ $scheduleStock.EventStartTime | timestampToDateTime }}'></td>
                     <td><input class="js-stock multi-stock__input multi-stock__input-num" type="number" value='{{ $scheduleStock.Stock }}'></td>
                     <td><button class="multi-stock__delete-button material-icons" onclick="ticketForm.deleteMultiStockRow(this);">clear</button></td>
