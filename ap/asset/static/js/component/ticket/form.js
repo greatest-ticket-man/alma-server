@@ -16,14 +16,19 @@ class TicketForm {
         // bind
         this.addMultiStockTable = this.addMultiStockTable.bind(this);
         this.deleteMultiStockRow = this.deleteMultiStockRow.bind(this);
-
         this.getScheduleStockInfoList = this.getScheduleStockInfoList.bind(this);
+        this.setReadOnlyTicketId = this.setReadOnlyTicketId.bind(this);
 
         this.addEventListener();
     }
 
     addEventListener() {
         this.scheduleStockTableAddButtonEl.addEventListener('click', this.addMultiStockTable);
+    }
+
+    // setReadOnlyTicketId ticketIDを編集できないように修正する
+    setReadOnlyTicketId() {
+        this.ticketIdEl.readOnly = true;
     }
 
     getTicketId() {
