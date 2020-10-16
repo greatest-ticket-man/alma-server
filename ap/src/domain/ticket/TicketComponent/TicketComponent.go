@@ -77,6 +77,11 @@ func CreasteScheduleStockMap(scheduleStockInfoList []*ticket.TicketScheduleStock
 	scheduleStockMap := map[string]*UserTicketRepository.ScheduleStockInfo{}
 	for _, scheduleStockInfo := range scheduleStockInfoList {
 
+		// keyがない場合は、作成する
+		if scheduleStockInfo.ScheduleStockId == "" {
+			scheduleStockInfo.ScheduleStockId = uniqueidutil.GenerateUniqueID()
+		}
+
 		scheduleStock := &UserTicketRepository.ScheduleStockInfo{
 			EventStartTime: dateutil.TimestampToTime(scheduleStockInfo.EventStartTime),
 			Stock:          scheduleStockInfo.Stock,
