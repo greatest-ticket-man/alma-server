@@ -22,11 +22,11 @@ func CreateTicketInfoList(userTicketList []*UserTicketRepository.UserTicket) []*
 // MapのIDは新しく作成します
 func CreateUserTicket(txTime time.Time, eventID string, ticketID string, name string, price int32, desc string, scheduleStockInfoList []*ticket.TicketScheduleStockInfo) *UserTicketRepository.UserTicket {
 
-	scheduleStockMap := map[string]*UserTicketRepository.TicketScheduleStockInfo{}
+	scheduleStockMap := map[string]*UserTicketRepository.ScheduleStockInfo{}
 
 	for _, scueduleStockInfo := range scheduleStockInfoList {
 
-		scheduleStockMap[uniqueidutil.GenerateUniqueID()] = &UserTicketRepository.TicketScheduleStockInfo{
+		scheduleStockMap[uniqueidutil.GenerateUniqueID()] = &UserTicketRepository.ScheduleStockInfo{
 			EventStartTime: dateutil.TimestampToTime(scueduleStockInfo.EventStartTime),
 			Stock:          scueduleStockInfo.Stock,
 		}
@@ -55,7 +55,7 @@ func CreateTicketInfo(userTicket *UserTicketRepository.UserTicket) *ticket.Ticke
 	var scheduleStockList []*ticket.TicketScheduleStockInfo
 	for id, scheduleStockInfo := range userTicket.ScheduleStockInfoMap {
 		scheduleStockList = append(scheduleStockList, &ticket.TicketScheduleStockInfo{
-			ScheduleStockID: id,
+			ScheduleStockId: id,
 			EventStartTime:  dateutil.TimeToTimestamp(scheduleStockInfo.EventStartTime),
 			Stock:           scheduleStockInfo.Stock,
 		})
@@ -69,4 +69,20 @@ func CreateTicketInfo(userTicket *UserTicketRepository.UserTicket) *ticket.Ticke
 		Price:             userTicket.Price,
 		ScheduleStockList: scheduleStockList,
 	}
+}
+
+// CreasteScheduleStockMap .
+func CreasteScheduleStockMap(scheduleStockInfoList []*ticket.TicketScheduleStockInfo) map[string]*UserTicketRepository.ScheduleStockInfo {
+
+	scheduleStockMap := map[string]*UserTicketRepository.ScheduleStockInfo{}
+	for _, scheduleStockInfo := range scheduleStockInfoList {
+
+		scheduleStock := &UserTicketRepository.ScheduleStockInfo{
+			EventStartTime: dateutil.TimestampToTime(scheduleStockInfo.EventStartTime),
+			Stock:          scheduleStockInfo.Stock,
+		}
+		scheduleStockMap[scheduleStockInfo.ScheduleStockId] = scheduleStock
+	}
+
+	return scheduleStockMap
 }

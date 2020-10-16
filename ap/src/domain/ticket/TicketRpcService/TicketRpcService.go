@@ -1,8 +1,6 @@
 package TicketRpcService
 
 import (
-	"alma-server/ap/src/common/error/chk"
-	"alma-server/ap/src/common/error/errmsg"
 	"alma-server/ap/src/domain/event/EventService"
 	"alma-server/ap/src/domain/ticket/TicketComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
@@ -53,25 +51,14 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 }
 
 // UpdateTicket チケットの編集
-func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, beforeTicketID string, updateTicketInfo *ticket.TicketInfo) bool {
+func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketInfo *ticket.TicketInfo) bool {
 
-	// ticketIDに変更がある場合のみ下記のチェックを行う
-	if beforeTicketID != updateTicketInfo.TicketId {
-		// 指定したチケットIDがすでに使われていないかを確認する
-		userTicket := UserTicketRepository.FindOne(ctx, eventID, updateTicketInfo.TicketId)
-		if userTicket != nil {
-			// このチケットIDはすでに使用されています
-			chk.LE(errmsg.TicketIDAlradyUse)
-		}
-	}
+	// TODO make scheduleStockInfoMap
+	scheduleStockMap := TicketComponent.CreasteScheduleStockMap(ticketInfo.ScheduleStockList)
 
-	// TODO Update
-	// UserTicketRepository.Update(
-	// 	ctx, txTime, beforeTicketID, eventID,
-	// 	updateTicketInfo.Name, updateTicketInfo.Desc,
-	// 	updateTicketInfo.Price, updateTicketInfo.TicketId,
-	// 	updateTicketInfo.TicketStock, dateutil.TimestampToTime(updateTicketInfo.TicketEventStartTime),
-	// )
+	// update
+	UserTicketRepository.Update(ctx, txTime, ticketInfo.TicketId, eventID, ticketInfo.Name, ticketInfo.Desc, ticketInfo.Price, scheduleStockMap)
+
 	return true
 }
 
