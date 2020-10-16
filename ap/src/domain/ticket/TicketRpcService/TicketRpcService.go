@@ -53,7 +53,7 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 // UpdateTicket チケットの編集
 func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketInfo *ticket.TicketInfo) bool {
 
-	// TODO make scheduleStockInfoMap
+	// make scheduleStockInfoMap
 	scheduleStockMap := TicketComponent.CreasteScheduleStockMap(ticketInfo.ScheduleStockList)
 
 	// update

@@ -64,9 +64,11 @@ class TicketForm {
 
         for (let row of this.scheduleStockTableEl.rows) {
 
+            const scheduleStockId = row.querySelector('.js-schedule-stock-id').value;
             const stock = Number(row.querySelector('.js-stock').value);
             const eventStartTime = new Date(row.querySelector('.js-schedule').value);
             let scueduleStockInfo = {
+                schedule_stock_id: scheduleStockId,
                 event_start_time: window.Alma.dateutil.DateToTimestamp(eventStartTime),
                 stock: stock,
             };
