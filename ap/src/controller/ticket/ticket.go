@@ -178,22 +178,6 @@ func UpdateTicket(w http.ResponseWriter, r *http.Request) {
 	response.JSON(w, &common.Empty{})
 }
 
-// UpdateTicket チケット情報の更新
-// func UpdateTicket(w http.ResponseWriter, r *http.Request) {
-
-// 	req := &ticket.UpdateTicketRequest{}
-// 	err := param.JSON(r, req)
-// 	chk.SE(err)
-
-// 	ctx := r.Context()
-// 	mid := almactx.GetMid(ctx)
-// 	txTime := almactx.GetTxTime(ctx)
-
-// 	TicketRpcService.UpdateTicket(ctx, mid, txTime, req.EventId, req.BeforeTicketId, req.TicketInfo)
-
-// 	response.JSON(w, &common.Empty{})
-// }
-
 // DeleteTicket チケットの削除
 // TODO ログを残すか、UseYnで削除するようにする
 func DeleteTicket(w http.ResponseWriter, r *http.Request) {
