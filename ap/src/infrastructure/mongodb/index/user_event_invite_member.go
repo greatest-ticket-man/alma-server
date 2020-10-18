@@ -12,7 +12,7 @@ func init() {
 	userIndexMap[UserEventInviteMemberRepository.ThisCollectionName] = []mongo.IndexModel{
 		{
 			Keys:    bson.M{UserEventInviteMemberRepository.FEventID: 1},
-			Options: options.Index().SetBackground(true),
+			Options: options.Index(),
 		},
 	}
 }

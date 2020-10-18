@@ -12,7 +12,7 @@ func init() {
 	userIndexMap[UserAccountRepository.ThisCollectionName] = []mongo.IndexModel{
 		{
 			Keys:    bson.M{UserAccountRepository.FEmail: 1},
-			Options: options.Index().SetUnique(true).SetBackground(true),
+			Options: options.Index().SetUnique(true),
 		},
 	}
 }
