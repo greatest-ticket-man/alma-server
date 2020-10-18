@@ -16,7 +16,7 @@ func init() {
 				{Key: UserTicketRepository.FEventID, Value: 1},
 				{Key: UserTicketRepository.FTicketID, Value: 1},
 			},
-			Options: options.Index().SetBackground(true).SetUnique(true),
+			Options: options.Index().SetUnique(true),
 		},
 	}
 
