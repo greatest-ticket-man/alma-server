@@ -11,7 +11,7 @@ require (
 	github.com/google/uuid v1.1.2
 	github.com/gorilla/mux v1.8.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/prometheus/client_golang v1.7.1
+	github.com/prometheus/client_golang v1.8.0
 	github.com/rakyll/statik v0.1.7
 	github.com/rs/xid v1.2.1
 	github.com/slok/go-http-metrics v0.9.0
