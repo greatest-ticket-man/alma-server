@@ -12,29 +12,40 @@
         </select>
     </div>
 
-
     <div class="js-reserve-date input-container">
         <div class="input__title">日付</div>
         <span class="input__desc">(必須)</span>
         <!-- js-reserve-date-select-(ticketId)のselectを追加する -->
     </div>
 
-    <div class="input-container">
+    <div class="js-reserve-num input-container">
         <div class="input__title">枚数</div>
         <span class="input__desc">(必須)</span>
-        <input type="number" class="input__input" min="0" max="">
-        <span class="input__desc"></span>
+        
     </div>
 </div>
 
-<!-- ticket kind select -->
+<!-- template -->
 {{range $ticketInfo := .ticketInfoList}}
-<template id="js-reserve-date-select-{{$ticketInfo.TicketId}}-tmp">
-    
-    <select name="" id='js-reserve-date-select' class="input__input">
-        {{range $scheduleStockInfo := $ticketInfo.ScheduleStockList}}
-            <option value='{{$scheduleStockInfo.ScheduleStockId}}'>{{$scheduleStockInfo.EventStartTime | timestampToTime}}</option>
-        {{end}}
-    </select>
-</template>
+    <!-- ticket kind select -->
+    <template id="js-reserve-date-select-{{$ticketInfo.TicketId}}-tmp">
+        
+        <select name="" id='js-reserve-date-select' class="input__input">
+            <option value="">日付を選択してください</option>
+            {{range $scheduleStockInfo := $ticketInfo.ScheduleStockList}}
+                <option value='{{$scheduleStockInfo.ScheduleStockId}}'>{{$scheduleStockInfo.EventStartTime | timestampToTime}}</option>
+            {{end}}
+        </select>
+    </template>
+
+
+    <!-- ticket stock  -->
+    {{range $scheduleStockInfo := $ticketInfo.ScheduleStockList}}
+        <template id="js-reserve-stock-{{$scheduleStockInfo.ScheduleStockId}}-tmp">
+            <input type="number" id="js-reserve-num-input" class="input__input" min="0" max='{{$scheduleStockInfo.Stock}}'>
+            <span class="js-reserve-num-desc input__desc">在庫数:{{$scheduleStockInfo.Stock}} TODO 残り在庫数を比較して、実際の在庫数を表示する</span>
+        </template>
+    {{end}}
+
 {{end}}
+
