@@ -5,6 +5,7 @@ option go_package = "alma-server/ap/src/infrastructure/grpc/proto/reserve";
 package reserve;
 
 import "common/common.proto";
+import "ticket/ticket.proto";
 import "google/protobuf/timestamp.proto";
 
 // RPC
@@ -26,7 +27,8 @@ message PageReply {
 
 message CreatePageReply {
     string event_id = 1;
-    repeated string ticket_id_list = 2;
+    string event_name = 2;
+    repeated ticket.TicketInfo ticket_list = 3;
 }
 
 // ReserveInfo 予約の要素
