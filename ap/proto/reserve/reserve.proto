@@ -28,7 +28,7 @@ message PageReply {
 message CreatePageReply {
     string event_id = 1;
     string event_name = 2;
-    repeated ticket.TicketInfo ticket_list = 3;
+    repeated ticket.TicketInfo ticket_info_list = 3;
 }
 
 // ReserveInfo 予約の要素

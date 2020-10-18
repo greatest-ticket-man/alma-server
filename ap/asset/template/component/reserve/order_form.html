@@ -1,46 +1,40 @@
 <div class="reserve-form">
 
+
     <div class="input-container">
         <span class="input__title">チケット種別</span>
         <span class="input__desc">(必須)</span>
-        <select name="ticket_kind" class="input__input">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
+        <select name="ticket_kind" class="input__input" id="js-reserve-ticket-kind">
+            <option value="">チケットを選択してください</option>
+        {{range $ticketInfo := .ticketInfoList}}
+            <option value='{{$ticketInfo.TicketId}}'>{{$ticketInfo.Name}}</option>
+        {{end}}
         </select>
     </div>
 
-    <!-- <div class="input-container">
-        <span class="input__title">チケット種別</span>
-        <span class="input__desc">(必須)</span>
-        <input class="input__input" type="text">
-        <span class="input__desc">TODO : 購入するチケットの種類を選択します</span>
-        TODO selectさせる
-    </div> -->
 
-    <div class="input-container">
+    <div class="js-reserve-date input-container">
         <div class="input__title">日付</div>
         <span class="input__desc">(必須)</span>
-        {{.calendar}}
-        <span class="input__desc">TODO : カレンダー形式で指定できるようにする</span>
-    </div>
-
-
-    <div class="input-container">
-        <div class="input__title">時間</div>
-        <span class="input__desc">(必須)</span>
-        <input type="text" class="input__input">
-        <span class="input__desc">TODO : 日付によって指定できるやつを決める</span>
+        <!-- js-reserve-date-select-(ticketId)のselectを追加する -->
     </div>
 
     <div class="input-container">
         <div class="input__title">枚数</div>
         <span class="input__desc">(必須)</span>
-        <input type="number" class="input__input">
-        <span class="input__desc">TODO : 枚数</span>
+        <input type="number" class="input__input" min="0" max="">
+        <span class="input__desc"></span>
     </div>
 </div>
 
-<template>
-    <!-- TODO ticket kind select -->
+<!-- ticket kind select -->
+{{range $ticketInfo := .ticketInfoList}}
+<template id="js-reserve-date-select-{{$ticketInfo.TicketId}}-tmp">
+    
+    <select name="" id='js-reserve-date-select' class="input__input">
+        {{range $scheduleStockInfo := $ticketInfo.ScheduleStockList}}
+            <option value='{{$scheduleStockInfo.ScheduleStockId}}'>{{$scheduleStockInfo.EventStartTime | timestampToTime}}</option>
+        {{end}}
+    </select>
 </template>
+{{end}}
