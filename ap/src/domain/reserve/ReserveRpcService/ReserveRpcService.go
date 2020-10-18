@@ -22,7 +22,7 @@ func Page(ctx context.Context, mid string, txTime time.Time, eventID string) *re
 		chk.LE(errmsg.EventNotFound)
 	}
 
-	// TODO reserve
+	// reserve
 	userReserveList := UserReserveRepository.GetList(ctx, eventID)
 
 	reserveInfoList := ReserveComponent.CreateReserveInfoList(userReserveList)
@@ -47,8 +47,8 @@ func CreatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 	userTicketList := UserTicketRepository.Find(ctx, eventID)
 
 	return &reserve.CreatePageReply{
-		EventId:    eventID,
-		EventName:  userEvent.Name,
-		TicketList: TicketComponent.CreateTicketInfoList(userTicketList),
+		EventId:        eventID,
+		EventName:      userEvent.Name,
+		TicketInfoList: TicketComponent.CreateTicketInfoList(userTicketList),
 	}
 }
