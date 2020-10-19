@@ -98,6 +98,7 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		[]string{
 			// "/static/js/component/ui/calendar/calendar2.js", // calendar
 			"/static/js/component/reserve/order_form.js",
+			"/static/js/component/reserve/customer_form.js",
 			"/static/js/component/reserve/form.js",
 			"/static/js/controller/reserve/create/reserve_create.js",
 		},
