@@ -128,13 +128,12 @@ class ReserveCreate {
     // createButtonEl
     async createReserve() {
 
-        console.log(window.Alma.location.getParam('event'));
 
         const data = {
             event_id: window.Alma.location.getParam('event'),
-            ticket_id: "",
-            event_start_date: null,
-            ticket_num: 0,
+            ticket_id: reserveOrderForm.getTicketId(),
+            schedule_id: reserveOrderForm.getScheduleId(),
+            ticket_num: reserveOrderForm.getTicketNum(),
             desc: "",
             name: "",
             name_furigana: "",
@@ -150,7 +149,7 @@ class ReserveCreate {
 
         window.Alma.toast.success('予約の作成に成功しました', 'Greatest Ticket Man', 1500, function() {
             // refresh
-            window.Alma.location.href(location.href);
+            location.href = location.href;
         });
     }
 }

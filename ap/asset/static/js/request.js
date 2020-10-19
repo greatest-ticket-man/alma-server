@@ -10,6 +10,7 @@ window.Alma = window.Alma || {};
             this.ticket_create = '/ticket/create';
             this.ticket_update = '/ticket/update';
             this.ticket_delete = '/ticket/delete';
+            this.reserve_create = '/reserve/create';
         }
 
         async get(url, params = {}, options = { reload: false }) {
@@ -31,6 +32,8 @@ window.Alma = window.Alma || {};
 
         // fetch jsonを取得する
         async fetch(url, data, options) {
+
+            console.log("url:", url);
             
             try {
                 const response = await fetch(url, data);
