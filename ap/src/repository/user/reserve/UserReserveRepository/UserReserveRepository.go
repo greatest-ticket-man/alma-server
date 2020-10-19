@@ -34,6 +34,7 @@ type UserReserve struct {
 	Furigana   string    `bson:"furigana"`
 	TicketID   string    `bson:"tid"`  // 購入したチケットID
 	TicketCnt  int32     `bson:"tcnt"` // 何枚購入したか
+	ScheduleID string    `bson:"sid"`  // ScheduleID
 	CreateTime time.Time `bson:"ct"`
 	UpdateTime time.Time `bson:"ut"`
 }
@@ -44,7 +45,7 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 }
 
 // Insert .
-func Insert(ctx context.Context, txTime time.Time, reserveID string, no int32, eventID string, customorID string, name string, furigana string, ticketID string, ticketCnt int32) interface{} {
+func Insert(ctx context.Context, txTime time.Time, reserveID string, no int32, eventID string, customorID string, name string, furigana string, ticketID string, ticketCnt int32, scheduleID string) interface{} {
 
 	userReserve := &UserReserve{
 		ID:         reserveID,
@@ -57,6 +58,7 @@ func Insert(ctx context.Context, txTime time.Time, reserveID string, no int32, e
 		TicketCnt:  ticketCnt,
 		CreateTime: txTime,
 		UpdateTime: txTime,
+		ScheduleID: scheduleID,
 	}
 
 	return getDb(ctx).InsertOne(userReserve)

@@ -3,6 +3,7 @@ package ReserveRpcService
 import (
 	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/error/errmsg"
+	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/domain/event/EventService"
 	"alma-server/ap/src/domain/reserve/ReserveComponent"
 	"alma-server/ap/src/domain/ticket/TicketComponent"
@@ -11,8 +12,6 @@ import (
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
 	"context"
 	"time"
-
-	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Page 予約ページのトップを取得する
@@ -56,7 +55,7 @@ func CreatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 }
 
 // CreateReserve 予約を作成する
-func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, eventStartTiem *timestamppb.Timestamp, ticketNum int32, desc string, name string, nameFrigana string, email string, payKind string) bool {
+func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, scheduleID string, ticketNum int32, desc string, name string, nameFrigana string, email string, payKind string) bool {
 	userEvent := EventService.GetEvent(ctx, eventID)
 	if userEvent == nil {
 		// イベントが存在しません
@@ -66,8 +65,8 @@ func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID st
 	// TODO stockを確認
 
 	// 追加
-	reserveID := "TODO:"
+	reserveID := uniqueidutil.GenerateUniqueID()
 
-	UserReserveRepository.Insert(ctx, txTime, reserveID, 0, eventID, "", name, nameFrigana, ticketID, ticketNum)
+	UserReserveRepository.Insert(ctx, txTime, reserveID, 0, eventID, "", name, nameFrigana, ticketID, ticketNum, scheduleID)
 	return true
 }

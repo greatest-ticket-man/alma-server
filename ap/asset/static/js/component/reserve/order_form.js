@@ -76,7 +76,18 @@ class ReserveOrderForm {
         this.reserveNumDescEl = document.querySelector('.js-reserve-num-desc');
     }
 
+    getTicketId() {
+        return this.reserveTicketKindEl.value;
+    }
+
+    getTicketNum() {
+        return Number(this.reserveNumInputEl.value);
+    }
+
+    getScheduleId() {
+        return this.reserveDateSelectEl.value;
+    }
 
 }
 
-new ReserveOrderForm();
+const reserveOrderForm = new ReserveOrderForm();

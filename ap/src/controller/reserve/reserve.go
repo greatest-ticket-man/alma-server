@@ -128,7 +128,7 @@ func CreateReserve(w http.ResponseWriter, r *http.Request) {
 		ctx, mid, txTime,
 		req.EventId,
 		req.TicketId,
-		req.EventStartDate,
+		req.ScheduleId,
 		req.TicketNum,
 		req.Desc,
 		req.Name,
