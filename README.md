@@ -5,6 +5,8 @@
 Server SideはGolang
 
 # DB
+MongoDBに変更、余裕があればVoltDBにする  
+
 VoltDB
 
 ```
