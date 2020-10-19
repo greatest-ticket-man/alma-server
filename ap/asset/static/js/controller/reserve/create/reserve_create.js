@@ -127,17 +127,15 @@ class ReserveCreate {
 
     // createButtonEl
     async createReserve() {
-
-
         const data = {
             event_id: window.Alma.location.getParam('event'),
             ticket_id: reserveOrderForm.getTicketId(),
             schedule_id: reserveOrderForm.getScheduleId(),
             ticket_num: reserveOrderForm.getTicketNum(),
             desc: "",
-            name: "",
-            name_furigana: "",
-            email: "",
+            name: reserveCustomerForm.getName(),
+            name_furigana: reserveCustomerForm.getFurigana(),
+            email: reserveCustomerForm.getEmail(),
             pay_kind: "",
         };
 
