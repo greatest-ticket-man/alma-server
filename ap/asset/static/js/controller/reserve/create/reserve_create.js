@@ -7,6 +7,7 @@ class ReserveCreate {
         // EL
         this.backButtonEl = document.querySelector('.js-reserve-info-back');
         this.cancelButtonEl = document.querySelector('.js-reserve-create-cancel');
+        this.createButtonEl = document.querySelector('.js-reserve-create');
 
         this.stepOrderEl = document.querySelector('.js-step-order');
         this.stepCustomorEl = document.querySelector('.js-step-customor');
@@ -35,10 +36,10 @@ class ReserveCreate {
         this.formContentAllHide = this.formContentAllHide.bind(this);
         this.stepContentAllDeselect = this.stepContentAllDeselect.bind(this);
         this.switchForm = this.switchForm.bind(this);
+        this.createReserve = this.createReserve.bind(this);
 
 
         this.addEventListener();
-
     }
 
     addEventListener() {
@@ -48,18 +49,16 @@ class ReserveCreate {
         this.stepCustomorEl.addEventListener('click', this.stepCustomor);
         this.stepPayEl.addEventListener('click', this.stepPay);
         this.stepConfirmEl.addEventListener('click', this.stepConfirm);
+        this.createButtonEl.addEventListener('click', this.createReserve);
     }
 
     // init
     stepInit() {
-
-
         // all hide
         this.formContentAllHide();
 
         this.formInitEl.classList.add('form-content--visible');
         this.subTitleEl.innerText = '';
-
     }
 
     // 購入情報のステップ
@@ -124,6 +123,11 @@ class ReserveCreate {
     // goReserveInfoPage 
     goReserveInfoPage() {
         window.Alma.location.href(window.Alma.location.reserve_info);
+    }
+
+    // createButtonEl
+    createReserve() {
+        console.log("save!");
     }
 
 

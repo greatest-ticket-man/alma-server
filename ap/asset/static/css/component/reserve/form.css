@@ -19,6 +19,7 @@
     font-size: 1.0em;
     border-radius: 2px;
     border: 1px solid #ccc;
+    background: #fff;
 }
 
 .input__input:focus {
