@@ -126,11 +126,31 @@ class ReserveCreate {
     }
 
     // createButtonEl
-    createReserve() {
-        console.log("save!");
+    async createReserve() {
+
+        const data = {
+            event_id: "",
+            ticket_id: "",
+            event_start_date: null,
+            ticket_num: 0,
+            desc: "",
+            name: "",
+            name_furigana: "",
+            email: "",
+            pay_kind: "",
+        };
+
+        const response = await window.Alma.req.post(window.Alma.req.reserve_create, window.Alma.req.createPostData(data));
+        if (!response || !response.success) {
+            window.Alma.toast.error('予約に失敗しました');
+            return;
+        }
+
+        window.Alma.toast.success('予約の作成に成功しました', 'Greatest Ticket Man', 1500, function() {
+            // refresh
+            window.Alma.location.href(location.href);
+        });
     }
-
-
 }
 
 new ReserveCreate();

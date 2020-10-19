@@ -12,10 +12,13 @@ import "google/protobuf/timestamp.proto";
 service Reserve {
 
     // PageHTML 予約のトップ画面
-    rpc PageHTML(common.EventRequest) returns (PageReply);
+    rpc PageHTML(common.EventRequest) returns (PageReply) {}
 
     // CreatePageHTML 予約の作成画面
-    rpc CreatePageHTML(common.EventRequest) returns (CreatePageReply);
+    rpc CreatePageHTML(common.EventRequest) returns (CreatePageReply) {}
+
+    // CreateReserve 予約の作成
+    rpc CreateReserve(CreateReserveRequest) returns (common.Empty) {}
 }
 
 
@@ -29,6 +32,18 @@ message CreatePageReply {
     string event_id = 1;
     string event_name = 2;
     repeated ticket.TicketInfo ticket_info_list = 3;
+}
+
+message CreateReserveRequest {
+    string event_id = 1;
+    string ticket_id = 2;
+    string event_start_date = 3;
+    int32 ticket_num = 4;
+    string desc = 5;
+    string name = 6;
+    string name_furigana = 7;
+    string email = 8;
+    string pay_kind = 9;
 }
 
 // ReserveInfo 予約の要素
@@ -47,4 +62,3 @@ message ReserveInfo {
     google.protobuf.Timestamp updated_at = 12; // 更新時間   
     string customor_id = 13; // 顧客ID 
 }
-
