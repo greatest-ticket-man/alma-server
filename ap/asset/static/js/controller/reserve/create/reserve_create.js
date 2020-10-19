@@ -136,7 +136,7 @@ class ReserveCreate {
             name: reserveCustomerForm.getName(),
             name_furigana: reserveCustomerForm.getFurigana(),
             email: reserveCustomerForm.getEmail(),
-            pay_kind: "",
+            pay_kind: reservePayForm.getPay(),
         };
 
         const response = await window.Alma.req.post(window.Alma.req.reserve_create, window.Alma.req.createPostData(data));
