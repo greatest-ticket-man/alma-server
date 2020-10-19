@@ -128,8 +128,10 @@ class ReserveCreate {
     // createButtonEl
     async createReserve() {
 
+        console.log(window.Alma.location.getParam('event'));
+
         const data = {
-            event_id: "",
+            event_id: window.Alma.location.getParam('event'),
             ticket_id: "",
             event_start_date: null,
             ticket_num: 0,
