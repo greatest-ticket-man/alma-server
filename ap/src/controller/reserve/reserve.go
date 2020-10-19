@@ -2,12 +2,14 @@ package reserve
 
 import (
 	"alma-server/ap/src/common/almactx"
+	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
 	"alma-server/ap/src/domain/menu/MenuService"
 	"alma-server/ap/src/domain/reserve/ReserveRpcService"
 	"alma-server/ap/src/infrastructure/grpc/proto/common"
+	"alma-server/ap/src/infrastructure/grpc/proto/reserve"
 	"net/http"
 )
 
@@ -108,4 +110,32 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 		result.EventName,
 		MenuService.GetMenu("reserve_top", ""),
 	)
+}
+
+// CreateReserve 予約の作成
+func CreateReserve(w http.ResponseWriter, r *http.Request) {
+
+	// param
+	req := &reserve.CreateReserveRequest{}
+	err := param.JSON(r, req)
+	chk.SE(err)
+
+	ctx := r.Context()
+	mid := almactx.GetMid(ctx)
+	txTime := almactx.GetTxTime(ctx)
+
+	ReserveRpcService.CreateReserve(
+		ctx, mid, txTime,
+		req.EventId,
+		req.TicketId,
+		req.EventStartDate,
+		req.TicketNum,
+		req.Desc,
+		req.Name,
+		req.NameFurigana,
+		req.Email,
+		req.PayKind,
+	)
+
+	response.JSON(w, &common.Empty{})
 }

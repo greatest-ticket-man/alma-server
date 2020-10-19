@@ -14,19 +14,16 @@ func CreateReserveInfoList(userReserveList []*UserReserveRepository.UserReserve)
 	for _, userReserve := range userReserveList {
 
 		reserveInfo := &reserve.ReserveInfo{
-			ReserveId:         userReserve.ID,
-			No:                0, // TODO
-			TicketName:        userReserve.TicketID + ":TODO",
-			TicketNum:         userReserve.TicketCnt,
-			FirstName:         userReserve.FirstName,
-			FirstNameFurigana: userReserve.FirstNameFurigana,
-			LastName:          userReserve.LastName,
-			LastNameFurigana:  userReserve.LastNameFurigana,
-			Notes:             "TODO",
-			Email:             "TODO: customorから取得する",
-			CustomorId:        "TODO: customorができてから追加する",
-			CreatedAt:         dateutil.TimeToTimestamp(userReserve.CreateTime),
-			UpdatedAt:         dateutil.TimeToTimestamp(userReserve.UpdateTime),
+			ReserveId:    userReserve.ID,
+			No:           0, // TODO
+			TicketName:   userReserve.TicketID + ":TODO",
+			TicketNum:    userReserve.TicketCnt,
+			Name:         userReserve.Name,
+			NameFurigana: userReserve.Furigana,
+			Email:        "TODO: customorから取得する",
+			CustomorId:   "TODO: customorができてから追加する",
+			CreatedAt:    dateutil.TimeToTimestamp(userReserve.CreateTime),
+			UpdatedAt:    dateutil.TimeToTimestamp(userReserve.UpdateTime),
 		}
 
 		reserveInfoList = append(reserveInfoList, reserveInfo)
