@@ -26,18 +26,16 @@ var reflectType = reflect.TypeOf((*UserReserve)(nil))
 
 // UserReserve .
 type UserReserve struct {
-	ID                string    `bson:"_id"`
-	No                int32     `bson:"no"` // Eventでの範囲の番号
-	EventID           string    `bson:"eid"`
-	CustomorID        string    `bson:"cid"` // お客さん情報
-	FirstName         string    `bson:"fname"`
-	FirstNameFurigana string    `bson:"ff"`
-	LastName          string    `bson:"lname"`
-	LastNameFurigana  string    `bson:"lf"`
-	TicketID          string    `bson:"tid"`  // 購入したチケットID
-	TicketCnt         int32     `bson:"tcnt"` // 何枚購入したか
-	CreateTime        time.Time `bson:"ct"`
-	UpdateTime        time.Time `bson:"ut"`
+	ID         string    `bson:"_id"`
+	No         int32     `bson:"no"` // Eventでの範囲の番号
+	EventID    string    `bson:"eid"`
+	CustomorID string    `bson:"cid"` // お客さん情報
+	Name       string    `bson:"name"`
+	Furigana   string    `bson:"furigana"`
+	TicketID   string    `bson:"tid"`  // 購入したチケットID
+	TicketCnt  int32     `bson:"tcnt"` // 何枚購入したか
+	CreateTime time.Time `bson:"ct"`
+	UpdateTime time.Time `bson:"ut"`
 }
 
 // getDb
@@ -45,8 +43,22 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 	return mongodb.GetUserCollection(ctx, ThisCollectionName)
 }
 
-// Add .
-func Add(ctx context.Context, userReserve *UserReserve) interface{} {
+// Insert .
+func Insert(ctx context.Context, txTime time.Time, reserveID string, no int32, eventID string, customorID string, name string, furigana string, ticketID string, ticketCnt int32) interface{} {
+
+	userReserve := &UserReserve{
+		ID:         reserveID,
+		No:         no,
+		EventID:    eventID,
+		CustomorID: customorID,
+		Name:       name,
+		Furigana:   furigana,
+		TicketID:   ticketID,
+		TicketCnt:  ticketCnt,
+		CreateTime: txTime,
+		UpdateTime: txTime,
+	}
+
 	return getDb(ctx).InsertOne(userReserve)
 }
 

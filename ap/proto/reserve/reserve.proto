@@ -37,7 +37,7 @@ message CreatePageReply {
 message CreateReserveRequest {
     string event_id = 1;
     string ticket_id = 2;
-    string event_start_date = 3;
+    google.protobuf.Timestamp event_start_date = 3;
     int32 ticket_num = 4;
     string desc = 5;
     string name = 6;
@@ -52,13 +52,10 @@ message ReserveInfo {
     int32 no = 2; // そのEvent内でのuniqueな番号
     string ticket_name = 3; // 予約したチケット名
     int32 ticket_num = 4; // チケット枚数
-    string first_name = 5; // 名
-    string first_name_furigana = 6;
-    string last_name = 7; // 苗字
-    string last_name_furigana = 8;
-    string notes = 9; // 備考
-    string email = 10; // email
-    google.protobuf.Timestamp created_at = 11; // 作成時間
-    google.protobuf.Timestamp updated_at = 12; // 更新時間   
-    string customor_id = 13; // 顧客ID 
+    string name = 5;
+    string name_furigana = 6;
+    string email = 7; // email
+    google.protobuf.Timestamp created_at = 8; // 作成時間
+    google.protobuf.Timestamp updated_at = 9; // 更新時間   
+    string customor_id = 10; // 顧客ID 
 }

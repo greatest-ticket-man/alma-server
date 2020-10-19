@@ -11,6 +11,8 @@ import (
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
 	"context"
 	"time"
+
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Page 予約ページのトップを取得する
@@ -51,4 +53,21 @@ func CreatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 		EventName:      userEvent.Name,
 		TicketInfoList: TicketComponent.CreateTicketInfoList(userTicketList),
 	}
+}
+
+// CreateReserve 予約を作成する
+func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, eventStartTiem *timestamppb.Timestamp, ticketNum int32, desc string, name string, nameFrigana string, email string, payKind string) bool {
+	userEvent := EventService.GetEvent(ctx, eventID)
+	if userEvent == nil {
+		// イベントが存在しません
+		chk.LE(errmsg.EventNotFound)
+	}
+
+	// TODO stockを確認
+
+	// 追加
+	reserveID := "TODO:"
+
+	UserReserveRepository.Insert(ctx, txTime, reserveID, 0, eventID, "", name, nameFrigana, ticketID, ticketNum)
+	return true
 }

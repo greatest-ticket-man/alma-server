@@ -6,7 +6,6 @@ import (
 	"alma-server/ap/src/repository/user/reserve/UserReserveRepository"
 	"context"
 	"testing"
-	"time"
 
 	"github.com/franela/goblin"
 	"go.mongodb.org/mongo-driver/bson"
@@ -33,23 +32,6 @@ func Test(t *testing.T) {
 		// mid := "test"
 
 		g.It("Add", func() {
-
-			userReserve := &UserReserveRepository.UserReserve{
-				ID:                "test",
-				No:                1,
-				EventID:           "test_event",
-				CustomorID:        "test_customor",
-				FirstName:         "テスト",
-				FirstNameFurigana: "てすと",
-				LastName:          "田中",
-				LastNameFurigana:  "たなか",
-				TicketID:          "test_ticketID",
-				TicketCnt:         10,
-				CreateTime:        time.Now(),
-				UpdateTime:        time.Now(),
-			}
-
-			UserReserveRepository.Add(ctx, userReserve)
 
 		})
 
