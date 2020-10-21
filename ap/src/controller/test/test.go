@@ -45,3 +45,20 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		nil,
 	)
 }
+
+// WasmPageHTML Wasmテスト画面
+func WasmPageHTML(w http.ResponseWriter, r *http.Request) {
+
+	response.BaseHTML(
+		w,
+		"WasmTest",
+		"",
+		map[string]interface{}{},
+		"/template/controller/test/wasm/wasm.html",
+		map[string]interface{}{},
+		[]string{},
+		[]string{},
+		"WASMテスト",
+		nil,
+	)
+}
