@@ -6,6 +6,7 @@
         <ul class="side-nav__menu">
             {{ range $childMenu := .ChildMenuInfoList }}
             <li class="js-side-nav-row side-nav__menu__li">
+                <i class="material-icons">{{ $childMenu.Icon }}</i>
                 {{ $childMenu.Title }}
                 <div hidden class="js-side-nav-path">{{ $childMenu.Path }}</div>
 
@@ -13,6 +14,7 @@
                     <ul class="side-nav__sub-menu">
                         {{ range $grandChildMenu := $childMenu.ChildMenuInfoList }}
                         <li class="js-side-nav-sub-row side-nav__sub-menu__li">
+                            <i class="material-icons">{{ $grandChildMenu.Icon }}</i>
                             {{ $grandChildMenu.Title }}
                             <div hidden class="js-side-nav-sub-path">{{ $grandChildMenu.Path }}</div>
                         </li>
