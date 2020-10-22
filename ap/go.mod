@@ -18,6 +18,6 @@ require (
 	github.com/stripe/stripe-go/v71 v71.48.0
 	github.com/urfave/negroni v1.0.0
 	go.mongodb.org/mongo-driver v1.4.2
-	google.golang.org/grpc v1.33.0
+	google.golang.org/grpc v1.33.1
 	google.golang.org/protobuf v1.25.0
 )
