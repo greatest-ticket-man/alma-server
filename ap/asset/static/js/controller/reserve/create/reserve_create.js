@@ -3,7 +3,6 @@
 class ReserveCreate {
 
     constructor() {
-
         // EL
         this.backButtonEl = document.querySelector('.js-reserve-info-back');
         this.cancelButtonEl = document.querySelector('.js-reserve-create-cancel');
@@ -123,10 +122,12 @@ class ReserveCreate {
     // goReserveInfoPage 
     goReserveInfoPage() {
         window.Alma.location.href(window.Alma.location.reserve_info);
-    }
+    } 
+
 
     // createButtonEl
     async createReserve() {
+
         const data = {
             event_id: window.Alma.location.getParam('event'),
             ticket_id: reserveOrderForm.getTicketId(),
@@ -136,7 +137,7 @@ class ReserveCreate {
             name: reserveCustomerForm.getName(),
             name_furigana: reserveCustomerForm.getFurigana(),
             email: reserveCustomerForm.getEmail(),
-            pay_kind: reservePayForm.getPay(),
+            pay_type_id: reservePayForm.getPay(),
         };
 
         const response = await window.Alma.req.post(window.Alma.req.reserve_create, window.Alma.req.createPostData(data));

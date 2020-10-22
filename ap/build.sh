@@ -16,7 +16,7 @@ statik -src=./asset -ns=asset -dest=./src/infrastructure/file -p=asset
 mv ./src/infrastructure/file/asset/static/statik.go ./src/infrastructure/file/asset/static/static.go
 mv ./src/infrastructure/file/asset/statik.go ./src/infrastructure/file/asset/asset.go
 
-GOOS='linux'
+GOOS='darwin'
 GOARCH='amd64'
 
 LDFLAGS="-w -s"

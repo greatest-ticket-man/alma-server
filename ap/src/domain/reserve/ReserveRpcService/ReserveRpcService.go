@@ -6,8 +6,11 @@ import (
 	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/domain/event/EventService"
 	"alma-server/ap/src/domain/reserve/ReserveComponent"
+	"alma-server/ap/src/domain/sequence/SequenceService"
 	"alma-server/ap/src/domain/ticket/TicketComponent"
+	"alma-server/ap/src/domain/ticket/TicketService"
 	"alma-server/ap/src/infrastructure/grpc/proto/reserve"
+	"alma-server/ap/src/repository/master/ticket/MstTicketPayTypeRepository"
 	"alma-server/ap/src/repository/user/reserve/UserReserveRepository"
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
 	"context"
@@ -26,7 +29,13 @@ func Page(ctx context.Context, mid string, txTime time.Time, eventID string) *re
 	// reserve
 	userReserveList := UserReserveRepository.GetList(ctx, eventID)
 
-	reserveInfoList := ReserveComponent.CreateReserveInfoList(userReserveList)
+	// ticketMap
+	userTicketMap := TicketService.GetUserTicketMap(ctx, eventID)
+
+	// ticketPayTypeMap
+	mstTicketPayTypeMap := MstTicketPayTypeRepository.GetMap()
+
+	reserveInfoList := ReserveComponent.CreateReserveInfoList(userReserveList, userTicketMap, mstTicketPayTypeMap)
 
 	return &reserve.PageReply{
 		EventId:         eventID,
@@ -47,15 +56,20 @@ func CreatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 	// GetTicketAll
 	userTicketList := UserTicketRepository.Find(ctx, eventID)
 
+	// ticket pay type
+	mstTicketPayTypeList := MstTicketPayTypeRepository.GetList()
+	ticketPayTypeList := TicketComponent.CreateTicketPayTypeList(mstTicketPayTypeList)
+
 	return &reserve.CreatePageReply{
-		EventId:        eventID,
-		EventName:      userEvent.Name,
-		TicketInfoList: TicketComponent.CreateTicketInfoList(userTicketList),
+		EventId:           eventID,
+		EventName:         userEvent.Name,
+		TicketInfoList:    TicketComponent.CreateTicketInfoList(userTicketList),
+		TicketPayTypeList: ticketPayTypeList,
 	}
 }
 
 // CreateReserve 予約を作成する
-func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, scheduleID string, ticketNum int32, desc string, name string, nameFrigana string, email string, payKind string) bool {
+func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, scheduleID string, ticketNum int32, desc string, name string, nameFrigana string, email string, payTypeID string) bool {
 	userEvent := EventService.GetEvent(ctx, eventID)
 	if userEvent == nil {
 		// イベントが存在しません
@@ -64,9 +78,16 @@ func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID st
 
 	// TODO stockを確認
 
+	// TODO customerに追加する
+
+	// TODO payTypeIDがちゃんと存在するIDかを確認する
+
+	// counter
+	seq := SequenceService.NextReserveSeq(ctx, eventID)
+
 	// 追加
 	reserveID := uniqueidutil.GenerateUniqueID()
 
-	UserReserveRepository.Insert(ctx, txTime, reserveID, 0, eventID, "", name, nameFrigana, ticketID, ticketNum, scheduleID)
+	UserReserveRepository.Insert(ctx, txTime, reserveID, seq, eventID, "", name, nameFrigana, email, ticketID, ticketNum, scheduleID, payTypeID)
 	return true
 }

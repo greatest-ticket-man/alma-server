@@ -39,10 +39,9 @@ type UserCustomor struct {
 // NameInfo 複数の名前で登録した場合、判別が難しくなるため
 // 今まで使用してきた名前を記録するようにする
 type NameInfo struct {
-	FirstName         string `bson:"fname"`
-	FirstNameFurigana string `bson:"ff"`
-	LastName          string `bson:"lname"`
-	LastNameFurigana  string `bson:"lf"`
+	Name     string `bson:"name"`
+	Furigana string `bson:"furigana"`
+	UseCnt   int32  `bson:"cnt"`
 }
 
 // getDb

@@ -27,14 +27,16 @@ var reflectType = reflect.TypeOf((*UserReserve)(nil))
 // UserReserve .
 type UserReserve struct {
 	ID         string    `bson:"_id"`
-	No         int32     `bson:"no"` // Eventでの範囲の番号
+	Seq        uint64    `bson:"seq"` // Eventでの範囲の番号
 	EventID    string    `bson:"eid"`
 	CustomorID string    `bson:"cid"` // お客さん情報
 	Name       string    `bson:"name"`
 	Furigana   string    `bson:"furigana"`
+	Email      string    `bson:"email"`
 	TicketID   string    `bson:"tid"`  // 購入したチケットID
 	TicketCnt  int32     `bson:"tcnt"` // 何枚購入したか
 	ScheduleID string    `bson:"sid"`  // ScheduleID
+	PayTypeID  string    `bson:"ptid"` // MstTicketPayType
 	CreateTime time.Time `bson:"ct"`
 	UpdateTime time.Time `bson:"ut"`
 }
@@ -45,20 +47,22 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 }
 
 // Insert .
-func Insert(ctx context.Context, txTime time.Time, reserveID string, no int32, eventID string, customorID string, name string, furigana string, ticketID string, ticketCnt int32, scheduleID string) interface{} {
+func Insert(ctx context.Context, txTime time.Time, reserveID string, seq uint64, eventID string, customorID string, name string, furigana string, email string, ticketID string, ticketCnt int32, scheduleID string, payTypeID string) interface{} {
 
 	userReserve := &UserReserve{
 		ID:         reserveID,
-		No:         no,
+		Seq:        seq,
 		EventID:    eventID,
 		CustomorID: customorID,
 		Name:       name,
 		Furigana:   furigana,
+		Email:      email,
 		TicketID:   ticketID,
 		TicketCnt:  ticketCnt,
 		CreateTime: txTime,
 		UpdateTime: txTime,
 		ScheduleID: scheduleID,
+		PayTypeID:  payTypeID,
 	}
 
 	return getDb(ctx).InsertOne(userReserve)
