@@ -77,3 +77,9 @@ message TicketScheduleStockInfo {
     google.protobuf.Timestamp event_start_time = 2;
     int32 stock = 3;
 }
+
+// チケット支払い情報
+message TicketPayType {
+    string id = 1;
+    string name = 2;
+}

@@ -1,0 +1,6 @@
+{"_id": "personal_delivery", "name": "前渡し", "desc": "先に支払い、チケットの渡しが終了している"}
+{"_id": "already_paid", "name": "代済み", "desc": "支払いだけ完了している場合"}
+{"_id": "same_day_pay", "name": "当日精算", "desc": "当日に支払われる形態"}
+{"_id": "credit", "name": "クレジット精算", "desc":"クレジット精算"}
+{"_id": "invitation", "name": "招待", "desc": "招待"}
+{"_id": "other", "name": "その他", "desc": "それ以外の精算: 備考に書いてもらいようにする"}

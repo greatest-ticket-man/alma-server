@@ -1,10 +1,13 @@
 package TicketComponent
 
 import (
+	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
+	"alma-server/ap/src/repository/master/ticket/MstTicketPayTypeRepository"
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
+	"errors"
 	"time"
 )
 
@@ -90,4 +93,32 @@ func CreasteScheduleStockMap(scheduleStockInfoList []*ticket.TicketScheduleStock
 	}
 
 	return scheduleStockMap
+}
+
+// GetEventStartTime .
+func GetEventStartTime(userTicket *UserTicketRepository.UserTicket, schduleStockID string) time.Time {
+
+	// check
+	if userTicket == nil || userTicket.ScheduleStockInfoMap[schduleStockID] == nil {
+		chk.SE(errors.New("指定したチケットのスケジュールが見つかりませんでした"))
+	}
+	return userTicket.ScheduleStockInfoMap[schduleStockID].EventStartTime
+}
+
+// CreateTicketPayTypeList .
+func CreateTicketPayTypeList(mstTicketPayTypeList []*MstTicketPayTypeRepository.MstTicketPayType) []*ticket.TicketPayType {
+
+	var ticketPayTypeList []*ticket.TicketPayType
+
+	for _, mstTicketPayType := range mstTicketPayTypeList {
+
+		ticketpayType := &ticket.TicketPayType{
+			Id:   mstTicketPayType.ID,
+			Name: mstTicketPayType.Name,
+		}
+
+		ticketPayTypeList = append(ticketPayTypeList, ticketpayType)
+	}
+
+	return ticketPayTypeList
 }

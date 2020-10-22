@@ -79,10 +79,6 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"orderForm": htmlutil.CreateTemplateToString(
 				"/template/component/reserve/order_form.html",
 				map[string]interface{}{
-					// "calendar": htmlutil.CreateTemplateToString(
-					// 	"/template/component/ui/calendar/calendar2.html",
-					// 	map[string]interface{}{},
-					// ),
 					"ticketInfoList": result.TicketInfoList,
 				},
 			),
@@ -92,13 +88,16 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			),
 			"payForm": htmlutil.CreateTemplateToString(
 				"/template/component/reserve/pay_form.html",
-				map[string]interface{}{},
+				map[string]interface{}{
+					"ticketPayTypeList": result.TicketPayTypeList,
+				},
 			),
 		},
 		[]string{
 			// "/static/js/component/ui/calendar/calendar2.js", // calendar
 			"/static/js/component/reserve/order_form.js",
 			"/static/js/component/reserve/customer_form.js",
+			"/static/js/component/reserve/pay_form.js",
 			"/static/js/component/reserve/form.js",
 			"/static/js/controller/reserve/create/reserve_create.js",
 		},
@@ -135,7 +134,7 @@ func CreateReserve(w http.ResponseWriter, r *http.Request) {
 		req.Name,
 		req.NameFurigana,
 		req.Email,
-		req.PayKind,
+		req.PayTypeId,
 	)
 
 	response.JSON(w, &common.Empty{})

@@ -20,7 +20,7 @@ func ErrorHandlingMiddleware(w http.ResponseWriter, r *http.Request, next http.H
 
 			stackTrace()
 
-			reason := logAndReason(w, panicErr)
+			reason := logAndReason(w, panicErr, r.URL.String())
 
 			if r.Method == "GET" { // GET requestの場合はUIを表示する
 				common.InternalServerErrorPageHTML(w, r, reason)
@@ -40,7 +40,7 @@ func stackTrace() {
 	logger.Infof(string(stack))
 }
 
-func logAndReason(w http.ResponseWriter, err interface{}) string {
+func logAndReason(w http.ResponseWriter, err interface{}, url string) string {
 
 	var reason string
 	switch e := err.(type) {
@@ -48,13 +48,13 @@ func logAndReason(w http.ResponseWriter, err interface{}) string {
 	case *almaerror.SystemError:
 		reason = "エラーが発生しました" // System的なErrorなのでViewには見せない
 
-		logger.Infof("[SYSTEM ERROR] statuscode=%d msgcode=%s msg=%s err=%v", e.StatusCode, e.MessageCode,
+		logger.Infof("[SYSTEM ERROR] url=%s statuscode=%d msgcode=%s msg=%s err=%v", url, e.StatusCode, e.MessageCode,
 			errmsg.Get("ja", e.MessageCode, e.Params...),
 			e.Err,
 		)
 	case *almaerror.LogicError:
 		reason = errmsg.Get("ja", e.MessageCode, e.Params...)
-		logger.Infof("[LOGIC ERROR] statuscode=%d msgcode=%s msg=%s", e.StatusCode, e.MessageCode, reason)
+		logger.Infof("[LOGIC ERROR] url=%s statuscode=%d msgcode=%s msg=%s", url, e.StatusCode, e.MessageCode, reason)
 	case *almaerror.BillingError:
 		// TODO
 		// log.Println("Billing errorです", e)
