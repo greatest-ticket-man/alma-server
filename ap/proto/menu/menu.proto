@@ -11,4 +11,5 @@ message MenuInfo {
     string path = 3; // 遷移先
     bool is_selected = 4; // 選択しているかどうか
     repeated MenuInfo child_menu_info_list = 5; // 関連付けされた子Menu
+    string icon = 6; // material-icons
 }

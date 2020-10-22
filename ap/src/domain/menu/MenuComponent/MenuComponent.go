@@ -12,6 +12,7 @@ func CreateMenuInfo(mstMenu *MstMenuRepository.MstMenu, selectedMenuID string, c
 		Title:             mstMenu.Title,
 		Desc:              mstMenu.Desc,
 		Path:              mstMenu.Path,
+		Icon:              mstMenu.Icon,
 		IsSelected:        mstMenu.ID == selectedMenuID,
 		ChildMenuInfoList: childMenuInfoList,
 	}

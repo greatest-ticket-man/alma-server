@@ -22,6 +22,7 @@ type MstMenu struct {
 	Parent     string    `bson:"parent" json:"parent"`     // 親のID
 	Children   []string  `bson:"children" json:"children"` // 子どもたちのID
 	Path       string    `bson:"path" json:"path"`         // クリックしたときに遷移するpath
+	Icon       string    `bson:"icon" json:"icon"`         // Icon
 	CreateTime time.Time `bson:"ct" json:"ct"`
 	UpdateTime time.Time `bson:"ut" json:"ut"`
 }
