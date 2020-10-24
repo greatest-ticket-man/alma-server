@@ -94,7 +94,6 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			),
 		},
 		[]string{
-			// "/static/js/component/ui/calendar/calendar2.js", // calendar
 			"/static/js/component/reserve/order_form.js",
 			"/static/js/component/reserve/customer_form.js",
 			"/static/js/component/reserve/pay_form.js",
@@ -102,7 +101,6 @@ func CreatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"/static/js/controller/reserve/create/reserve_create.js",
 		},
 		[]string{
-			// "/static/css/component/ui/calendar/calendar2.css", // calendar
 			"/static/css/component/reserve/form.css",
 			"/static/css/controller/reserve/create/head.css",
 			"/static/css/controller/reserve/create/reserve_create.css",
