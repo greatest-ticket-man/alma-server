@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/sales";
+
+package sales;
+
+import "common/common.proto";
+
+// RPC
+service Sales {
+
+    // PageHTML 売上のトップ画面
+    rpc PageHTML(common.EventRequest) returns (common.Empty) {}
+}
