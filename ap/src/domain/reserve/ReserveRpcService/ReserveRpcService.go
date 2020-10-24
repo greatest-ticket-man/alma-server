@@ -80,7 +80,12 @@ func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID st
 
 	// TODO customerに追加する
 
-	// TODO payTypeIDがちゃんと存在するIDかを確認する
+	// check
+	mstTicketPayType := MstTicketPayTypeRepository.Get(payTypeID)
+	if mstTicketPayType == nil {
+		// 存在しない販売形式が指定されました
+		chk.LE(errmsg.TicketNonExistSalesFormat)
+	}
 
 	// counter
 	seq := SequenceService.NextReserveSeq(ctx, eventID)

@@ -29,16 +29,20 @@ const (
 
 	// TicketIDAlradyUse このチケットIDはすでに使用されています
 	TicketIDAlradyUse = "TicketIDAlradyUse"
+
+	// TicketNonExistSalesFormat 存在しない販売形式が指定されました
+	TicketNonExistSalesFormat = "TicketNonExistSalesFormat"
 )
 
 var msgMap = map[string]map[string]string{
 	"ja": {
-		HelloLogicError:       "テスト用のError",
-		TodoDeleteFailed:      "todoの削除に失敗しました",
-		LoginFailed:           "ログインに失敗しました",
-		LoginWrongPassword:    "パスワードが違います",
-		SignupAlreadyUseEmail: "このメールアドレスはすでに使用されています",
-		EventNotFound:         "イベントが見つかりませんでした、イベントを指定してください",
-		TicketIDAlradyUse:     "このチケットIDはすでに使用されています",
+		HelloLogicError:           "テスト用のError",
+		TodoDeleteFailed:          "todoの削除に失敗しました",
+		LoginFailed:               "ログインに失敗しました",
+		LoginWrongPassword:        "パスワードが違います",
+		SignupAlreadyUseEmail:     "このメールアドレスはすでに使用されています",
+		EventNotFound:             "イベントが見つかりませんでした、イベントを指定してください",
+		TicketIDAlradyUse:         "このチケットIDはすでに使用されています",
+		TicketNonExistSalesFormat: "存在しない販売形式が指定されました",
 	},
 }

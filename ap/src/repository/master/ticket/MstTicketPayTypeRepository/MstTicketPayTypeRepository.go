@@ -41,6 +41,11 @@ func get() map[string]*MstTicketPayType {
 	return c.(map[string]*MstTicketPayType)
 }
 
+// Get .
+func Get(ticketPayTypeID string) *MstTicketPayType {
+	return get()[ticketPayTypeID]
+}
+
 // GetMap .
 func GetMap() map[string]*MstTicketPayType {
 	return get()
