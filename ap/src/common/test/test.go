@@ -13,6 +13,14 @@ import (
 	"path/filepath"
 )
 
+const (
+	// DefaultMid テスト用のMid
+	DefaultMid = "bsof9voul2pukksa2v3g"
+
+	// DefaultEventID テスト用のEventID
+	DefaultEventID = "bts73abpc98lq9s2uik0"
+)
+
 // Setup testのためのセットアップ
 func Setup() {
 
