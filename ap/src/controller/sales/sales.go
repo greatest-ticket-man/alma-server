@@ -34,7 +34,5 @@ func PageHTML(w http.ResponseWriter, r *http.Request) {
 		[]string{},
 		result.EventName,
 		MenuService.GetMenu("sales_top", "sales"),
-		// nil,
-		// MenuService.GetMenu("reserve_top", "reserve"),
 	)
 }
