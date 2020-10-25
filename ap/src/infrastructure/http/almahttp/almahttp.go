@@ -10,6 +10,7 @@ import (
 	"alma-server/ap/src/controller/member"
 	memberinvite "alma-server/ap/src/controller/member/invite"
 	"alma-server/ap/src/controller/reserve"
+	"alma-server/ap/src/controller/sales"
 	"alma-server/ap/src/controller/signup"
 	"alma-server/ap/src/controller/test"
 	"alma-server/ap/src/controller/ticket"
@@ -87,6 +88,7 @@ func Router() *negroni.Negroni {
 	authRouter.HandleFunc("/ticket/update", ticket.UpdatePageHTML).Methods("GET")
 	authRouter.HandleFunc("/ticket/update", ticket.UpdateTicket).Methods("POST")
 	authRouter.HandleFunc("/ticket/delete", ticket.DeleteTicket).Methods("POST")
+	authRouter.HandleFunc("/sales", sales.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/hello", hello.HTML).Methods("GET")
 	authRouter.HandleFunc("/test", test.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/test/wasm", test.WasmPageHTML).Methods("GET")
