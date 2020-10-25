@@ -14,6 +14,9 @@ const (
 	// ThisCollectionName .
 	ThisCollectionName = "USER_TICKET_GROUP"
 
+	// FTicketGroupID .
+	FTicketGroupID = "_id"
+
 	// FEventID .
 	FEventID = "eid"
 
@@ -27,7 +30,6 @@ var reflectType = reflect.TypeOf((*UserTicketGroup)(nil))
 // UserTicketGroup .
 type UserTicketGroup struct {
 	ID         *primitive.ObjectID `bson:"_id,omitempty"`
-	GroupID    string              `bson:"gid"`
 	GroupName  string              `bson:"name"`
 	EventID    string              `bson:"eid"`
 	Desc       string              `bson:"desc"`
@@ -46,9 +48,9 @@ func Insert(ctx context.Context, userTicketGroup *UserTicketGroup) interface{} {
 }
 
 // Update .
-func Update(ctx context.Context, txTime time.Time, eventID string, groupID string, groupName string, desc string) int32 {
+func Update(ctx context.Context, txTime time.Time, eventID, ticketGroupID *primitive.ObjectID, groupName string, desc string) int32 {
 
-	query := bson.M{FEventID: eventID, groupID: groupID}
+	query := bson.M{FEventID: eventID, FTicketGroupID: ticketGroupID}
 
 	update := bson.M{
 		"$set": bson.M{
@@ -64,15 +66,15 @@ func Update(ctx context.Context, txTime time.Time, eventID string, groupID strin
 }
 
 // Delete .
-func Delete(ctx context.Context, eventID string, groupID string) int32 {
-	query := bson.M{FEventID: eventID, groupID: groupID}
+func Delete(ctx context.Context, eventID string, ticketGroupID *primitive.ObjectID) int32 {
+	query := bson.M{FEventID: eventID, FTicketGroupID: ticketGroupID}
 
 	return getDb(ctx).DeleteOne(query)
 }
 
 // Get .
-func Get(ctx context.Context, eventID string, groupID string) *UserTicketGroup {
-	query := bson.M{FEventID: eventID, groupID: groupID}
+func Get(ctx context.Context, eventID string, ticketGroupID *primitive.ObjectID) *UserTicketGroup {
+	query := bson.M{FEventID: eventID, FTicketGroupID: ticketGroupID}
 
 	result := getDb(ctx).FindOne(query, reflectType)
 	if result == nil {

@@ -24,7 +24,7 @@ type UserTicketV2 struct {
 	Name           string              `bson:"name"`
 	Desc           string              `bson:"desc"`
 	EventStartTime time.Time           `bson:"est"`
-	TicketGroupID  string              `bson:"tgid"`
+	TicketGroupID  *primitive.ObjectID `bson:"tgid"`
 	CreateTime     time.Time           `bson:"ct"`
 	UpdateTime     time.Time           `bson:"ut"`
 }
