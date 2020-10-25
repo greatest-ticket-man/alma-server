@@ -11,57 +11,55 @@ import "google/protobuf/timestamp.proto";
 // RPC
 service Reserve {
 
-    // PageHTML 予約のトップ画面
-    rpc PageHTML(common.EventRequest) returns (PageReply) {}
+  // PageHTML 予約のトップ画面
+  rpc PageHTML(common.EventRequest) returns (PageReply) {}
 
-    // CreatePageHTML 予約の作成画面
-    rpc CreatePageHTML(common.EventRequest) returns (CreatePageReply) {}
+  // CreatePageHTML 予約の作成画面
+  rpc CreatePageHTML(common.EventRequest) returns (CreatePageReply) {}
 
-    // CreateReserve 予約の作成
-    rpc CreateReserve(CreateReserveRequest) returns (common.Empty) {}
+  // CreateReserve 予約の作成
+  rpc CreateReserve(CreateReserveRequest) returns (common.Empty) {}
 }
 
-
 message PageReply {
-    string event_name = 1;
-    string event_id = 2;
-    repeated ReserveInfo reserve_info_list = 3;
-    
+  string event_name = 1;
+  string event_id = 2;
+  repeated ReserveInfo reserve_info_list = 3;
 }
 
 message CreatePageReply {
-    string event_id = 1;
-    string event_name = 2;
-    repeated ticket.TicketInfo ticket_info_list = 3;
-    repeated ticket.TicketPayType ticket_pay_type_list = 4;
+  string event_id = 1;
+  string event_name = 2;
+  repeated ticket.TicketInfo ticket_info_list = 3;
+  repeated ticket.TicketPayType ticket_pay_type_list = 4;
 }
 
 message CreateReserveRequest {
-    string event_id = 1;
-    string ticket_id = 2;
-    // google.protobuf.Timestamp event_start_date = 3;
-    string schedule_id = 3;
-    int32 ticket_num = 4;
-    string desc = 5;
-    string name = 6;
-    string name_furigana = 7;
-    string email = 8;
-    string pay_type_id = 9;
+  string event_id = 1;
+  string ticket_id = 2;
+  // google.protobuf.Timestamp event_start_date = 3;
+  string schedule_id = 3;
+  int32 ticket_num = 4;
+  string desc = 5;
+  string name = 6;
+  string name_furigana = 7;
+  string email = 8;
+  string pay_type_id = 9;
 }
 
 // ReserveInfo 予約の要素
 message ReserveInfo {
-    string reserve_id = 1; // uniqueな予約ID
-    uint64 seq = 2; // そのEvent内でのuniqueな番号
-    string ticket_name = 3; // 予約したチケット名
-    int32 ticket_num = 4; // チケット枚数
-    string ticket_kind_name = 5; // チケット種類名
-    string name = 6;
-    string name_furigana = 7;
-    string email = 8; // email
-    google.protobuf.Timestamp created_at = 9; // 作成時間
-    google.protobuf.Timestamp updated_at = 10; // 更新時間   
-    string customor_id = 11; // 顧客ID 
-    google.protobuf.Timestamp event_start_time = 12; // イベント開始時間
-    string pay_type_name = 13; // 支払い方法の種類
+  string reserve_id = 1;       // uniqueな予約ID
+  uint64 seq = 2;              // そのEvent内でのuniqueな番号
+  string ticket_name = 3;      // 予約したチケット名
+  int32 ticket_num = 4;        // チケット枚数
+  string ticket_kind_name = 5; // チケット種類名
+  string name = 6;
+  string name_furigana = 7;
+  string email = 8;                                // email
+  google.protobuf.Timestamp created_at = 9;        // 作成時間
+  google.protobuf.Timestamp updated_at = 10;       // 更新時間
+  string customor_id = 11;                         // 顧客ID
+  google.protobuf.Timestamp event_start_time = 12; // イベント開始時間
+  string pay_type_name = 13;                       // 支払い方法の種類
 }

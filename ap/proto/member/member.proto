@@ -11,19 +11,18 @@ import "google/protobuf/timestamp.proto";
 // RPC
 service Member {
 
-    // PageHTML
-    rpc PageHTML(common.EventRequest) returns (PageHTMLReply);
+  // PageHTML
+  rpc PageHTML(common.EventRequest) returns (PageHTMLReply);
 }
 
 message PageHTMLReply {
-    string event_name = 1;
-    repeated MemberInfo member_info_list = 2;
+  string event_name = 1;
+  repeated MemberInfo member_info_list = 2;
 }
 
 message MemberInfo {
-    string name = 1;
-    string email = 2;
-    string auth = 3;
-    google.protobuf.Timestamp created_at = 4;
+  string name = 1;
+  string email = 2;
+  string auth = 3;
+  google.protobuf.Timestamp created_at = 4;
 }
-

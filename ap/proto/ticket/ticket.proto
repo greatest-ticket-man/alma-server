@@ -6,80 +6,105 @@ package ticket;
 
 import "common/common.proto";
 import "google/protobuf/timestamp.proto";
+import "ticket/ticket_enum.proto";
 
 // RPC
 service Ticket {
 
-    // PageHTML チケットのトップ画面
-    rpc PageHTML(common.EventRequest) returns (PageReply);
+  // PageHTML チケットのトップ画面
+  rpc PageHTML(common.EventRequest) returns (PageReply);
 
-    // UpdatePageHTML チケットの編集画面
-    rpc UpdatePageHTML(UpdatePageRequest) returns (UpdatePageReply);
+  // UpdatePageHTML チケットの編集画面
+  rpc UpdatePageHTML(UpdatePageRequest) returns (UpdatePageReply);
 
-    // CreateTicket チケットの作成
-    rpc CreateTicket(CreateTicketRequest) returns (common.Empty);
+  // CreateTicket チケットの作成
+  rpc CreateTicket(CreateTicketRequest) returns (common.Empty);
 
-    // UpdateTicket チケットの更新
-    rpc UpdateTicket(UpdateTicketRequest) returns (common.Empty);
+  // CreateTicketV2 チケットの作成V2
+  rpc CreateTicketV3(CreateTicketRequestV2) returns (common.Empty);
 
-    // DeleteTicket チケットの削除
-    rpc DeleteTicket(DeleteTicketRequest) returns (common.Empty);
+  // UpdateTicket チケットの更新
+  rpc UpdateTicket(UpdateTicketRequest) returns (common.Empty);
+
+  // DeleteTicket チケットの削除
+  rpc DeleteTicket(DeleteTicketRequest) returns (common.Empty);
 }
 
 // チケットReply
 message PageReply {
-    string event_name = 1;
-    string event_id = 2;
-    repeated TicketInfo ticket_info_list = 3;
+  string event_name = 1;
+  string event_id = 2;
+  repeated TicketInfo ticket_info_list = 3;
 }
 
 // チケットの編集画面Request
 message UpdatePageRequest {
-    string event_id = 1;
-    string ticket_id = 2;
+  string event_id = 1;
+  string ticket_id = 2;
 }
 
 message UpdatePageReply {
-    string event_name = 1;
-    TicketInfo ticket_info = 2;
+  string event_name = 1;
+  TicketInfo ticket_info = 2;
 }
-
 
 // チケットの作成
-message CreateTicketRequest {
-    TicketInfo ticket_info = 1;
-}
+message CreateTicketRequest { TicketInfo ticket_info = 1; }
+
+// チケットの作成V2
+message CreateTicketRequestV2 {}
 
 // チケットの編集
 message UpdateTicketRequest {
-    TicketInfo ticket_info = 1;
-    string event_id = 2;
+  TicketInfo ticket_info = 1;
+  string event_id = 2;
 }
 
 // チケットの削除Request
 message DeleteTicketRequest {
-    string event_id = 1;
-    repeated string ticket_id_list = 2;
+  string event_id = 1;
+  repeated string ticket_id_list = 2;
 }
 
 // チケット情報
 message TicketInfo {
-    string ticket_id = 1;
-    string name = 2;
-    int32 price = 3;
-    string desc = 4;
-    string event_id = 5;
-    repeated TicketScheduleStockInfo schedule_stock_list = 6;
+  string ticket_id = 1;
+  string name = 2;
+  int32 price = 3;
+  string desc = 4;
+  string event_id = 5;
+  repeated TicketScheduleStockInfo schedule_stock_list = 6;
+}
+
+// チケット情報V2
+message TicketInfoV2 {
+  string ticket_id = 1;
+  string event_id = 2;
+  string name = 3;
+  string desc = 4;
+  google.protobuf.Timestamp buy_start_time = 5;
+  google.protobuf.Timestamp buy_end_time = 6;
+  google.protobuf.Timestamp event_start_time = 7;
+  string ticket_group_id = 8;
+  map<string, TicketPriceInfo> ticket_price_info_map = 9;
+}
+
+// チケット価格情報(v2)
+message TicketPriceInfo {
+  string project_id = 1;
+  string name = 2;
+  ticket_enum.TicketPriceType type = 3;
+  int32 price = 4;
 }
 
 message TicketScheduleStockInfo {
-    string schedule_stock_id = 1;
-    google.protobuf.Timestamp event_start_time = 2;
-    int32 stock = 3;
+  string schedule_stock_id = 1;
+  google.protobuf.Timestamp event_start_time = 2;
+  int32 stock = 3;
 }
 
 // チケット支払い情報
 message TicketPayType {
-    string id = 1;
-    string name = 2;
+  string id = 1;
+  string name = 2;
 }

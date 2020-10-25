@@ -9,6 +9,9 @@ import (
 	"net/http"
 )
 
+// M bind data type
+type M map[string]interface{}
+
 // JSON responseをjsonにする
 func JSON(w http.ResponseWriter, result interface{}) {
 	resultMap := map[string]interface{}{
