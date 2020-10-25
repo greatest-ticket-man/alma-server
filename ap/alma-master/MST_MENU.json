@@ -1,5 +1,5 @@
 {"_id":"test","title":"test","children":["a","b","c"],"ct":"2020-07-08T18:10:40.287+09:00","ut":"2020-07-08T18:10:40.287+09:00"}
-{"_id":"side_nav","title":"Greatest Ticket Man","children":["home","event_top","member_top","reserve_top","ticket_top"]}
+{"_id":"side_nav","title":"Greatest Ticket Man","children":["home","event_top","member_top","reserve_top","ticket_top","sales_top"]}
 {"_id":"home","title":"ホーム","path":"/home/dashboard","children":["dashboard"]}
 {"_id":"dashboard","title":"ダッシュボード","path":"/home/dashboard"}
 {"_id":"event_top","title":"イベント","path":"/event","parent":"top","children":["event"]}
@@ -7,8 +7,10 @@
 {"_id":"member_top","title":"メンバー","path":"/member","parent":"top","children":["member","member_invite"]}
 {"_id":"member","title":"メンバー情報","path":"/member","parent":"member_top","children":[]}
 {"_id":"member_invite","title":"招待中メンバー情報","parent":"member_top","path":"/member/invite","children":[]}
-{"_id":"reserve_top","title":"予約状況","path":"/reserve","parent":"top","children":["reserve"]}
-{"_id":"reserve","title":"予約情報","path":"/reserve","parent":"reserve_top","children":[]}
 {"_id":"ticket_top","title":"チケット","path":"/ticket","parent":"top","children":["ticket","ticket_sale"]}
 {"_id":"ticket","title":"チケット情報","path":"/ticket","parent":"ticket_top","children":[]}
 {"_id":"ticket_sale","title":"チケット販売設定","path":"/ticket/schedule","parent":"ticket_top","children":[]}
+{"_id":"reserve_top","title":"予約状況","path":"/reserve","parent":"top","children":["reserve"]}
+{"_id":"reserve","title":"予約情報","path":"/reserve","parent":"reserve_top","children":[]}
+{"_id":"sales_top", "title":"売上", "path": "/sales", "parent":"top", "children":["sales"]}
+{"_id":"sales", "title":"売上情報", "path": "/sales", "parent":"sales_top", "children":[]}
