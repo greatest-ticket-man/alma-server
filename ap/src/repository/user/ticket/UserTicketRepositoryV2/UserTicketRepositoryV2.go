@@ -1,6 +1,7 @@
 package UserTicketRepositoryV2
 
 import (
+	"alma-server/ap/src/common/constant/ticketconst"
 	"alma-server/ap/src/infrastructure/mongodb"
 	"context"
 	"reflect"
@@ -34,12 +35,12 @@ type UserTicketV2 struct {
 
 // TicketPriceInfo 価格帯設定
 type TicketPriceInfo struct {
-	PriceID    string    `bson:"id"`
-	Name       string    `bson:"name"`
-	PriceType  int32     `bson:"pt"` // 価格のタイプ: 前払い/当日生産/クレジット
-	Price      int32     `bson:"price"`
-	CreateTime time.Time `bson:"ct"`
-	UpdateTime time.Time `bson:"ut"`
+	PriceID    string                `bson:"id"`
+	Name       string                `bson:"name"`
+	Type       ticketconst.PriceType `bson:"type"` // 価格のタイプ: 前払い/当日生産
+	Price      int32                 `bson:"price"`
+	CreateTime time.Time             `bson:"ct"`
+	UpdateTime time.Time             `bson:"ut"`
 }
 
 // getDb .
