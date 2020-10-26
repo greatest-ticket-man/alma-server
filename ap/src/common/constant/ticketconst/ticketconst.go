@@ -7,6 +7,9 @@ const (
 	// Adv Advance Tickets 前売り券
 	Adv PriceType = 1
 
-	// DOS Doors 当日券
-	DOS PriceType = 2
+	// Dos Doors 当日券
+	Dos PriceType = 2
+
+	// Invite Invitation 招待
+	Invite PriceType = 3
 )

@@ -1,0 +1,72 @@
+<main class="content">
+    <h1>TicketV2</h1>
+
+    <div>
+        <h2>TicketID</h2>
+        <input type="text">
+    </div>
+    <div>
+        <h2>Name</h2>
+        <input type="text">
+    </div>
+    <div>
+        <h2>BuyStartTime</h2>
+        <input type="datetime-local">
+    </div>
+    <div>
+        <h2>BuyEndTime</h2>
+        <input type="datetime-local">
+    </div>
+    <div>
+        <h2>EventStartTime</h2>
+        <input type="datetime-local">
+    </div>
+    <div>
+        <h2>TicketGroup</h2>
+        <input type="text" list="ticket-group-list">
+    </div>
+
+    <div>
+        <h2></h2>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Price</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><select name="" id="">
+                        <option value="a">a</option>
+                        <option value="b">b</option>
+                    </select></td>
+                    <td><input type="number"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" value=""></td>
+                    <td><select name="" id="">
+                            <option value="a">a</option>
+                            <option value="b">b</option>
+                        </select></td>
+                    <td><input type="number"></td>
+                </tr>
+            </tbody>
+        </table>
+        <button>カスタムPriceを追加</button>
+    </div>
+
+
+    <button>Save</button>
+    <button>Cancel</button>
+
+
+    <!-- datalist -->
+    <datalist id="ticket-group-list">
+        <option value="AAA-"></option>
+        <option value="BBB-"></option>
+        <option value="CCC-"></option>
+    </datalist>
+</main>
+
