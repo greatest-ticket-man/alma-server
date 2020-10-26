@@ -47,3 +47,8 @@ type TicketPriceInfo struct {
 func getDb(ctx context.Context) *mongodb.AlmaCollection {
 	return mongodb.GetUserCollection(ctx, ThisCollectionName)
 }
+
+// Insert チケットの追加
+func Insert(ctx context.Context, txTime time.Time, userTicket *UserTicketV2) interface{} {
+	return getDb(ctx).InsertOne(userTicket)
+}
