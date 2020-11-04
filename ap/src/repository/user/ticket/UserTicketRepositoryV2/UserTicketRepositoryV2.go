@@ -7,12 +7,16 @@ import (
 	"reflect"
 	"time"
 
+	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
 const (
 	// ThisCollectionName .
 	ThisCollectionName = "USER_TICKET_V2"
+
+	// FEventID .
+	FEventID = "eid"
 )
 
 var reflectType = reflect.TypeOf((*UserTicketV2)(nil))
@@ -51,4 +55,16 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 // Insert チケットの追加
 func Insert(ctx context.Context, txTime time.Time, userTicket *UserTicketV2) interface{} {
 	return getDb(ctx).InsertOne(userTicket)
+}
+
+// Find いべんとに紐付いたチケットをすべて取得する
+func Find(ctx context.Context, eventID string) []*UserTicketV2 {
+
+	query := bson.M{FEventID: eventID}
+	result := getDb(ctx).Find(query, reflectType)
+	if result == nil {
+		return nil
+	}
+
+	return result.([]*UserTicketV2)
 }

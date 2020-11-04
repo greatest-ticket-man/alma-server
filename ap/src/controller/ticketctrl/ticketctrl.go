@@ -28,7 +28,7 @@ func CreatePage(w http.ResponseWriter, r *http.Request) {
 		"チケット作成V2",
 		"/template/controller/ticket/create/head.html",
 		response.M{},
-		"/template/controller/ticket/create/ticketv2.html",
+		"/template/controller/ticket/create/ticket_createv2.html",
 		response.M{},
 		[]string{},
 		[]string{
