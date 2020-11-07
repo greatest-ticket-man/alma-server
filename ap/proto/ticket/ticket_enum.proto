@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+option go_package = "alma-server/ap/src/infrastructure/grpc/proto/ticketenum";
+
+package ticket_enum;
+
+// チケットの価格タイプ
+enum TicketPriceType {
+  None = 0;    // 何もなし
+  Advance = 1; // 前売り券
+  Doors = 2;   // 当日券
+  Invite = 3;  // 招待
+}

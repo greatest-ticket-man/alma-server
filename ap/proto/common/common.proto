@@ -15,9 +15,7 @@ message EventRequest {
   string event = 1; // eventID
 }
 
-message EventNameReply {
-  string event_name = 1;
-}
+message EventNameReply { string event_name = 1; }
 
 message EmailRequest {
   string email = 1; // email
