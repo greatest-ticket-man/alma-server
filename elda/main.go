@@ -37,10 +37,9 @@ func main() {
 	// mongo index setup
 	index.CreateIndex(context.Background())
 
-	// TODO server
-	// eldahttp.Setup(conf.HTTPServer)
+	// server setup
 	server.Setup(conf.HTTPServer)
 
+	// server start
 	server.Run(conf.HTTPServer)
-
 }

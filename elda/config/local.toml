@@ -4,7 +4,8 @@
 mode = "local"
 
 # ルートディレクトリ、指定なしだとビルドしたときの標準になる
-rootdirectory = ""
+# TODO どうにかする
+rootdirectory = "/Users/yun_sunjin/develop/alma-server/elda"
 
 # mastercachedir="alma-master" # マスターキャッシュ保存ディレクトリ
 

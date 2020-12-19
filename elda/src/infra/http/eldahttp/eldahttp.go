@@ -3,6 +3,7 @@ package eldahttp
 import (
 	"alma-server/ap/src/common/config"
 	"alma-server/elda/src/ctrl/helloctrl"
+	"alma-server/elda/src/ctrl/reservectrl"
 	"net/http"
 
 	"github.com/gorilla/mux"
@@ -34,6 +35,7 @@ func Router() *negroni.Negroni {
 	router := mux.NewRouter()
 
 	router.HandleFunc("/", helloctrl.PageHTML).Methods("GET")
+	router.HandleFunc("/reserve", reservectrl.PageHTML).Methods("GET")
 
 	// regist
 	n.UseHandler(router)
