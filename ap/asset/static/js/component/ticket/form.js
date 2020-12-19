@@ -8,22 +8,18 @@ class TicketForm {
         this.ticketNameEl = document.getElementById('js-ticket-name');
         this.ticketPriceEl = document.getElementById('js-ticket-price');
         this.ticketDescEl = document.getElementById('js-ticket-desc');
-
-        this.scheduleStockTableEl = document.querySelector('.js-schedule-stock-table-body');
-        this.scheduleStockTableAddButtonEl = document.querySelector('.js-schedule-stock-add-button');
-        this.scheduleStockRowTmpEl = document.querySelector('#js-schedule-stock-row-tmp');
+        this.ticketStockEl = document.getElementById('js-ticket-stock');
+        this.ticketStartTimeEl = document.getElementById('js-ticket-start-time');
+        this.ticketEndTimeEl = document.getElementById('js-ticket-end-time');
 
         // bind
-        this.addMultiStockTable = this.addMultiStockTable.bind(this);
-        this.deleteMultiStockRow = this.deleteMultiStockRow.bind(this);
-        this.getScheduleStockInfoList = this.getScheduleStockInfoList.bind(this);
         this.setReadOnlyTicketId = this.setReadOnlyTicketId.bind(this);
 
         this.addEventListener();
     }
 
     addEventListener() {
-        this.scheduleStockTableAddButtonEl.addEventListener('click', this.addMultiStockTable);
+        // this.scheduleStockTableAddButtonEl.addEventListener('click', this.addMultiStockTable);
     }
 
     // setReadOnlyTicketId ticketIDを編集できないようにする
@@ -47,36 +43,18 @@ class TicketForm {
         return this.ticketDescEl.value;
     }
 
-    // addMultiStockTable テーブルのrowを追加する
-    addMultiStockTable() {
-        const t = this.scheduleStockRowTmpEl;
-        const clone = t.content.cloneNode(true);
-        this.scheduleStockTableEl.appendChild(clone);
+    getTicketStock() {
+        return Number(this.ticketStockEl.value);
     }
 
-    deleteMultiStockRow(elem) {
-        let tr = elem.parentNode.parentNode;
-        this.scheduleStockTableEl.deleteRow(tr.sectionRowIndex);
+    getTicketStartTime() {
+        const startTime = new Date(this.ticketStartTimeEl.value);
+        return window.Alma.dateutil.DateToTimestamp(startTime);
     }
 
-    getScheduleStockInfoList() {
-        let scheduleStockInfoList = [];
-
-        for (let row of this.scheduleStockTableEl.rows) {
-
-            const scheduleStockId = row.querySelector('.js-schedule-stock-id').value;
-            const stock = Number(row.querySelector('.js-stock').value);
-            const eventStartTime = new Date(row.querySelector('.js-schedule').value);
-            let scueduleStockInfo = {
-                schedule_stock_id: scheduleStockId,
-                event_start_time: window.Alma.dateutil.DateToTimestamp(eventStartTime),
-                stock: stock,
-            };
-
-            scheduleStockInfoList.push(scueduleStockInfo);
-        }
-
-        return scheduleStockInfoList
+    getTicketEndTime() {
+        const endTime = new Date(this.ticketEndTimeEl.value);
+        return window.Alma.dateutil.DateToTimestamp(endTime);
     }
 
 }

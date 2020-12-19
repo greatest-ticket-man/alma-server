@@ -69,13 +69,9 @@ message TicketInfo {
     int32 price = 3;
     string desc = 4;
     string event_id = 5;
-    repeated TicketScheduleStockInfo schedule_stock_list = 6;
-}
-
-message TicketScheduleStockInfo {
-    string schedule_stock_id = 1;
-    google.protobuf.Timestamp event_start_time = 2;
-    int32 stock = 3;
+    int32 stock = 6;
+    google.protobuf.Timestamp start_time = 7;
+    google.protobuf.Timestamp end_time = 8;
 }
 
 // チケット支払い情報

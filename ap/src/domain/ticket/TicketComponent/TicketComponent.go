@@ -1,13 +1,10 @@
 package TicketComponent
 
 import (
-	"alma-server/ap/src/common/error/chk"
 	"alma-server/ap/src/common/util/dateutil"
-	"alma-server/ap/src/common/util/uniqueidutil"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
 	"alma-server/ap/src/repository/master/ticket/MstTicketPayTypeRepository"
 	"alma-server/ap/src/repository/user/ticket/UserTicketRepository"
-	"errors"
 	"time"
 )
 
@@ -23,28 +20,20 @@ func CreateTicketInfoList(userTicketList []*UserTicketRepository.UserTicket) []*
 
 // CreateUserTicket .
 // MapのIDは新しく作成します
-func CreateUserTicket(txTime time.Time, eventID string, ticketID string, name string, price int32, desc string, scheduleStockInfoList []*ticket.TicketScheduleStockInfo) *UserTicketRepository.UserTicket {
-
-	scheduleStockMap := map[string]*UserTicketRepository.ScheduleStockInfo{}
-
-	for _, scueduleStockInfo := range scheduleStockInfoList {
-
-		scheduleStockMap[uniqueidutil.GenerateUniqueID()] = &UserTicketRepository.ScheduleStockInfo{
-			EventStartTime: dateutil.TimestampToTime(scueduleStockInfo.EventStartTime),
-			Stock:          scueduleStockInfo.Stock,
-		}
-
-	}
+func CreateUserTicket(txTime time.Time, eventID string, ticketID string, name string,
+	price int32, desc string, stock int32, startTime time.Time, endTime time.Time) *UserTicketRepository.UserTicket {
 
 	return &UserTicketRepository.UserTicket{
-		EventID:              eventID,
-		TicketID:             ticketID,
-		Name:                 name,
-		Price:                price,
-		Desc:                 desc,
-		ScheduleStockInfoMap: scheduleStockMap,
-		CreateTime:           txTime,
-		UpdateTime:           txTime,
+		EventID:    eventID,
+		TicketID:   ticketID,
+		Name:       name,
+		Price:      price,
+		Desc:       desc,
+		Stock:      stock,
+		StartTime:  startTime,
+		EndTime:    endTime,
+		CreateTime: txTime,
+		UpdateTime: txTime,
 	}
 }
 
@@ -55,54 +44,16 @@ func CreateTicketInfo(userTicket *UserTicketRepository.UserTicket) *ticket.Ticke
 		return nil
 	}
 
-	var scheduleStockList []*ticket.TicketScheduleStockInfo
-	for id, scheduleStockInfo := range userTicket.ScheduleStockInfoMap {
-		scheduleStockList = append(scheduleStockList, &ticket.TicketScheduleStockInfo{
-			ScheduleStockId: id,
-			EventStartTime:  dateutil.TimeToTimestamp(scheduleStockInfo.EventStartTime),
-			Stock:           scheduleStockInfo.Stock,
-		})
-	}
-
 	return &ticket.TicketInfo{
-		TicketId:          userTicket.TicketID,
-		EventId:           userTicket.EventID,
-		Name:              userTicket.Name,
-		Desc:              userTicket.Desc,
-		Price:             userTicket.Price,
-		ScheduleStockList: scheduleStockList,
+		TicketId:  userTicket.TicketID,
+		EventId:   userTicket.EventID,
+		Name:      userTicket.Name,
+		Desc:      userTicket.Desc,
+		Price:     userTicket.Price,
+		Stock:     userTicket.Stock,
+		StartTime: dateutil.TimeToTimestamp(userTicket.StartTime),
+		EndTime:   dateutil.TimeToTimestamp(userTicket.EndTime),
 	}
-}
-
-// CreasteScheduleStockMap .
-func CreasteScheduleStockMap(scheduleStockInfoList []*ticket.TicketScheduleStockInfo) map[string]*UserTicketRepository.ScheduleStockInfo {
-
-	scheduleStockMap := map[string]*UserTicketRepository.ScheduleStockInfo{}
-	for _, scheduleStockInfo := range scheduleStockInfoList {
-
-		// keyがない場合は、作成する
-		if scheduleStockInfo.ScheduleStockId == "" {
-			scheduleStockInfo.ScheduleStockId = uniqueidutil.GenerateUniqueID()
-		}
-
-		scheduleStock := &UserTicketRepository.ScheduleStockInfo{
-			EventStartTime: dateutil.TimestampToTime(scheduleStockInfo.EventStartTime),
-			Stock:          scheduleStockInfo.Stock,
-		}
-		scheduleStockMap[scheduleStockInfo.ScheduleStockId] = scheduleStock
-	}
-
-	return scheduleStockMap
-}
-
-// GetEventStartTime .
-func GetEventStartTime(userTicket *UserTicketRepository.UserTicket, schduleStockID string) time.Time {
-
-	// check
-	if userTicket == nil || userTicket.ScheduleStockInfoMap[schduleStockID] == nil {
-		chk.SE(errors.New("指定したチケットのスケジュールが見つかりませんでした"))
-	}
-	return userTicket.ScheduleStockInfoMap[schduleStockID].EventStartTime
 }
 
 // CreateTicketPayTypeList .

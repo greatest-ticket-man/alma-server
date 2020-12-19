@@ -2,7 +2,6 @@ package ReserveComponent
 
 import (
 	"alma-server/ap/src/common/util/dateutil"
-	"alma-server/ap/src/domain/ticket/TicketComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/reserve"
 	"alma-server/ap/src/repository/master/ticket/MstTicketPayTypeRepository"
 	"alma-server/ap/src/repository/user/reserve/UserReserveRepository"
@@ -25,7 +24,7 @@ func CreateReserveInfoList(userReserveList []*UserReserveRepository.UserReserve,
 			Seq:            userReserve.Seq,
 			TicketName:     userTicket.Name,
 			TicketNum:      userReserve.TicketCnt,
-			EventStartTime: dateutil.TimeToTimestamp(TicketComponent.GetEventStartTime(userTicket, userReserve.ScheduleID)),
+			EventStartTime: dateutil.TimeToTimestamp(userTicket.StartTime),
 			Name:           userReserve.Name,
 			NameFurigana:   userReserve.Furigana,
 			Email:          userReserve.Email,
