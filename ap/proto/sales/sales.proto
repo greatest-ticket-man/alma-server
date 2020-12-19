@@ -9,6 +9,6 @@ import "common/common.proto";
 // RPC
 service Sales {
 
-    // PageHTML 売上のトップ画面
-    rpc PageHTML(common.EventRequest) returns (common.Empty) {}
+  // PageHTML 売上のトップ画面
+  rpc PageHTML(common.EventRequest) returns (common.Empty) {}
 }

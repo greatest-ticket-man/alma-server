@@ -14,6 +14,7 @@ import (
 	"alma-server/ap/src/controller/signup"
 	"alma-server/ap/src/controller/test"
 	"alma-server/ap/src/controller/ticket"
+	"alma-server/ap/src/controller/ticketctrl"
 	"alma-server/ap/src/controller/todo"
 	"alma-server/ap/src/controller/top"
 	"alma-server/ap/src/infrastructure/file/almafile"
@@ -85,6 +86,7 @@ func Router() *negroni.Negroni {
 	authRouter.HandleFunc("/ticket", ticket.PageHTML).Methods("GET")
 	authRouter.HandleFunc("/ticket/create", ticket.CreatePageHTML).Methods("GET")
 	authRouter.HandleFunc("/ticket/create", ticket.CreateTicket).Methods("POST")
+	authRouter.HandleFunc("/ticketv2/create", ticketctrl.CreatePage).Methods("GET")
 	authRouter.HandleFunc("/ticket/update", ticket.UpdatePageHTML).Methods("GET")
 	authRouter.HandleFunc("/ticket/update", ticket.UpdateTicket).Methods("POST")
 	authRouter.HandleFunc("/ticket/delete", ticket.DeleteTicket).Methods("POST")

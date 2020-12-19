@@ -31,7 +31,7 @@ message CreateEventPageReply {
   repeated EventAuthInfo event_auth_info_list = 1; // イベント権限のリスト
 }
 
-// イベント編集ページのReply 
+// イベント編集ページのReply
 message UpdateEventPageReply {
   repeated EventAuthInfo event_auth_info_list = 1; // イベント権限のリスト
   string event_name = 2;
@@ -79,16 +79,12 @@ message GetEventNameReply {
 }
 
 // GetEventListRequest イベントリストのRequest
-message GetEventListRequest {
-  string search_text = 1;
-}
+message GetEventListRequest { string search_text = 1; }
 
 // GetEventListReply イベントリストのReply
-message GetEventListReply {
-  repeated EventInfo event_info_list = 1;
-}
+message GetEventListReply { repeated EventInfo event_info_list = 1; }
 
-// EventInfo 
+// EventInfo
 message EventInfo {
   string event_id = 1;
   string event_name = 2;
@@ -100,4 +96,3 @@ message EventAuthInfo {
   string event_auth_name = 2; // イベント権限の名前
   string event_auth_desc = 3; // イベント権限の説明
 }
-

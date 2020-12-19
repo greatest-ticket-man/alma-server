@@ -15,7 +15,6 @@ const (
 	ThisCollectionName = "USER_SEQUENCE"
 
 	// field
-	fid = "_id"
 
 	// FEid .
 	FEid = "eid"
