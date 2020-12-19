@@ -35,7 +35,6 @@ type UserReserve struct {
 	Email      string    `bson:"email"`
 	TicketID   string    `bson:"tid"`  // 購入したチケットID
 	TicketCnt  int32     `bson:"tcnt"` // 何枚購入したか
-	ScheduleID string    `bson:"sid"`  // ScheduleID
 	PayTypeID  string    `bson:"ptid"` // MstTicketPayType
 	CreateTime time.Time `bson:"ct"`
 	UpdateTime time.Time `bson:"ut"`
@@ -61,7 +60,6 @@ func Insert(ctx context.Context, txTime time.Time, reserveID string, seq uint64,
 		TicketCnt:  ticketCnt,
 		CreateTime: txTime,
 		UpdateTime: txTime,
-		ScheduleID: scheduleID,
 		PayTypeID:  payTypeID,
 	}
 
