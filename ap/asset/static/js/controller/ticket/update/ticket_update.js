@@ -42,7 +42,9 @@ class TicketUpdate {
                 price: ticketForm.getTicketPrice(),
                 desc: ticketForm.getTicketDesc(),
                 event_id: window.Alma.location.getParam('event'),
-                schedule_stock_list: ticketForm.getScheduleStockInfoList(),
+                stock: ticketForm.getTicketStock(),
+                start_time: ticketForm.getTicketStartTime(),
+                end_time: ticketForm.getTicketEndTime(),
             },
             event_id: window.Alma.location.getParam('event'),
         };
