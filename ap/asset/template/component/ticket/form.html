@@ -26,7 +26,7 @@
     <div class="input-container">
         <span class="input__title">在庫数</span>
         <span class="input__desc">(必須)</span>
-        <input type="number" class="input__input" value="{{ .value }}" min="0" id="js-ticket-stock">
+        <input type="number" class="input__input" value="{{ .stock }}" min="0" id="js-ticket-stock">
     </div>
 </div>
 
@@ -34,7 +34,7 @@
     <div class="input-container">
         <span class="input__title">開始日</span>
         <span class="input__desc">(必須)</span>
-        <input class="input__input" type="datetime-local" placeholder="" value='{{ .StartTime | timestampToDateTime }}' id="js-ticket-start-time">
+        <input class="input__input" type="datetime-local" placeholder="" value='{{ .startTime | timestampToDateTime }}' id="js-ticket-start-time">
     </div>
 </div>
 
@@ -42,7 +42,7 @@
     <div class="input-container">
         <span class="input__title">終了日</span>
         <span class="input__desc">(必須)</span>
-        <input class="input__input" type="datetime-local" placeholder="" value='{{ .EndTime | timestampToDateTime }}' id="js-ticket-end-time">
+        <input class="input__input" type="datetime-local" placeholder="" value='{{ .endTime | timestampToDateTime }}' id="js-ticket-end-time">
     </div>
 </div>
 
