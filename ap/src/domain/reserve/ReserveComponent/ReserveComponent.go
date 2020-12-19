@@ -16,7 +16,6 @@ func CreateReserveInfoList(userReserveList []*UserReserveRepository.UserReserve,
 	var reserveInfoList []*reserve.ReserveInfo
 
 	for _, userReserve := range userReserveList {
-
 		userTicket := userTicketMap[userReserve.TicketID]
 
 		reserveInfo := &reserve.ReserveInfo{
