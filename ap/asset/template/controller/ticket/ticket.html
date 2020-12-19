@@ -8,6 +8,9 @@
                     <th>チケットID</th>
                     <th>名前</th>
                     <th>価格</th>
+                    <th>在庫</th>
+                    <th>開始時間</th>
+                    <th>終了時間</th>
                     <th>説明</th>
                 </tr>
             </thead>
@@ -22,6 +25,9 @@
                     <td data-key='ticketId' data-value='{{ $ticketInfo.TicketId }}'><a class="ticket__update__anchor" href='/ticket/update?event={{ $eventId }}&ticketId={{ $ticketInfo.TicketId }}'> {{ $ticketInfo.TicketId }} </a></td>
                     <td data-key='ticketName' data-value='{{ $ticketInfo.Name }}'>{{ $ticketInfo.Name }}</td>
                     <td data-key='ticketPrice' data-value='{{ $ticketInfo.Price }}'>{{ $ticketInfo.Price | addComma }}円</td>
+                    <td data-key='ticketStock' data-value='{{ $ticketInfo.Stock }}'>{{ $ticketInfo.Stock }}</td>
+                    <td data-key='ticketStartTime' data-value='{{ $ticketInfo.StartTime }}'>{{ $ticketInfo.StartTime | timestampToTime }}</td>
+                    <td data-key='ticketEndTime' data-value='{{ $ticketInfo.EndTime }}'>{{ $ticketInfo.EndTime | timestampToTime }}</td>
                     <td data-key='ticketDesc' data-value='{{ $ticketInfo.Desc }}'>{{ $ticketInfo.Desc }}</td>
                 </tr>
                 {{ end }}
