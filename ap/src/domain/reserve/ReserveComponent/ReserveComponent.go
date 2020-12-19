@@ -20,18 +20,19 @@ func CreateReserveInfoList(userReserveList []*UserReserveRepository.UserReserve,
 		userTicket := userTicketMap[userReserve.TicketID]
 
 		reserveInfo := &reserve.ReserveInfo{
-			ReserveId:      userReserve.ID,
-			Seq:            userReserve.Seq,
-			TicketName:     userTicket.Name,
-			TicketNum:      userReserve.TicketCnt,
-			EventStartTime: dateutil.TimeToTimestamp(userTicket.StartTime),
-			Name:           userReserve.Name,
-			NameFurigana:   userReserve.Furigana,
-			Email:          userReserve.Email,
-			PayTypeName:    mstTicketPayTypeMap[userReserve.PayTypeID].Name,
-			CustomorId:     userReserve.CustomorID,
-			CreatedAt:      dateutil.TimeToTimestamp(userReserve.CreateTime),
-			UpdatedAt:      dateutil.TimeToTimestamp(userReserve.UpdateTime),
+			ReserveId:    userReserve.ID,
+			Seq:          userReserve.Seq,
+			TicketName:   userTicket.Name,
+			TicketNum:    userReserve.TicketCnt,
+			StartTime:    dateutil.TimeToTimestamp(userTicket.StartTime),
+			EndTime:      dateutil.TimeToTimestamp(userTicket.EndTime),
+			Name:         userReserve.Name,
+			NameFurigana: userReserve.Furigana,
+			Email:        userReserve.Email,
+			PayTypeName:  mstTicketPayTypeMap[userReserve.PayTypeID].Name,
+			CustomorId:   userReserve.CustomorID,
+			CreatedAt:    dateutil.TimeToTimestamp(userReserve.CreateTime),
+			UpdatedAt:    dateutil.TimeToTimestamp(userReserve.UpdateTime),
 		}
 
 		reserveInfoList = append(reserveInfoList, reserveInfo)

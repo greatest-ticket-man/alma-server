@@ -69,7 +69,7 @@ func CreatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 }
 
 // CreateReserve 予約を作成する
-func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, scheduleID string, ticketNum int32, desc string, name string, nameFrigana string, email string, payTypeID string) bool {
+func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, ticketNum int32, desc string, name string, nameFrigana string, email string, payTypeID string) bool {
 	userEvent := EventService.GetEvent(ctx, eventID)
 	if userEvent == nil {
 		// イベントが存在しません
@@ -93,6 +93,6 @@ func CreateReserve(ctx context.Context, mid string, txTime time.Time, eventID st
 	// 追加
 	reserveID := uniqueidutil.GenerateUniqueID()
 
-	UserReserveRepository.Insert(ctx, txTime, reserveID, seq, eventID, "", name, nameFrigana, email, ticketID, ticketNum, scheduleID, payTypeID)
+	UserReserveRepository.Insert(ctx, txTime, reserveID, seq, eventID, "", name, nameFrigana, email, ticketID, ticketNum, payTypeID)
 	return true
 }

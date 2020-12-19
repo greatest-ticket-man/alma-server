@@ -46,7 +46,7 @@ func getDb(ctx context.Context) *mongodb.AlmaCollection {
 }
 
 // Insert .
-func Insert(ctx context.Context, txTime time.Time, reserveID string, seq uint64, eventID string, customorID string, name string, furigana string, email string, ticketID string, ticketCnt int32, scheduleID string, payTypeID string) interface{} {
+func Insert(ctx context.Context, txTime time.Time, reserveID string, seq uint64, eventID string, customorID string, name string, furigana string, email string, ticketID string, ticketCnt int32, payTypeID string) interface{} {
 
 	userReserve := &UserReserve{
 		ID:         reserveID,

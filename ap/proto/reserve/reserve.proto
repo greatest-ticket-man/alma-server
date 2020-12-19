@@ -61,5 +61,6 @@ message ReserveInfo {
     google.protobuf.Timestamp updated_at = 10; // 更新時間   
     string customor_id = 11; // 顧客ID 
     google.protobuf.Timestamp start_time = 12; // 開始時間
-    string pay_type_name = 13; // 支払い方法の種類
+    google.protobuf.Timestamp end_time = 13; // 終了時間
+    string pay_type_name = 14; // 支払い方法の種類
 }
