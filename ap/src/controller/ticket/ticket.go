@@ -3,6 +3,7 @@ package ticket
 import (
 	"alma-server/ap/src/common/almactx"
 	"alma-server/ap/src/common/error/chk"
+	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/common/util/htmlutil"
 	"alma-server/ap/src/common/util/httputil/param"
 	"alma-server/ap/src/common/util/httputil/response"
@@ -116,12 +117,11 @@ func UpdatePageHTML(w http.ResponseWriter, r *http.Request) {
 			"ticketForm": htmlutil.CreateTemplateToString(
 				"/template/component/ticket/form.html",
 				map[string]interface{}{
-					"ticketId":          result.TicketInfo.TicketId,
-					"name":              result.TicketInfo.Name,
-					"price":             result.TicketInfo.Price,
-					"desc":              result.TicketInfo.Desc,
-					"eventId":           result.TicketInfo.EventId,
-					"scheduleStockList": result.TicketInfo.ScheduleStockList,
+					"ticketId": result.TicketInfo.TicketId,
+					"name":     result.TicketInfo.Name,
+					"price":    result.TicketInfo.Price,
+					"desc":     result.TicketInfo.Desc,
+					"eventId":  result.TicketInfo.EventId,
 				},
 			),
 		},
@@ -152,11 +152,16 @@ func CreateTicket(w http.ResponseWriter, r *http.Request) {
 	mid := almactx.GetMid(ctx)
 	txTime := almactx.GetTxTime(ctx)
 
+	ticketInfo := req.TicketInfo
+
+	startTime := dateutil.TimestampToTime(ticketInfo.StartTime)
+	endTime := dateutil.TimestampToTime(ticketInfo.EndTime)
+
 	TicketRpcService.CreateTicket(ctx, mid, txTime,
-		req.TicketInfo.EventId, req.TicketInfo.TicketId,
-		req.TicketInfo.Name, req.TicketInfo.Price,
-		req.TicketInfo.Desc,
-		req.TicketInfo.ScheduleStockList,
+		ticketInfo.EventId, ticketInfo.TicketId,
+		ticketInfo.Name, ticketInfo.Price,
+		ticketInfo.Desc, ticketInfo.Stock,
+		startTime, endTime,
 	)
 
 	response.JSON(w, &common.Empty{})

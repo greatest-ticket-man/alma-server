@@ -18,6 +18,13 @@ var funcMap = template.FuncMap{
 		return dateutil.FormatYYYYMMDDhhmmss(t)
 	},
 	"timestampToDateTime": func(ts *timestamppb.Timestamp) string {
+
+		// defaultの場合は空白を出力したいため
+		// nilの場合は、空文字を返すようにしている
+		if ts == nil {
+			return ""
+		}
+
 		t := dateutil.TimestampToTime(ts)
 		return dateutil.FormatYYYYMMDDhhmm(t)
 	},

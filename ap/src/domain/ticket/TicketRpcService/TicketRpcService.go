@@ -1,6 +1,7 @@
 package TicketRpcService
 
 import (
+	"alma-server/ap/src/common/util/dateutil"
 	"alma-server/ap/src/domain/event/EventService"
 	"alma-server/ap/src/domain/ticket/TicketComponent"
 	"alma-server/ap/src/infrastructure/grpc/proto/ticket"
@@ -38,13 +39,13 @@ func UpdatePage(ctx context.Context, mid string, txTime time.Time, eventID strin
 
 // CreateTicket チケットの作成
 func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketID string, name string,
-	price int32, desc string, scheduleStockInfoList []*ticket.TicketScheduleStockInfo) bool {
+	price int32, desc string, stock int32, startTime time.Time, endTime time.Time) bool {
 
 	// TODO check
 	// TODO EventIDが指定しているものと正しいか
 
 	// Create
-	userTicket := TicketComponent.CreateUserTicket(txTime, eventID, ticketID, name, price, desc, scheduleStockInfoList)
+	userTicket := TicketComponent.CreateUserTicket(txTime, eventID, ticketID, name, price, desc, stock, startTime, endTime)
 	UserTicketRepository.Insert(ctx, userTicket)
 
 	return true
@@ -53,11 +54,12 @@ func CreateTicket(ctx context.Context, mid string, txTime time.Time, eventID str
 // UpdateTicket チケットの編集
 func UpdateTicket(ctx context.Context, mid string, txTime time.Time, eventID string, ticketInfo *ticket.TicketInfo) bool {
 
-	// make scheduleStockInfoMap
-	scheduleStockMap := TicketComponent.CreasteScheduleStockMap(ticketInfo.ScheduleStockList)
+	startTime := dateutil.TimestampToTime(ticketInfo.StartTime)
+	endTime := dateutil.TimestampToTime(ticketInfo.EndTime)
 
 	// update
-	UserTicketRepository.Update(ctx, txTime, ticketInfo.TicketId, eventID, ticketInfo.Name, ticketInfo.Desc, ticketInfo.Price, scheduleStockMap)
+	UserTicketRepository.Update(ctx, txTime, ticketInfo.TicketId, eventID, ticketInfo.Name,
+		ticketInfo.Desc, ticketInfo.Price, ticketInfo.Stock, startTime, endTime)
 
 	return true
 }

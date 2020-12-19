@@ -22,42 +22,28 @@
         <input class="input__input" type="number" value='{{ .price }}' min="0" id="js-ticket-price">
     </div>
 </div>
+<div class="form-container">
+    <div class="input-container">
+        <span class="input__title">在庫数</span>
+        <span class="input__desc">(必須)</span>
+        <input type="number" class="input__input" value="{{ .value }}" min="0" id="js-ticket-stock">
+    </div>
+</div>
 
+<div class="form-container">
+    <div class="input-container">
+        <span class="input__title">開始日</span>
+        <span class="input__desc">(必須)</span>
+        <input class="input__input" type="datetime-local" placeholder="" value='{{ .StartTime | timestampToDateTime }}' id="js-ticket-start-time">
+    </div>
+</div>
 
-<div class="multi-stack">
-
-    <div class="input__title">公演時間とチケット在庫</div>
-    <div class="input__desc">(必須)</div>
-
-    <table class="multi-stock__table">
-        <thead class="multi-stock__head">
-            <th>公演開始時間</th>
-            <th>在庫</th>
-            <th></th>
-        </thead>
-
-        <tbody class="js-schedule-stock-table-body multi-stock__body">
-
-            {{ range $scheduleStock := .scheduleStockList }}
-                <tr class="multi-stock__row">
-                    <td hidden class="js-schedule-stock-id">{{ $scheduleStock.ScheduleStockId }}</td>
-                    <td><input class="js-schedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder="" value='{{ $scheduleStock.EventStartTime | timestampToDateTime }}'></td>
-                    <td><input class="js-stock multi-stock__input multi-stock__input-num" type="number" value='{{ $scheduleStock.Stock }}'></td>
-                    <td><button class="multi-stock__delete-button material-icons" onclick="ticketForm.deleteMultiStockRow(this);">clear</button></td>
-                </tr>
-            {{ end }}
-
-            <tr class="multi-stock__row">
-                <td hidden class="js-schedule-stock-id"></td>
-                <td><input class="js-schedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder="" value=""></td>
-                <td><input class="js-stock multi-stock__input multi-stock__input-num" type="number" min="0"></td>
-                <td><button class="multi-stock__delete-button material-icons" onclick="ticketForm.deleteMultiStockRow(this);">clear</button></td>
-            </tr>
-
-            <!-- ここに追加していく -->
-        </tbody>
-    </table>
-    <button class="js-schedule-stock-add-button multi-stick__add-button">+ スケジュールを追加</button>
+<div class="form-container">
+    <div class="input-container">
+        <span class="input__title">終了日</span>
+        <span class="input__desc">(必須)</span>
+        <input class="input__input" type="datetime-local" placeholder="" value='{{ .EndTime | timestampToDateTime }}' id="js-ticket-end-time">
+    </div>
 </div>
 
 <div class="form-container">
@@ -67,13 +53,3 @@
         <textarea class="input__textarea" cols="30" rows="10" id="js-ticket-desc">{{ .desc }}</textarea>
     </div>
 </div>      
-
-<!-- template  -->
-<template id="js-schedule-stock-row-tmp">
-    <tr class="multi-stock__row">
-        <td hidden class="js-schedule-stock-id"></td>
-        <td><input class="js-schedule multi-stock__input multi-stock__input-date" type="datetime-local" placeholder=""></td>
-        <td><input class="js-stock multi-stock__input multi-stock__input-num" type="number"></td>
-        <td><button class="multi-stock__delete-button material-icons" onclick="ticketForm.deleteMultiStockRow(this);">clear</button></td>
-    </tr>
-</template>
